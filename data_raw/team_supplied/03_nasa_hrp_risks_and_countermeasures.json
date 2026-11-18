@@ -1,0 +1,130 @@
+{
+  "source": "NASA Human Research Program (HRP)",
+  "url": "https://www.nasa.gov/hrp/risks/",
+  "program_elements": [
+    {
+      "element": "Human Health Countermeasures (HHC)",
+      "focus": "Physiological adaptation, cardiovascular deconditioning, bone/muscle loss, neuro-vestibular shifts, immunology, and nutritional requirements.",
+      "tracked_risks": [
+        {
+          "name": "Risk of Spaceflight-Induced Bone Demineralization and Fractures",
+          "impact": "Astronauts lose ~1-1.5% bone mineral density per month in cancellous weight-bearing bones. Leads to elevated hypercalciuria, increased risk of renal stone formation, and early-onset osteoporosis.",
+          "primary_hazard": "Gravity Fields",
+          "monitoring_metrics": [
+            "DXA T/Z-scores",
+            "Serum/urinary calcium",
+            "Bone turnover markers (NTX, CTX)"
+          ]
+        },
+        {
+          "name": "Risk of Impaired Muscle Performance and Muscle Atrophy",
+          "impact": "Preferential loss of muscle mass and power in leg extensors and postural muscles (soleus, gastrocnemius), impairing post-landing egress and EVA capability.",
+          "primary_hazard": "Gravity Fields",
+          "monitoring_metrics": [
+            "Isometric muscle strength (N)",
+            "Calf circumference (cm)",
+            "Daily resistive workload (kJ)"
+          ]
+        },
+        {
+          "name": "Risk of Spaceflight-Associated Neuro-ocular Syndrome (SANS)",
+          "impact": "Progressive ocular structural changes: optic disc swelling (papilledema), globe flattening, choroidal folds, and hyperopic refractive shift caused by cephalad fluid pressure.",
+          "primary_hazard": "Gravity Fields / Hostile Closed Environment",
+          "monitoring_metrics": [
+            "Optic nerve sheath diameter (ultrasound mm)",
+            "Retinal nerve fiber layer thickness (OCT)",
+            "Visual acuity (Snellen / logMAR)"
+          ]
+        },
+        {
+          "name": "Risk of Cardiovascular Disease and Orthostatic Intolerance",
+          "impact": "Decreased cardiac left ventricular mass, arterial stiffening, baroreceptor reset, and reduced plasma volume causing presyncope upon return to gravitational fields.",
+          "primary_hazard": "Gravity Fields / Radiation",
+          "monitoring_metrics": [
+            "Resting heart rate (bpm)",
+            "Continuous blood pressure (mmHg)",
+            "Heart rate variability (HRV)"
+          ]
+        },
+        {
+          "name": "Risk of Adverse Health Consequences from Immune Dysregulation",
+          "impact": "Decreased cell-mediated immunity, altered cytokine profiles, and subclinical viral reactivation (Epstein-Barr, Cytomegalovirus, Varicella Zoster) manifesting as skin rashes and hypersensitivity.",
+          "primary_hazard": "Hostile Closed Environment / Radiation / Isolation",
+          "monitoring_metrics": [
+            "White blood cell differentials",
+            "Viral load shedding in saliva/urine",
+            "Body temperature (°C)"
+          ]
+        }
+      ]
+    },
+    {
+      "element": "Human Factors and Behavioral Performance (HFBP)",
+      "focus": "Behavioral health, psychiatric stability, neurocognitive performance, sleep hygiene, team cohesion, and human-system integration.",
+      "tracked_risks": [
+        {
+          "name": "Risk of Adverse Cognitive or Behavioral Conditions and Psychiatric Disorders",
+          "impact": "Chronic confinement and lack of Earth contact induce emotional instability, anxiety, depressive symptoms, and declining mood.",
+          "primary_hazard": "Isolation and Confinement",
+          "monitoring_metrics": [
+            "Self-reported mood score (1-10)",
+            "Visual analog depression/anxiety scales",
+            "Behavioral logs"
+          ]
+        },
+        {
+          "name": "Risk of Performance Decrements and Errors Due to Sleep Loss and Circadian Desynchronization",
+          "impact": "Acute or chronic sleep deprivation impairs attention, executive judgment, spatial reasoning, and motor performance during safety-critical operations.",
+          "primary_hazard": "Isolation and Confinement / Hostile Environment",
+          "monitoring_metrics": [
+            "Sleep duration (hours/24hr)",
+            "Sleep efficiency (%)",
+            "Cognitive reaction time (ms via PVT test)"
+          ]
+        },
+        {
+          "name": "Risk of Inadequate Team Function, Communication, and Interpersonal Friction",
+          "impact": "Interpersonal conflicts between crew members or between crew and mission control can degrade operational workflow and compromise mission safety.",
+          "primary_hazard": "Isolation and Confinement / Distance from Earth",
+          "monitoring_metrics": [
+            "Team communication sentiment index",
+            "Sociometric interaction logs",
+            "Task completion latency"
+          ]
+        }
+      ]
+    },
+    {
+      "element": "Exploration Medical Capabilities (ExMC)",
+      "focus": "Autonomous clinical medicine, medical decision support, point-of-care laboratory diagnostics, and medical inventory optimization.",
+      "tracked_risks": [
+        {
+          "name": "Risk of Inability to Provide Adequate Medical Care in Deep Space",
+          "impact": "Communication latency prevents real-time tele-medical guidance; limited onboard clinical volume and mass restricts available therapies for trauma, acute abdomen, or sepsis.",
+          "primary_hazard": "Distance from Earth",
+          "monitoring_metrics": [
+            "Clinical checklist adherence",
+            "Diagnostic accuracy scores",
+            "Medical consumable usage rates"
+          ]
+        }
+      ]
+    },
+    {
+      "element": "Space Radiation Element (SRE)",
+      "focus": "Quantifying and mitigating radiation biological effects, DNA repair mechanisms, and permissible exposure guidelines.",
+      "tracked_risks": [
+        {
+          "name": "Risk of Radiation Carcinogenesis and Acute Radiation Syndromes",
+          "impact": "GCR and SPE ionization breaks double-strand DNA, elevating lifetime excess risk of cancer mortality and tissue degeneration.",
+          "primary_hazard": "Space Radiation",
+          "monitoring_metrics": [
+            "Cumulative absorbed dose (mGy)",
+            "Cumulative equivalent dose (mSv)",
+            "Cytogenetic chromosome aberration frequency"
+          ]
+        }
+      ]
+    }
+  ]
+}

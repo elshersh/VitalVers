@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mental Health | Vitalverse</title>
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/shell.css">
+<style>
+:root{--green:#a8e07a;--green-btn:#e4f7c8;--text:#fff;--mut:#9aa6ab;--line:rgba(255,255,255,.22);--card:#0f1417;--field:#090f11;--track:#31373a;box-sizing:border-box}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:#050b0d radial-gradient(circle at 80% 15%,#0a1319 0,transparent 60%) fixed;color:var(--text);font-family:Inter,system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column}
+.mh-intro{max-width:640px;width:100%;margin:0 auto;padding:24px 16px 0}
+.mh-eyebrow{color:var(--green);font-size:12px;font-weight:600;letter-spacing:3.5px;text-transform:uppercase;margin-bottom:12px}
+.mh-intro h1{margin:0 0 12px;font-size:clamp(30px,4.5vw,44px);font-weight:500;letter-spacing:-.02em;line-height:1.12}
+.mh-intro h1 span{color:var(--green)}
+.mh-notice{padding:14px 18px;border-left:3px solid var(--green);background:rgba(168,224,122,.07);border-radius:0 12px 12px 0;font-size:13px;line-height:1.6;color:#bfc8bd}
+.mh{max-width:640px;width:100%;margin:0 auto;padding:18px 16px 70px;flex:1}
+.mh h2{font-size:32px;font-weight:500;letter-spacing:-.02em;margin:.2em 0}
+.mh h3{font-size:20px;font-weight:500;margin:.2em 0 .5em}
+.mh .sub{color:var(--mut);margin:0 0 14px}
+.mh .card{background:var(--card);border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:20px;margin:14px 0}
+.mh .q{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.08)}.mh .q:last-of-type{border:0}
+.mh .q p{margin:0 0 10px;font-weight:500;color:#e6ebed}
+.mh .val{text-align:center;font-size:20px;font-weight:600;color:var(--green)}
+.mh .ends{display:flex;justify-content:space-between;color:var(--mut);font-size:14px}
+.mh .ticks{display:flex;justify-content:space-between;padding:0 12px;color:var(--mut);font-size:13px}
+.mh input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:30px;border-radius:15px;background:var(--track);outline:0;margin:6px 0;cursor:pointer;padding:0;border:0}
+.mh input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:0 1px 6px #000a}
+.mh input[type=range]::-moz-range-thumb{width:26px;height:26px;border:0;border-radius:50%;background:#fff;box-shadow:0 1px 6px #000a}
+.mh :focus-visible{outline:2px solid var(--green);outline-offset:3px}
+.mh .pills{display:flex;flex-wrap:wrap;gap:8px}.mh .pills label{cursor:pointer}
+.mh .pills input{position:absolute;opacity:0}
+.mh .pills span{display:inline-block;padding:9px 18px;border:1px solid var(--line);border-radius:99px;background:rgba(10,12,14,.55);transition:.2s}
+.mh .pills input:checked+span{background:var(--green-btn);color:#0b0f0a;border-color:var(--green-btn)}
+.mh .extra{margin-top:12px;padding-left:12px;border-left:2px solid rgba(168,224,122,.6)}
+.mh textarea,.mh input[type=text],.mh input[type=email],.mh input[type=url],.mh select{width:100%;background:var(--field);color:#fff;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:11px 12px;font:inherit;margin:4px 0 10px}
+.mh label.l{font-size:14px;color:var(--mut)}
+.mh .btn{display:inline-flex;align-items:center;height:46px;padding:0 24px;border-radius:99px;border:0;background:var(--green-btn);color:#0b0f0a;font:500 15px Inter,sans-serif;cursor:pointer;box-shadow:0 0 24px rgba(168,224,122,.3);transition:.25s}
+.mh .btn:hover{transform:translateY(-2px);box-shadow:0 0 34px rgba(168,224,122,.5)}
+.mh .btn.ghost{background:rgba(10,12,14,.5);color:#fff;border:1px solid var(--line);box-shadow:none}
+.mh .err-inline{margin:10px 0 14px;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,122,107,.5);background:rgba(255,122,107,.12);color:#ffd2cc;font-size:13px}
+.mh audio{width:100%;margin-top:8px;color-scheme:dark}
+.mh .show{width:100%;height:260px;object-fit:cover;border-radius:18px;display:block;margin-top:8px}
+.mh .note{color:var(--green)}
+.mh .warn-card{border-color:rgba(245,196,81,.55);background:rgba(245,196,81,.09);color:#f9e6ad}
+.mh .chart-box{position:relative;height:220px;margin:12px 0 4px}
+.mh table{border-collapse:collapse;width:100%;font-size:14px}.mh td,.mh th{border-bottom:1px solid rgba(255,255,255,.08);padding:8px;text-align:start;vertical-align:top}.mh th{color:var(--mut);font-weight:500;width:42%}
+.mh .scroll{overflow-x:auto}
+@media (prefers-reduced-motion:reduce){.mh .btn,.mh .pills span{transition:none}}
+</style>
+  <link rel="stylesheet" href="/css/motion.css?v=7">
+  <script src="/js/motion.js?v=10"></script>
+</head>
+<body>
+<header class="nav vv-nav">
+  <a class="logo" href="index.html">
+    <svg viewBox="0 0 36 22" fill="none" stroke="#a8e07a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 11h7l3-8 5 16 4-12 3 4h12"/></svg>
+    <span>Vital<b>verse</b></span>
+  </a>
+  <nav class="menu" id="vvNavMenu">
+    <a href="index.html">Home page</a>
+    <a href="health.html">Health dashboard</a>
+    <a href="chatbot.html">Ai chatbot</a>
+    <a href="mental.html" class="active">Mental Health</a>
+    <a href="about.html">About</a>
+  </nav>
+  <div class="tools">
+    <button class="circle" id="todoBtn" type="button" aria-label="Daily Routine To-Do List">
+      <svg class="vv-ic" viewBox="0 0 24 24"><rect x="5" y="4.5" width="14" height="16.5" rx="2.5"/><path d="M9 4.5V3.5h6v1"/><path d="M8.5 11.5l1.2 1.2 2.1-2.4M8.5 16.5l1.2 1.2 2.1-2.4M14.2 11.8h2M14.2 16.8h2"/></svg>
+      <svg class="vv-todo-ring" id="vvTodoRing" viewBox="0 0 39 39" hidden><circle cx="19.5" cy="19.5" r="18" fill="none" stroke="#a8e07a" stroke-width="2" id="vvTodoRingArc"/></svg>
+    </button>
+    <button class="circle" id="bellBtn" type="button" aria-label="Notifications" aria-expanded="false">
+      <svg class="vv-ic" viewBox="0 0 24 24"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>
+      <span class="vv-bell-dot" id="vvBellDot" hidden></span>
+    </button>
+    <button class="profile" id="profileBtn" type="button" aria-label="Open account options" aria-expanded="false">
+      <div class="avatar" id="vvAvatar"></div>
+      <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="vv-dropdown" id="vvBellDropdown" hidden>
+      <div class="vv-dropdown-head"><strong>Alerts</strong><a class="vv-dropdown-link" href="alerts.html">View all alerts</a></div>
+      <div class="vv-dropdown-list" id="vvBellList"><div class="vv-dropdown-empty">No unread alerts.</div></div>
+    </div>
+    <div class="vv-dropdown vv-profile-menu" id="vvProfileDropdown" hidden></div>
+  </div>
+</header>
+
+<section class="mh-intro">
+  <div class="mh-eyebrow">WELLBEING / DAILY CHECK-IN</div>
+  <h1>Mental <span>Health</span></h1>
+  <div class="mh-notice">Responses are shared with your authorized Flight Surgeon to support crew wellbeing.</div>
+</section>
+
+<main class="mh" id="mh"></main>
+
+<footer class="vv-footer">
+  <p>© 2026 <span>Vitalverse</span>. All rights reserved.</p>
+  <p class="vv-footer-disclaimer">Prototype built with fictional data. Not a certified medical device.</p>
+  <p>Monitor. Protect. Keep exploring.</p>
+</footer>
+
+<script src="vendor/chart.umd.min.js"></script>
+<script src="js/shell.js"></script>
+<script>
+const MH = (() => {
+  const Q = [
+    ["How are you feeling right now?","scale","Very low","Great"],
+    ["What emotion best describes your day so far?","choice",["Calm","Happy","Tired","Stressed","Sad","Excited"]],
+    ["How positive has your day been?","scale","Not positive","Very positive"],
+    ["Did anything make you smile today?","choice",["Yes","No","Something else"]],
+    ["How emotionally comfortable do you feel today?","scale","Uncomfortable","Comfortable"],
+    ["Have you felt overwhelmed at any point today?","choice",["Never","Sometimes","Often"]],
+    ["How connected do you feel to your crewmates today?","scale","Distant","Very connected"],
+    ["Is there anything on your mind that you would like to talk or write about?","text"],
+    ["How motivated do you feel to complete your daily activities?","scale","Not motivated","Very motivated"],
+    ["What is one thing that could make the rest of your day better?","text"]
+  ];
+  const api = { songs: [], photos: [], log: [] };
+  let opt = {}, box, timer, chartInst, editingToday = false;
+  const $ = s => box.querySelector(s);
+  const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const safeUrl = u => (window.VV_SHELL ? window.VV_SHELL.safeUrl(u) : "");
+
+  api.mount = (sel, o) => {
+    opt = Object.assign({ role: "astronaut", astronauts: [], selectedId: "", csrfToken: "", todayCheckin: null, lowStreak: false }, opt, o || {});
+    if (o && o.entries) api.log = o.entries;
+    if (o && o.songs) api.songs = o.songs;
+    if (o && o.photos) api.photos = o.photos.map(p => typeof p === "string" ? { url: p, tag: "happy" } : p);
+    box = document.querySelector(sel);
+    clearInterval(timer);
+    if (chartInst) { chartInst.destroy(); chartInst = null; }
+    editingToday = false;
+    opt.role === "doctor" ? doctor() : astronaut();
+  };
+
+  function prefillForm(ans) {
+    if (!ans) return;
+    [0, 2, 4, 6, 8].forEach(i => {
+      const el = box.querySelector(`input[type=range][data-q="${i}"]`);
+      if (el && ans[i] != null) {
+        el.value = String(ans[i]);
+        paint(el);
+        const lbl = $("#v" + i);
+        if (lbl) lbl.textContent = el.value + "/5";
+      }
+    });
+    [1, 3, 5].forEach(i => {
+      if (!ans[i]) return;
+      const rad = box.querySelector(`input[name="q${i}"][value="${CSS.escape(String(ans[i]))}"]`);
+      if (rad) rad.checked = true;
+    });
+    if (ans["3"] === "Yes" || ans["3"] === "Something else") {
+      $("#smile").hidden = false;
+      const t = $('[data-q="3t"]');
+      if (t && ans["3t"]) t.value = ans["3t"];
+    }
+    [7, 9].forEach(i => {
+      const ta = box.querySelector(`textarea[data-q="${i}"]`);
+      if (ta && ans[i] != null) ta.value = ans[i];
+    });
+  }
+
+  function astronaut() {
+    const todayEntry = opt.todayCheckin;
+    let h = `<h2>Daily check-in</h2><p class="sub">Answer 10 quick questions. It takes one minute.</p>`;
+    h += `<div class="card" id="mhFormCard" ${todayEntry && !editingToday ? "hidden" : ""}>`;
+    Q.forEach(([q, t, a, b], i) => {
+      h += `<div class="q"><p>${i + 1}. ${q}</p>`;
+      if (t === "scale") {
+        h += `<div class="val" id="v${i}">3/5</div>
+          <input type="range" min="1" max="5" step="1" value="3" data-q="${i}" aria-label="${esc(q)}">
+          <div class="ticks"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div>
+          <div class="ends"><span>${a}</span><span>${b}</span></div>`;
+      }
+      if (t === "choice") {
+        h += `<div class="pills">${a.map(x => `<label><input type="radio" name="q${i}" value="${esc(x)}" data-q="${i}"><span>${esc(x)}</span></label>`).join("")}</div>`;
+      }
+      if (t === "text") {
+        h += `<textarea rows="2" data-q="${i}" placeholder="Optional"></textarea>`;
+      }
+      if (i === 3) {
+        h += `<div class="extra" id="smile" hidden><label class="l">Do you want to tell us what made you smile? (optional)</label><textarea rows="2" data-q="3t" placeholder="Write it here if you like"></textarea></div>`;
+      }
+      h += `</div>`;
+    });
+    h += `<div class="err-inline" id="mhErr" hidden></div><button class="btn" id="mhSave" type="button">${todayEntry ? "Update today's answers" : "Save answers"}</button></div><div id="rec"></div>
+      <div class="card"><h3>Email to someone</h3><p class="sub">Write to someone you love. Sent via server SMTP when configured, or opens your email app.</p>
+      <label class="l">To</label><input type="email" id="eT" placeholder="name@example.com">
+      <label class="l">Subject</label><input type="text" id="eS">
+      <label class="l">Message</label><textarea id="eM" rows="4"></textarea>
+      <div class="err-inline" id="mhMailStatus" hidden></div>
+      <button class="btn" id="mhMail" type="button">Send email</button></div>`;
+    box.innerHTML = h;
+    box.querySelectorAll("input[type=range]").forEach(r => {
+      paint(r);
+      r.oninput = () => { paint(r); $("#v" + r.dataset.q).textContent = r.value + "/5"; };
+    });
+    box.querySelectorAll('input[name="q3"]').forEach(r => {
+      r.onchange = () => {
+        const showExtra = r.value === "Yes" || r.value === "Something else";
+        $("#smile").hidden = !showExtra;
+        if (!showExtra) $('[data-q="3t"]').value = "";
+      };
+    });
+    $("#mhSave").onclick = save;
+    $("#mhMail").onclick = mail;
+
+    if (todayEntry) {
+      prefillForm(todayEntry.answers);
+      recs(todayEntry.score, todayEntry.answers, true, todayEntry.recommended_tag);
+    }
+  }
+
+  function paint(r) {
+    const p = (r.value - 1) * 25;
+    r.style.background = `linear-gradient(90deg,var(--green) ${p}%,var(--track) ${p}%)`;
+  }
+
+  async function save() {
+    const errEl = $("#mhErr");
+    errEl.hidden = true;
+    const a = {};
+    box.querySelectorAll("input[type=range],textarea[data-q]").forEach(e => { a[e.dataset.q] = e.value; });
+    box.querySelectorAll("input[type=radio]:checked").forEach(e => { a[e.dataset.q] = e.value; });
+
+    for (const ci of [1, 3, 5]) {
+      if (!a[ci]) {
+        errEl.textContent = "Please answer question " + (ci + 1) + " before saving.";
+        errEl.hidden = false;
+        return;
+      }
+    }
+
+    const saveBtn = $("#mhSave");
+    const isEdit = Boolean(opt.todayCheckin);
+    const aid = opt.astronautId;
+    if (!aid) {
+      errEl.textContent = "Astronaut profile session unavailable.";
+      errEl.hidden = false;
+      return;
+    }
+    saveBtn.disabled = true;
+    try {
+      const url = isEdit
+        ? "/api/mental/" + encodeURIComponent(aid) + "/checkins/today"
+        : "/api/mental/" + encodeURIComponent(aid) + "/checkins";
+      const res = await fetch(url, {
+        method: isEdit ? "PUT" : "POST",
+        credentials: "same-origin",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRF-Token": opt.csrfToken || ""
+        },
+        body: JSON.stringify({ answers: a })
+      });
+      const body = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        errEl.textContent = body.detail || "Unable to save check-in.";
+        errEl.hidden = false;
+        return;
+      }
+      opt.todayCheckin = body.entry;
+      if (body.songs) api.songs = body.songs;
+      if (body.photos) api.photos = body.photos;
+      api.log.unshift(body.entry);
+      const formCard = $("#mhFormCard");
+      if (formCard) formCard.hidden = true;
+      editingToday = false;
+      recs(body.entry.score, body.entry.answers, true, body.entry.recommended_tag);
+    } finally {
+      saveBtn.disabled = false;
+    }
+  }
+
+  function recs(s, a, showEditBtn, serverTag) {
+    let tag = serverTag || (s < 2.7 ? "comfort" : s < 3.8 ? "happy" : "energy");
+    if (!serverTag && (["Sad", "Stressed", "Tired"].includes(a[1]) || a[5] === "Often")) tag = "comfort";
+    const pick = api.songs.filter(x => x.tag === tag);
+    const song = (pick.length ? pick : api.songs)[0];
+    const el = $("#rec");
+    clearInterval(timer);
+
+    let h = `<div class="card"><h3>Your mood today: ${Number(s).toFixed(1)} / 5</h3>`;
+    if (s < 2.7) h += `<p class="note">It looks like a hard day. Take a breath. Here is something matched (${esc(tag)}) for you.</p>`;
+    h += song ? `<p><b>Your song (${esc(song.tag)}):</b> ${esc(song.title)}</p>` : `<p class="sub">Add songs to your profile and we will pick one matched to your mood.</p>`;
+    const validSongUrl = song ? safeUrl(song.url) : "";
+    if (song && song.kind === "audio" && validSongUrl) h += `<audio controls src="${esc(validSongUrl)}"></audio>`;
+    if (song && song.kind === "link" && validSongUrl) h += `<p><a class="btn ghost" style="text-decoration:none" href="${esc(validSongUrl)}" target="_blank" rel="noopener">Open the song</a></p>`;
+    h += `<p style="margin-top:16px"><b>Your people and places</b></p>`;
+    const pp = api.photos.filter(x => x.tag === tag);
+    const pl = (pp.length ? pp : api.photos).map(x => safeUrl(x.url)).filter(Boolean);
+    h += pl.length ? `<img class="show" id="sh" src="${esc(pl[0])}" alt="Preferred photo">` : `<p class="sub">Add photos to your profile and they will show here.</p>`;
+    if (showEditBtn) {
+      h += `<div style="margin-top:16px"><button type="button" class="btn ghost" id="mhEditTodayBtn">Edit today's answers</button></div>`;
+    }
+    el.innerHTML = h + `</div>`;
+    const editBtn = $("#mhEditTodayBtn");
+    if (editBtn) {
+      editBtn.onclick = () => {
+        editingToday = true;
+        const fc = $("#mhFormCard");
+        if (fc) { fc.hidden = false; fc.scrollIntoView({ behavior: "smooth", block: "start" }); }
+      };
+    }
+    if (pl.length > 1) {
+      let i = 0;
+      timer = setInterval(() => {
+        const im = document.getElementById("sh");
+        if (!im) { clearInterval(timer); return; }
+        i = (i + 1) % pl.length;
+        im.src = pl[i];
+      }, 4000);
+    }
+  }
+
+  async function mail() {
+    const t = $("#eT").value.trim();
+    const statusEl = $("#mhMailStatus");
+    if (statusEl) statusEl.hidden = true;
+    if (!t) {
+      if (statusEl) {
+        statusEl.style.borderColor = "rgba(255,122,107,.5)";
+        statusEl.style.background = "rgba(255,122,107,.12)";
+        statusEl.style.color = "#ffd2cc";
+        statusEl.textContent = "Enter a valid recipient email address.";
+        statusEl.hidden = false;
+      }
+      return;
+    }
+    const res = await fetch("/api/mental/email", {
+      method: "POST",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-Token": opt.csrfToken || ""
+      },
+      body: JSON.stringify({ to_email: t, subject: $("#eS").value, body: $("#eM").value })
+    });
+    const body = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      if (statusEl) {
+        statusEl.style.borderColor = "rgba(255,122,107,.5)";
+        statusEl.style.background = "rgba(255,122,107,.12)";
+        statusEl.style.color = "#ffd2cc";
+        statusEl.textContent = body.detail || "Unable to prepare email.";
+        statusEl.hidden = false;
+      }
+      return;
+    }
+    if (body.mode === "mailto" && body.mailto_url) {
+      if (statusEl) {
+        statusEl.style.borderColor = "rgba(168,224,122,.5)";
+        statusEl.style.background = "rgba(168,224,122,.1)";
+        statusEl.style.color = "#e4f7c8";
+        statusEl.textContent = "Opening your email app (rate limit verified).";
+        statusEl.hidden = false;
+      }
+      window.location.href = body.mailto_url;
+    } else if (statusEl) {
+      statusEl.style.borderColor = "rgba(168,224,122,.5)";
+      statusEl.style.background = "rgba(168,224,122,.1)";
+      statusEl.style.color = "#e4f7c8";
+      statusEl.textContent = body.message || "Email sent successfully.";
+      statusEl.hidden = false;
+    }
+  }
+
+  function doctor() {
+    if (!opt.astronauts || !opt.astronauts.length) {
+      box.innerHTML =
+        `<h2>Mental health results</h2>` +
+        `<div class="card"><p class="sub" style="margin:0">No approved astronauts linked yet. Visit your <a href="/profile.html" style="color:var(--green)">Profile</a> page to request access.</p></div>`;
+      return;
+    }
+    const lowStreak = Boolean(opt.lowStreak) || (api.log.slice(0, 3).length === 3 && api.log.slice(0, 3).every(e => Number(e.score) < 2.5));
+    const astOpts = opt.astronauts
+      .map(a => `<option value="${esc(a.id)}" ${a.id === opt.selectedId ? "selected" : ""}>${esc(a.label)}</option>`)
+      .join("");
+    box.innerHTML =
+      `<h2>Mental health results</h2>` +
+      `<div class="card"><label class="l" for="mhAstSel">Approved astronaut</label><select id="mhAstSel">${astOpts}</select></div>` +
+      (lowStreak ? `<div class="card warn-card"><strong>Low mood for 3+ days:</strong> Last 3 check-ins are below 2.5 / 5. Consider flight-surgeon follow-up.</div>` : "") +
+      `<div class="card"><h3>Mood score trend (1–5)</h3><p class="sub">Reference line marks the 2.5 / 5 support threshold.</p>${api.log.length ? '<div class="chart-box"><canvas id="mhTrendChart"></canvas></div>' : '<p class="sub" style="margin:0">No daily check-ins submitted yet for this astronaut.</p>'}</div>` +
+      `<div class="card">${results()}</div>`;
+
+    const selEl = $("#mhAstSel");
+    if (selEl && opt.onSelectAstronaut) {
+      selEl.addEventListener("change", () => opt.onSelectAstronaut(selEl.value));
+    }
+
+    const canvas = document.getElementById("mhTrendChart");
+    if (canvas && typeof Chart !== "undefined" && api.log.length) {
+      const rows = api.log.slice().reverse();
+      const labels = rows.map(r => r.time);
+      const scores = rows.map(r => Number(r.score));
+      const lowZonePlugin = {
+        id: "lowZoneShade",
+        beforeDatasetsDraw(chart) {
+          const { ctx, chartArea, scales } = chart;
+          if (!chartArea || !scales.y) return;
+          const yTop = scales.y.getPixelForValue(2.5);
+          const yBot = scales.y.getPixelForValue(1.0);
+          ctx.save();
+          ctx.fillStyle = "rgba(255,122,107,0.08)";
+          ctx.fillRect(chartArea.left, yTop, chartArea.right - chartArea.left, Math.max(0, yBot - yTop));
+          ctx.restore();
+        }
+      };
+      chartInst = new Chart(canvas, {
+        type: "line",
+        data: {
+          labels,
+          datasets: [
+            { label: "Mood Score (1-5)", data: scores, borderColor: "#a8e07a", backgroundColor: "rgba(168,224,122,0.12)", tension: 0.3, fill: true },
+            { label: "Low-Mood Threshold (2.5)", data: labels.map(() => 2.5), borderColor: "#ff7a6b", borderDash: [6, 6], pointRadius: 0, fill: false }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: { min: 1, max: 5, ticks: { color: "#9aa6ab" }, grid: { color: "rgba(255,255,255,0.08)" } },
+            x: { ticks: { color: "#9aa6ab" }, grid: { display: false } }
+          },
+          plugins: { legend: { labels: { color: "#d9dde0" } } }
+        },
+        plugins: [lowZonePlugin]
+      });
+    }
+  }
+
+  function results() {
+    if (!api.log.length) return "<p class='sub'>No check-ins recorded yet for this astronaut.</p>";
+    const L = [["How are you feeling",0],["Emotion",1],["Positive day",2],["Smiled",3],["What made them smile","3t"],["Comfortable",4],["Overwhelmed",5],["Connected",6],["On their mind",7],["Motivated",8],["Would improve the day",9]];
+    return api.log.map(e => `<h3>${esc(e.time)} – mood ${Number(e.score).toFixed(1)}/5</h3><div class="scroll"><table>${L.map(([n,i]) => `<tr><th>${n}</th><td>${esc((e.answers && e.answers[i]) || "-")}</td></tr>`).join("")}</table></div>`).join("");
+  }
+
+  return api;
+})();
+
+async function loadDoctorMentalFor(approvedList, selectedId, csrfToken) {
+  const aid = selectedId || (approvedList[0] && approvedList[0].id) || "";
+  if (!aid) {
+    MH.mount("#mh", { role: "doctor", astronauts: [], csrfToken });
+    return;
+  }
+  const r = await fetch("/api/mental/" + encodeURIComponent(aid) + "/checkins", { credentials: "same-origin" });
+  const body = r.ok ? await r.json() : { entries: [], low_streak: false };
+  MH.mount("#mh", {
+    role: "doctor",
+    astronauts: approvedList,
+    selectedId: aid,
+    csrfToken,
+    lowStreak: Boolean(body.low_streak),
+    entries: body.entries || [],
+    onSelectAstronaut: nextAid => loadDoctorMentalFor(approvedList, nextAid, csrfToken)
+  });
+}
+
+(async function initMentalPage() {
+  if (!window.VV_SHELL || !window.VV_SHELL.getSession) return;
+  const sess = await window.VV_SHELL.getSession();
+  if (!sess || !sess.authenticated) {
+    if (sess && sess.backendAvailable) {
+      window.location.href = "/login.html";
+    }
+    return;
+  }
+  const csrf = sess.csrf_token || "";
+  if (sess.role === "astronaut" && sess.user && sess.user.astronaut_id) {
+    const aid = sess.user.astronaut_id;
+    const r = await fetch("/api/mental/" + encodeURIComponent(aid) + "/checkins", { credentials: "same-origin" });
+    const body = r.ok ? await r.json() : { entries: [], songs: [], photos: [], today_checkin: null };
+    MH.mount("#mh", {
+      role: "astronaut",
+      astronautId: aid,
+      csrfToken: csrf,
+      todayCheckin: body.today_checkin || null,
+      entries: body.entries || [],
+      songs: body.songs || [],
+      photos: body.photos || []
+    });
+    return;
+  }
+  if (sess.role === "doctor") {
+    const dr = await fetch("/api/doctor/astronauts", { credentials: "same-origin" });
+    const dbody = dr.ok ? await dr.json() : { approved: [] };
+    const list = (dbody.approved || []).map(a => ({ id: a.id, label: a.id + " — " + a.name }));
+    await loadDoctorMentalFor(list, list[0] ? list[0].id : "", csrf);
+  }
+})();
+</script>
+</body>
+</html>

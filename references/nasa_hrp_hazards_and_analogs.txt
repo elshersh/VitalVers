@@ -1,0 +1,35 @@
+# NASA Human Research Program (HRP) Hazard Pages, Risks, and Analog Environments
+
+SOURCE_URL: https://www.nasa.gov/hrp/hazards/
+WAYBACK_SNAPSHOT_DATE: 2026-07-10 to 2026-11-09
+
+## 1. NASA HRP — Hazard: Gravity Fields
+URL: https://www.nasa.gov/hrp/hazard-gravity-fields/
+SECTION: Bone, Cardiovascular, and Fluid Shift Overview
+"Weight-bearing bones lose on average 1% to 1.5% of mineral density per month during spaceflight."
+"The trip between Earth and Mars is described as six months of weightlessness; Mars has about one-third of Earth's gravity."
+"Fluids shift upward to the head, which may put pressure on the eyes and cause vision problems."
+
+## 2. NASA HRP — Hazard: Isolation and Confinement
+URL: https://www.nasa.gov/hrp/hazard-isolation-and-confinement/
+SECTION: Behavioral Health, Analogs, and Circadian Research
+"Sleep loss, circadian desynchronization and work overload may lead to decreased performance and adverse health outcomes."
+"HERA analog: crews live inside for 45 days at a time. CHAPEA: year-long simulated Mars stays."
+"Related items mention journaling and space gardening as coping tools, alongside light therapy for circadian alignment."
+
+## 3. NASA HRP — Hazard: Hostile Closed Environments
+URL: https://www.nasa.gov/hrp/hazard-hostile-closed-environments/
+SECTION: Immune and Microbial Environment
+"Stress hormone levels can elevate and the immune system can alter, which could lead to increased susceptibility to allergies or other illnesses."
+"Microbes transfer more easily between people in closed habitats, requiring continuous air revitalization, HEPA filtration, and surface disinfection."
+
+## 4. NASA HRP — Hazard: Distance from Earth
+URL: https://www.nasa.gov/hrp/hazard-distance-from-earth/
+SECTION: Communication Latency and Autonomous Medical Care
+"Mars lies an average of 140 million miles from Earth (Moon ~240,000 miles), creating communication delays of up to 20 to 22 minutes each way."
+
+## 5. NASA HRP — Ongoing Research: CIPHER, Standard Measures, and Bed Rest
+URL: https://www.nasa.gov/hrp/ongoing-hrp-research/
+SECTION: CIPHER & Standard Measures Overview
+"CIPHER integrates up to 14 physiological and psychological studies across short, standard 6-month, and extended 1-year spaceflight missions."
+"Head-down tilt bed rest at -6 degrees simulates microgravity cephalad fluid shifts and musculoskeletal disuse on Earth."

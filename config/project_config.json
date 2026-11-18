@@ -1,0 +1,33 @@
+{
+  "simulation": {
+    "seed": 42,
+    "enable_mood_training_coupling": false,
+    "mood_training_coupling_beta": 0.35,
+    "mood_training_coupling_note": "When false (default), daily_training_hours and mood are generated independently so within-astronaut correlation is ~0 (demonstrating Simpson's/pooling fallacy). When true, daily_training_hours positively influences daily mood within each astronaut."
+  },
+  "model": {
+    "calibration_method": "sigmoid",
+    "calibration_cv_folds": 5,
+    "cost_matrix": {
+      "description": "Rows = true class, Columns = predicted class [Normal, Stress_BP_Spike_No_Medical_Danger, Health_Warning, Medical_Danger_Alert]. Missed Medical_Danger_Alert costs 25x-40x more than a false alarm.",
+      "classes": [
+        "Normal",
+        "Stress_BP_Spike_No_Medical_Danger",
+        "Health_Warning",
+        "Medical_Danger_Alert"
+      ],
+      "matrix": [
+        [0.0, 1.5, 1.2, 4.0],
+        [3.0, 0.0, 2.0, 3.5],
+        [4.5, 2.5, 0.0, 3.5],
+        [40.0, 25.0, 20.0, 0.0]
+      ]
+    },
+    "tiered_alerting": {
+      "danger_confirm_prob_threshold": 0.22,
+      "danger_high_prob_threshold": 0.45,
+      "danger_confirm_persistence_days": 2,
+      "description": "Tier 1 ('Danger – confirm'): moderate calibrated probability (>=0.22), requests immediate sensor re-measurement. Tier 2 ('Danger'): high calibrated probability (>=0.45) OR moderate probability persisting across >=2 consecutive days."
+    }
+  }
+}

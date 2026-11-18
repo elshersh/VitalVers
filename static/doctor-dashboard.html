@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vitalverse – Doctor Dashboard</title>
+  <link rel="stylesheet" href="css/fonts.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/shell.css" />
+  <link rel="stylesheet" href="/css/motion.css?v=7">
+  <script src="/js/motion.js?v=10"></script>
+</head>
+<body data-role="doctor">
+
+  <header class="nav vv-nav">
+    <a class="logo" href="index.html">
+      <svg viewBox="0 0 36 22" fill="none" stroke="#a8e07a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 11h7l3-8 5 16 4-12 3 4h12"/></svg>
+      <span>Vital<b>verse</b></span>
+    </a>
+    <nav class="menu" id="vvNavMenu">
+      <a href="index.html">Home page</a>
+      <a href="health.html" class="active">Health dashboard</a>
+      <a href="chatbot.html">Ai chatbot</a>
+      <a href="mental.html">Mental Health</a>
+      <a href="about.html">About</a>
+    </nav>
+    <div class="tools">
+      <button class="circle" id="todoBtn" type="button" aria-label="Daily Routine To-Do List">
+        <svg class="vv-ic" viewBox="0 0 24 24"><rect x="5" y="4.5" width="14" height="16.5" rx="2.5"/><path d="M9 4.5V3.5h6v1"/><path d="M8.5 11.5l1.2 1.2 2.1-2.4M8.5 16.5l1.2 1.2 2.1-2.4M14.2 11.8h2M14.2 16.8h2"/></svg>
+        <svg class="vv-todo-ring" id="vvTodoRing" viewBox="0 0 39 39" hidden><circle cx="19.5" cy="19.5" r="18" fill="none" stroke="#a8e07a" stroke-width="2" id="vvTodoRingArc"/></svg>
+      </button>
+      <button class="circle" id="bellBtn" type="button" aria-label="Notifications" aria-expanded="false">
+        <svg class="vv-ic" viewBox="0 0 24 24"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>
+        <span class="vv-bell-dot" id="vvBellDot" hidden></span>
+      </button>
+      <button class="profile" id="profileBtn" type="button" aria-label="Open account options" aria-expanded="false">
+        <div class="avatar" id="vvAvatar"></div>
+        <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="vv-dropdown" id="vvBellDropdown" hidden>
+        <div class="vv-dropdown-head"><strong>Alerts</strong><a class="vv-dropdown-link" href="alerts.html">View all alerts</a></div>
+        <div class="vv-dropdown-list" id="vvBellList"><div class="vv-dropdown-empty">No unread alerts.</div></div>
+      </div>
+      <div class="vv-dropdown vv-profile-menu" id="vvProfileDropdown" hidden></div>
+    </div>
+  </header>
+
+  <!-- ============ SECTION TABS + ASTRONAUT PICKER ============ -->
+  <div class="subbar">
+    <div class="subbar-inner">
+      <nav class="tabs" id="sectionTabs" aria-label="Dashboard sections">
+        <a href="#overview" data-section="overview">Astronaut Overview</a>
+        <a href="#metrics" data-section="metrics">Detailed Metrics</a>
+        <a href="#history" data-section="history">Medical History</a>
+        <a href="#insights" data-section="insights">Health Insights</a>
+      </nav>
+      <select id="astronautSelect" aria-label="Select astronaut"></select>
+    </div>
+  </div>
+
+  <div class="demo-banner">
+    <div><strong>Simulated data</strong> All astronauts and readings are generated demo data. Insights are decision support only, not diagnoses.</div>
+  </div>
+
+  <main class="container">
+    <div id="loadError" class="load-error" hidden></div>
+
+    <!-- A. ASTRONAUT OVERVIEW -->
+    <section id="overview" class="dash-section" hidden>
+      <div class="section-head">
+        <h1>Astronaut Overview</h1>
+        <p class="muted">Select an astronaut to see their latest health measurements.</p>
+      </div>
+      <div class="split">
+        <aside class="card ast-list" id="astronautList"></aside>
+        <div class="stack" id="astronautDetail"></div>
+      </div>
+    </section>
+
+    <!-- B. DETAILED HEALTH METRICS -->
+    <section id="metrics" class="dash-section" hidden>
+      <div class="section-head">
+        <h1>Detailed Health Metrics</h1>
+        <p class="muted" id="metricsSubtitle"></p>
+      </div>
+      <div class="stack">
+        <div class="card">
+          <div class="toolbar">
+            <div class="chips" id="metricChips"></div>
+            <div class="seg" id="metricRange" role="group" aria-label="Time range">
+              <button data-range="day">Day</button>
+              <button data-range="week">Week</button>
+              <button data-range="month">Month</button>
+              <button data-range="mission">180 days</button>
+            </div>
+          </div>
+          <div class="explorer">
+            <div>
+              <div class="chart-wrap"><canvas id="metricChart"></canvas></div>
+              <p class="chart-note">Solid line: current data. Dashed line: Pre-Mission Baseline. Week / Month / 180 days = daily telemetry readings.</p>
+            </div>
+            <aside class="stats-panel" id="metricStats"></aside>
+          </div>
+        </div>
+        <div class="card">
+          <h3>All metrics for the selected period</h3>
+          <div class="table-wrap" id="metricsDetailTable"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- C. MEDICAL HISTORY -->
+    <section id="history" class="dash-section" hidden>
+      <div class="section-head">
+        <h1>Medical History</h1>
+        <p class="muted" id="historySubtitle"></p>
+      </div>
+      <div class="stack">
+        <div class="card">
+          <div class="replay-bar">
+            <div class="replay-head">
+              <label for="missionDaySlider">Mission Timeline Replay</label>
+              <strong id="missionDayLabel">Mission day 180 of 180</strong>
+            </div>
+            <input type="range" class="vv-replay-range" id="missionDaySlider" min="1" max="180" value="180" />
+          </div>
+          <div class="toolbar">
+            <h3 style="margin:0">Change vs. Pre-Mission Baseline (Personal trend — illustrative %)</h3>
+            <div class="seg" id="historyRange" role="group" aria-label="Time range">
+              <button data-range="day">Day</button>
+              <button data-range="week">Week</button>
+              <button data-range="month">Month</button>
+              <button data-range="mission">180 days</button>
+            </div>
+          </div>
+          <div class="chart-wrap"><canvas id="historyChart"></canvas></div>
+          <p class="chart-note">0% = the astronaut's own Pre-Mission Baseline. Click a metric in the legend to show or hide it.</p>
+        </div>
+        <div class="card">
+          <h3>Previous measurements</h3>
+          <div class="table-wrap" id="historyTable"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- D. HEALTH INSIGHTS -->
+    <section id="insights" class="dash-section" hidden>
+      <div class="section-head">
+        <h1>Health Insights</h1>
+        <p class="muted" id="insightsSubtitle"></p>
+      </div>
+      <div class="notice">
+        <span aria-hidden="true">ⓘ</span>
+        <span>Insights are produced by simple, configurable rules applied to simulated data. They support, and never replace, clinical judgement.</span>
+      </div>
+      <div class="grid grid-2">
+        <div class="card"><h3>Health alerts</h3><div id="alertsList" class="list"></div></div>
+        <div class="card"><h3>Significant changes</h3><div id="changesList" class="list"></div></div>
+        <div class="card"><h3>AI-generated insights</h3><div id="insightsList" class="list"></div></div>
+        <div class="card"><h3>Suggested follow-up actions</h3><div id="followupList" class="list"></div></div>
+      </div>
+    </section>
+
+    <p class="foot-note">Vitalverse AI Health Monitoring · 180-day telemetry &amp; AI predictions · Personal trend (illustrative %) thresholds are configurable and not universal medical reference ranges.</p>
+  </main>
+
+  <footer class="vv-footer">
+    <p>© 2026 <span>Vitalverse</span>. All rights reserved.</p>
+    <p class="vv-footer-disclaimer">Prototype built with fictional data. Not a certified medical device.</p>
+    <p>Monitor. Protect. Keep exploring.</p>
+  </footer>
+
+  <script src="vendor/chart.umd.min.js"></script>
+  <script src="js/shell.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

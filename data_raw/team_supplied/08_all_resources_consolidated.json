@@ -1,0 +1,743 @@
+{
+  "project_name": "NASA Space Apps Challenge 2026 - Health Monitoring Software Resources Dataset",
+  "description": "Consolidated knowledge base containing extracted resources, facts, physiological mechanisms, risks, ongoing research, and telemetry schemas for AI model analysis.",
+  "created_at": "2026-11-13",
+  "challenge_metadata": {
+    "challenge_id": "health-monitoring-software",
+    "year": 2026,
+    "title": "Create Health Monitoring Software for Astronauts on Space Missions",
+    "url": "https://www.spaceappschallenge.org/2026/challenges/health-monitoring-software/?tab=resources",
+    "video_intro": {
+      "title": "2026 Challenge | Create Health Monitoring Software for Astronauts on Space Missions",
+      "url": "https://www.youtube.com/embed/RERG3gEmdC8?feature=oembed"
+    },
+    "summary": "Long-duration missions expose astronauts to space radiation, isolation and confinement, altered gravity, and a hostile closed environment, which can bring immune changes, bone loss, cardiovascular events, and behavioral health problems. On long missions, astronauts carry much of the responsibility for spotting these changes in themselves. Your challenge is to build a health monitoring software that gathers health indicators and enables astronauts to evaluate and act on the status of their health.",
+    "background": "With rising investment in spacecraft technology and research, space missions have become more ambitious. NASA’s Artemis program recently accomplished a crewed lunar flyby, and NASA and others have plans to send humans to Mars in the future. With increasingly longer missions, astronauts will be more exposed to the hostile space environment, which brings both physical and mental health risks.\n\nNASA’s Human Research Program has mapped the five hazards of human spaceflight, which are space radiation, isolation and confinement, distance from Earth, gravity fields, and hostile closed environments. These hazards can contribute to health problems such as immune system changes, bone density loss, cardiovascular events, inadequate nutrition, behavioral health conditions, and others. Astronauts must be capable of making health assessments on themselves during a mission, to prevent and treat health problems that may arise. Some useful health indicators are blood pressure, heart rate, blood sugar, body temperature, daily sleep hours, and mood.",
+    "objectives": "Your challenge is to create a visual tool that helps astronauts assess their own health during space missions and provides guidance on treatments and health improvements. You may consider gathering data from the user through any kind of input—keyboard text, mouse clicks, or camera images, for example. Any kind of data can be used, as long as it represents a health indicator, such as blood sugar levels in mg/dL or ultrasound images.\n\nYou can use NASA’s Human Research Program resources, along with the publicly available resources from other space agencies, to understand how spaceflight hazards affect human health, and to decide which indicators are useful and how they can support a quick assessment. Which measurements can be performed in space? Why is an exam needed? How do spaceflight hazards affect these health indicators? When might a result warrant attention from the crew or from flight surgeons on the ground? What actions can be taken to prevent a critical health condition? These are questions worth considering as you develop your solution.\n\nUser interface design plays an important role in presenting metrics and diagnosis clearly. You may consider taking advantage of animations and interactivity to present the information. For example, the software could display a human figure where each part of the body is clickable and displays information about its function and health status.",
+    "potential_considerations": [
+      "Your tool could provide health insights for astronauts in different environments, such as a spacecraft, a space station, a rover, or a base on another planet or moon.",
+      "Your tool could prompt astronauts to take measurements or complete specific actions from time to time as a part of the mission routine.",
+      "Your tool could include a gamification system to help astronauts engage with tasks that support their health.",
+      "Your tool could include dynamic charts that show how astronaut’s health indicators change over time.",
+      "Your tool could include color coding that helps the astronaut interpret the status of a health indicator at a glance.",
+      "Do not assume that astronauts know everything about how to assess their health. Your tool could provide simple instructions and explanations covering measurements, health indicators, and risks."
+    ],
+    "health_indicators_explicitly_mentioned": [
+      "Blood pressure",
+      "Heart rate",
+      "Blood sugar (mg/dL)",
+      "Body temperature",
+      "Daily sleep hours",
+      "Mood",
+      "Ultrasound images"
+    ],
+    "resources_note": "For data and resources related to this challenge, refer to the Resources tab at the top of the page. More resources may be added before the hackathon begins."
+  },
+  "resources_catalog": [
+    {
+      "id": "R0",
+      "category": "Challenge Definition",
+      "provider": "NASA Space Apps Challenge",
+      "title": "Challenge Details: Create Health Monitoring Software for Astronauts on Space Missions",
+      "url": "https://www.spaceappschallenge.org/2026/challenges/health-monitoring-software/",
+      "tab_url": "https://www.spaceappschallenge.org/2026/challenges/health-monitoring-software/?tab=resources",
+      "description": "Full challenge brief detailing the mission problem, background, objectives, and UI/feature considerations."
+    },
+    {
+      "id": "R1",
+      "category": "NASA Data & Resources",
+      "provider": "NASA Human Research Program (HRP)",
+      "title": "5 Hazards of Human Spaceflight",
+      "url": "https://www.nasa.gov/hrp/hazards/",
+      "description": "Basic information from NASA's Human Research Program on the five primary environmental hazards that affect humans during space missions (Radiation, Isolation/Confinement, Distance, Gravity Fields, Hostile Environments)."
+    },
+    {
+      "id": "R2",
+      "category": "NASA Data & Resources",
+      "provider": "NASA Human Research Program (HRP)",
+      "title": "Risks of Human Spaceflight",
+      "url": "https://www.nasa.gov/hrp/risks/",
+      "description": "Comprehensive mapping of the human physiological, behavioral, and clinical risks tracked by NASA HRP, cross-referenced with countermeasures and flight elements."
+    },
+    {
+      "id": "R3",
+      "category": "NASA Data & Resources",
+      "provider": "NASA Human Research Program (HRP)",
+      "title": "Ongoing HRP Research in Space",
+      "url": "https://www.nasa.gov/hrp/ongoing-hrp-research/",
+      "description": "Articles, findings, and ongoing experiments aboard the International Space Station, ground analogs (HERA, bed rest), and future Artemis exploration missions."
+    },
+    {
+      "id": "R4",
+      "category": "Space Agency Partner Resources",
+      "provider": "Canadian Space Agency (CSA)",
+      "title": "Monitoring Radiation for Astronaut Health",
+      "url": "https://www.asc-csa.gc.ca/eng/news/articles/2026/2026-02-26-monitoring-radiation-astronaut-health.asp",
+      "description": "Highlights Canadian technologies and research (such as the Canadian Active Neutron Spectrometer - CANS) used to autonomously monitor radiation exposure on the ISS and future Moon/Mars missions."
+    },
+    {
+      "id": "R5",
+      "category": "Space Agency Partner Resources",
+      "provider": "Canadian Space Agency (CSA)",
+      "title": "Why Do We Conduct Science Experiments in Space?",
+      "url": "https://www.asc-csa.gc.ca/eng/iss/science/why-do-we-conduct-science-experiments-in-space.asp",
+      "description": "Explains how microgravity accelerates physiological changes analogous to aging and sedentary lifestyle (bone loss, muscle atrophy, cardiovascular changes, diabetes risk) and how space experiments advance medicine on Earth."
+    }
+  ],
+  "nasa_5_hazards": {
+    "source": "NASA Human Research Program (HRP)",
+    "url": "https://www.nasa.gov/hrp/hazards/",
+    "overview": "NASA's Human Research Program groups the physiological, operational, and psychological hazards of spaceflight into five interconnected categories (R-I-D-G-E).",
+    "hazards": [
+      {
+        "id": "HAZ-01",
+        "name": "Space Radiation",
+        "acronym_letter": "R",
+        "mechanism": "Beyond Earth's protective atmosphere and magnetosphere, astronauts are bombarded by ionizing radiation, primarily Galactic Cosmic Rays (GCR - high-energy atomic nuclei) and Solar Particle Events (SPE - energetic protons from solar flares).",
+        "physiological_effects": [
+          "Increased lifetime risk of radiation-induced carcinogenesis (leukemia, solid tumors)",
+          "Central Nervous System (CNS) alterations: cognitive impairment, executive function deficits, neuro-inflammation",
+          "Degenerative cardiovascular disease and endothelial tissue damage",
+          "Acute Radiation Sickness (ARS) risk during severe, unshielded SPEs (nausea, vomiting, immune collapse)"
+        ],
+        "telemetry_and_monitoring_needs": [
+          "Personal radiation dosimeters (accumulated dose in mSv)",
+          "Real-time dose rate (mSv/hr or microGy/hr)",
+          "Neutron fraction detection (e.g., CANS instrument)",
+          "Biomarkers: DNA double-strand break repair indicators, complete blood counts (lymphocytes)"
+        ],
+        "operational_countermeasures": [
+          "Storm shelters within deep-space transit vehicles",
+          "Hydrogen-rich active/passive shielding (polyethylene, water walls)",
+          "Radioprotective pharmaceuticals and antioxidant supplementation",
+          "Mission duration limits based on career permissible exposure limits (PEL)"
+        ]
+      },
+      {
+        "id": "HAZ-02",
+        "name": "Isolation and Confinement",
+        "acronym_letter": "I",
+        "mechanism": "Small multi-cultural crews residing in cramped, high-workload habitats for months to years, cut off from terrestrial social contact, natural diurnal light cycles, and familiar environments.",
+        "physiological_effects": [
+          "Behavioral health decline: depression, anxiety, chronic situational stress",
+          "Circadian desynchronization and chronic sleep debt (<6 hours/night)",
+          "Interpersonal tension, communication breakdowns, and psychological friction",
+          "Decreased alertness, cognitive processing speed, and situational awareness"
+        ],
+        "telemetry_and_monitoring_needs": [
+          "Daily sleep duration (hours) and sleep architecture (REM/deep sleep via actigraphy)",
+          "Daily subjective mood rating (e.g., scale 1-10 or multidimensional mood score)",
+          "Cognitive assessment battery scores (reaction time, working memory)",
+          "Voice/speech acoustic stress analysis and facial expression metrics"
+        ],
+        "operational_countermeasures": [
+          "Circadian-aligned dynamic habitat lighting (blue-enriched morning light)",
+          "Structured private communication with family and ground psychological support",
+          "Gamified psychological decompression and behavioral self-help software",
+          "Routine schedules balancing exercise, duties, and off-duty recreation"
+        ]
+      },
+      {
+        "id": "HAZ-03",
+        "name": "Distance from Earth",
+        "acronym_letter": "D",
+        "mechanism": "Transit to deep space (Moon ~240,000 miles; Mars ~140 million miles average). Communication latency increases up to 20-22 minutes each way for Mars, making real-time ground guidance impossible. Evacuation/resupply impossible.",
+        "physiological_effects": [
+          "Inability to evacuate ill or injured crew members to terrestrial emergency rooms",
+          "Exacerbation of acute medical events (appendicitis, sepsis, toxic exposure, fractures)",
+          "Heightened psychological burden on crew who must act as primary caregivers and flight surgeons"
+        ],
+        "telemetry_and_monitoring_needs": [
+          "Autonomous onboard medical checklist completion logs",
+          "Consumable medical kit inventory tracking (pharmaceutical expiration, surgical tools)",
+          "Automated diagnostic sensor readings (ECG, ultrasound, point-of-care blood chemistry)",
+          "Clinical decision support system (CDSS) diagnostic confidence scores"
+        ],
+        "operational_countermeasures": [
+          "Autonomous AI clinical decision support tools providing step-by-step diagnostic workflows",
+          "Point-of-care laboratory devices (i-STAT, compact hematology analyzers)",
+          "Cross-training crew members in emergency medical procedures and minor surgery",
+          "Rigorous telemedicine protocols optimized for store-and-forward communication"
+        ]
+      },
+      {
+        "id": "HAZ-04",
+        "name": "Gravity Fields (Altered Gravity)",
+        "acronym_letter": "G",
+        "mechanism": "Transitions through three gravitational states: 1G (Earth) -> 0G (Microgravity in transit) -> 0.16G (Lunar surface) / 0.38G (Martian surface) -> 1G return.",
+        "physiological_effects": [
+          "Bone mineral density loss: 1% to 1.5% loss per month in load-bearing bones (femur, spine, pelvis)",
+          "Muscle atrophy: loss of muscle mass, volume, and peak power, particularly in slow-twitch postural muscles",
+          "Cephalad fluid shift: ~2 liters of blood and interstitial fluid shift toward the chest and head, causing facial puffiness, nasal congestion, and decreased total plasma volume",
+          "Spaceflight-Associated Neuro-ocular Syndrome (SANS): optic disc edema, posterior globe flattening, hyperopic shift, and choroidal folds",
+          "Cardiovascular deconditioning and orthostatic intolerance upon return to gravity (dizziness, fainting)",
+          "Vestibular disorientation and Space Motion Sickness (SMS) during initial 48-72 hours"
+        ],
+        "telemetry_and_monitoring_needs": [
+          "Blood pressure (systolic/diastolic mmHg, supine and standing/loaded)",
+          "Heart rate (resting, peak exercise bpm)",
+          "Body mass / weight tracking (using inertial acceleration mass measurement devices)",
+          "Ultrasound imaging: optic nerve sheath diameter (ONSD), cardiac ventricular volume",
+          "Muscle strength / dynamometry and jump power metrics"
+        ],
+        "operational_countermeasures": [
+          "2 to 2.5 hours of daily intense resistive and aerobic exercise (ARED, T2 treadmill, CEVIS cycle ergometer)",
+          "Lower Body Negative Pressure (LBNP) suits to draw fluids back to lower extremities",
+          "Fluid and electrolyte replenishment prior to gravitational re-entry",
+          "Compression garments (anti-g suits) for re-entry and post-landing mobility"
+        ]
+      },
+      {
+        "id": "HAZ-05",
+        "name": "Hostile Closed Environments",
+        "acronym_letter": "E",
+        "mechanism": "An engineered life-support habitat recycling 100% of air and water, with restricted volume, artificial atmospheric pressure and gas mixtures, continuous equipment acoustic noise, and altered microbial biomes.",
+        "physiological_effects": [
+          "Hypercapnia symptoms from localized carbon dioxide pockets (>3-5 mmHg CO2): headaches, lethargy, mental fog",
+          "Immune dysregulation: suppression of T-cell function and reactivation of latent herpesviruses (EBV, VZV)",
+          "Microbiome shifts and microbial proliferation in humid crevices, filters, and surfaces",
+          "Toxic inhalation risks from off-gassing synthetic polymers or chemical coolant leaks (e.g., ammonia)",
+          "Acoustic trauma and temporary threshold shifts from continuous environmental ECLSS fans/pumps"
+        ],
+        "telemetry_and_monitoring_needs": [
+          "Ambient cabin CO2 partial pressure (mmHg) and total cabin pressure (psi / kPa)",
+          "Pulse Oximetry (SpO2 %)",
+          "Core body temperature (°C / °F) to detect early microbial infection",
+          "Cabin acoustic sound levels (dB)",
+          "Air and water microbial sample counts (CFU/m3, CFU/100mL)"
+        ],
+        "operational_countermeasures": [
+          "Environmental Control and Life Support Systems (ECLSS) with catalytic oxidizers and CO2 scrubbers",
+          "High-Efficiency Particulate Air (HEPA) and microbial air filters",
+          "Regular habitat surface wiping with antimicrobial disinfectants",
+          "Strict materials qualification avoiding toxic volatile organic compound (VOC) off-gassing"
+        ]
+      }
+    ]
+  },
+  "nasa_hrp_risks": {
+    "source": "NASA Human Research Program (HRP)",
+    "url": "https://www.nasa.gov/hrp/risks/",
+    "program_elements": [
+      {
+        "element": "Human Health Countermeasures (HHC)",
+        "focus": "Physiological adaptation, cardiovascular deconditioning, bone/muscle loss, neuro-vestibular shifts, immunology, and nutritional requirements.",
+        "tracked_risks": [
+          {
+            "name": "Risk of Spaceflight-Induced Bone Demineralization and Fractures",
+            "impact": "Astronauts lose ~1-1.5% bone mineral density per month in cancellous weight-bearing bones. Leads to elevated hypercalciuria, increased risk of renal stone formation, and early-onset osteoporosis.",
+            "primary_hazard": "Gravity Fields",
+            "monitoring_metrics": [
+              "DXA T/Z-scores",
+              "Serum/urinary calcium",
+              "Bone turnover markers (NTX, CTX)"
+            ]
+          },
+          {
+            "name": "Risk of Impaired Muscle Performance and Muscle Atrophy",
+            "impact": "Preferential loss of muscle mass and power in leg extensors and postural muscles (soleus, gastrocnemius), impairing post-landing egress and EVA capability.",
+            "primary_hazard": "Gravity Fields",
+            "monitoring_metrics": [
+              "Isometric muscle strength (N)",
+              "Calf circumference (cm)",
+              "Daily resistive workload (kJ)"
+            ]
+          },
+          {
+            "name": "Risk of Spaceflight-Associated Neuro-ocular Syndrome (SANS)",
+            "impact": "Progressive ocular structural changes: optic disc swelling (papilledema), globe flattening, choroidal folds, and hyperopic refractive shift caused by cephalad fluid pressure.",
+            "primary_hazard": "Gravity Fields / Hostile Closed Environment",
+            "monitoring_metrics": [
+              "Optic nerve sheath diameter (ultrasound mm)",
+              "Retinal nerve fiber layer thickness (OCT)",
+              "Visual acuity (Snellen / logMAR)"
+            ]
+          },
+          {
+            "name": "Risk of Cardiovascular Disease and Orthostatic Intolerance",
+            "impact": "Decreased cardiac left ventricular mass, arterial stiffening, baroreceptor reset, and reduced plasma volume causing presyncope upon return to gravitational fields.",
+            "primary_hazard": "Gravity Fields / Radiation",
+            "monitoring_metrics": [
+              "Resting heart rate (bpm)",
+              "Continuous blood pressure (mmHg)",
+              "Heart rate variability (HRV)"
+            ]
+          },
+          {
+            "name": "Risk of Adverse Health Consequences from Immune Dysregulation",
+            "impact": "Decreased cell-mediated immunity, altered cytokine profiles, and subclinical viral reactivation (Epstein-Barr, Cytomegalovirus, Varicella Zoster) manifesting as skin rashes and hypersensitivity.",
+            "primary_hazard": "Hostile Closed Environment / Radiation / Isolation",
+            "monitoring_metrics": [
+              "White blood cell differentials",
+              "Viral load shedding in saliva/urine",
+              "Body temperature (°C)"
+            ]
+          }
+        ]
+      },
+      {
+        "element": "Human Factors and Behavioral Performance (HFBP)",
+        "focus": "Behavioral health, psychiatric stability, neurocognitive performance, sleep hygiene, team cohesion, and human-system integration.",
+        "tracked_risks": [
+          {
+            "name": "Risk of Adverse Cognitive or Behavioral Conditions and Psychiatric Disorders",
+            "impact": "Chronic confinement and lack of Earth contact induce emotional instability, anxiety, depressive symptoms, and declining mood.",
+            "primary_hazard": "Isolation and Confinement",
+            "monitoring_metrics": [
+              "Self-reported mood score (1-10)",
+              "Visual analog depression/anxiety scales",
+              "Behavioral logs"
+            ]
+          },
+          {
+            "name": "Risk of Performance Decrements and Errors Due to Sleep Loss and Circadian Desynchronization",
+            "impact": "Acute or chronic sleep deprivation impairs attention, executive judgment, spatial reasoning, and motor performance during safety-critical operations.",
+            "primary_hazard": "Isolation and Confinement / Hostile Environment",
+            "monitoring_metrics": [
+              "Sleep duration (hours/24hr)",
+              "Sleep efficiency (%)",
+              "Cognitive reaction time (ms via PVT test)"
+            ]
+          },
+          {
+            "name": "Risk of Inadequate Team Function, Communication, and Interpersonal Friction",
+            "impact": "Interpersonal conflicts between crew members or between crew and mission control can degrade operational workflow and compromise mission safety.",
+            "primary_hazard": "Isolation and Confinement / Distance from Earth",
+            "monitoring_metrics": [
+              "Team communication sentiment index",
+              "Sociometric interaction logs",
+              "Task completion latency"
+            ]
+          }
+        ]
+      },
+      {
+        "element": "Exploration Medical Capabilities (ExMC)",
+        "focus": "Autonomous clinical medicine, medical decision support, point-of-care laboratory diagnostics, and medical inventory optimization.",
+        "tracked_risks": [
+          {
+            "name": "Risk of Inability to Provide Adequate Medical Care in Deep Space",
+            "impact": "Communication latency prevents real-time tele-medical guidance; limited onboard clinical volume and mass restricts available therapies for trauma, acute abdomen, or sepsis.",
+            "primary_hazard": "Distance from Earth",
+            "monitoring_metrics": [
+              "Clinical checklist adherence",
+              "Diagnostic accuracy scores",
+              "Medical consumable usage rates"
+            ]
+          }
+        ]
+      },
+      {
+        "element": "Space Radiation Element (SRE)",
+        "focus": "Quantifying and mitigating radiation biological effects, DNA repair mechanisms, and permissible exposure guidelines.",
+        "tracked_risks": [
+          {
+            "name": "Risk of Radiation Carcinogenesis and Acute Radiation Syndromes",
+            "impact": "GCR and SPE ionization breaks double-strand DNA, elevating lifetime excess risk of cancer mortality and tissue degeneration.",
+            "primary_hazard": "Space Radiation",
+            "monitoring_metrics": [
+              "Cumulative absorbed dose (mGy)",
+              "Cumulative equivalent dose (mSv)",
+              "Cytogenetic chromosome aberration frequency"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "nasa_ongoing_research": {
+    "source": "NASA Human Research Program (HRP)",
+    "url": "https://www.nasa.gov/hrp/ongoing-hrp-research/",
+    "headline_campaigns": [
+      {
+        "name": "CIPHER (Complement of Integrated Protocols for Human Exploration Research)",
+        "description": "An integrated series of up to 14 physiological and psychological studies conducted on ISS astronauts on short, standard (6-month), and extended (1-year) missions.",
+        "core_investigations": [
+          "Cardiovascular remodeling and vascular stiffness",
+          "Bone mineral density changes and biomechanical strength",
+          "Ocular structure alterations and optic nerve sheath dilation (SANS)",
+          "Immune system biomarkers and microbiome shifts",
+          "Cognitive performance degradation and sleep architecture"
+        ]
+      },
+      {
+        "name": "Standard Measures",
+        "description": "A baseline data repository collecting a standardized set of physiological, behavioral, and biochemical data from every ISS astronaut before, during, and after flight.",
+        "data_collected": [
+          "Biochemical: blood chemistry, hematology, urinalysis, endocrine hormones",
+          "Physiological: body mass, exercise vitals, ECG, spirometry",
+          "Sensorimotor: posture, dynamic balance, gait analysis",
+          "Psychological: sleep diary, cognitive test batteries (Cognition test), stress surveys"
+        ]
+      },
+      {
+        "name": "Ground-Based Analog Environments",
+        "description": "Earth-based isolated habitats simulating microgravity, isolation, and communication latency to validate countermeasures prior to flight.",
+        "facilities": [
+          "HERA (Human Exploration Research Analog) at NASA Johnson Space Center: 45-day simulated isolation campaigns testing crew dynamics, sleep debt, and autonomous operations.",
+          "CHAPEA (Crew Health and Performance Exploration Analog): 3D-printed Mars habitat evaluating 1-year missions.",
+          ":envihab & Bed-Rest Studies: -6 degree head-down tilt bed rest mimicking microgravity cephalad fluid shifts and bone/muscle disuse.",
+          "Antarctic Research Stations: long polar winter confinement evaluating extreme cold isolation and circadian disruption."
+        ]
+      }
+    ]
+  },
+  "csa_radiation_monitoring": {
+    "source": "Canadian Space Agency (CSA)",
+    "article_title": "Monitoring Radiation for Astronaut Health",
+    "url": "https://www.asc-csa.gc.ca/eng/news/articles/2026/2026-02-26-monitoring-radiation-astronaut-health.asp",
+    "date_modified": "2026-02-26",
+    "key_personnel_and_institutions": [
+      "CSA Astronaut David Saint-Jacques (tested bubble detector prototypes on ISS)",
+      "Bubble Technology Industries (BTI - awarded $5.5 million contract for CANS development)"
+    ],
+    "key_facts_and_technologies": {
+      "instrument": "CANS (Canadian Active Neutron Spectrometer)",
+      "technology_evolution": "Evolution from passive bubble detectors and earlier ISS radiation experiments: MOSFET, EVARM, Radi-N, and Radi-N2.",
+      "target_radiation": "Neutron radiation",
+      "relative_contribution": "Neutron radiation contributes to approximately 30% of total radiation dose received on the International Space Station (ISS).",
+      "biological_significance": "Neutrons possess high linear energy transfer (LET), causing dense ionization and complex, hard-to-repair double-strand DNA damage.",
+      "key_capabilities": "CANS provides autonomous, continuous real-time measurement of neutron radiation without requiring manual crew intervention.",
+      "terrestrial_applications": "Data and sensor architecture apply directly on Earth to cancer proton/hadron therapy, aircrew radiation safety at high altitudes, nuclear site safety, and homeland security radiation detection."
+    },
+    "full_text_extract": "Radiation is one of the key challenges faced by astronauts living and working beyond the protective shield of Earth’s atmosphere. As Canada and its international partners advance plans for missions to the Moon, and eventually Mars, the CSA continues to invest in technology to better understand exposure levels.\n\nThe CSA has awarded a contract of $5.5 million to Bubble Technology Industries for the continued development of the CANS, a compact and autonomous instrument designed to measure neutron radiation exposure in space.\n\nNeutron radiation, which contributes to about 30% of total radiation on the ISS, is especially harmful because it can cause serious biological damage and require specialized protective measures. For over 25 years, the ISS has been a test bed for new technology. Canada has significant expertise in radiation detection experiments on the ISS, including MOSFET, EVARM and Radi-N and Radi-N2.\n\nCANS improves upon previous radiation detection methods with the unique combined capabilities of working continuously and autonomously. Data collected could help develop better measures to reduce risks for astronauts’ health and also has potential applications on Earth, including cancer therapy, radiation protection for aircrews, nuclear threat detection and public safety, among others."
+  },
+  "csa_science_experiments": {
+    "source": "Canadian Space Agency (CSA)",
+    "article_title": "Why Do We Conduct Science Experiments in Space?",
+    "url": "https://www.asc-csa.gc.ca/eng/iss/science/why-do-we-conduct-science-experiments-in-space.asp",
+    "date_modified": "2025-10-28",
+    "primary_rationale": [
+      "Prepare for deep-space destinations (Moon and Mars)",
+      "Use knowledge obtained in microgravity to improve quality of life and medicine on Earth"
+    ],
+    "key_physiological_insights": {
+      "accelerated_aging_analogy": "Living in weightless conditions alters the human body in ways closely resembling accelerated biological aging and health problems caused by extreme sedentary lifestyles. Studying astronauts in space for 6 months yields physiological adaptation data that would take years to observe on Earth.",
+      "organ_systems_affected": [
+        "Bones: rapid demineralization, loss of trabecular architecture",
+        "Cardiovascular system: cardiac muscle deconditioning, arterial stiffness, fluid redistribution",
+        "Brain & balance: vestibular disruption, sensorimotor adaptation, neuro-vestibular reweighting",
+        "Metabolism: reduced insulin sensitivity and glucose handling"
+      ],
+      "terrestrial_disease_applications": [
+        "Balance problems and fall risks in elderly seniors",
+        "Osteoporosis and bone fracture prevention",
+        "Cardiovascular disorders and arterial aging",
+        "Type-2 diabetes and metabolic insulin resistance"
+      ],
+      "iss_experiment_scale": "On average, approximately 200 international science experiments are conducted aboard the ISS at any given time."
+    },
+    "infographic_summary_how_space_affects_body": {
+      "head_and_brain": "Cephalad fluid shift causes 'puffy face' and nasal congestion; structural brain fluid redistribution; vestibular disturbances lead to space motion sickness (dizziness, nausea).",
+      "eyes": "Spaceflight-Associated Neuro-ocular Syndrome (SANS): intraocular pressure shifts, flattened back of eye, hyperopic shifts in vision.",
+      "heart_and_circulation": "Heart does not work as hard to pump blood against gravity; undergoes slight ventricular atrophy; reduced blood volume; orthostatic intolerance upon re-entry.",
+      "spine_and_height": "Absence of spinal compression allows intervertebral discs to expand; astronauts can grow 3 to 5 cm in height; induces temporary backache and increased risk of disc herniation post-flight.",
+      "muscles_and_bones": "Weight-bearing bones (pelvis, legs) lose calcium; bone density decreases ~1% per month; postural muscles weaken and atrophy unless counteracted by daily intense resistive exercise.",
+      "immune_system": "T-cell function is compromised; reactivation of dormant viruses; increased susceptibility to opportunistic infections."
+    },
+    "full_text_extract": "Science is our quest for more knowledge about the world and ourselves. For thousands of years, humanity has pushed boundaries in its search to learn more about our place in the universe.\n\nCanada's participation in the International Space Station (ISS) allows our scientists to access the unique space environment and conduct cutting-edge experiments aboard the orbiting laboratory to prepare for deep-space destinations and use the knowledge obtained to improve our quality of life on Earth.\n\nMissions to the Moon and Mars mean longer trips and more risks for astronauts, including: more time in weightlessness, more exposure to radiation, longer periods of isolation very far from home, increased delays in communication with Earth, and less ability to rely on Earth for food, materials, and emergency medical assistance.\n\nStudying the way our body changes in space helps us understand the impacts of reduced levels of physical activity and issues that affect older adult populations on Earth. Living in weightless conditions changes the human body in many ways. The effects observed in astronauts are similar to accelerated aging and health problems caused by a sedentary lifestyle. Studying the human body in space for six months gives us data that would take years to gather on Earth. New information gained in space contributes to improved quality of life on Earth.\n\nCanadian scientists use space to study our bones, heart, blood vessels and brain. Their experiments have produced findings that can help people suffering from balance problems, such as seniors; osteoporosis; cardiovascular disorders; and Type-2 diabetes.",
+    "embedded_sub_resources": {
+      "infographic_how_does_space_affect_human_body": {
+        "title": "How does space affect the human body? – Infographic",
+        "url": "https://www.asc-csa.gc.ca/eng/multimedia/search/image/8056",
+        "verbatim_text": "How does space affect the human body? – Infographic  - Canadian Space Agency\nTop of page\nHow does space affect the human body? – Infographic\nAll\n- Show images and videos\nImages\n- Show images only\nVideos\n- Show videos only\nRechercher les images et vidéos de l'Agence spatiale canadienne\nSearch\nSearch\nDescription\nSpace has tremendous effects on the human body! As we prepare for journeys to more distant destinations like Mars, humankind must tackle these risks to ensure safe travel for our modern explorers. The impacts of microgravity mirror aging and the complications of a sedentary lifestyle. By studying astronauts' health, we also help people on Earth. (\nCredit:\nCanadian Space Agency)\nText version\nSpace has tremendous effects on the human body! As we prepare for journeys to more distant destinations like Mars, humankind must tackle these risks to ensure safe travel for our modern explorers.\nThe impacts of microgravity mirror aging and the complications of a sedentary lifestyle. By studying astronauts' health, we also help people on Earth.\nBlood\nBlood cell production in the bone marrow is affected. Reduced red blood cells can cause\nanemia\n. Low white blood cell count leaves the body vulnerable to\ninfection\nand is also linked with increased sensitivity to\nradiation\n.\nRadiation\nRadiation doses are much higher. Overexposure can cause\ncataracts\nin the eyes,\ndamage DNA\n, and increase the risk of\ncancer\n.\nBrain\nAstronauts'\nsense of perception\nand\norientation\ncan become confused. They sometimes misinterpret the direction and speed of their movements. Some even experience \"space sickness.\"\nHeart & blood vessels\nBlood vessels stiffen\nand age faster, and astronauts can develop insulin resistance, which may lead to\nType 2 diabetes\n. These factors increase the risk of\ncardiovascular disease\n.\nMuscles & nervous system\nMuscles lose\nmass\nand\nstrength\n.\nReflexes\nslow down and\nexercise\ntends to be less effective in space.\nBones\nWhen they don't bear weight, bones lose\ndensity\nand\nstrength\n. While adults past age 50 typically lose about 1% each year, astronauts in space can lose up to\n1.5% of their bone mass each month\n.\nView in high resolution\nDownload\nFile size: 0.65\nMB\nImage size: 2400 x 1800 pixels\nResolution: 72\ndpi\nImage date:  November 24, 2017\nCanadian science on the International Space Station\nWhy do we conduct science experiments in space?\nCopyright / Permission to reproduce\nReport a problem on this page\nDate modified:\n2026-11-13",
+        "key_organ_takeaways": {
+          "blood": "Bone marrow blood cell production affected; reduced RBCs cause anemia; low WBC count leaves body vulnerable to infection and increases radiation sensitivity.",
+          "radiation": "Higher radiation doses cause cataracts, DNA damage, and increased cancer risk.",
+          "brain": "Perception and orientation confusion; misinterpreting direction and speed of movement; space sickness.",
+          "heart_and_blood_vessels": "Blood vessels stiffen and age faster; development of insulin resistance leading toward Type 2 diabetes; increased cardiovascular disease risk.",
+          "muscles_and_nervous_system": "Loss of muscle mass and strength; slower reflexes; exercise is less effective in space.",
+          "bones": "Loss of density and strength without weight bearing; while adults over 50 lose ~1% per year on Earth, astronauts can lose up to 1.5% bone mass per month in space."
+        }
+      },
+      "video_why_do_we_do_science_in_space": {
+        "title": "Why do we do science in space? – Video Transcript",
+        "url": "https://www.asc-csa.gc.ca/eng/multimedia/search/video/18190",
+        "speaker": "Tim Haltigin, Senior Mission Scientist, Canadian Space Agency",
+        "verbatim_text": "Why do we do science in space?  - Canadian Space Agency\nTop of page\nWhy do we do science in space?\nAll\n- Show images and videos\nImages\n- Show images only\nVideos\n- Show videos only\nRechercher les images et vidéos de l'Agence spatiale canadienne\nSearch\nSearch\nDescription\nUploaded on November 28, 2017\n6 251 views\nWhy do we do science in space?\n2017-11-28 - Did you know that many science experiments are being conducted on the International Space Station at any given time? Why do we do science in space?  (\nCredit:\nCanadian Space Agency)\nCanadian science on the International Space Station\nTranscript\nTim Haltigin:\nHi. I’m Tim. And I like science.\nLiving in space is a lot tougher on your body than you might think.\nSeriously.\nMicrogravity does a lot of weird stuff to it: your bones and muscles start to deteriorate, blood vessels stiffen, the nervous system is affected, and even your sense of orientation becomes confused.\nAnd of course, all of this is happening as you’re being exposed to higher levels of radiation. Not good!\nWhat’s even worse is that the more time you’re in space, the more pronounced these effects can become.\nSo as we plan to explore farther out beyond the Earth and eventually fly back to the Moon and even out to Mars, we really need to find ways to minimize these impacts and protect our astronauts’ health.\nThis is one of the reasons why the International Space Station was built in the first place - to do science!\nRight now, there are more than 200 experiments being conducted there.\nThe results of these projects are used not only to help our astronauts, but also to improve our understanding about how our bodies behave on Earth too.\nSo, in the end, this benefits all of us: me, you, your family and friends.\nUltimately the science we’re doing in space is actually being used to help improve our quality of life here on Earth!\nTo find out how, check us out online and follow us on social media.\nDownload\nFor the ownership and usage of the videos, please see the\nTerms section\n.\nDownload this video (MP4, 129.63\nMB\n)\nSuggestions\nVideo duration:\n1:25\nGet to know Joshua Kutryk\n1 797 views\nVideo duration:\n39:22\nWebinar on the youth STEM initiatives grants and contributions program\n1 102 views\nVideo duration:\n0:15\nHappy Halloween from the Canadian Space Agency\n1 721 views\nVideo duration:\n2:35\nColin Franklin on the design challenges of Canada's first satellite Alouette I\n1 676 views\nVideo duration:\n1:54\nCanada, a nation of space innovations\n5 533 views\nVideo duration:\n1:35\nGarry Lindberg on Canadian interest in outer space\n919 views\nVideo duration:\n1:34\nJocelyn Ghent-Mallett discusses Canadian space policy and International co-operation\n615 views\nVideo duration:\n1:29\nWilliam \"Mac\" Evans on the creation of the Canadian Space Agency\n697 views\nVideo duration:\n0:42\nJeremy Hansen talks about training in the T-38 supersonic jet\n1 187 views\nVideo duration:\n0:36\nFloods in British Columbia\n634 views\nReport a problem on this page\nDate modified:\n2024-02-09"
+      }
+    }
+  },
+  "health_indicators_schema": {
+    "schema_version": "1.0.0",
+    "description": "Standardized schema of health indicators derived from the Space Apps Challenge resources for predictive modeling, anomaly detection, and clinical guidance.",
+    "indicators": [
+      {
+        "name": "heart_rate",
+        "display_name": "Heart Rate",
+        "unit": "bpm",
+        "category": "vital_signs",
+        "measurement_methods": [
+          "Pulse oximeter",
+          "Wearable chest strap / BioHarness",
+          "ECG electrodes"
+        ],
+        "normal_earth_baseline": {
+          "min": 60,
+          "max": 100
+        },
+        "spaceflight_expected_resting": {
+          "min": 55,
+          "max": 90
+        },
+        "alert_thresholds": {
+          "low_warning": 50,
+          "low_critical": 40,
+          "high_warning": 105,
+          "high_critical": 130
+        },
+        "associated_hazards": [
+          "Gravity Fields",
+          "Isolation and Confinement"
+        ],
+        "clinical_significance": "Monitors cardiovascular deconditioning, orthostatic stress, autonomic response to exercise, and acute panic/anxiety."
+      },
+      {
+        "name": "blood_pressure_systolic",
+        "display_name": "Systolic Blood Pressure",
+        "unit": "mmHg",
+        "category": "vital_signs",
+        "measurement_methods": [
+          "Automated non-invasive blood pressure (NIBP) cuff"
+        ],
+        "normal_earth_baseline": {
+          "min": 90,
+          "max": 120
+        },
+        "spaceflight_expected_resting": {
+          "min": 95,
+          "max": 130
+        },
+        "alert_thresholds": {
+          "low_warning": 90,
+          "low_critical": 80,
+          "high_warning": 135,
+          "high_critical": 160
+        },
+        "associated_hazards": [
+          "Gravity Fields"
+        ],
+        "clinical_significance": "Tracks arterial pressure changes driven by cephalad fluid shifts and vascular wall remodeling."
+      },
+      {
+        "name": "blood_pressure_diastolic",
+        "display_name": "Diastolic Blood Pressure",
+        "unit": "mmHg",
+        "category": "vital_signs",
+        "measurement_methods": [
+          "Automated non-invasive blood pressure (NIBP) cuff"
+        ],
+        "normal_earth_baseline": {
+          "min": 60,
+          "max": 80
+        },
+        "spaceflight_expected_resting": {
+          "min": 60,
+          "max": 85
+        },
+        "alert_thresholds": {
+          "low_warning": 55,
+          "low_critical": 50,
+          "high_warning": 90,
+          "high_critical": 100
+        },
+        "associated_hazards": [
+          "Gravity Fields"
+        ],
+        "clinical_significance": "Indicator of vascular resistance and filling pressure."
+      },
+      {
+        "name": "blood_sugar",
+        "display_name": "Blood Glucose",
+        "unit": "mg/dL",
+        "category": "metabolic_and_biomarkers",
+        "measurement_methods": [
+          "Capillary fingerstick glucometer",
+          "Continuous Glucose Monitor (CGM) sensor"
+        ],
+        "normal_earth_baseline": {
+          "min": 70,
+          "max": 99
+        },
+        "spaceflight_expected_fasting": {
+          "min": 75,
+          "max": 110
+        },
+        "alert_thresholds": {
+          "hypoglycemia_warning": 65,
+          "hypoglycemia_critical": 55,
+          "hyperglycemia_warning": 126,
+          "hyperglycemia_critical": 180
+        },
+        "associated_hazards": [
+          "Hostile Closed Environments",
+          "Isolation and Confinement"
+        ],
+        "clinical_significance": "Spaceflight induces metabolic alterations and insulin resistance analogous to Type-2 diabetes (CSA findings)."
+      },
+      {
+        "name": "body_temperature",
+        "display_name": "Core Body Temperature",
+        "unit": "°C",
+        "category": "vital_signs",
+        "measurement_methods": [
+          "Infrared tympanic thermometer",
+          "Double-sensor forehead probe"
+        ],
+        "normal_earth_baseline": {
+          "min": 36.5,
+          "max": 37.5
+        },
+        "spaceflight_expected_resting": {
+          "min": 36.7,
+          "max": 37.8
+        },
+        "alert_thresholds": {
+          "hypothermia_warning": 35.5,
+          "hypothermia_critical": 35.0,
+          "pyrexia_warning": 38.0,
+          "pyrexia_critical": 39.0
+        },
+        "associated_hazards": [
+          "Hostile Closed Environments",
+          "Space Radiation"
+        ],
+        "clinical_significance": "Detects immune system dysregulation, infectious outbreaks in closed life-support habitats, and exercise heat dissipation impairment."
+      },
+      {
+        "name": "sleep_hours",
+        "display_name": "Daily Sleep Duration",
+        "unit": "hours",
+        "category": "behavioral_and_neurological",
+        "measurement_methods": [
+          "Actigraphy wrist monitor",
+          "Sleep EEG headband",
+          "Daily digital sleep log"
+        ],
+        "normal_earth_baseline": {
+          "min": 7.0,
+          "max": 9.0
+        },
+        "spaceflight_expected_mean": {
+          "min": 6.0,
+          "max": 7.5
+        },
+        "alert_thresholds": {
+          "deficit_warning": 5.5,
+          "deficit_critical": 4.0,
+          "excessive_warning": 10.0
+        },
+        "associated_hazards": [
+          "Isolation and Confinement",
+          "Hostile Closed Environments"
+        ],
+        "clinical_significance": "Chronic sleep debt (<6h) severely degrades psychomotor vigilance, executive decision-making, and emotional stability."
+      },
+      {
+        "name": "mood_score",
+        "display_name": "Subjective Mood & Psychological State",
+        "unit": "score_1_to_10",
+        "category": "behavioral_and_neurological",
+        "measurement_methods": [
+          "Daily interactive self-assessment questionnaire",
+          "Ecological momentary assessment (EMA) app"
+        ],
+        "normal_earth_baseline": {
+          "min": 7,
+          "max": 10
+        },
+        "spaceflight_expected_mean": {
+          "min": 6,
+          "max": 9
+        },
+        "alert_thresholds": {
+          "low_warning": 5,
+          "severe_depression_critical": 3
+        },
+        "associated_hazards": [
+          "Isolation and Confinement",
+          "Distance from Earth"
+        ],
+        "clinical_significance": "Early indicator of acute situational anxiety, depressive mood, interpersonal conflict, and emotional fatigue during long-duration transit."
+      },
+      {
+        "name": "oxygen_saturation_spo2",
+        "display_name": "Pulse Oximetry (SpO2)",
+        "unit": "%",
+        "category": "vital_signs",
+        "measurement_methods": [
+          "Fingertip pulse oximeter"
+        ],
+        "normal_earth_baseline": {
+          "min": 96,
+          "max": 100
+        },
+        "spaceflight_expected_resting": {
+          "min": 95,
+          "max": 99
+        },
+        "alert_thresholds": {
+          "hypoxia_warning": 93,
+          "hypoxia_critical": 89
+        },
+        "associated_hazards": [
+          "Hostile Closed Environments"
+        ],
+        "clinical_significance": "Ensures oxygenation stability during alterations in habitat total cabin pressure or unexpected air revitalization shifts."
+      },
+      {
+        "name": "radiation_daily_dose",
+        "display_name": "Daily Absorbed Radiation Dose",
+        "unit": "mSv/day",
+        "category": "environmental_and_radiation",
+        "measurement_methods": [
+          "Personal active dosimeter",
+          "CANS neutron spectrometer"
+        ],
+        "normal_earth_baseline": {
+          "min": 0.005,
+          "max": 0.01
+        },
+        "spaceflight_expected_iss": {
+          "min": 0.3,
+          "max": 0.8
+        },
+        "alert_thresholds": {
+          "elevated_solar_activity_warning": 1.5,
+          "solar_particle_event_critical": 5.0
+        },
+        "associated_hazards": [
+          "Space Radiation"
+        ],
+        "clinical_significance": "Monitors acute exposure risks (SPEs) and cumulative lifetime cancer risk; tracks ~30% neutron fraction specifically via CANS."
+      },
+      {
+        "name": "optic_nerve_sheath_diameter",
+        "display_name": "Optic Nerve Sheath Diameter (ONSD)",
+        "unit": "mm",
+        "category": "ocular_and_cranial",
+        "measurement_methods": [
+          "Point-of-care high-frequency ocular ultrasound (3mm behind globe)"
+        ],
+        "normal_earth_baseline": {
+          "min": 4.5,
+          "max": 5.3
+        },
+        "spaceflight_expected": {
+          "min": 4.8,
+          "max": 5.8
+        },
+        "alert_thresholds": {
+          "elevated_icp_warning": 5.9,
+          "severe_papilledema_critical": 6.5
+        },
+        "associated_hazards": [
+          "Gravity Fields",
+          "Hostile Closed Environments"
+        ],
+        "clinical_significance": "Non-invasive surrogate marker for elevated intracranial pressure and onset of Spaceflight-Associated Neuro-ocular Syndrome (SANS)."
+      }
+    ]
+  },
+  "resources_tab_disclaimer": "NASA does not endorse any non-U.S. Government entity and is not responsible for information contained on non-U.S. Government websites. For non-U.S. Government websites, participants must comply with any data use parameters of that specific website."
+}

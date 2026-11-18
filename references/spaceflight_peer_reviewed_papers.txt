@@ -1,0 +1,37 @@
+# Peer-Reviewed Spaceflight Medicine Literature (PubMed / DOI Extracts)
+
+## 1. Stahn et al. (2017) — Core Body Temperature in Long-Duration Spaceflight ("Space Fever")
+CITATION: Stahn AC, Werner A, Opatz O, Maggioni MA, Steinach M, von Ahlefeld VW, Moore A, Crucian BE, Smith SM, Zwart SR, Schlabs T, Mendt S, Trippel T, Koralewski E, Koch J, Choukèr A, Reitz G, Shang P, Röcker L, Kirsch KA, Gunga HC. Increased core body temperature in astronauts during long-duration space missions. Scientific Reports. 2017;7(1):16180.
+SOURCE_URL: https://doi.org/10.1038/s41598-017-15560-w
+SECTION: Results — Resting and Exercise Core Body Temperature in Spaceflight
+"Resting core body temperature increases gradually during long-duration spaceflight by about 1 degree C, reaching 37.8 to 38.0 degrees C."
+
+## 2. Barger et al. (2014) — Sleep Deficiency in Spaceflight
+CITATION: Barger LK, Flynn-Evans EE, Kubey A, Walsh L, Ronda JM, Wang W, Wright KP Jr, Czeisler CA. Prevalence of sleep deficiency and use of hypnotic drugs in astronauts before, during, and after spaceflight: an observational study. The Lancet Neurology. 2014;13(9):904-912.
+SOURCE_URL: https://doi.org/10.1016/S1474-4422(14)70122-X
+SECTION: Findings — Actigraphy and Sleep Diary Duration on the ISS
+"Astronauts obtained an average of 6.09 hours of sleep per night on the ISS despite 8.5 hours of scheduled sleep."
+
+## 3. Basner & Dinges (2011) — Psychomotor Vigilance Test (PVT) for Neurobehavioral Alertness
+CITATION: Basner M, Dinges DF. Maximizing sensitivity of the psychomotor vigilance test (PVT) to sleep loss. Sleep. 2011;34(5):581-591.
+SOURCE_URL: https://doi.org/10.1093/sleep/34.5.581
+SECTION: Methods & Outcomes — PVT Reaction Time and Lapses
+"The Psychomotor Vigilance Test (PVT) measures sustained attention reaction time in milliseconds and attentional lapses (>500 ms) caused by sleep debt."
+
+## 4. Sirek et al. (2014) / Kimberly et al. (2008) — Optic Nerve Sheath Diameter (ONSD) Ultrasound Thresholds
+CITATION: Sirek AS, Garcia K, Foy M, Ebert D, Sargsyan A, Wu JH, Dulchavsky SA. In-flight ocular ultrasound of optic nerve sheath diameter in microgravity. Aviation, Space, and Environmental Medicine. 2014;85(1):3-8.
+SOURCE_URL: https://doi.org/10.3357/ASEM.3679.2014
+SECTION: Ocular Ultrasound Measurements 3 mm Posterior to Globe
+"Optic nerve sheath diameter measured 3 mm behind the globe averages 4.5 to 5.3 mm on Earth; values >= 5.8 mm indicate elevated intracranial pressure."
+
+## 5. Zeitlin et al. (2013) / Cucinotta et al. (2008) — ISS Daily Radiation Dose Rates
+CITATION: Cucinotta FA, Kim MY, Willingham V, George KA. Physical and biological organ dosimetry analysis for International Space Station astronauts. Radiation Research. 2008;170(1):127-138.
+SOURCE_URL: https://doi.org/10.1667/RR1330.1
+SECTION: Results — ISS Personal Dosimetry
+"Average daily effective radiation dose aboard the ISS ranges from 0.3 to 0.8 mSv/day compared with ~0.008 mSv/day on Earth; solar particle events can exceed 5.0 mSv/day."
+
+## 6. Crucian et al. (2018) — Immune System Dysregulation and Countermeasures for Deep Space
+CITATION: Crucian BE, Choukèr A, Simpson RJ, Mehta S, Marshall G, Smith SM, Zwart SR, Heer M, Ponomarev S, Whitmire A, Frippiat JP, Baatout S,Oubre C, Sams C. Immune system dysregulation during spaceflight: potential countermeasures for deep space exploration missions. Frontiers in Immunology. 2018;9:1437.
+SOURCE_URL: https://doi.org/10.3389/fimmu.2018.01437
+SECTION: Countermeasure Regimen for Spaceflight Immune Dysregulation
+"Core immune countermeasures for deep-space missions combine aerobic and resistive exercise, stress-reduction protocols, circadian sleep protection, and nutrient-dense antioxidant supplementation."

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Profile | Vitalverse</title>
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="stylesheet" href="css/fonts.css" />
+  <link rel="stylesheet" href="css/shell.css" />
+  <link rel="stylesheet" href="css/theme.css" />
+  <style>
+    .pf-wrap{max-width:1180px;width:92%;margin:0 auto;padding:24px 0 68px;display:grid;grid-template-columns:360px 1fr;gap:34px;align-items:start;flex:1;position:relative;z-index:2}
+    .pf-side{position:sticky;top:24px}
+    .pf-pass{position:relative;padding:22px 22px;border-radius:26px;background:#111617;border:1px solid rgba(255,255,255,.14);box-shadow:10px 12px 0 #a8e07a,0 26px 80px rgba(168,224,122,.14);transform:rotate(-2deg);font-family:'Space Grotesk','Inter',sans-serif}
+    .pf-pass::before,.pf-pass::after{content:"";position:absolute;top:58%;width:20px;height:20px;border-radius:50%;background:#030609}
+    .pf-pass::before{left:-10px}.pf-pass::after{right:-10px}
+    .pf-ptop{display:flex;justify-content:space-between;align-items:center;gap:10px}
+    .pf-plogo{display:flex;align-items:center;gap:9px;font-size:19px;font-weight:600}
+    .pf-plogo svg{width:32px;height:20px;stroke:#a8e07a;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .pf-pill{background:#a8e07a;color:#0b0f0a;font-size:12px;font-weight:600;padding:4px 12px;border-radius:20px}
+    .pf-avatar-row{display:flex;align-items:center;gap:14px;margin:14px 0}
+    .pf-avatar{width:54px;height:54px;border-radius:50%;background:#182126;border:1px solid rgba(168,224,122,.45);display:grid;place-items:center;font-weight:700;font-size:17px;overflow:hidden;flex:none}
+    .pf-avatar img{width:100%;height:100%;object-fit:cover;object-position:center;border-radius:50%;display:block}
+    .pf-rows{border-top:1px dashed rgba(255,255,255,.2);border-bottom:1px dashed rgba(255,255,255,.2);padding:10px 0}
+    .pf-r{display:grid;grid-template-columns:108px 1fr;padding:6px 0;font-size:12px;color:#aeb8bd;gap:8px}
+    .pf-r b{color:#fff;font-size:13px;font-weight:500;word-break:break-word}
+    .pf-foot{display:flex;justify-content:space-between;align-items:center;margin-top:14px}
+    .pf-bar{display:flex;height:36px;align-items:stretch}.pf-bar i{background:#fff;display:block}
+    .pf-tag{border:1px solid #a8e07a;color:#a8e07a;border-radius:20px;padding:4px 12px;font-size:12px;font-weight:600}
+    .pf-main h1{font-family:'Space Grotesk','Inter',sans-serif;font-weight:700;font-size:clamp(26px,3.6vw,38px);margin:0 0 8px}
+    .pf-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 20px}
+    .pf-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .pf-field-wrap label{display:block;font-size:12px;color:var(--muted);margin:0 0 6px}
+    .pf-full{grid-column:1/-1}
+    .pf-msg{margin:12px 0;padding:11px 14px;border-radius:12px;font-size:13px;border:1px solid var(--line);background:rgba(255,255,255,.05)}
+    .pf-msg--ok{border-color:rgba(168,224,122,.5);background:rgba(168,224,122,.1);color:#e4f7c8}
+    .pf-msg--err{border-color:rgba(255,122,107,.5);background:rgba(255,122,107,.12);color:#ffd2cc}
+    .pf-list{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+    .pf-item{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(10,15,18,.78)}
+    .pf-photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-top:12px}
+    .pf-photo-card{border:1px solid rgba(255,255,255,.14);border-radius:12px;overflow:hidden;background:#0a0f12}
+    .pf-photo-card img{width:100%;height:110px;object-fit:cover;display:block}
+    .pf-photo-meta{padding:8px 10px;display:flex;justify-content:space-between;align-items:center;font-size:12px}
+    @media(max-width:920px){.pf-wrap{grid-template-columns:1fr}.pf-side{position:static;max-width:440px;margin:0 auto;width:100%}.pf-grid2{grid-template-columns:1fr}}
+  </style>
+  <link rel="stylesheet" href="/css/motion.css?v=7">
+  <script src="/js/motion.js?v=10"></script>
+</head>
+<body class="vv-starfield">
+  <header class="nav vv-nav">
+    <a class="logo" href="index.html">
+      <svg viewBox="0 0 36 22" fill="none" stroke="#a8e07a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 11h7l3-8 5 16 4-12 3 4h12"/></svg>
+      <span>Vital<b>verse</b></span>
+    </a>
+    <nav class="menu" id="vvNavMenu">
+      <a href="index.html">Home page</a>
+      <a href="health.html">Health dashboard</a>
+      <a href="chatbot.html">Ai chatbot</a>
+      <a href="mental.html">Mental Health</a>
+      <a href="about.html">About</a>
+    </nav>
+    <div class="tools">
+      <button class="circle" id="todoBtn" type="button" aria-label="Daily Routine To-Do List" title="Daily Routine To-Do List">
+        <svg class="vv-ic" viewBox="0 0 24 24"><rect x="5" y="4.5" width="14" height="16.5" rx="2.5"/><path d="M9 4.5V3.5h6v1"/><path d="M8.5 11.5l1.2 1.2 2.1-2.4M8.5 16.5l1.2 1.2 2.1-2.4M14.2 11.8h2M14.2 16.8h2"/></svg>
+        <svg class="vv-todo-ring" id="vvTodoRing" viewBox="0 0 39 39" hidden><circle cx="19.5" cy="19.5" r="18" fill="none" stroke="#a8e07a" stroke-width="2" id="vvTodoRingArc"/></svg>
+      </button>
+      <button class="circle" id="bellBtn" type="button" aria-label="Notifications" title="Notifications" aria-expanded="false">
+        <svg class="vv-ic" viewBox="0 0 24 24"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>
+        <span class="vv-bell-dot" id="vvBellDot" hidden></span>
+      </button>
+      <button class="profile" id="profileBtn" type="button" aria-label="Open account menu" aria-expanded="false"><div class="avatar" id="vvAvatar"></div><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="vv-dropdown" id="vvBellDropdown" hidden>
+        <div class="vv-dropdown-head"><strong>Alerts</strong><a class="vv-dropdown-link" href="alerts.html">View all alerts</a></div>
+        <div class="vv-dropdown-list" id="vvBellList"><div class="vv-dropdown-empty">All clear. No alerts.</div></div>
+      </div>
+      <div class="vv-dropdown vv-profile-menu" id="vvProfileDropdown" hidden></div>
+    </div>
+  </header>
+
+  <main class="pf-wrap">
+    <aside class="pf-side">
+      <div class="pf-pass" id="pfPass">
+        <div class="pf-ptop">
+          <div class="pf-plogo"><svg viewBox="0 0 36 22"><path d="M1 11h7l3-8 5 16 4-12 3 4h12"/></svg>Vitalverse</div>
+          <span class="pf-pill" id="pfRolePill">Crew pass</span>
+        </div>
+        <div class="pf-avatar-row">
+          <div class="pf-avatar" id="pfPassAvatar">VV</div>
+          <div>
+            <div style="font-size:17px;font-weight:600" id="pfPassName">Loading...</div>
+            <div style="font-size:12px;color:#a8e07a" id="pfPassVid">-</div>
+          </div>
+        </div>
+        <div class="pf-rows" id="pfPassRows"></div>
+        <div class="pf-foot">
+          <div class="pf-bar" id="pfBar"></div>
+          <span class="pf-tag">Verified</span>
+        </div>
+      </div>
+    </aside>
+
+    <section class="glass-card pf-main" id="pfApp">
+      <span class="eyebrow">ACCOUNT &amp; ACCESS</span>
+      <h1>My <span>Profile</span></h1>
+      <p style="color:var(--muted);font-size:13px;margin:0">Loading profile details...</p>
+    </section>
+  </main>
+
+  <div class="vv-modal-overlay" id="pfRevokeModal" role="dialog" aria-modal="true">
+    <div class="vv-modal">
+      <button class="vv-modal-close" type="button" id="pfRevokeClose" aria-label="Close">&times;</button>
+      <h2>Revoke <span>Access?</span></h2>
+      <p id="pfRevokeDesc">This doctor will immediately lose permission to view or edit your telemetry and profile.</p>
+      <div class="vv-modal-actions">
+        <button type="button" class="btn danger" id="pfRevokeConfirm">Revoke Access</button>
+        <button type="button" class="btn ghost" id="pfRevokeCancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="vv-footer">
+    <p>© 2026 <span>Vitalverse</span>. All rights reserved.</p>
+    <p class="vv-footer-disclaimer">Prototype built with fictional data. Not a certified medical device.</p>
+    <p>Monitor. Protect. Keep exploring.</p>
+  </footer>
+
+  <script src="js/shell.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>

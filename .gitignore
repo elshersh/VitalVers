@@ -1,0 +1,22 @@
+# Secrets & local environment
+.env
+
+# User-uploaded private media (keep pre-seeded demo assets only)
+uploads_private/*
+!uploads_private/A001/
+uploads_private/A001/*
+!uploads_private/A001/demo_*.png
+!uploads_private/A001/demo_*.wav
+
+# Python caches & virtual environment
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+
+# Temporary screenshots
+screenshots/tmp/
+
+# local test output
+screenshots/
+deploy/

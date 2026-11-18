@@ -1,0 +1,101 @@
+id,question,expected_behavior,expected_topic,style_tag,author
+E001,"I keep waking up around 3am every night, is that something to worry about?",answer,sleep,natural,external_ai_authored
+E002,"how many hours of sleep did i get on average this week",answer,sleep,data_lookup,external_ai_authored
+E003,"my sleep score has been dropping for like 5 days straight, why",answer,sleep,colloquial,external_ai_authored
+E004,"Is it bad that I can't fall asleep after a late exercise session?",answer,sleep,natural,external_ai_authored
+E005,"does the station lighting mess with my circadian rhythm",answer,sleep,natural,external_ai_authored
+E006,"I feel groggy every morning even after 8 hours",answer,sleep,indirect,external_ai_authored
+E007,"my resting pulse seems higher than last month, should I be concerned?",answer,heart_rate,synonym,external_ai_authored
+E008,"what does it mean if my heart rate stays above 100 when I'm just sitting",answer,heart_rate,natural,external_ai_authored
+E009,"hart rate feels weird and fluttery today",answer,heart_rate,typo,external_ai_authored
+E010,"Why does my heart pound when I stand up quickly after waking?",answer,heart_rate,indirect,external_ai_authored
+E011,"is my HR trend normal for someone 3 months into a mission",answer,heart_rate,abbreviation,external_ai_authored
+E012,"my blood pressure reading this morning was way higher than usual, what now",answer,blood_pressure,colloquial,external_ai_authored
+E013,"Can stress alone make my BP spike?",answer,blood_pressure,multi_topic,external_ai_authored
+E014,"I got a headache and my BP is up, is this an emergency?",answer,health_alerts,urgent,external_ai_authored
+E015,"what's considered a dangerous blood pressure level for me",answer,blood_pressure,natural,external_ai_authored
+E016,"feel dizzy and my systolic dropped a lot",answer,blood_pressure,terse,external_ai_authored
+E017,"am i losing bone density faster than expected",answer,bone_muscle,natural,external_ai_authored
+E018,"How much resistance exercise do I need to slow down bone loss?",answer,countermeasures,natural,external_ai_authored
+E019,"my legs feel weaker than when I launched, is that normal",answer,bone_muscle,indirect,external_ai_authored
+E020,"what's my muscle health score trending like",answer,bone_muscle,data_lookup,external_ai_authored
+E021,"my lower back aches all the time since arriving, is that from microgravity?",answer,bone_muscle,indirect,external_ai_authored
+E022,"I've been feeling really irritable with the crew lately",answer,stress_mood,indirect,external_ai_authored
+E023,"how do I calm down before a big EVA",answer,stress_mood,natural,external_ai_authored
+E024,"my stress level has been high for days, what can I do",answer,stress_mood,natural,external_ai_authored
+E025,"I feel kind of flat and unmotivated, should I talk to someone",answer,mental_health,indirect,external_ai_authored
+E026,"is my mental health assessment score worse than last week",answer,mental_health,data_lookup,external_ai_authored
+E027,"being isolated up here is getting to me",answer,mental_health,indirect,external_ai_authored
+E028,"breathing exercises that actually help with anxiety?",answer,stress_mood,terse,external_ai_authored
+E029,"I think I'm coming down with something, sore throat and tired",answer,immune,indirect,external_ai_authored
+E030,"why do astronauts get sick more easily in space",answer,immune,general_health,external_ai_authored
+E031,"my immunity indicators dropped, what does that mean",answer,immune,data_lookup,external_ai_authored
+E032,"I have a cold sore that showed up out of nowhere",answer,immune,indirect,external_ai_authored
+E033,"is a slight fever something I should report",answer,immune,natural,external_ai_authored
+E034,"my body temp has been 37.8 since yesterday",answer,immune,hard_positive_keyword,external_ai_authored
+E035,"my oxygen saturation says 92%, is that ok",answer,spo2,hard_positive_keyword,external_ai_authored
+E036,"I feel short of breath when working in the node",answer,spo2,indirect,external_ai_authored
+E037,"SpO2 keeps dipping at night, why",answer,spo2,abbreviation,external_ai_authored
+E038,"my oxygen levels feel low and I'm lightheaded",answer,health_alerts,urgent,external_ai_authored
+E039,"what should my blood sugar be in the morning",answer,glucose,natural,external_ai_authored
+E040,"my glucose reading came back high after lunch",answer,glucose,data_lookup,external_ai_authored
+E041,"feeling shaky and sweaty, could it be low sugar",answer,glucose,indirect,external_ai_authored
+E042,"why did I get a danger alert this morning",answer,health_alerts,data_lookup,external_ai_authored
+E043,"chest pain and my left arm feels numb",answer,health_alerts,urgent,external_ai_authored
+E044,"the app says Health Warning, what does that mean for me",answer,health_alerts,natural,external_ai_authored
+E045,"what should I do if I get a medical danger alert",answer,health_alerts,natural,external_ai_authored
+E046,"is the stress alert today an actual medical problem",answer,health_alerts,multi_topic,external_ai_authored
+E047,"I passed out briefly during exercise",answer,health_alerts,urgent,external_ai_authored
+E048,"how many hours did I train today",answer,training_activity,data_lookup,external_ai_authored
+E049,"am I doing enough physical activity this week",answer,training_activity,natural,external_ai_authored
+E050,"is it ok to skip treadmill today, I feel exhausted",answer,training_activity,colloquial,external_ai_authored
+E051,"my training hours are way down, does that affect my health",answer,training_activity,multi_topic,external_ai_authored
+E052,"what's on my health task list today",answer,countermeasures,data_lookup,external_ai_authored
+E053,"what countermeasures should I do for my bone loss",answer,countermeasures,natural,external_ai_authored
+E054,"give me tips to improve my sleep up here",answer,sleep,natural,external_ai_authored
+E055,"what does my hormone indicator show",answer,hormones,data_lookup,external_ai_authored
+E056,"my reaction game score got worse, does that mean I'm tired",answer,mental_health,multi_topic,external_ai_authored
+E057,"how relaxed have I been this week based on my data",answer,stress_mood,data_lookup,external_ai_authored
+E058,"bad sleep + high heart rate + stressed out. help",answer,multi_topic,terse,external_ai_authored
+E059,"overall how is my health doing",answer,summary,vague,external_ai_authored
+E060,"compare my vitals today with last week",answer,summary,data_lookup,external_ai_authored
+E061,"What's the temperature on Mars at night?",refuse,out_of_scope,hard_negative_keyword,external_ai_authored
+E062,"How hot does the ISS hull get in direct sunlight?",refuse,out_of_scope,hard_negative_keyword,external_ai_authored
+E063,"what's the oxygen percentage in Earth's atmosphere",refuse,out_of_scope,hard_negative_keyword,external_ai_authored
+E064,"How do I reset the CO2 scrubber?",refuse,out_of_scope,hard_negative_keyword,external_ai_authored
+E065,"the water pressure in the galley tap is low, how do I fix it",refuse,out_of_scope,hard_negative_keyword,external_ai_authored
+E066,"what's the cabin pressure on the ISS",refuse,out_of_scope,hard_negative_keyword,external_ai_authored
+E067,"how does the heart of a black hole work",refuse,out_of_scope,hard_negative_keyword,external_ai_authored
+E068,"Explain the heart of the Linux kernel scheduler",refuse,out_of_scope,hard_negative_keyword,external_ai_authored
+E069,"what's the radiation dose limit for the electronics on the rover",refuse,out_of_scope,hard_negative_keyword,external_ai_authored
+E070,"how much power does my laptop use in sleep mode",refuse,out_of_scope,hard_negative_keyword,external_ai_authored
+E071,"what is a stress test in software engineering",refuse,out_of_scope,hard_negative_keyword,external_ai_authored
+E072,"How do I calculate stress and strain on a beam?",refuse,out_of_scope,hard_negative_keyword,external_ai_authored
+E073,"what's the pulse period of a pulsar",refuse,out_of_scope,hard_negative_keyword,external_ai_authored
+E074,"how fast is the station orbiting",refuse,out_of_scope,general,external_ai_authored
+E075,"who won the champions league",refuse,out_of_scope,general,external_ai_authored
+E076,"write me a poem about the moon",refuse,out_of_scope,general,external_ai_authored
+E077,"translate good morning to Russian",refuse,out_of_scope,general,external_ai_authored
+E078,"what's 17 times 23",refuse,out_of_scope,general,external_ai_authored
+E079,"how do I cook rice in microgravity",refuse,out_of_scope,borderline,external_ai_authored
+E080,"How do I fix the solar panel alignment",refuse,out_of_scope,hard_negative_keyword,external_ai_authored
+E081,"what time is it in Houston",refuse,out_of_scope,general,external_ai_authored
+E082,"how do the joints of Canadarm2 move",refuse,out_of_scope,hard_negative_keyword,external_ai_authored
+E083,"is the immune system of plants grown on the ISS different",refuse,out_of_scope,hard_negative_keyword,external_ai_authored
+E084,"what's the boiling temperature of water at low pressure",refuse,out_of_scope,hard_negative_keyword,external_ai_authored
+E085,"my laptop battery health is dropping, what do I do",refuse,out_of_scope,hard_negative_keyword,external_ai_authored
+E086,"how to monitor CPU temperature",refuse,out_of_scope,hard_negative_keyword,external_ai_authored
+E087,"what's the best workout playlist",refuse,out_of_scope,hard_negative_keyword,external_ai_authored
+E088,"tell me a joke",refuse,out_of_scope,general,external_ai_authored
+E089,"how do I send an email to mission control",refuse,out_of_scope,general,external_ai_authored
+E090,"what's the glucose content of a banana",refuse,out_of_scope,hard_negative_keyword,external_ai_authored
+E091,"explain how the oxygen generator electrolysis works",refuse,out_of_scope,hard_negative_keyword,external_ai_authored
+E092,"the fire alarm is beeping, what do I do",refuse,out_of_scope,borderline,external_ai_authored
+E093,"what is a healthy stock portfolio",refuse,out_of_scope,hard_negative_keyword,external_ai_authored
+E094,"how is the health of the station's batteries",refuse,out_of_scope,hard_negative_keyword,external_ai_authored
+E095,"who is the commander of the current ISS expedition",refuse,out_of_scope,general,external_ai_authored
+E096,"convert 98.6 Fahrenheit to Celsius",refuse,out_of_scope,hard_negative_keyword,external_ai_authored
+E097,"what's the procedure for a pressure suit leak",refuse,out_of_scope,hard_negative_keyword,external_ai_authored
+E098,"how many people have been to space",refuse,out_of_scope,general,external_ai_authored
+E099,"summarize the history of the space race",refuse,out_of_scope,general,external_ai_authored
+E100,"what muscles does a rocket engine gimbal use",refuse,out_of_scope,hard_negative_keyword,external_ai_authored

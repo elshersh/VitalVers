@@ -1,0 +1,255 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Create Account | Vitalverse</title>
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/shell.css">
+<style>
+:root{--g:#a8e07a;--b:#e4f7c8;--bg:#070b0e;--bg2:#101518;--t:#fff;--t2:#aeb8bd;--l:rgba(255,255,255,.14);--bad:#ff7b7b}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:radial-gradient(circle at 70% -10%,#13202a,var(--bg) 55%);color:var(--t);min-height:100vh;display:flex;flex-direction:column}
+a{color:var(--g)}
+.wrap{max-width:1100px;margin:0 auto;padding:32px 4vw}
+.narrow{max-width:620px}
+.card{background:var(--bg2);border:1px solid var(--l);border-radius:20px;padding:24px;box-shadow:0 10px 40px rgba(0,0,0,.35)}
+h1{font-size:30px;font-weight:500;margin-bottom:8px}h2{font-size:20px;font-weight:500;margin-bottom:12px}h3{font-size:15px;font-weight:500;color:var(--t2);margin-bottom:6px}
+.muted{color:var(--t2);font-size:14px;line-height:1.6}
+.btn{display:inline-block;border:0;background:var(--b);color:#10150b;font:600 14px Inter,sans-serif;padding:13px 26px;border-radius:30px;cursor:pointer;text-decoration:none;transition:.25s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 0 24px rgba(168,224,122,.4)}
+.btn.ghost{background:transparent;color:#fff;border:1px solid var(--l)}
+label{display:block;font-size:13px;color:var(--t2);margin:14px 0 6px}
+input,select,textarea{width:100%;background:#0a0f12;border:1px solid var(--l);border-radius:12px;padding:12px 14px;color:#fff;font:14px Inter,sans-serif}
+input[type=password]{text-transform:none;letter-spacing:normal}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--g)}
+input[type=checkbox]{width:auto;margin-right:8px}
+.cards2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+.pick{cursor:pointer;text-align:center;padding:26px 12px;border:1px solid var(--l);border-radius:18px;background:#0a0f12;transition:.25s;font-weight:500}
+.pick:hover,.pick.sel{border-color:var(--g);background:rgba(168,224,122,.08)}
+.err{display:none;margin-top:14px;padding:12px 14px;border-radius:12px;background:rgba(255,123,123,.1);border:1px solid var(--bad);color:#ffc9c9;font-size:14px}
+.err.show{display:block}
+.steps{display:flex;gap:6px;margin-bottom:20px}.steps i{flex:1;height:5px;border-radius:5px;background:var(--l)}.steps i.on{background:var(--g)}
+.row{display:flex;gap:12px;justify-content:space-between;margin-top:24px}
+.media-box{margin-top:14px;padding:14px;border:1px solid var(--l);border-radius:14px;background:#0a0f12}
+.media-row{display:grid;grid-template-columns:1fr 120px;gap:8px;margin-top:8px}
+.media-list{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.media-item{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--l);border-radius:10px;font-size:12px;color:#d9dde0}
+.media-item button{background:none;border:0;color:var(--t2);cursor:pointer;font-size:15px}
+.idbox{font-size:32px;font-weight:600;color:var(--g);text-align:center;margin:18px 0;letter-spacing:2px}
+@media(max-width:600px){.cards2{grid-template-columns:1fr}.media-row{grid-template-columns:1fr}}
+</style><style>
+.split{position:relative;z-index:5;flex:1;max-width:1100px;width:100%;margin:0 auto;padding:40px 4vw 70px;display:flex;flex-wrap:nowrap;justify-content:center;align-items:flex-start;gap:clamp(16px,3.5vw,56px)}
+.side{flex:1 1 0;max-width:470px;min-width:0;position:sticky;top:24px;padding:10px 12px 14px 0}
+.split .card{flex:1 1 0;max-width:470px;min-width:0;padding:clamp(18px,3vw,36px)}
+.split h1{font-family:'Space Grotesk','Inter',sans-serif;font-weight:700}
+.pass{position:relative;width:100%;padding:clamp(14px,2.2vw,22px) clamp(14px,2.4vw,24px);border-radius:26px;background:#111617;border:1px solid rgba(255,255,255,.12);box-shadow:12px 14px 0 #a8e07a,0 30px 90px rgba(168,224,122,.14);transform:rotate(-4deg);font-family:'Space Grotesk','Inter',sans-serif;transition:transform .4s}
+.pass:hover{transform:rotate(-2deg) translateY(-4px)}
+.pass::before,.pass::after{content:"";position:absolute;top:58%;width:22px;height:22px;border-radius:50%;background:#070b0e}
+.pass::before{left:-11px}.pass::after{right:-11px}
+.ptop{display:flex;justify-content:space-between;align-items:center}
+.plogo{display:flex;align-items:center;gap:10px;font-size:clamp(15px,2vw,21px);font-weight:600}.plogo svg{width:34px;height:20px;stroke:#a8e07a;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.pill{background:#a8e07a;color:#0b0f0a;font-size:12px;font-weight:600;padding:5px 14px;border-radius:20px;transform:rotate(2deg)}
+.beat{display:block;width:72%;height:54px;margin:8px 0 14px;filter:drop-shadow(0 0 7px rgba(168,224,122,.75))}
+.rows{border-top:1px dashed rgba(255,255,255,.2);border-bottom:1px dashed rgba(255,255,255,.2);padding:10px 0}
+.r{display:grid;grid-template-columns:clamp(66px,9vw,104px) 1fr;align-items:center;padding:6px 0;font-size:13px;color:#aeb8bd}
+.r b{font-size:clamp(12px,1.6vw,16px);color:#fff;font-weight:500;word-break:break-word}.r b.ph{color:#5d676c}
+.foot{display:flex;justify-content:space-between;align-items:center;margin-top:16px}
+.bar{display:flex;height:42px;align-items:stretch}.bar i{background:#fff;display:block}
+.tag{border:1px solid #a8e07a;color:#a8e07a;border-radius:20px;padding:5px 14px;font-weight:600;font-size:13px;transform:rotate(-3deg)}
+@media(max-width:600px){.split{flex-direction:column;align-items:center;gap:36px}.side{order:2;position:static;width:100%}.split .card{order:1;width:100%;flex:none}.pass{transform:rotate(-2deg);box-shadow:8px 10px 0 #a8e07a}}
+</style>
+  <link rel="stylesheet" href="/css/motion.css?v=7">
+  <script src="/js/motion.js?v=10"></script>
+</head><body>
+<header class="nav vv-nav">
+  <a class="logo" href="index.html">
+    <svg viewBox="0 0 36 22" fill="none" stroke="#a8e07a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 11h7l3-8 5 16 4-12 3 4h12"/></svg>
+    <span>Vital<b>verse</b></span>
+  </a>
+  <nav class="menu" id="vvNavMenu">
+    <a href="index.html">Home page</a>
+    <a href="health.html">Health dashboard</a>
+    <a href="chatbot.html">Ai chatbot</a>
+    <a href="mental.html">Mental Health</a>
+    <a href="about.html">About</a>
+  </nav>
+  <div class="tools">
+    <button class="circle" id="todoBtn" type="button" aria-label="Daily Routine To-Do List" title="Daily Routine To-Do List">
+      <svg class="vv-ic" viewBox="0 0 24 24"><rect x="5" y="4.5" width="14" height="16.5" rx="2.5"/><path d="M9 4.5V3.5h6v1"/><path d="M8.5 11.5l1.2 1.2 2.1-2.4M8.5 16.5l1.2 1.2 2.1-2.4M14.2 11.8h2M14.2 16.8h2"/></svg>
+      <svg class="vv-todo-ring" id="vvTodoRing" viewBox="0 0 39 39" hidden><circle cx="19.5" cy="19.5" r="18" fill="none" stroke="#a8e07a" stroke-width="2" id="vvTodoRingArc"/></svg>
+    </button>
+    <button class="circle" id="bellBtn" type="button" aria-label="Notifications" title="Notifications" aria-expanded="false">
+      <svg class="vv-ic" viewBox="0 0 24 24"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>
+      <span class="vv-bell-dot" id="vvBellDot" hidden></span>
+    </button>
+    <button class="profile" id="profileBtn" type="button" aria-label="Open account menu" aria-expanded="false"><div class="avatar" id="vvAvatar"></div><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+    <div class="vv-dropdown" id="vvBellDropdown" hidden>
+      <div class="vv-dropdown-head"><strong>Alerts</strong><a class="vv-dropdown-link" href="alerts.html">View all alerts</a></div>
+      <div class="vv-dropdown-list" id="vvBellList"><div class="vv-dropdown-empty">No unread alerts.</div></div>
+    </div>
+    <div class="vv-dropdown vv-profile-menu" id="vvProfileDropdown" hidden></div>
+  </div>
+</header>
+<main class="split"><div class="side"><div class="pass" id="pass"><div class="ptop"><div class="plogo"><svg viewBox="0 0 36 22"><path d="M1 11h7l3-8 5 16 4-12 3 4h12"/></svg>Vitalverse</div><span class="pill" id="pPill">Crew pass</span></div><svg class="beat" viewBox="0 0 300 50" fill="none" stroke="#a8e07a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M0 38h85l12-26 14 30 12-20h60l12-24 14 28 10-14h80"/></svg><div class="rows" id="pRows"></div><div class="foot"><div class="bar" id="pBar"></div><span class="tag" id="pTag">Pending</span></div></div></div><div class="card" id="app"></div></main>
+<footer class="vv-footer">
+  <p>© 2026 <span>Vitalverse</span>. All rights reserved.</p>
+  <p class="vv-footer-disclaimer">Prototype built with fictional data. Not a certified medical device.</p>
+  <p>Monitor. Protect. Keep exploring.</p>
+</footer>
+<script src="js/shell.js"></script>
+<script>
+const PR={astronaut:[['Astronaut','fullName','Your name'],['Astronaut ID','astronautId','Agency ID'],['Mission','missionRole','Mission role'],['Destination','destination','Destination']],doctor:[['Doctor','fullName','Your name'],['Staff ID','staffId','Staff ID'],['Specialty','specialization','Specialization'],['Agency','organization','Organization']]};
+function esc(s){return window.VV_SHELL?window.VV_SHELL.esc(s):String(s||'');}
+function bars(s){s=(s||'VITALVERSE')+'-VITALVERSE-PASS';let h='';for(let i=0;i<64;i++){const c=s.charCodeAt(i%s.length)+i*7;h+='<i style="width:'+(1+c%3)+'px;margin-right:'+(1+(c>>2)%2)+'px"></i>'}return h}
+function pass(role,d,id,tag){role=role||'astronaut';d=d||{};
+ document.getElementById('pPill').textContent=role==='doctor'?'Medical pass':'Crew pass';
+ document.getElementById('pRows').innerHTML=PR[role].map(r=>'<div class="r"><span>'+r[0]+'</span><b class="'+(d[r[1]]?'':'ph')+'">'+esc(d[r[1]]||r[2])+'</b></div>').join('')+'<div class="r"><span>Vitalverse ID</span><b class="'+(id?'':'ph')+'">'+esc(id||'Created at sign-up')+'</b></div>';
+ document.getElementById('pBar').innerHTML=bars(id||d.fullName);document.getElementById('pTag').textContent=tag}
+const f=(n,l,t,o,opt)=>({n,l,t:t||'text',o,opt});
+const GEN=['Female','Male','Other','Prefer not to say'],BT=['A+','A-','B+','B-','AB+','AB-','O+','O-','Unknown'];
+const TAGS=['comfort','happy','energy'];
+const FLOW={
+astronaut:[
+ {t:'Personal Information',f:[f('fullName','Full Name'),f('password','Password (min 8 chars)','password'),f('confirmPassword','Confirm Password','password'),f('astronautId','Astronaut ID (your existing agency/mission ID)'),f('missionRole','Mission Role'),f('nationality','Nationality'),f('photo','Profile Photo','file',0,1),f('flightSurgeon','Contact Flight Surgeon'),f('previousFlight','Previous Flight','text',0,1)],mediaMgr:1},
+ {t:'Health Information',f:[f('age','Age','number'),f('gender','Gender','select',GEN),f('weight','Weight (kg)','number'),f('height','Height (cm)','number'),f('bloodType','Blood Type','select',BT),f('allergies','Allergies','textarea',0,1),f('surgeries','Previous Surgeries','textarea',0,1),f('injuries','Previous Injuries','textarea',0,1),f('immunizations','Immunization History','textarea',0,1),f('familyHistory','Family Medical History','textarea',0,1)]},
+ {t:'Flight Information',f:[f('aircraft','Type of Aircraft'),f('duration','Estimated Flight Duration'),f('destination','Flight Destination')]}],
+doctor:[
+ {t:'Doctor Information',f:[f('fullName','Full Name'),f('password','Password (min 8 chars)','password'),f('confirmPassword','Confirm Password','password'),f('staffId','Doctor / Staff ID'),f('specialization','Medical Specialization'),f('organization','Organization / Space Agency'),f('contact','Work Contact Information'),f('credential','Professional Credential Reference')]},
+ {t:'Astronaut Connection',f:[f('astId',"Astronaut's Vitalverse ID (e.g. VTA-583921)"),f('astName',"Astronaut's Full Name"),f('crew','Mission / Crew Information')],consent:1}]};
+let role=null,step=0,data={};
+window._vvPendingUploads={profilePhoto:null,songs:[],photos:[]};
+const app=document.getElementById('app');
+function field(x){const v=x.t==='password'?'':esc(data[x.n]||'');const l=`<label>${x.l}${x.opt?' (optional)':''}</label>`;
+ if(x.t==='select')return l+`<select data-n="${x.n}"><option value="">Select...</option>${x.o.map(o=>`<option ${data[x.n]===o?'selected':''}>${o}</option>`).join('')}</select>`;
+ if(x.t==='textarea')return l+`<textarea rows="2" data-n="${x.n}">${v}</textarea>`;
+ if(x.t==='file')return l+`<input type="file" accept="image/*" data-n="${x.n}">${window._vvPendingUploads.profilePhoto?'<p class="muted" style="font-size:12px;margin-top:4px">Selected: '+esc(window._vvPendingUploads.profilePhoto.name)+'</p>':''}`;
+ return l+`<input type="${x.t}" data-n="${x.n}" value="${v}" ${x.t==='number'?'min="0"':''} ${x.t==='password'?'autocomplete="new-password"':''}>`}
+function renderMediaManagers(){
+ const songs=window._vvPendingUploads.songs,photos=window._vvPendingUploads.photos;
+ return `<div class="media-box">
+  <h3 style="color:#fff">Preferred Songs (Optional)</h3>
+  <div class="media-row"><input id="songTitle" placeholder="Song title"><select id="songTag">${TAGS.map(t=>'<option value="'+t+'">'+t+'</option>').join('')}</select></div>
+  <input id="songUrl" placeholder="Streaming URL (https://...) or leave blank if uploading audio" style="margin-top:8px">
+  <div class="media-row" style="align-items:center"><input type="file" id="songFile" accept=".mp3,.m4a,.wav,audio/*"><button type="button" class="btn ghost" id="addSongBtn" style="padding:10px 14px">+ Add Song</button></div>
+  <div class="media-list">${songs.map((s,i)=>'<div class="media-item"><span>'+esc(s.title)+' ('+esc(s.tag)+') — '+(s.file?esc(s.file.name):esc(s.url))+'</span><button type="button" data-delsong="'+i+'" aria-label="Remove">&times;</button></div>').join('')}</div>
+ </div>
+ <div class="media-box">
+  <h3 style="color:#fff">Preferred Comfort Photos (Optional)</h3>
+  <div class="media-row"><input type="file" id="photoFiles" accept=".jpg,.jpeg,.png,.webp,image/*" multiple><select id="photoTag">${TAGS.map(t=>'<option value="'+t+'">'+t+'</option>').join('')}</select></div>
+  <button type="button" class="btn ghost" id="addPhotoBtn" style="margin-top:8px;padding:9px 14px">+ Add Selected Photos</button>
+  <div class="media-list">${photos.map((p,i)=>'<div class="media-item"><span>'+esc(p.file.name)+' ('+esc(p.tag)+')</span><button type="button" data-delphoto="'+i+'" aria-label="Remove">&times;</button></div>').join('')}</div>
+ </div>`;
+}
+function wireMediaManagers(){
+ const as=document.getElementById('addSongBtn');
+ if(as)as.onclick=()=>{
+  const title=document.getElementById('songTitle').value.trim();
+  const tag=document.getElementById('songTag').value;
+  const url=document.getElementById('songUrl').value.trim();
+  const file=(document.getElementById('songFile').files||[])[0]||null;
+  if(!title)return showErr('Enter a song title before adding.');
+  if(!url&&!file)return showErr('Provide a song URL or choose an audio file.');
+  if(url&&!(window.VV_SHELL&&window.VV_SHELL.safeUrl(url)))return showErr('Song URL must start with http:// or https://');
+  window._vvPendingUploads.songs.push({title,tag,kind:file?'audio':'link',url:file?'':url,file});
+  render();
+ };
+ const ap=document.getElementById('addPhotoBtn');
+ if(ap)ap.onclick=()=>{
+  const files=Array.from(document.getElementById('photoFiles').files||[]);
+  const tag=document.getElementById('photoTag').value;
+  if(!files.length)return showErr('Select at least one image file first.');
+  files.forEach(file=>window._vvPendingUploads.photos.push({tag,file}));
+  render();
+ };
+ app.querySelectorAll('[data-delsong]').forEach(b=>b.onclick=()=>{window._vvPendingUploads.songs.splice(Number(b.dataset.delsong),1);render()});
+ app.querySelectorAll('[data-delphoto]').forEach(b=>b.onclick=()=>{window._vvPendingUploads.photos.splice(Number(b.dataset.delphoto),1);render()});
+}
+function render0(){
+ if(!role){app.innerHTML=`<h1>What is your role?</h1><p class="muted">Choose how you will use Vitalverse.</p><div class="cards2"><div class="pick" data-r="astronaut">Astronaut</div><div class="pick" data-r="doctor">Doctor / Flight Surgeon</div></div><p class="muted">Already registered? <a href="login.html">Log in</a></p>`;
+  app.querySelectorAll('.pick').forEach(p=>p.onclick=()=>{role=p.dataset.r;step=0;data={};render()});return}
+ const fl=FLOW[role],s=fl[step],last=step===fl.length-1;
+ app.innerHTML=`<div class="steps">${fl.map((_,i)=>`<i class="${i<=step?'on':''}"></i>`).join('')}</div><p class="muted">Step ${step+1} of ${fl.length}</p><h1>${s.t}</h1>${s.f.map(field).join('')}${s.mediaMgr?renderMediaManagers():''}${s.consent?`<label style="color:#fff"><input type="checkbox" id="consent" ${data.consent?'checked':''}>I confirm that this access request is being made with the astronaut's knowledge and appropriate authorization.</label>`:''}<div class="err" id="err"></div><div class="row"><button class="btn ghost" id="back">Back</button><button class="btn" id="next">${last?'Create My Account':'Continue'}</button></div>`;
+ const pf=app.querySelector('input[data-n="photo"]');
+ if(pf)pf.onchange=()=>{if(pf.files&&pf.files[0])window._vvPendingUploads.profilePhoto=pf.files[0]};
+ if(s.mediaMgr)wireMediaManagers();
+ document.getElementById('back').onclick=()=>{collect();if(step===0){role=null;data={}}else step--;render()};
+ document.getElementById('next').onclick=()=>next(fl,s,last);
+}
+function collect(){app.querySelectorAll('[data-n]').forEach(e=>{if(e.type!=='file')data[e.dataset.n]=e.value});const c=document.getElementById('consent');if(c)data.consent=c.checked}
+async function uploadOptionalMedia(aid,csrf){
+ const warns=[];
+ const send=async(purpose,file,tag,title)=>{
+  const fd=new FormData();
+  fd.append('purpose',purpose);
+  fd.append('tag',tag||'comfort');
+  if(title)fd.append('title',title);
+  fd.append('file',file);
+  const r=await fetch('/api/uploads/'+encodeURIComponent(aid),{method:'POST',credentials:'same-origin',headers:{'X-CSRF-Token':csrf},body:fd});
+  if(!r.ok){
+   let d={};try{d=await r.json();}catch(_){}
+   warns.push((file.name||'Upload')+': '+(d.detail||'failed'));
+  }
+ };
+ if(window._vvPendingUploads.profilePhoto){
+  await send('profile_photo',window._vvPendingUploads.profilePhoto,'comfort','');
+ }
+ for(const s of window._vvPendingUploads.songs){
+  if(s.file)await send('song_audio',s.file,s.tag,s.title);
+ }
+ for(const p of window._vvPendingUploads.photos){
+  if(p.file)await send('photo',p.file,p.tag,'');
+ }
+ return warns;
+}
+async function submitSignup(){
+ const btn=document.getElementById('next');
+ const origText=btn?btn.textContent:'Create My Account';
+ if(btn){btn.disabled=true;btn.textContent='Creating account...';}
+ try{
+  const urlSongs=window._vvPendingUploads.songs.filter(s=>!s.file).map(s=>({title:s.title,tag:s.tag,kind:'link',url:s.url}));
+  const payload=Object.assign({},data,{role,songs:urlSongs});
+  const res=await fetch('/api/auth/signup',{
+   method:'POST',
+   credentials:'same-origin',
+   headers:{'Content-Type':'application/json'},
+   body:JSON.stringify(payload)
+  });
+  let body={};
+  try{body=await res.json();}catch(_){}
+  if(!res.ok){
+   if(btn){btn.disabled=false;btn.textContent=origText;}
+   return showErr(body.detail||'Account registration failed. Please check your inputs and try again.');
+  }
+  let warns=[];
+  if(body.role==='astronaut'&&body.astronaut_id&&body.csrf_token){
+   warns=await uploadOptionalMedia(body.astronaut_id,body.csrf_token);
+  }
+  const prof=body.profile||data;
+  const tag=body.role==='doctor'?'Pending Approval':'Verified';
+  pass(body.role,prof,body.vitalverse_id,tag);
+  const note=body.role==='doctor'
+   ?`Your access request for astronaut <strong>${esc(body.target_astronaut_id||'')}</strong> is currently <strong>pending approval</strong>.`
+   :`Astronaut record <strong>${esc(body.astronaut_id||'')}</strong> is active with 180 mission days of telemetry and model predictions.`;
+  const extra=body.role==='astronaut'
+   ?'<a class="btn" href="health.html">Open Health Dashboard</a><a class="btn ghost" href="chatbot.html">Open AI Chatbot</a>'
+   :'<a class="btn" href="health.html">Open Doctor Dashboard</a><a class="btn ghost" href="index.html">Back to Home</a>';
+  const warnBox=warns.length?`<div class="err show">Account created, but some media uploads could not finish: ${esc(warns.join('; '))}</div>`:'';
+  app.innerHTML=`<div class="steps"><i class="on"></i><i class="on"></i><i class="on"></i></div><h1>Account Created</h1><p class="muted">Save your Vitalverse ID below — you will use it every time you sign in.</p><div class="idbox" id="createdVitalverseId">${esc(body.vitalverse_id)}</div><p class="muted">${note}</p>${warnBox}<div class="row" style="flex-wrap:wrap">${extra}</div>`;
+ }catch(e){
+  if(btn){btn.disabled=false;btn.textContent=origText;}
+  showErr('Network error while creating your account. Please try again.');
+ }
+}
+async function next(fl,s,last){
+ collect();const err=document.getElementById('err');err.classList.remove('show');
+ for(const x of s.f){if(!x.opt&&!(data[x.n]||'').trim()){return showErr(`Please fill in: ${x.l}`)}}
+ if(step===0){
+  if((data.password||'').length<8)return showErr('Password must be at least 8 characters.');
+  if(data.password!==data.confirmPassword)return showErr('Passwords do not match.');
+ }
+ if(s.consent&&!data.consent)return showErr('You must confirm the authorization checkbox to continue.');
+ if(!last){step++;render();return}
+ await submitSignup();
+}
+function showErr(m){const e=document.getElementById('err');e.textContent=m;e.classList.add('show')}
+function updatePass(){pass(role,data,null,'Pending')}
+function render(){render0();updatePass()}
+app.addEventListener('input',e=>{if(e.target&&e.target.dataset&&e.target.dataset.n){collect();updatePass()}});
+render();
+</script></body></html>

@@ -1,0 +1,93 @@
+/* Home hero scene: real NASA photo (STS-41-B, 1984) screen-blended over the site's animated sky,
+   a code-drawn solar system, and a live holographic HUD. Driven by js/hero-live.js and js/home.js. */
+
+.hx-scene { position: absolute; inset: 0; overflow: hidden; z-index: 0; background: #020407; }
+.hx-sky, .hx-planets, .hx-lines { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
+.hx-sky { z-index: 0; }
+.hx-planets { z-index: 1; }
+
+/* the photo layer: black space becomes transparent against the sky (screen blend) */
+.hx-world {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3200px;
+  height: 3200px;
+  transform-origin: 0 0;
+  will-change: transform;
+  mix-blend-mode: screen;
+  z-index: 2;
+}
+.hx-world img { position: absolute; display: block; user-select: none; pointer-events: none; }
+.hx-wide { left: -400px; top: 0; width: 4000px; height: 3200px; }   /* 400 px mirrored margin each side */
+.hx-close {
+  opacity: 0;
+  /* soft edges so the close-up melts into the wide shot while the camera zooms */
+  /* While the camera is wider than this photo, only the astronaut shows (its Earth would end in hard edges);
+     once the photo fills the screen the mask opens and its Earth fades in. --hx-* are set by js/hero-live.js. */
+  -webkit-mask-image:
+    radial-gradient(ellipse var(--hx-rx, 72%) var(--hx-ry, 64%) at 52% 33%, #000 60%, transparent 100%),
+    linear-gradient(to bottom, #000 var(--hx-b0, 47%), transparent var(--hx-b1, 54%));
+  -webkit-mask-composite: source-in;
+          mask-image:
+    radial-gradient(ellipse var(--hx-rx, 72%) var(--hx-ry, 64%) at 52% 33%, #000 60%, transparent 100%),
+    linear-gradient(to bottom, #000 var(--hx-b0, 47%), transparent var(--hx-b1, 54%));
+          mask-composite: intersect;
+}
+.hx-close.is-full { -webkit-mask-image: none; mask-image: none; }
+
+.hx-lines { z-index: 3; overflow: visible; }
+.hx-hud { position: absolute; inset: 0; z-index: 4; pointer-events: none; }
+
+/* targeting reticle around the astronaut */
+.hx-reticle { position: absolute; left: 0; top: 0; opacity: 0; will-change: transform, opacity; }
+.hx-reticle i { position: absolute; width: 18px; height: 18px; border: 2px solid #a8e07a; filter: drop-shadow(0 0 6px rgba(168, 224, 122, 0.7)); }
+.hx-reticle i:nth-child(1) { left: 0; top: 0; border-right: 0; border-bottom: 0; }
+.hx-reticle i:nth-child(2) { right: 0; top: 0; border-left: 0; border-bottom: 0; }
+.hx-reticle i:nth-child(3) { left: 0; bottom: 0; border-right: 0; border-top: 0; }
+.hx-reticle i:nth-child(4) { right: 0; bottom: 0; border-left: 0; border-top: 0; }
+.hx-reticle-label {
+  position: absolute; left: calc(100% + 14px); top: -4px; white-space: nowrap;
+  font: 600 11px/1.4 'Inter', sans-serif; letter-spacing: 0.16em; color: #a8e07a; text-transform: uppercase;
+}
+.hx-reticle-label span { display: block; color: #d7e2d9; letter-spacing: 0.04em; text-transform: none; font-weight: 500; font-size: 13px; }
+.hx-reticle-label b { color: #ff8b9a; }
+.hx-reticle-ring {
+  position: absolute; inset: -14px; border-radius: 50%; border: 1px dashed rgba(168, 224, 122, 0.45);
+  animation: hxSpin 14s linear infinite;
+}
+@keyframes hxSpin { to { transform: rotate(360deg); } }
+
+/* holographic tags pinned to the astronaut */
+.hx-tag {
+  position: absolute; left: 0; top: 0; min-width: 168px; padding: 12px 16px 13px;
+  border-radius: 16px;
+  background: linear-gradient(150deg, rgba(10, 20, 22, 0.78), rgba(6, 12, 14, 0.55));
+  border: 1px solid rgba(168, 224, 122, 0.35);
+  box-shadow: 0 0 30px -8px rgba(168, 224, 122, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(10px) saturate(1.3);
+  -webkit-backdrop-filter: blur(10px) saturate(1.3);
+  color: #eef5ea; font-family: 'Inter', sans-serif; opacity: 0; will-change: transform, opacity;
+}
+.hx-tag small { display: block; color: #8fa197; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 4px; }
+.hx-tag strong { font: 600 28px/1.05 'Space Grotesk', 'Inter', sans-serif; font-variant-numeric: tabular-nums; }
+.hx-tag em { font-style: normal; color: #9fb0a6; font-size: 13px; margin-left: 4px; }
+.hx-tag .hx-row { display: flex; align-items: center; gap: 10px; }
+.hx-tag .hx-heart { width: 18px; height: 18px; color: #ff7a8a; filter: drop-shadow(0 0 6px rgba(255, 110, 140, 0.6)); }
+.hx-tag canvas { display: block; width: 150px; height: 30px; margin-top: 6px; }
+.hx-tag .hx-sub { color: #9fb0a6; font-size: 12px; margin-top: 4px; }
+.hx-tag .hx-chip { display: inline-block; margin-top: 6px; padding: 3px 9px; border-radius: 999px; font-size: 11px; font-weight: 600;
+                   color: #c9f0a8; background: rgba(168, 224, 122, 0.14); border: 1px solid rgba(168, 224, 122, 0.3); }
+
+.hx-credit {
+  position: absolute; right: 18px; bottom: 12px; z-index: 5; max-width: 46%;
+  color: rgba(220, 230, 225, 0.45); font: 400 10.5px/1.4 'Inter', sans-serif; text-align: right; pointer-events: none;
+}
+
+.vv-sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+@media (max-width: 700px) {
+  .hx-credit { display: none; }        /* on phones the credit is in the footer instead */
+  .hx-reticle-label { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .hx-reticle-ring { animation: none; } }

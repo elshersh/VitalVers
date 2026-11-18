@@ -1,0 +1,21 @@
+{
+  "_description": "Maps expected_topic labels in eval/external_questions.csv to valid route/intent names in offline_ai_chatbot.py (Ground Rule 6).",
+  "topic_to_routes": {
+    "sleep": ["sleep_psych"],
+    "heart_rate": ["cardio"],
+    "blood_pressure": ["cardio", "alerts"],
+    "health_alerts": ["alerts", "status", "cardio", "urgent_escalation"],
+    "bone_muscle": ["bone_muscle"],
+    "countermeasures": ["todo", "bone_muscle", "alerts", "sleep_psych"],
+    "stress_mood": ["sleep_psych", "calming"],
+    "mental_health": ["sleep_psych", "contact", "calming"],
+    "immune": ["immune", "glucose"],
+    "spo2": ["cardio", "alerts"],
+    "glucose": ["glucose", "immune"],
+    "training_activity": ["sleep_psych", "todo", "correlation"],
+    "hormones": ["immune"],
+    "multi_topic": ["status", "alerts", "sleep_psych", "cardio"],
+    "summary": ["status", "alerts", "baseline", "replay"],
+    "out_of_scope": ["refusal"]
+  }
+}

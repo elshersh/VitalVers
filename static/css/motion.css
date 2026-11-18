@@ -1,0 +1,130 @@
+/* Vitalverse motion layer: one continuous animated sky, smooth "drift through space" page transitions,
+   scroll reveal, card spotlight and click ripples. Loaded on every page. Purely decorative: the site
+   works the same without it, and motion is switched off for people who ask their system to reduce motion. */
+
+/* Let the star canvas show through: one deep-space colour on <html>, transparent <body>. */
+html { background: #020407 !important; }
+body { background: transparent !important; }
+
+#vvStarfield {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ---------- page transitions (cross-document View Transitions) ----------
+   The sky is drawn identically on every page, so it stays perfectly still between pages.
+   Only the page content moves: the old page drifts toward you and dissolves into the stars,
+   the new page glides in from deep space and comes into focus. js/motion.js names the content
+   blocks (class "vv-page") just for the duration of the transition. */
+@view-transition { navigation: auto; }
+
+/* While a transition runs (on both the old and the new page), every top-level content block becomes its own
+   layer. "match-element" names never pair across two documents, so each old block dissolves away and each
+   new block glides in on its own, while the sky (part of the root) stays still. */
+html:active-view-transition body > *:not(canvas):not(script):not(style) {
+  view-transition-name: match-element;
+  view-transition-class: vv-page;
+}
+html:active-view-transition header.vv-nav {
+  view-transition-name: vv-nav;
+  view-transition-class: none;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+::view-transition-old(root) { opacity: 0; }
+
+::view-transition-group(*.vv-page) { animation-duration: 0s; }
+::view-transition-old(*.vv-page) {
+  animation: vvDriftOut 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+::view-transition-new(*.vv-page) {
+  animation: vvDriftIn 1.15s cubic-bezier(0.25, 0.9, 0.3, 1) 0.2s both;
+}
+/* the shared navbar stays where it is */
+::view-transition-group(vv-nav) { animation-duration: 0.4s; animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1); }
+::view-transition-old(vv-nav) { animation: vvFade 0.25s ease both reverse; }
+::view-transition-new(vv-nav) { animation: vvFade 0.35s ease both; }
+/* coming from the home page (no shared navbar): let the old page dissolve first */
+::view-transition-new(vv-nav):only-child { animation: vvDriftIn 0.9s cubic-bezier(0.25, 0.9, 0.3, 1) 0.3s both; }
+::view-transition-old(vv-nav):only-child { animation: vvDriftOut 0.6s cubic-bezier(0.4, 0, 0.2, 1) both; }
+
+@keyframes vvDriftOut {
+  0%   { opacity: 1; transform: none; filter: blur(0); }
+  100% { opacity: 0; transform: scale(1.06); filter: blur(10px) brightness(1.25); }
+}
+@keyframes vvDriftIn {
+  0%   { opacity: 0; transform: scale(0.94) translateY(14px); filter: blur(12px) brightness(1.3); }
+  70%  { opacity: 1; filter: blur(0) brightness(1.05); }
+  100% { opacity: 1; transform: none; filter: none; }
+}
+@keyframes vvFade { from { opacity: 0; } to { opacity: 1; } }
+
+/* Browsers without cross-document View Transitions: a simple glide-in on load. */
+@supports not (view-transition-class: a) {
+  body > *:not(#vvStarfield):not(script):not(style) {
+    animation: vvDriftIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+}
+
+/* ---------- scroll reveal ---------- */
+.vv-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.vv-reveal.vv-in { opacity: 1; transform: none; }
+
+/* ---------- cursor spotlight on cards ---------- */
+.vv-spot {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  background: radial-gradient(420px circle at var(--vv-mx, 50%) var(--vv-my, 50%),
+              rgba(168, 224, 122, 0.10), rgba(168, 224, 122, 0.03) 40%, transparent 70%);
+  z-index: 0;
+}
+.vv-spot-host:hover > .vv-spot { opacity: 1; }
+.vv-spot-host { transition: box-shadow 0.35s ease, border-color 0.35s ease; }
+.vv-spot-host:hover {
+  box-shadow: 0 0 0 1px rgba(168, 224, 122, 0.22), 0 22px 60px -28px rgba(168, 224, 122, 0.45);
+}
+
+/* ---------- click ripple ---------- */
+.vv-ripple {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: scale(0);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.55), rgba(168, 224, 122, 0.25) 45%, transparent 70%);
+  animation: vvRipple 0.65s ease-out forwards;
+}
+@keyframes vvRipple { to { transform: scale(1); opacity: 0; } }
+
+/* ---------- site-wide polish ---------- */
+html { scrollbar-color: rgba(168, 224, 122, 0.35) #04080a; scrollbar-width: thin; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #04080a; }
+::-webkit-scrollbar-thumb { background: rgba(168, 224, 122, 0.28); border-radius: 10px; border: 2px solid #04080a; }
+::-webkit-scrollbar-thumb:hover { background: rgba(168, 224, 122, 0.5); }
+::selection { background: rgba(168, 224, 122, 0.32); color: #ffffff; }
+:focus-visible { outline: 2px solid #a8e07a; outline-offset: 3px; border-radius: 6px; }
+body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+
+/* ---------- reduced motion: keep a still star field, no movement ---------- */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) { animation: none !important; }
+  body > *:not(#vvStarfield):not(script):not(style) { animation: none !important; }
+  .vv-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .vv-ripple { display: none !important; }
+}

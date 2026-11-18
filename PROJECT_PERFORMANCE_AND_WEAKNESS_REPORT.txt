@@ -1,0 +1,220 @@
+================================================================================
+ASTRONAUT HEALTH MONITORING SYSTEM — PERFORMANCE & WEAKNESS REPORT
+Project: NASA Space Apps Challenge — Autonomous Astronaut Health Monitoring
+Model Version: personal_baseline_v3 (200 Astronauts / 36,000 Records / 132 Features)
+Date: November 14, 2026
+Disclaimer: Prototype for research/education only — not for clinical diagnosis.
+================================================================================
+
+1. EXECUTIVE SUMMARY & OVERALL RESULTS
+--------------------------------------------------------------------------------
+The Astronaut Health Monitoring System is an offline-capable backend prototype
+combining a personalized machine learning classifier (Random Forest with 132
+personal-baseline features and tuned decision weights) and a deterministic,
+anti-hallucination offline AI chatbot backed by a SQLite telemetry database.
+
+Across the latest clean evaluation (Version 3, expanded from 60 to 200 fictional
+astronauts over a 180-day mission = 36,000 daily records), the system was tested
+using a strict zero-leakage cohort split (GroupShuffleSplit: 160 training
+astronauts / 28,800 records; 40 completely unseen blind-test astronauts /
+7,200 records).
+
+Key Headline Results (Version 3 vs. Earlier Version 2 Baseline):
+- Overall Blind-Test Accuracy:      91.53% (up from 84.54% / 85.32% in v2)
+- Macro Sensitivity (Recall):       85.49% (up from 78.89% / 79.43% in v2)
+- Weighted Sensitivity:             91.53%
+- Macro Specificity:                94.26% (up from 91.39% / 91.61% in v2)
+- Macro Precision:                  81.21% (up from 75.72% / 77.02% in v2)
+- Macro F1-Score:                   82.94% (up from 76.74% / 77.84% in v2)
+- Safety-Critical Danger Recall:    88.46% (up from 79.49% in v2)
+- 5-Fold GroupKFold CV Stability:   90.53% +/- 1.33% (on training astronauts)
+- Offline Chatbot Held-Out Eval:    97.2% Accuracy, 100.0% Sensitivity (42/42),
+                                    93.3% Specificity (28/30)
+
+
+2. ACCURACY ANALYSIS
+--------------------------------------------------------------------------------
+A. Machine Learning Classifier Accuracy
+- Blind-Test Multi-Class Accuracy: 91.53% (6,590 correct predictions out of
+  7,200 unseen astronaut-days across 40 held-out astronauts).
+- 5-Fold Cross-Validation Accuracy (GroupKFold on 160 Training Astronauts):
+  Mean = 90.53% +/- 1.33% across folds (Fold 1: 89.60%, Fold 2: 92.85%,
+  Fold 3: 88.91%, Fold 4: 90.68%, Fold 5: 90.59%). The low standard deviation
+  (1.33%) demonstrates strong stability across different astronaut cohorts.
+- Impact of Decision Weights on Raw Accuracy:
+  Without post-processing decision weights (Normal=1.0, Stress=1.2, Warning=1.2,
+  Danger=2.0), raw overall accuracy is slightly higher at 92.38%, but safety-
+  critical Medical Danger sensitivity drops to 85.26%. The model intentionally
+  trades 0.85 percentage points of raw accuracy to maximize life-safety recall.
+
+B. Offline AI Chatbot Accuracy
+- Original Verification Suite (35 tests): 100.0% (35/35 passed)
+- Development Set (40 questions):         100.0% (40/40 passed)
+- Held-Out Test Set (72 unseen questions): 97.2% (70/72 passed; up from 73.6%
+  before the lexical/routing rebuild)
+
+
+3. SENSITIVITY (RECALL / "SENS") ANALYSIS
+--------------------------------------------------------------------------------
+Sensitivity measures the system's ability to correctly detect true positive
+cases for each clinical state without missing events (TP / [TP + FN]).
+
+A. AI Health Classifier Sensitivity (Blind Test, N = 7,200)
+- Macro Average Sensitivity:    85.49%
+- Weighted Average Sensitivity: 91.53%
+
+Per-Class Sensitivity Breakdown:
+1. Normal (Support = 5,626 days):
+   - Sensitivity: 95.25% (5,359 TP, 267 FN)
+   - Interpretation: 95.25% of healthy days are properly recognized as Normal.
+2. Stress_BP_Spike_No_Medical_Danger (Support = 517 days):
+   - Sensitivity: 86.65% (448 TP, 69 FN)
+   - Interpretation: Detects 86.65% of benign workload/psychological stress
+     spikes, allowing calming countermeasures (music/family photo) to trigger.
+3. Health_Warning (Support = 901 days):
+   - Sensitivity: 71.59% (645 TP, 256 FN)
+   - Interpretation: Captures roughly 7 out of 10 gradual deconditioning or
+     early warning days, though 235 warning days were missed as Normal.
+4. Medical_Danger_Alert [SAFETY-CRITICAL] (Support = 156 days):
+   - Sensitivity: 88.46% (138 TP, 18 FN)
+   - Interpretation: Detects 88.46% of acute medical danger days. Of the 18
+     missed danger days, 13 were classified as Stress_BP_Spike, 2 as
+     Health_Warning, and only 3 were completely missed as Normal.
+
+B. Offline AI Chatbot Sensitivity
+- Held-Out In-Scope Sensitivity: 100.0% (42/42 in-scope questions answered
+  with the exact expected intent without false refusal).
+- Development In-Scope Sensitivity: 100.0% (25/25).
+
+
+4. SPECIFICITY ANALYSIS
+--------------------------------------------------------------------------------
+Specificity measures the true negative rate (TN / [TN + FP]), showing how well
+the system avoids false alarms for each state.
+
+A. AI Health Classifier Specificity (Blind Test, N = 7,200)
+- Macro Average Specificity: 94.26%
+
+Per-Class Specificity Breakdown:
+1. Normal (Non-Normal Support = 1,574 days):
+   - Specificity: 82.02% (1,291 TN, 283 FP)
+   - Interpretation: When an astronaut is experiencing an abnormal state
+     (Stress, Warning, or Danger), the model avoids calling them Normal 82.02%
+     of the time. (283 abnormal days were falsely labeled Normal).
+2. Stress_BP_Spike_No_Medical_Danger (Non-Stress Support = 6,683 days):
+   - Specificity: 98.14% (6,559 TN, 124 FP)
+   - Interpretation: Very low false-alarm rate (1.86%) for stress spikes.
+3. Health_Warning (Non-Warning Support = 6,299 days):
+   - Specificity: 97.73% (6,156 TN, 143 FP)
+   - Interpretation: High specificity; only 2.27% of non-warning days trigger
+     a false Health Warning (improved markedly from 89.60% / 90.45% in v2).
+4. Medical_Danger_Alert (Non-Danger Support = 7,044 days):
+   - Specificity: 99.15% (6,984 TN, 60 FP)
+   - Interpretation: Out of 7,044 non-danger days, 99.15% are cleared without
+     a false emergency alarm.
+
+B. Offline AI Chatbot Specificity
+- Held-Out Out-of-Scope Specificity: 93.3% (28/30 out-of-scope or adversarial
+  questions properly refused with the certified refusal text; 2 false accepts).
+- Development & Original Suite Specificity: 100.0% (15/15 and 14/14 refused).
+
+
+5. CONFUSION MATRIX & PRECISION / F1 SUMMARY (BLIND TEST, N = 7,200)
+--------------------------------------------------------------------------------
+Rows = True Hidden State | Columns = Model Prediction
+
+                        Pred Normal   Pred Stress   Pred Warning   Pred Danger   Row Total
+True Normal                  5,359            96            137            34       5,626
+True Stress                     45           448              4            20         517
+True Warning                   235            15            645             6         901
+True Danger                      3            13              2           138         156
+Column Total                 5,642           572            788           198       7,200
+
+Per-Class Precision & F1-Score:
+- Normal:               Precision = 94.98% | F1 = 95.12%
+- Stress_BP_Spike:      Precision = 78.32% | F1 = 82.28%
+- Health_Warning:       Precision = 81.85% | F1 = 76.38%
+- Medical_Danger_Alert: Precision = 69.70% | F1 = 77.97%
+
+
+6. WEAKNESSES & LIMITATIONS
+--------------------------------------------------------------------------------
+A. Statistical & Model Performance Weaknesses
+1. Moderate Sensitivity on Health_Warning (71.59%):
+   - The biggest classification weakness is detecting mild/gradual deconditioning
+     (`Health_Warning`). Out of 901 true warning days in the blind test, 256 were
+     missed—and 235 of those were misclassified as `Normal`. Early-onset or
+     low-amplitude drift overlaps with normal day-to-day physiological noise.
+2. False Positive Rate / Precision on Medical_Danger_Alert (69.70% Precision):
+   - Because decision weight for Danger was boosted to 2.0 to prioritize crew
+     safety, the model generated 60 false danger alerts (34 on Normal days,
+     20 on Stress days, 6 on Warning days) alongside 138 true alerts. Nearly
+     30.3% of Danger alerts are false alarms, which could cause alarm fatigue
+     for flight surgeons.
+3. Residual Missed Medical Danger Events (18 False Negatives / 11.54% Miss Rate):
+   - 18 out of 156 true `Medical_Danger_Alert` days were not flagged as Danger.
+     Notably, 13 of the 18 were misclassified as `Stress_BP_Spike_No_Medical_Danger`
+     (because severe cardiovascular spikes overlap between acute stress and
+     medical danger), 2 as `Health_Warning`, and 3 as `Normal`.
+4. Normal State Specificity (82.02%):
+   - 283 out of 1,574 abnormal days (45 Stress, 235 Warning, 3 Danger) were
+     falsely predicted as `Normal`, meaning the system can under-call mild or
+     transitional episodes.
+5. Small Sample Size for Critical Events:
+   - Only 156 `Medical_Danger_Alert` days exist in the 7,200-record blind test
+     (2.17% prevalence). Each single missed or caught day shifts danger
+     sensitivity by ~0.64 percentage points.
+
+B. Data & Simulation Weaknesses
+1. 100% Simulated Telemetry (No Clinical Evidence):
+   - No real astronaut telemetry exists in the public challenge resources. All
+     36,000 records and hidden states (`true_class`) are synthetically generated.
+     Therefore, the 91.53% accuracy measures how well the Random Forest recovers
+     the project's own simulation rules, not real-world clinical diagnostic
+     validity.
+2. Unverified Team-Supplied Thresholds & Summaries:
+   - Several physiological ranges and cut-offs (e.g., in `07_health_indicators_schema.json`
+     and summaries `02`–`04`) were supplied as rewritten team files rather than
+     verbatim NASA/CSA source documents, and carry the provenance label
+     `synthetic_from_team_file_unverified`.
+3. Placeholder Indicators:
+   - Indicators without published numeric ranges in the challenge resources
+     (`muscle_health`, `immunity_indicators`, `hormones`, `relaxation`,
+     `mental_health_assessment`, `game_test_score`, `daily_training_hours`) use
+     arbitrary 0–100 or 0–10 scales.
+   - Missing biomarker: Blood glucose/sugar (mg/dL) was mentioned on the
+     challenge page but is not included in the telemetry schema.
+4. Spurious / Meaningless Mood-Training Correlation:
+   - `daily_training_hours` is generated independently of `mood`. The pooled
+     correlation p-value appears statistically significant (r = -0.04) only
+     because pooling treats 180 days from the same astronaut as independent
+     observations; within-astronaut mean correlation is virtually zero (r = 0.006).
+
+C. Offline Chatbot Weaknesses
+1. Keyword Overlap / Out-of-Scope Leaks (93.3% Specificity on Held-Out Set):
+   - Because the offline chatbot uses TF-IDF n-grams and domain vocabulary rules
+     rather than a semantic LLM, out-of-scope questions that contain health/sensor
+     keywords can bypass the refusal filter. Specifically, two held-out questions
+     failed refusal:
+     * "What's the temperature on Venus?" (matched `temperature` -> `immune`)
+     * "How do I fix the oxygen generator?" (matched `oxygen`/`fix` -> health intent)
+2. Evaluator Bias in Question Sets:
+   - Both the chatbot rules and the evaluation sets were authored by the same
+     developer, and 4 held-out questions still share all topic words with
+     training exemplars. Real users may phrase queries in ways outside the
+     curated synonym map.
+
+D. Clinical Content & Operational System Weaknesses
+1. Missing Countermeasure Guidance for Immune & Danger States:
+   - The `countermeasures` table has blank `verified_by` fields across all rows
+     and lacks specific actionable advice for the `Immune` body zone and
+     `Medical_Danger_Alert` (both default solely to "contact flight surgeon").
+2. Lack of Real Authentication:
+   - `he.login(astronaut_id)` only checks whether the astronaut ID exists in
+     SQLite (`A001`–`A200`) with no password, PIN, or session token.
+3. Database Mutation / Drift on Frontend Write-Backs:
+   - Calling interactive write functions (`complete_task`, score submissions,
+     profile edits) modifies `astronaut_health.db` in place, which will cause
+     subsequent runs of `blind_test.py` to drift from reference metrics unless
+     the database is regenerated.
+================================================================================

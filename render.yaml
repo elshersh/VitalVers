@@ -1,0 +1,17 @@
+# Render Blueprint: https://render.com/docs/blueprint-spec
+# New > Blueprint > pick this repo. Render asks for GEMINI_API_KEY (kept secret, never stored in the repo).
+services:
+  - type: web
+    name: vitalvers
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/chat/status
+    autoDeploy: true
+    envVars:
+      - key: ONLINE_PROVIDER
+        value: gemini
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: VITALVERSE_COOKIE_SECURE
+        value: "1"

@@ -1,0 +1,42 @@
+# NASA Office of the Chief Health and Medical Officer (OCHMO) Technical Briefs
+
+SOURCE_URL: https://www.nasa.gov/ochmo/health-and-medical-policy/nasa-std-3001-technical-briefs/
+
+## OCHMO-TB-030: Bone Mineral Loss (2023)
+URL: https://www.nasa.gov/wp-content/uploads/2023/12/ochmo-tb-030-bone-mineral-loss.pdf
+SECTION: Overview & Countermeasures (Pages 1-3)
+"Without gravitational loading, weight-bearing bones lose 1% to 1.5% of bone mineral density per month in spaceflight, increasing renal stone and fracture risk."
+"High-intensity resistive exercise on the Advanced Resistive Exercise Device (ARED), adequate vitamin D and calcium intake, and bisphosphonate therapy protect bone mineral density."
+
+## OCHMO-TB-031: Exercise Countermeasures Overview (2023)
+URL: https://www.nasa.gov/wp-content/uploads/2023/12/ochmo-tb-031-exercise-overview.pdf
+SECTION: ISS Exercise Prescription & Hardware (Pages 1-4)
+"Astronauts on the ISS are allocated approximately 2.0 to 2.5 hours per day for combined resistive (ARED) and aerobic (T2 treadmill, CEVIS) exercise."
+"Daily combined resistive and aerobic exercise mitigates skeletal muscle atrophy, bone mineral density loss, and cardiovascular deconditioning during microgravity missions."
+
+## OCHMO-TB-033: Spaceflight Associated Neuro-ocular Syndrome (SANS) (2023)
+URL: https://www.nasa.gov/wp-content/uploads/2023/12/ochmo-tb-033-sans.pdf
+SECTION: Cephalad Fluid Shift & Ocular Monitoring (Pages 1-4)
+"In microgravity, approximately 2 liters of intravascular and interstitial fluid shift cephalad toward the head and thorax, contributing to optic disc edema and globe flattening."
+"Ocular ultrasound measurement of optic nerve sheath diameter (ONSD) 3 mm posterior to the globe monitors intracranial fluid shifts; Lower Body Negative Pressure (LBNP) is investigated as a mechanical countermeasure."
+
+## OCHMO-TB-015: Space Motion Sickness and Sensorimotor Adaptation (2023)
+URL: https://www.nasa.gov/wp-content/uploads/2023/03/ochmo-tb-015-sensorimotor.pdf
+SECTION: Time Course & Compression Garments (Pages 1-3)
+"Vestibular disorientation and space motion sickness typically occur during the initial 48 to 72 hours of weightlessness and upon return to gravity."
+"Pre-landing fluid and electrolyte loading combined with lower-body compression garments mitigate post-flight orthostatic intolerance and presyncope."
+
+## OCHMO-TB-004: Carbon Dioxide (CO2) and Habitat Air Quality (2023)
+URL: https://www.nasa.gov/wp-content/uploads/2023/03/ochmo-tb-004-carbon-dioxide.pdf
+SECTION: Clinical Symptoms & ECLSS Scrubbing (Pages 1-3)
+"Elevated cabin carbon dioxide partial pressures above 3 to 5 mmHg increase incidence of crew headaches, lethargy, and neurobehavioral impairment."
+
+## OCHMO-TB-025: Behavioral Health, Sleep, and Circadian Rhythm (2023)
+URL: https://www.nasa.gov/wp-content/uploads/2023/03/ochmo-tb-025-sleep-and-circadian.pdf
+SECTION: Behavioral Countermeasures (Pages 1-4)
+"Structured sleep-wake schedules, circadian-aligned dynamic lighting, private psychological conferences, and family communication mitigate behavioral health decline during isolation and confinement."
+
+## OCHMO-TB-038: Immune System Dysregulation in Spaceflight (2023)
+URL: https://www.nasa.gov/wp-content/uploads/2023/12/ochmo-tb-038-immune-system.pdf
+SECTION: Immune Countermeasures & Clinical Monitoring (Pages 1-3)
+"Spaceflight immune dysregulation involves altered T-cell function and latent herpesvirus reactivation; countermeasures include stress reduction, adequate sleep, nutrition, and exercise."

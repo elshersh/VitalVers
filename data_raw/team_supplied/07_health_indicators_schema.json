@@ -1,0 +1,1133 @@
+{
+  "schema_version": "2.0.0",
+  "description": "Expanded and source-verified health indicators schema for the 2026 NASA Space Apps Astronaut Health Monitoring project (Phase 2 B2/B3/B4/D4).",
+  "allowed_verification_statuses": [
+    "VERIFIED_AGAINST_PUBLISHED_STANDARD",
+    "ADJUSTED_TO_PUBLISHED_STANDARD",
+    "TERRESTRIAL_REFERENCE",
+    "PLACEHOLDER_SCALE",
+    "UNVERIFIED"
+  ],
+  "indicators": [
+    {
+      "name": "heart_rate",
+      "telemetry_column": "heart_rate",
+      "display_name": "Heart Rate",
+      "unit": "bpm",
+      "category": "vital_signs",
+      "measurement_methods": [
+        "Pulse oximeter",
+        "Wearable chest strap / BioHarness",
+        "ECG electrodes"
+      ],
+      "normal_earth_baseline": {
+        "min": 60,
+        "max": 100
+      },
+      "spaceflight_expected_resting": {
+        "min": 55,
+        "max": 90
+      },
+      "alert_thresholds": {
+        "low_warning": 50,
+        "low_critical": 40,
+        "high_warning": 105,
+        "high_critical": 130
+      },
+      "value_used": "Earth normal 60-100 bpm; spaceflight resting 55-90 bpm; low_warning=50, low_critical=40, high_warning=105, high_critical=130 bpm",
+      "source_document": "terrestrial_clinical_standards.txt",
+      "source_url": "https://www.rcplondon.ac.uk/projects/outputs/national-early-warning-score-news-2",
+      "page_or_section": "Chart 1 — NEWS2 Physiological Parameters (Heart Rate, SpO2, Core Temperature)",
+      "exact_quote": "Normal adult resting heart rate is 60 to 100 bpm (NEWS2 score 0 at 51 to 90 bpm); bradycardia warning <= 50 bpm",
+      "verification_status": "TERRESTRIAL_REFERENCE",
+      "ui_badge": "Reference value",
+      "notes": "NASA-STD-3001 does not publish open-access resting heart rate alert cut-offs; verified against Royal College of Physicians NEWS2 physiological scoring parameters.",
+      "source_status": "TERRESTRIAL_REFERENCE",
+      "reviewer_status": "",
+      "reviewer_role": "",
+      "review_date": "",
+      "decision": "",
+      "threshold_details": {
+        "low_warning": {
+          "value_used": 50,
+          "old_value": 50,
+          "source_document": "terrestrial_clinical_standards.txt",
+          "source_url": "https://www.rcplondon.ac.uk/projects/outputs/national-early-warning-score-news-2",
+          "page_or_section": "Chart 1 — NEWS2 Physiological Parameters",
+          "exact_quote": "bradycardia warning <= 50 bpm, critical <= 40 bpm, tachycardia warning >= 105 bpm, critical >= 130 bpm.",
+          "verification_status": "TERRESTRIAL_REFERENCE",
+          "ui_badge": "Reference value",
+          "notes": "NEWS2 score 1 bradycardia threshold (<=50 bpm)."
+        },
+        "low_critical": {
+          "value_used": 40,
+          "old_value": 40,
+          "source_document": "terrestrial_clinical_standards.txt",
+          "source_url": "https://www.rcplondon.ac.uk/projects/outputs/national-early-warning-score-news-2",
+          "page_or_section": "Chart 1 — NEWS2 Physiological Parameters",
+          "exact_quote": "bradycardia warning <= 50 bpm, critical <= 40 bpm, tachycardia warning >= 105 bpm, critical >= 130 bpm.",
+          "verification_status": "TERRESTRIAL_REFERENCE",
+          "ui_badge": "Reference value",
+          "notes": "NEWS2 score 3 critical bradycardia threshold (<=40 bpm)."
+        },
+        "high_warning": {
+          "value_used": 105,
+          "old_value": 105,
+          "source_document": "terrestrial_clinical_standards.txt",
+          "source_url": "https://www.rcplondon.ac.uk/projects/outputs/national-early-warning-score-news-2",
+          "page_or_section": "Chart 1 — NEWS2 Physiological Parameters",
+          "exact_quote": "bradycardia warning <= 50 bpm, critical <= 40 bpm, tachycardia warning >= 105 bpm, critical >= 130 bpm.",
+          "verification_status": "TERRESTRIAL_REFERENCE",
+          "ui_badge": "Reference value",
+          "notes": "Resting tachycardia warning threshold (>=105 bpm)."
+        },
+        "high_critical": {
+          "value_used": 130,
+          "old_value": 130,
+          "source_document": "terrestrial_clinical_standards.txt",
+          "source_url": "https://www.rcplondon.ac.uk/projects/outputs/national-early-warning-score-news-2",
+          "page_or_section": "Chart 1 — NEWS2 Physiological Parameters",
+          "exact_quote": "bradycardia warning <= 50 bpm, critical <= 40 bpm, tachycardia warning >= 105 bpm, critical >= 130 bpm.",
+          "verification_status": "TERRESTRIAL_REFERENCE",
+          "ui_badge": "Reference value",
+          "notes": "NEWS2 score 3 critical tachycardia threshold (>=130 bpm)."
+        }
+      },
+      "associated_hazards": [
+        "Gravity Fields",
+        "Isolation and Confinement"
+      ],
+      "clinical_significance": "Monitors cardiovascular deconditioning, orthostatic stress, autonomic response to exercise, and acute panic/anxiety."
+    },
+    {
+      "name": "blood_pressure_systolic",
+      "telemetry_column": "systolic_bp",
+      "display_name": "Systolic Blood Pressure",
+      "unit": "mmHg",
+      "category": "vital_signs",
+      "measurement_methods": [
+        "Automated non-invasive blood pressure (NIBP) cuff"
+      ],
+      "normal_earth_baseline": {
+        "min": 90,
+        "max": 120
+      },
+      "spaceflight_expected_resting": {
+        "min": 95,
+        "max": 130
+      },
+      "alert_thresholds": {
+        "low_warning": 90,
+        "low_critical": 80,
+        "high_warning": 140,
+        "high_critical": 160
+      },
+      "old_value": {
+        "high_warning": 135
+      },
+      "value_used": "Earth normal 90-120 mmHg; spaceflight resting 95-130 mmHg; low_warning=90, low_critical=80, high_warning=140 (adjusted from 135), high_critical=160 mmHg",
+      "source_document": "terrestrial_clinical_standards.txt",
+      "source_url": "https://www.heart.org/en/health-topics/high-blood-pressure/understanding-blood-pressure-readings",
+      "page_or_section": "Table 6 — Categories of Blood Pressure in Adults & Hypotension Clinical Cut-offs",
+      "exact_quote": "Normal adult blood pressure is systolic 90 to 120 mmHg and diastolic 60 to 80 mmHg; Stage 2 hypertension is >= 140/90 mmHg",
+      "verification_status": "ADJUSTED_TO_PUBLISHED_STANDARD",
+      "ui_badge": "Reference value",
+      "notes": "high_warning adjusted from 135 mmHg to 140 mmHg to match AHA/ACC Stage 2 systolic hypertension (>=140 mmHg); hypotension warning <90 mmHg and critical <=80 mmHg.",
+      "source_status": "ADJUSTED_TO_PUBLISHED_STANDARD",
+      "reviewer_status": "",
+      "reviewer_role": "",
+      "review_date": "",
+      "decision": "",
+      "threshold_details": {
+        "low_warning": {
+          "value_used": 90,
+          "old_value": 90,
+          "source_document": "terrestrial_clinical_standards.txt",
+          "source_url": "https://www.heart.org/en/health-topics/high-blood-pressure/understanding-blood-pressure-readings",
+          "page_or_section": "Table 6 — Hypotension Clinical Cut-offs",
+          "exact_quote": "Clinically significant arterial hypotension in adults is defined as systolic blood pressure < 90 mmHg or diastolic < 60 mmHg",
+          "verification_status": "TERRESTRIAL_REFERENCE",
+          "ui_badge": "Reference value",
+          "notes": "Standard clinical arterial hypotension cut-off (<90 mmHg)."
+        },
+        "low_critical": {
+          "value_used": 80,
+          "old_value": 80,
+          "source_document": "terrestrial_clinical_standards.txt",
+          "source_url": "https://www.heart.org/en/health-topics/high-blood-pressure/understanding-blood-pressure-readings",
+          "page_or_section": "Table 6 — Hypotension Clinical Cut-offs",
+          "exact_quote": "with critical shock risk at systolic <= 80 mmHg or diastolic <= 50 mmHg.",
+          "verification_status": "TERRESTRIAL_REFERENCE",
+          "ui_badge": "Reference value",
+          "notes": "Severe arterial hypotension / shock threshold (<=80 mmHg)."
+        },
+        "high_warning": {
+          "value_used": 140,
+          "old_value": 135,
+          "source_document": "terrestrial_clinical_standards.txt",
+          "source_url": "https://www.heart.org/en/health-topics/high-blood-pressure/understanding-blood-pressure-readings",
+          "page_or_section": "Table 6 — Categories of Blood Pressure in Adults",
+          "exact_quote": "Normal adult blood pressure is systolic 90 to 120 mmHg and diastolic 60 to 80 mmHg; Stage 2 hypertension is >= 140/90 mmHg",
+          "verification_status": "ADJUSTED_TO_PUBLISHED_STANDARD",
+          "ui_badge": "Reference value",
+          "notes": "Adjusted from 135 to 140 mmHg to align with AHA/ACC Stage 2 hypertension (>=140 mmHg)."
+        },
+        "high_critical": {
+          "value_used": 160,
+          "old_value": 160,
+          "source_document": "terrestrial_clinical_standards.txt",
+          "source_url": "https://www.heart.org/en/health-topics/high-blood-pressure/understanding-blood-pressure-readings",
+          "page_or_section": "Table 6 — Categories of Blood Pressure in Adults",
+          "exact_quote": "Normal adult blood pressure is systolic 90 to 120 mmHg and diastolic 60 to 80 mmHg; Stage 2 hypertension is >= 140/90 mmHg",
+          "verification_status": "TERRESTRIAL_REFERENCE",
+          "ui_badge": "Reference value",
+          "notes": "Severe Stage 2 hypertension cut-off (>=160 mmHg; crisis >180 mmHg)."
+        }
+      },
+      "associated_hazards": [
+        "Gravity Fields"
+      ],
+      "clinical_significance": "Tracks arterial pressure changes driven by cephalad fluid shifts and vascular wall remodeling."
+    },
+    {
+      "name": "blood_pressure_diastolic",
+      "telemetry_column": "diastolic_bp",
+      "display_name": "Diastolic Blood Pressure",
+      "unit": "mmHg",
+      "category": "vital_signs",
+      "measurement_methods": [
+        "Automated non-invasive blood pressure (NIBP) cuff"
+      ],
+      "normal_earth_baseline": {
+        "min": 60,
+        "max": 80
+      },
+      "spaceflight_expected_resting": {
+        "min": 60,
+        "max": 85
+      },
+      "alert_thresholds": {
+        "low_warning": 55,
+        "low_critical": 50,
+        "high_warning": 90,
+        "high_critical": 100
+      },
+      "value_used": "Earth normal 60-80 mmHg; spaceflight resting 60-85 mmHg; low_warning=55, low_critical=50, high_warning=90, high_critical=100 mmHg",
+      "source_document": "terrestrial_clinical_standards.txt",
+      "source_url": "https://www.heart.org/en/health-topics/high-blood-pressure/understanding-blood-pressure-readings",
+      "page_or_section": "Table 6 — Categories of Blood Pressure in Adults & Hypotension Clinical Cut-offs",
+      "exact_quote": "Normal adult blood pressure is systolic 90 to 120 mmHg and diastolic 60 to 80 mmHg; Stage 2 hypertension is >= 140/90 mmHg",
+      "verification_status": "TERRESTRIAL_REFERENCE",
+      "ui_badge": "Reference value",
+      "notes": "Verified against AHA/ACC diastolic blood pressure normal range (60-80 mmHg) and Stage 2 hypertension threshold (>=90 mmHg).",
+      "source_status": "TERRESTRIAL_REFERENCE",
+      "reviewer_status": "",
+      "reviewer_role": "",
+      "review_date": "",
+      "decision": "",
+      "threshold_details": {
+        "low_warning": {
+          "value_used": 55,
+          "old_value": 55,
+          "source_document": "terrestrial_clinical_standards.txt",
+          "source_url": "https://www.heart.org/en/health-topics/high-blood-pressure/understanding-blood-pressure-readings",
+          "page_or_section": "Table 6 — Hypotension Clinical Cut-offs",
+          "exact_quote": "Clinically significant arterial hypotension in adults is defined as systolic blood pressure < 90 mmHg or diastolic < 60 mmHg",
+          "verification_status": "TERRESTRIAL_REFERENCE",
+          "ui_badge": "Reference value",
+          "notes": "Mild diastolic hypotension warning (<=55 mmHg)."
+        },
+        "low_critical": {
+          "value_used": 50,
+          "old_value": 50,
+          "source_document": "terrestrial_clinical_standards.txt",
+          "source_url": "https://www.heart.org/en/health-topics/high-blood-pressure/understanding-blood-pressure-readings",
+          "page_or_section": "Table 6 — Hypotension Clinical Cut-offs",
+          "exact_quote": "with critical shock risk at systolic <= 80 mmHg or diastolic <= 50 mmHg.",
+          "verification_status": "TERRESTRIAL_REFERENCE",
+          "ui_badge": "Reference value",
+          "notes": "Critical diastolic hypotension threshold (<=50 mmHg)."
+        },
+        "high_warning": {
+          "value_used": 90,
+          "old_value": 90,
+          "source_document": "terrestrial_clinical_standards.txt",
+          "source_url": "https://www.heart.org/en/health-topics/high-blood-pressure/understanding-blood-pressure-readings",
+          "page_or_section": "Table 6 — Categories of Blood Pressure in Adults",
+          "exact_quote": "Normal adult blood pressure is systolic 90 to 120 mmHg and diastolic 60 to 80 mmHg; Stage 2 hypertension is >= 140/90 mmHg",
+          "verification_status": "TERRESTRIAL_REFERENCE",
+          "ui_badge": "Reference value",
+          "notes": "AHA Stage 2 diastolic hypertension threshold (>=90 mmHg)."
+        },
+        "high_critical": {
+          "value_used": 100,
+          "old_value": 100,
+          "source_document": "terrestrial_clinical_standards.txt",
+          "source_url": "https://www.heart.org/en/health-topics/high-blood-pressure/understanding-blood-pressure-readings",
+          "page_or_section": "Table 6 — Categories of Blood Pressure in Adults",
+          "exact_quote": "Normal adult blood pressure is systolic 90 to 120 mmHg and diastolic 60 to 80 mmHg; Stage 2 hypertension is >= 140/90 mmHg",
+          "verification_status": "TERRESTRIAL_REFERENCE",
+          "ui_badge": "Reference value",
+          "notes": "Severe Stage 2 diastolic hypertension (>=100 mmHg)."
+        }
+      },
+      "associated_hazards": [
+        "Gravity Fields"
+      ],
+      "clinical_significance": "Indicator of vascular resistance and filling pressure."
+    },
+    {
+      "name": "blood_sugar",
+      "telemetry_column": "blood_glucose_mg_dl",
+      "display_name": "Blood Glucose (Fasting)",
+      "unit": "mg/dL",
+      "category": "metabolic_and_biomarkers",
+      "measurement_methods": [
+        "Capillary fingerstick glucometer",
+        "Continuous Glucose Monitor (CGM) sensor"
+      ],
+      "normal_earth_baseline": {
+        "min": 70,
+        "max": 99
+      },
+      "spaceflight_expected_fasting": {
+        "min": 75,
+        "max": 110
+      },
+      "alert_thresholds": {
+        "hypoglycemia_warning": 70,
+        "hypoglycemia_critical": 54,
+        "hyperglycemia_warning": 126,
+        "hyperglycemia_critical": 180
+      },
+      "old_value": {
+        "hypoglycemia_warning": 65,
+        "hypoglycemia_critical": 55
+      },
+      "value_used": "Earth fasting normal 70-99 mg/dL; spaceflight expected 75-110 mg/dL; hypoglycemia_warning=70 (adjusted from 65), hypoglycemia_critical=54 (adjusted from 55), hyperglycemia_warning=126, hyperglycemia_critical=180 mg/dL",
+      "source_document": "terrestrial_clinical_standards.txt",
+      "source_url": "https://doi.org/10.2337/dc24-S002",
+      "page_or_section": "ADA Standards of Care 2024 — Section 2 (Fasting Plasma Glucose) & Section 6 Table 6.4 (Hypoglycemia)",
+      "exact_quote": "Level 1 hypoglycemia alert value is blood glucose < 70 mg/dL (>= 54 mg/dL); Level 2 clinically significant hypoglycemia is blood glucose < 54 mg/dL.",
+      "verification_status": "ADJUSTED_TO_PUBLISHED_STANDARD",
+      "ui_badge": "Reference value",
+      "notes": "Added blood_glucose_mg_dl to daily telemetry and model features (B4). Adjusted hypoglycemia_warning from 65 to 70 mg/dL (ADA Level 1) and hypoglycemia_critical from 55 to 54 mg/dL (ADA Level 2). Hyperglycemia warning 126 mg/dL and critical 180 mg/dL match ADA guidelines.",
+      "source_status": "ADJUSTED_TO_PUBLISHED_STANDARD",
+      "reviewer_status": "",
+      "reviewer_role": "",
+      "review_date": "",
+      "decision": "",
+      "threshold_details": {
+        "hypoglycemia_warning": {
+          "value_used": 70,
+          "old_value": 65,
+          "source_document": "terrestrial_clinical_standards.txt",
+          "source_url": "https://doi.org/10.2337/dc24-S002",
+          "page_or_section": "Section 6 Table 6.4 — Classification of Hypoglycemia",
+          "exact_quote": "Level 1 hypoglycemia alert value is blood glucose < 70 mg/dL (>= 54 mg/dL); Level 2 clinically significant hypoglycemia is blood glucose < 54 mg/dL.",
+          "verification_status": "ADJUSTED_TO_PUBLISHED_STANDARD",
+          "ui_badge": "Reference value",
+          "notes": "Adjusted from 65 to 70 mg/dL per ADA Level 1 hypoglycemia definition (<70 mg/dL)."
+        },
+        "hypoglycemia_critical": {
+          "value_used": 54,
+          "old_value": 55,
+          "source_document": "terrestrial_clinical_standards.txt",
+          "source_url": "https://doi.org/10.2337/dc24-S002",
+          "page_or_section": "Section 6 Table 6.4 — Classification of Hypoglycemia",
+          "exact_quote": "Level 1 hypoglycemia alert value is blood glucose < 70 mg/dL (>= 54 mg/dL); Level 2 clinically significant hypoglycemia is blood glucose < 54 mg/dL.",
+          "verification_status": "ADJUSTED_TO_PUBLISHED_STANDARD",
+          "ui_badge": "Reference value",
+          "notes": "Adjusted from 55 to 54 mg/dL per ADA Level 2 hypoglycemia definition (<54 mg/dL)."
+        },
+        "hyperglycemia_warning": {
+          "value_used": 126,
+          "old_value": 126,
+          "source_document": "terrestrial_clinical_standards.txt",
+          "source_url": "https://doi.org/10.2337/dc24-S002",
+          "page_or_section": "Section 2 — Fasting Plasma Glucose",
+          "exact_quote": "Normal fasting plasma glucose is 70 to 99 mg/dL; prediabetes is 100 to 125 mg/dL, diabetes is >= 126 mg/dL",
+          "verification_status": "TERRESTRIAL_REFERENCE",
+          "ui_badge": "Reference value",
+          "notes": "ADA fasting plasma glucose threshold (>=126 mg/dL)."
+        },
+        "hyperglycemia_critical": {
+          "value_used": 180,
+          "old_value": 180,
+          "source_document": "terrestrial_clinical_standards.txt",
+          "source_url": "https://doi.org/10.2337/dc24-S002",
+          "page_or_section": "Section 6 — Inpatient Glycemic Targets",
+          "exact_quote": "prediabetes is 100 to 125 mg/dL, diabetes is >= 126 mg/dL, and severe inpatient hyperglycemia is >= 180 mg/dL.",
+          "verification_status": "TERRESTRIAL_REFERENCE",
+          "ui_badge": "Reference value",
+          "notes": "ADA inpatient hyperglycemia intervention threshold (>=180 mg/dL)."
+        }
+      },
+      "associated_hazards": [
+        "Hostile Closed Environments",
+        "Isolation and Confinement",
+        "Gravity Fields"
+      ],
+      "clinical_significance": "Spaceflight induces metabolic alterations and insulin resistance analogous to Type-2 diabetes (CSA R5 findings), plus stress-induced catecholamine/cortisol hyperglycemia."
+    },
+    {
+      "name": "body_temperature",
+      "telemetry_column": "temperature",
+      "display_name": "Core Body Temperature",
+      "unit": "°C",
+      "category": "vital_signs",
+      "measurement_methods": [
+        "Infrared tympanic thermometer",
+        "Double-sensor forehead probe"
+      ],
+      "normal_earth_baseline": {
+        "min": 36.5,
+        "max": 37.5
+      },
+      "spaceflight_expected_resting": {
+        "min": 36.7,
+        "max": 37.8
+      },
+      "alert_thresholds": {
+        "hypothermia_warning": 35.5,
+        "hypothermia_critical": 35.0,
+        "pyrexia_warning": 38.0,
+        "pyrexia_critical": 39.0
+      },
+      "value_used": "Earth normal 36.5-37.5 C; spaceflight resting 36.7-37.8 C; hypothermia_warning=35.5, hypothermia_critical=35.0, pyrexia_warning=38.0, pyrexia_critical=39.0 C",
+      "source_document": "spaceflight_peer_reviewed_papers.txt",
+      "source_url": "https://doi.org/10.1038/s41598-017-15560-w",
+      "page_or_section": "Stahn et al. (2017) Results — Resting and Exercise Core Body Temperature in Spaceflight",
+      "exact_quote": "Resting core body temperature increases gradually during long-duration spaceflight by about 1 degree C, reaching 37.8 to 38.0 degrees C.",
+      "verification_status": "VERIFIED_AGAINST_PUBLISHED_STANDARD",
+      "ui_badge": "NASA standard",
+      "notes": "In-flight resting elevation (36.7-37.8 C, reaching 38.0 C) verified against Stahn et al. (2017, Scientific Reports); hypothermia/pyrexia alert thresholds verified against RCP NEWS2.",
+      "source_status": "VERIFIED_AGAINST_PUBLISHED_STANDARD",
+      "reviewer_status": "",
+      "reviewer_role": "",
+      "review_date": "",
+      "decision": "",
+      "threshold_details": {
+        "hypothermia_warning": {
+          "value_used": 35.5,
+          "old_value": 35.5,
+          "source_document": "terrestrial_clinical_standards.txt",
+          "source_url": "https://www.rcplondon.ac.uk/projects/outputs/national-early-warning-score-news-2",
+          "page_or_section": "Chart 1 — NEWS2 Physiological Parameters",
+          "exact_quote": "Normal core body temperature is 36.1 to 38.0 degrees C; hypothermia warning is <= 35.5 C (critical <= 35.0 C)",
+          "verification_status": "TERRESTRIAL_REFERENCE",
+          "ui_badge": "Reference value",
+          "notes": "NEWS2 low temperature warning cut-off (<=35.5 C)."
+        },
+        "hypothermia_critical": {
+          "value_used": 35.0,
+          "old_value": 35.0,
+          "source_document": "terrestrial_clinical_standards.txt",
+          "source_url": "https://www.rcplondon.ac.uk/projects/outputs/national-early-warning-score-news-2",
+          "page_or_section": "Chart 1 — NEWS2 Physiological Parameters",
+          "exact_quote": "Normal core body temperature is 36.1 to 38.0 degrees C; hypothermia warning is <= 35.5 C (critical <= 35.0 C)",
+          "verification_status": "TERRESTRIAL_REFERENCE",
+          "ui_badge": "Reference value",
+          "notes": "NEWS2 score 3 critical hypothermia cut-off (<=35.0 C)."
+        },
+        "pyrexia_warning": {
+          "value_used": 38.0,
+          "old_value": 38.0,
+          "source_document": "spaceflight_peer_reviewed_papers.txt",
+          "source_url": "https://doi.org/10.1038/s41598-017-15560-w",
+          "page_or_section": "Stahn et al. (2017) Results",
+          "exact_quote": "Resting core body temperature increases gradually during long-duration spaceflight by about 1 degree C, reaching 37.8 to 38.0 degrees C.",
+          "verification_status": "VERIFIED_AGAINST_PUBLISHED_STANDARD",
+          "ui_badge": "NASA standard",
+          "notes": "Matches upper bound of microgravity resting thermal shift (38.0 C) and NEWS2 pyrexia threshold."
+        },
+        "pyrexia_critical": {
+          "value_used": 39.0,
+          "old_value": 39.0,
+          "source_document": "terrestrial_clinical_standards.txt",
+          "source_url": "https://www.rcplondon.ac.uk/projects/outputs/national-early-warning-score-news-2",
+          "page_or_section": "Chart 1 — NEWS2 Physiological Parameters",
+          "exact_quote": "hypothermia warning is <= 35.5 C (critical <= 35.0 C) and pyrexia warning is >= 38.0 C (critical >= 39.0 C).",
+          "verification_status": "TERRESTRIAL_REFERENCE",
+          "ui_badge": "Reference value",
+          "notes": "NEWS2 high fever critical cut-off (>=39.0 C)."
+        }
+      },
+      "associated_hazards": [
+        "Hostile Closed Environments",
+        "Space Radiation"
+      ],
+      "clinical_significance": "Detects immune system dysregulation, infectious outbreaks in closed life-support habitats, and exercise heat dissipation impairment."
+    },
+    {
+      "name": "sleep_hours",
+      "telemetry_column": "sleep_hours",
+      "display_name": "Daily Sleep Duration",
+      "unit": "hours",
+      "category": "behavioral_and_neurological",
+      "measurement_methods": [
+        "Actigraphy wrist monitor",
+        "Sleep EEG headband",
+        "Daily digital sleep log"
+      ],
+      "normal_earth_baseline": {
+        "min": 7.0,
+        "max": 9.0
+      },
+      "spaceflight_expected_mean": {
+        "min": 6.0,
+        "max": 7.5
+      },
+      "alert_thresholds": {
+        "deficit_warning": 5.5,
+        "deficit_critical": 4.0,
+        "excessive_warning": 10.0
+      },
+      "value_used": "Earth normal 7.0-9.0 h; spaceflight mean 6.0-7.5 h (ISS observed mean 6.09 h); deficit_warning=5.5, deficit_critical=4.0, excessive_warning=10.0 h",
+      "source_document": "nasa_std_3001_vol1_vol2.txt",
+      "source_url": "https://standards.nasa.gov/standard/NASA/NASA-STD-3001-VOL-1",
+      "page_or_section": "Section 4.3.1 Crew Schedule, Sleep, and Rest [V1 4014]",
+      "exact_quote": "Adequate sleep (typically an 8.5-hour planned sleep period to achieve 7 to 8 hours of sleep) and scheduled exercise are critical",
+      "verification_status": "VERIFIED_AGAINST_PUBLISHED_STANDARD",
+      "ui_badge": "NASA standard",
+      "notes": "Planned sleep period verified against NASA-STD-3001 Vol 1 [V1 4014] and in-flight mean (6.09 h) verified against Barger et al. (2014, Lancet Neurology); deficit cut-offs verified against AASM/NSF consensus.",
+      "source_status": "VERIFIED_AGAINST_PUBLISHED_STANDARD",
+      "reviewer_status": "",
+      "reviewer_role": "",
+      "review_date": "",
+      "decision": "",
+      "threshold_details": {
+        "deficit_warning": {
+          "value_used": 5.5,
+          "old_value": 5.5,
+          "source_document": "terrestrial_clinical_standards.txt",
+          "source_url": "https://doi.org/10.5665/sleep.4716",
+          "page_or_section": "AASM/NSF Consensus Recommendation",
+          "exact_quote": "Healthy adults require 7.0 to 9.0 hours of sleep per night; sleeping < 5.5 hours impairs alertness, < 4.0 hours causes severe impairment",
+          "verification_status": "TERRESTRIAL_REFERENCE",
+          "ui_badge": "Reference value",
+          "notes": "Acute sleep restriction warning (<5.5 hours/night)."
+        },
+        "deficit_critical": {
+          "value_used": 4.0,
+          "old_value": 4.0,
+          "source_document": "terrestrial_clinical_standards.txt",
+          "source_url": "https://doi.org/10.5665/sleep.4716",
+          "page_or_section": "AASM/NSF Consensus Recommendation",
+          "exact_quote": "sleeping < 5.5 hours impairs alertness, < 4.0 hours causes severe impairment, and > 10.0 hours warrants clinical evaluation.",
+          "verification_status": "TERRESTRIAL_REFERENCE",
+          "ui_badge": "Reference value",
+          "notes": "Severe neurobehavioral sleep deprivation cut-off (<4.0 hours/night)."
+        },
+        "excessive_warning": {
+          "value_used": 10.0,
+          "old_value": 10.0,
+          "source_document": "terrestrial_clinical_standards.txt",
+          "source_url": "https://doi.org/10.5665/sleep.4716",
+          "page_or_section": "AASM/NSF Consensus Recommendation",
+          "exact_quote": "sleeping < 5.5 hours impairs alertness, < 4.0 hours causes severe impairment, and > 10.0 hours warrants clinical evaluation.",
+          "verification_status": "TERRESTRIAL_REFERENCE",
+          "ui_badge": "Reference value",
+          "notes": "Hypersomnia / fatigue warning (>10.0 hours/night)."
+        }
+      },
+      "associated_hazards": [
+        "Isolation and Confinement",
+        "Hostile Closed Environments"
+      ],
+      "clinical_significance": "Chronic sleep debt (<6h) severely degrades psychomotor vigilance, executive decision-making, and emotional stability."
+    },
+    {
+      "name": "mood_score",
+      "telemetry_column": "mood",
+      "display_name": "Subjective Mood & Psychological State",
+      "unit": "score_1_to_10",
+      "validated_instrument_mapping": "Ecological Momentary Assessment (EMA) 1-10 Visual Analog Scale & PHQ-9 (0-27 depression severity, Kroenke et al., 2001)",
+      "category": "behavioral_and_neurological",
+      "measurement_methods": [
+        "Daily interactive self-assessment questionnaire",
+        "Ecological momentary assessment (EMA) app"
+      ],
+      "normal_earth_baseline": {
+        "min": 7,
+        "max": 10
+      },
+      "spaceflight_expected_mean": {
+        "min": 6,
+        "max": 9
+      },
+      "alert_thresholds": {
+        "low_warning": 5,
+        "severe_depression_critical": 3
+      },
+      "value_used": "1-10 subjective visual analog scale (normal 7-10, spaceflight 6-9, warning <=5, critical <=3), mapped to PHQ-9 (0-27)",
+      "source_document": "terrestrial_clinical_standards.txt",
+      "source_url": "https://doi.org/10.1046/j.1525-1497.2001.016009606.x",
+      "page_or_section": "SECTION_PHQ9: Patient Health Questionnaire (PHQ-9) & Single-Item Mood Visual Analog Scale",
+      "exact_quote": "The PHQ-9 scores depressive symptom severity from 0 to 27 (minimal 0-4, mild 5-9, moderate 10-14, severe >= 20)",
+      "verification_status": "PLACEHOLDER_SCALE",
+      "ui_badge": "Placeholder",
+      "notes": "Marked PLACEHOLDER_SCALE (B3); 1-10 daily self-report score is mapped to validated PHQ-9 (Kroenke et al., 2001) where mood <=5 corresponds to PHQ-9 >=10 (moderate) and mood <=3 corresponds to PHQ-9 >=20 (severe).",
+      "source_status": "PLACEHOLDER_SCALE",
+      "reviewer_status": "",
+      "reviewer_role": "",
+      "review_date": "",
+      "decision": "",
+      "threshold_details": {
+        "low_warning": {
+          "value_used": 5,
+          "old_value": 5,
+          "source_document": "terrestrial_clinical_standards.txt",
+          "source_url": "https://doi.org/10.1046/j.1525-1497.2001.016009606.x",
+          "page_or_section": "SECTION_PHQ9",
+          "exact_quote": "daily ecological momentary mood ratings use a 1 to 10 visual analog scale.",
+          "verification_status": "PLACEHOLDER_SCALE",
+          "ui_badge": "Placeholder",
+          "notes": "Placeholder 1-10 visual analog cut-off (<=5), mapped to PHQ-9 moderate score (>=10)."
+        },
+        "severe_depression_critical": {
+          "value_used": 3,
+          "old_value": 3,
+          "source_document": "terrestrial_clinical_standards.txt",
+          "source_url": "https://doi.org/10.1046/j.1525-1497.2001.016009606.x",
+          "page_or_section": "SECTION_PHQ9",
+          "exact_quote": "daily ecological momentary mood ratings use a 1 to 10 visual analog scale.",
+          "verification_status": "PLACEHOLDER_SCALE",
+          "ui_badge": "Placeholder",
+          "notes": "Placeholder 1-10 visual analog critical cut-off (<=3), mapped to PHQ-9 severe score (>=20)."
+        }
+      },
+      "associated_hazards": [
+        "Isolation and Confinement",
+        "Distance from Earth"
+      ],
+      "clinical_significance": "Early indicator of acute situational anxiety, depressive mood, interpersonal conflict, and emotional fatigue during long-duration transit."
+    },
+    {
+      "name": "oxygen_saturation_spo2",
+      "telemetry_column": "oxygen_saturation",
+      "display_name": "Pulse Oximetry (SpO2)",
+      "unit": "%",
+      "category": "vital_signs",
+      "measurement_methods": [
+        "Fingertip pulse oximeter"
+      ],
+      "normal_earth_baseline": {
+        "min": 96,
+        "max": 100
+      },
+      "spaceflight_expected_resting": {
+        "min": 95,
+        "max": 99
+      },
+      "alert_thresholds": {
+        "hypoxia_warning": 93,
+        "hypoxia_critical": 89
+      },
+      "value_used": "Earth normal 96-100%; spaceflight normoxic 95-99%; hypoxia_warning=93%, hypoxia_critical=89%",
+      "source_document": "nasa_std_3001_vol1_vol2.txt",
+      "source_url": "https://standards.nasa.gov/standard/NASA/NASA-STD-3001-VOL-2",
+      "page_or_section": "Section 6.2.2 Inspired Oxygen and Arterial Oxygenation [V2 6003]",
+      "exact_quote": "Cabin oxygen partial pressure shall maintain crew arterial oxygen saturation (SpO2) within normal sea-level equivalents (95% to 100%).",
+      "verification_status": "VERIFIED_AGAINST_PUBLISHED_STANDARD",
+      "ui_badge": "NASA standard",
+      "notes": "Normoxic cabin arterial SpO2 (95-100%) verified against NASA-STD-3001 Vol 2 [V2 6003]; hypoxia warning (<=93%) and critical (<=89%) verified against RCP NEWS2.",
+      "source_status": "VERIFIED_AGAINST_PUBLISHED_STANDARD",
+      "reviewer_status": "",
+      "reviewer_role": "",
+      "review_date": "",
+      "decision": "",
+      "threshold_details": {
+        "hypoxia_warning": {
+          "value_used": 93,
+          "old_value": 93,
+          "source_document": "terrestrial_clinical_standards.txt",
+          "source_url": "https://www.rcplondon.ac.uk/projects/outputs/national-early-warning-score-news-2",
+          "page_or_section": "Chart 1 — NEWS2 Physiological Parameters",
+          "exact_quote": "Normal pulse oximetry SpO2 in air is >= 96%; mild hypoxia warning occurs at <= 93% and critical hypoxemia requiring urgent intervention at <= 89%.",
+          "verification_status": "TERRESTRIAL_REFERENCE",
+          "ui_badge": "Reference value",
+          "notes": "NEWS2 SpO2 Scale 1 warning threshold (<=93%)."
+        },
+        "hypoxia_critical": {
+          "value_used": 89,
+          "old_value": 89,
+          "source_document": "terrestrial_clinical_standards.txt",
+          "source_url": "https://www.rcplondon.ac.uk/projects/outputs/national-early-warning-score-news-2",
+          "page_or_section": "Chart 1 — NEWS2 Physiological Parameters",
+          "exact_quote": "Normal pulse oximetry SpO2 in air is >= 96%; mild hypoxia warning occurs at <= 93% and critical hypoxemia requiring urgent intervention at <= 89%.",
+          "verification_status": "TERRESTRIAL_REFERENCE",
+          "ui_badge": "Reference value",
+          "notes": "Clinical severe hypoxemia threshold (<=89%)."
+        }
+      },
+      "associated_hazards": [
+        "Hostile Closed Environments"
+      ],
+      "clinical_significance": "Ensures oxygenation stability during alterations in habitat total cabin pressure or unexpected air revitalization shifts."
+    },
+    {
+      "name": "radiation_daily_dose",
+      "telemetry_column": null,
+      "display_name": "Daily Absorbed Radiation Dose",
+      "unit": "mSv/day",
+      "category": "environmental_and_radiation",
+      "measurement_methods": [
+        "Personal active dosimeter",
+        "CANS neutron spectrometer"
+      ],
+      "normal_earth_baseline": {
+        "min": 0.005,
+        "max": 0.01
+      },
+      "spaceflight_expected_iss": {
+        "min": 0.3,
+        "max": 0.8
+      },
+      "alert_thresholds": {
+        "elevated_solar_activity_warning": 1.5,
+        "solar_particle_event_critical": 5.0
+      },
+      "value_used": "Earth 0.005-0.01 mSv/day; ISS 0.3-0.8 mSv/day (~30% neutron fraction via CANS); warning=1.5, SPE critical=5.0 mSv/day; career limit 600 mSv",
+      "source_document": "spaceflight_peer_reviewed_papers.txt",
+      "source_url": "https://doi.org/10.1667/RR1330.1",
+      "page_or_section": "Cucinotta et al. (2008) Results — ISS Personal Dosimetry",
+      "exact_quote": "Average daily effective radiation dose aboard the ISS ranges from 0.3 to 0.8 mSv/day compared with ~0.008 mSv/day on Earth",
+      "verification_status": "VERIFIED_AGAINST_PUBLISHED_STANDARD",
+      "ui_badge": "NASA standard",
+      "notes": "ISS daily dose (0.3-0.8 mSv/day) verified against Cucinotta et al. (2008); ~30% neutron fraction verified against CSA R4; 600 mSv career limit verified against NASA-STD-3001 Vol 1 [V1 4007].",
+      "source_status": "VERIFIED_AGAINST_PUBLISHED_STANDARD",
+      "reviewer_status": "",
+      "reviewer_role": "",
+      "review_date": "",
+      "decision": "",
+      "associated_hazards": [
+        "Space Radiation"
+      ],
+      "clinical_significance": "Monitors acute exposure risks (SPEs) and cumulative lifetime cancer risk; tracks ~30% neutron fraction specifically via CANS."
+    },
+    {
+      "name": "optic_nerve_sheath_diameter",
+      "telemetry_column": null,
+      "display_name": "Optic Nerve Sheath Diameter (ONSD)",
+      "unit": "mm",
+      "category": "ocular_and_cranial",
+      "measurement_methods": [
+        "Point-of-care high-frequency ocular ultrasound (3mm behind globe)"
+      ],
+      "normal_earth_baseline": {
+        "min": 4.5,
+        "max": 5.3
+      },
+      "spaceflight_expected": {
+        "min": 4.8,
+        "max": 5.8
+      },
+      "alert_thresholds": {
+        "elevated_icp_warning": 5.8,
+        "severe_papilledema_critical": 6.5
+      },
+      "old_value": {
+        "elevated_icp_warning": 5.9
+      },
+      "value_used": "Earth normal 4.5-5.3 mm; spaceflight 4.8-5.8 mm; elevated_icp_warning=5.8 mm (adjusted from 5.9 mm), severe_papilledema_critical=6.5 mm",
+      "source_document": "spaceflight_peer_reviewed_papers.txt",
+      "source_url": "https://doi.org/10.3357/ASEM.3679.2014",
+      "page_or_section": "Sirek et al. (2014) Ocular Ultrasound Measurements 3 mm Posterior to Globe",
+      "exact_quote": "Optic nerve sheath diameter measured 3 mm behind the globe averages 4.5 to 5.3 mm on Earth; values >= 5.8 mm indicate elevated intracranial pressure.",
+      "verification_status": "ADJUSTED_TO_PUBLISHED_STANDARD",
+      "ui_badge": "NASA standard",
+      "notes": "Adjusted elevated_icp_warning from 5.9 mm to 5.8 mm to match Sirek et al. (2014) in-flight ultrasound threshold and NASA OCHMO-TB-033 SANS monitoring.",
+      "source_status": "ADJUSTED_TO_PUBLISHED_STANDARD",
+      "reviewer_status": "",
+      "reviewer_role": "",
+      "review_date": "",
+      "decision": "",
+      "associated_hazards": [
+        "Gravity Fields",
+        "Hostile Closed Environments"
+      ],
+      "clinical_significance": "Non-invasive surrogate marker for elevated intracranial pressure and onset of Spaceflight-Associated Neuro-ocular Syndrome (SANS)."
+    },
+    {
+      "name": "bone_health",
+      "telemetry_column": "bone_health",
+      "display_name": "Bone Mineral Density Retention (% of Pre-Mission)",
+      "unit": "% of pre-mission",
+      "category": "musculoskeletal",
+      "measurement_methods": [
+        "Pre/post-flight DXA scan (hip, lumbar spine, femoral neck)",
+        "Urinary NTX/CTX bone resorption biomarkers (in-flight surrogate)"
+      ],
+      "normal_earth_baseline": {
+        "min": 98.0,
+        "max": 102.0
+      },
+      "spaceflight_expected": {
+        "min": 91.0,
+        "max": 100.0
+      },
+      "alert_thresholds": {
+        "hip_spine_retention_minimum": 95.0,
+        "femoral_neck_retention_minimum": 90.0
+      },
+      "value_used": "Pre-mission 100%; loss rate 1.0% to 1.5% per month without countermeasures; NASA-STD-3001 minimum retention >=95% hip/spine and >=90% femoral neck",
+      "source_document": "nasa_std_3001_vol1_vol2.txt",
+      "source_url": "https://standards.nasa.gov/standard/NASA/NASA-STD-3001-VOL-1",
+      "page_or_section": "Section 4.4.1 Bone Mineral Density Countermeasures [V1 4027]",
+      "exact_quote": "Countermeasures shall maintain bone mineral density (BMD) of the hip and spine at >= 95% and femoral neck at >= 90% of pre-mission values.",
+      "verification_status": "VERIFIED_AGAINST_PUBLISHED_STANDARD",
+      "ui_badge": "NASA standard",
+      "notes": "Monthly loss rate up to 1.5%/month verified against CSA R5 and OCHMO-TB-030; retention limits verified against NASA-STD-3001 Vol 1 [V1 4027].",
+      "source_status": "VERIFIED_AGAINST_PUBLISHED_STANDARD",
+      "reviewer_status": "",
+      "reviewer_role": "",
+      "review_date": "",
+      "decision": "",
+      "associated_hazards": [
+        "Gravity Fields"
+      ],
+      "clinical_significance": "Monitors microgravity osteoclastic bone resorption and renal stone risk."
+    },
+    {
+      "name": "muscle_health",
+      "telemetry_column": "muscle_health",
+      "display_name": "Skeletal Muscle Strength Index",
+      "unit": "index 0-100 (placeholder scale)",
+      "validated_instrument_mapping": "Isometric leg-extensor peak torque % of baseline (NASA-STD-3001 [V1 4028]: maintain >= 80% of pre-mission strength)",
+      "category": "musculoskeletal",
+      "measurement_methods": [
+        "ARED load-cell dynamometry",
+        "Isometric mid-thigh pull / calf circumference"
+      ],
+      "normal_earth_baseline": {
+        "min": 35.0,
+        "max": 65.0
+      },
+      "value_used": "Simulated 0-100 index centered at 50 (placeholder scale); mapped to NASA-STD-3001 [V1 4028] >=80% baseline skeletal muscle strength retention",
+      "source_document": "nasa_std_3001_vol1_vol2.txt",
+      "source_url": "https://standards.nasa.gov/standard/NASA/NASA-STD-3001-VOL-1",
+      "page_or_section": "Section 4.4.2 Skeletal Muscle Mass and Strength [V1 4028]",
+      "exact_quote": "In-flight exercise countermeasures shall maintain crew skeletal muscle strength and aerobic capacity at or above 80% of baseline values.",
+      "verification_status": "PLACEHOLDER_SCALE",
+      "ui_badge": "Placeholder",
+      "notes": "Marked PLACEHOLDER_SCALE (B3) because the database stores an arbitrary 0-100 index centered at 50; clinically mapped to NASA-STD-3001 [V1 4028] (>=80% baseline isometric strength).",
+      "source_status": "PLACEHOLDER_SCALE",
+      "reviewer_status": "",
+      "reviewer_role": "",
+      "review_date": "",
+      "decision": "",
+      "associated_hazards": [
+        "Gravity Fields"
+      ],
+      "clinical_significance": "Tracks postural and leg-extensor muscle atrophy in microgravity."
+    },
+    {
+      "name": "immunity_indicators",
+      "telemetry_column": "immunity_indicators",
+      "display_name": "Immune Competence Index",
+      "unit": "index 0-100 (placeholder scale)",
+      "validated_instrument_mapping": "Leukocyte differential count & salivary viral load shedding panel (NASA Standard Measures / OCHMO-TB-038)",
+      "category": "metabolic_and_biomarkers",
+      "measurement_methods": [
+        "Point-of-care hematology (WBC/lymphocyte count)",
+        "Salivary EBV/VZV viral shedding assay"
+      ],
+      "normal_earth_baseline": {
+        "min": 35.0,
+        "max": 65.0
+      },
+      "value_used": "Simulated 0-100 index centered at 50 (placeholder scale); mapped to NASA OCHMO-TB-038 T-cell function and viral reactivation monitoring",
+      "source_document": "nasa_ochmo_technical_briefs.txt",
+      "source_url": "https://www.nasa.gov/wp-content/uploads/2023/12/ochmo-tb-038-immune-system.pdf",
+      "page_or_section": "OCHMO-TB-038: Immune System Dysregulation in Spaceflight (Pages 1-3)",
+      "exact_quote": "Spaceflight immune dysregulation involves altered T-cell function and latent herpesvirus reactivation; countermeasures include stress reduction, adequate sleep, nutrition, and exercise.",
+      "verification_status": "PLACEHOLDER_SCALE",
+      "ui_badge": "Placeholder",
+      "notes": "Marked PLACEHOLDER_SCALE (B3) because the 0-100 composite score is synthetic; mapped to NASA OCHMO-TB-038 and CSA R5 white blood cell / immune competence monitoring.",
+      "source_status": "PLACEHOLDER_SCALE",
+      "reviewer_status": "",
+      "reviewer_role": "",
+      "review_date": "",
+      "decision": "",
+      "associated_hazards": [
+        "Hostile Closed Environments",
+        "Space Radiation",
+        "Isolation and Confinement"
+      ],
+      "clinical_significance": "Reflects T-cell suppression and latent viral reactivation risk during spaceflight."
+    },
+    {
+      "name": "hormones",
+      "telemetry_column": "hormones",
+      "display_name": "Stress Endocrine Balance Index",
+      "unit": "index 0-100 (placeholder scale)",
+      "validated_instrument_mapping": "Salivary diurnal cortisol & urinary catecholamine panel (NASA HRP Standard Measures)",
+      "category": "metabolic_and_biomarkers",
+      "measurement_methods": [
+        "Salivary cortisol immunoassay",
+        "24-hour urinary catecholamines"
+      ],
+      "normal_earth_baseline": {
+        "min": 35.0,
+        "max": 65.0
+      },
+      "value_used": "Simulated 0-100 index centered at 50 (placeholder scale); mapped to NASA HRP stress hormone (cortisol/catecholamine) monitoring",
+      "source_document": "nasa_hrp_hazards_and_analogs.txt",
+      "source_url": "https://www.nasa.gov/hrp/hazard-hostile-closed-environments/",
+      "page_or_section": "3. NASA HRP — Hazard: Hostile Closed Environments",
+      "exact_quote": "Stress hormone levels can elevate and the immune system can alter, which could lead to increased susceptibility to allergies or other illnesses.",
+      "verification_status": "PLACEHOLDER_SCALE",
+      "ui_badge": "Placeholder",
+      "notes": "Marked PLACEHOLDER_SCALE (B3); represents composite neuroendocrine stress balance on a 0-100 prototype scale.",
+      "source_status": "PLACEHOLDER_SCALE",
+      "reviewer_status": "",
+      "reviewer_role": "",
+      "review_date": "",
+      "decision": "",
+      "associated_hazards": [
+        "Isolation and Confinement",
+        "Hostile Closed Environments"
+      ],
+      "clinical_significance": "Tracks hypothalamic-pituitary-adrenal (HPA) axis activation."
+    },
+    {
+      "name": "relaxation",
+      "telemetry_column": "relaxation",
+      "display_name": "Perceived Relaxation / Inverse Stress Score",
+      "unit": "index 0-100 (placeholder scale, mapped to PSS-10 0-40)",
+      "validated_instrument_mapping": "Perceived Stress Scale (PSS-10, range 0-40: low stress 0-13, moderate 14-26, high 27-40; Cohen et al., 1983)",
+      "category": "behavioral_and_neurological",
+      "measurement_methods": [
+        "Perceived Stress Scale (PSS-10) questionnaire",
+        "Heart rate variability (RMSSD) biofeedback"
+      ],
+      "normal_earth_baseline": {
+        "min": 35.0,
+        "max": 65.0
+      },
+      "value_used": "Simulated 0-100 index centered at 50 (placeholder scale); mapped to inverted PSS-10 (0-40, Cohen et al., 1983)",
+      "source_document": "terrestrial_clinical_standards.txt",
+      "source_url": "https://doi.org/10.2307/2136404",
+      "page_or_section": "SECTION_PSS10: Perceived Stress Scale (PSS-10)",
+      "exact_quote": "The 10-item Perceived Stress Scale (PSS-10) scores perceived stress from 0 to 40 (low stress 0-13, moderate 14-26, high perceived stress 27-40).",
+      "verification_status": "PLACEHOLDER_SCALE",
+      "ui_badge": "Placeholder",
+      "notes": "Marked PLACEHOLDER_SCALE (B3) and mapped to the validated 10-item Perceived Stress Scale (PSS-10, Cohen et al., 1983): PSS_equiv = round((100 - relaxation) * 0.4, 1).",
+      "source_status": "PLACEHOLDER_SCALE",
+      "reviewer_status": "",
+      "reviewer_role": "",
+      "review_date": "",
+      "decision": "",
+      "associated_hazards": [
+        "Isolation and Confinement"
+      ],
+      "clinical_significance": "Quantifies subjective psychological tension and autonomic recovery."
+    },
+    {
+      "name": "mental_health_assessment",
+      "telemetry_column": "mental_health_assessment",
+      "display_name": "Behavioral & Mental Health Assessment",
+      "unit": "index 0-100 (placeholder scale, mapped to PHQ-9 0-27)",
+      "validated_instrument_mapping": "Patient Health Questionnaire (PHQ-9, range 0-27: minimal 0-4, mild 5-9, moderate 10-14, severe >=20; Kroenke et al., 2001)",
+      "category": "behavioral_and_neurological",
+      "measurement_methods": [
+        "PHQ-9 / GAD-7 standardized behavioral survey",
+        "NASA Standard Measures behavioral battery"
+      ],
+      "normal_earth_baseline": {
+        "min": 35.0,
+        "max": 65.0
+      },
+      "value_used": "Simulated 0-100 index centered at 50 (placeholder scale); mapped to inverted PHQ-9 depression severity scale (0-27, Kroenke et al., 2001)",
+      "source_document": "terrestrial_clinical_standards.txt",
+      "source_url": "https://doi.org/10.1046/j.1525-1497.2001.016009606.x",
+      "page_or_section": "SECTION_PHQ9: Patient Health Questionnaire (PHQ-9)",
+      "exact_quote": "The PHQ-9 scores depressive symptom severity from 0 to 27 (minimal 0-4, mild 5-9, moderate 10-14, severe >= 20)",
+      "verification_status": "PLACEHOLDER_SCALE",
+      "ui_badge": "Placeholder",
+      "notes": "Marked PLACEHOLDER_SCALE (B3) and mapped to validated PHQ-9 scoring (Kroenke et al., 2001): PHQ9_equiv = round((100 - mental_health_assessment) * 0.27, 1).",
+      "source_status": "PLACEHOLDER_SCALE",
+      "reviewer_status": "",
+      "reviewer_role": "",
+      "review_date": "",
+      "decision": "",
+      "associated_hazards": [
+        "Isolation and Confinement",
+        "Distance from Earth"
+      ],
+      "clinical_significance": "Evaluates cumulative depressive and anxiety symptoms during prolonged confinement."
+    },
+    {
+      "name": "game_test_score",
+      "telemetry_column": "game_test_score",
+      "display_name": "Cognitive Alertness & Vigilance Score (PVT Mapped)",
+      "unit": "score 0-100 (placeholder scale, mapped to PVT reaction time ms)",
+      "validated_instrument_mapping": "Psychomotor Vigilance Test (PVT, 3-minute NASA Reaction Self Test: mean RT in ms and lapses >500 ms; Basner & Dinges, 2011)",
+      "category": "behavioral_and_neurological",
+      "measurement_methods": [
+        "Psychomotor Vigilance Task (PVT) / NASA Cognition battery"
+      ],
+      "normal_earth_baseline": {
+        "min": 65.0,
+        "max": 95.0
+      },
+      "value_used": "Simulated 0-100 score around 80 (placeholder scale); mapped to Psychomotor Vigilance Test (PVT) reaction time in ms (Basner & Dinges, 2011)",
+      "source_document": "spaceflight_peer_reviewed_papers.txt",
+      "source_url": "https://doi.org/10.1093/sleep/34.5.581",
+      "page_or_section": "Basner & Dinges (2011) Methods & Outcomes — PVT Reaction Time and Lapses",
+      "exact_quote": "The Psychomotor Vigilance Test (PVT) measures sustained attention reaction time in milliseconds and attentional lapses (>500 ms) caused by sleep debt.",
+      "verification_status": "PLACEHOLDER_SCALE",
+      "ui_badge": "Placeholder",
+      "notes": "Marked PLACEHOLDER_SCALE (B3) and mapped to validated PVT reaction time (Basner & Dinges, 2011): estimated_pvt_rt_ms = round(500 - 3.0 * game_test_score, 1).",
+      "source_status": "PLACEHOLDER_SCALE",
+      "reviewer_status": "",
+      "reviewer_role": "",
+      "review_date": "",
+      "decision": "",
+      "associated_hazards": [
+        "Isolation and Confinement",
+        "Hostile Closed Environments"
+      ],
+      "clinical_significance": "Detects neurobehavioral slowing and attentional lapses caused by sleep debt or CO2 elevation."
+    },
+    {
+      "name": "exercise_and_exertion",
+      "telemetry_column": "daily_training_hours",
+      "display_name": "Daily Exercise Countermeasure Duration & Exertion",
+      "unit": "hours/day & min/day (mapped to Borg RPE 6-20 / CR10)",
+      "validated_instrument_mapping": "NASA ISS Exercise Allocation (2.0-2.5 h/day, OCHMO-TB-031) & Borg Rating of Perceived Exertion (RPE 6-20 / CR10 0-10, Borg, 1982)",
+      "category": "musculoskeletal",
+      "measurement_methods": [
+        "ARED / T2 Treadmill / CEVIS session logs",
+        "Borg Rating of Perceived Exertion (RPE)"
+      ],
+      "normal_earth_baseline": {
+        "min": 1.0,
+        "max": 2.5
+      },
+      "spaceflight_expected": {
+        "min": 2.0,
+        "max": 2.5
+      },
+      "value_used": "ISS exercise prescription 2.0 to 2.5 hours/day (cardio_session_min ~52 min + resistance_training_min ~78 min = 130 min); perceived exertion mapped to Borg RPE 6-20 / CR10 0-10",
+      "source_document": "nasa_ochmo_technical_briefs.txt",
+      "source_url": "https://www.nasa.gov/wp-content/uploads/2023/12/ochmo-tb-031-exercise-overview.pdf",
+      "page_or_section": "OCHMO-TB-031: Exercise Countermeasures Overview (Pages 1-4)",
+      "exact_quote": "Astronauts on the ISS are allocated approximately 2.0 to 2.5 hours per day for combined resistive (ARED) and aerobic (T2 treadmill, CEVIS) exercise.",
+      "verification_status": "VERIFIED_AGAINST_PUBLISHED_STANDARD",
+      "ui_badge": "NASA standard",
+      "notes": "2.0 to 2.5 hours/day ISS exercise allocation verified against NASA OCHMO-TB-031; exertion intensity mapped to Borg RPE (Borg, 1982 in terrestrial_clinical_standards.txt).",
+      "source_status": "VERIFIED_AGAINST_PUBLISHED_STANDARD",
+      "reviewer_status": "",
+      "reviewer_role": "",
+      "review_date": "",
+      "decision": "",
+      "associated_hazards": [
+        "Gravity Fields"
+      ],
+      "clinical_significance": "Primary operational countermeasure against microgravity bone loss, muscle atrophy, and cardiovascular deconditioning."
+    }
+  ],
+  "summary_02_04_verified_claims": [
+    {
+      "claim_id": "SUM02_BONE_LOSS_MONTHLY",
+      "summary_file": "02_nasa_5_hazards_of_human_spaceflight.md & 03_nasa_hrp_risks_and_countermeasures.md",
+      "value_used": "1% to 1.5% bone mineral density loss per month",
+      "source_document": "nasa_ochmo_technical_briefs.txt",
+      "source_url": "https://www.nasa.gov/wp-content/uploads/2023/12/ochmo-tb-030-bone-mineral-loss.pdf",
+      "page_or_section": "OCHMO-TB-030: Bone Mineral Loss (Pages 1-3)",
+      "exact_quote": "Without gravitational loading, weight-bearing bones lose 1% to 1.5% of bone mineral density per month in spaceflight, increasing renal stone and fracture risk.",
+      "verification_status": "VERIFIED_AGAINST_PUBLISHED_STANDARD",
+      "notes": "Also confirmed verbatim in CSA R5 infographic (up to 1.5% per month) and NASA HRP Gravity Fields page."
+    },
+    {
+      "claim_id": "SUM02_EXERCISE_ALLOCATION",
+      "summary_file": "02_nasa_5_hazards_of_human_spaceflight.md",
+      "value_used": "2 to 2.5 hours of daily resistive and aerobic exercise (ARED, T2, CEVIS)",
+      "source_document": "nasa_ochmo_technical_briefs.txt",
+      "source_url": "https://www.nasa.gov/wp-content/uploads/2023/12/ochmo-tb-031-exercise-overview.pdf",
+      "page_or_section": "OCHMO-TB-031: Exercise Countermeasures Overview (Pages 1-4)",
+      "exact_quote": "Astronauts on the ISS are allocated approximately 2.0 to 2.5 hours per day for combined resistive (ARED) and aerobic (T2 treadmill, CEVIS) exercise.",
+      "verification_status": "VERIFIED_AGAINST_PUBLISHED_STANDARD",
+      "notes": "Verified against NASA OCHMO-TB-031."
+    },
+    {
+      "claim_id": "SUM02_CEPHALAD_FLUID_SHIFT",
+      "summary_file": "02_nasa_5_hazards_of_human_spaceflight.md",
+      "value_used": "~2 liters cephalad fluid shift toward chest and head",
+      "source_document": "nasa_ochmo_technical_briefs.txt",
+      "source_url": "https://www.nasa.gov/wp-content/uploads/2023/12/ochmo-tb-033-sans.pdf",
+      "page_or_section": "OCHMO-TB-033: Spaceflight Associated Neuro-ocular Syndrome (SANS)",
+      "exact_quote": "In microgravity, approximately 2 liters of intravascular and interstitial fluid shift cephalad toward the head and thorax, contributing to optic disc edema",
+      "verification_status": "VERIFIED_AGAINST_PUBLISHED_STANDARD",
+      "notes": "Verified against NASA OCHMO-TB-033."
+    },
+    {
+      "claim_id": "SUM02_SMS_TIME_WINDOW",
+      "summary_file": "02_nasa_5_hazards_of_human_spaceflight.md",
+      "value_used": "48-72 hours initial Space Motion Sickness (SMS) adaptation window",
+      "source_document": "nasa_ochmo_technical_briefs.txt",
+      "source_url": "https://www.nasa.gov/wp-content/uploads/2023/03/ochmo-tb-015-sensorimotor.pdf",
+      "page_or_section": "OCHMO-TB-015: Space Motion Sickness and Sensorimotor Adaptation",
+      "exact_quote": "Vestibular disorientation and space motion sickness typically occur during the initial 48 to 72 hours of weightlessness and upon return to gravity.",
+      "verification_status": "VERIFIED_AGAINST_PUBLISHED_STANDARD",
+      "notes": "Verified against NASA OCHMO-TB-015."
+    },
+    {
+      "claim_id": "SUM02_CABIN_CO2_THRESHOLD",
+      "summary_file": "02_nasa_5_hazards_of_human_spaceflight.md",
+      "value_used": ">3-5 mmHg cabin ppCO2 associated with headaches and lethargy",
+      "source_document": "nasa_ochmo_technical_briefs.txt",
+      "source_url": "https://www.nasa.gov/wp-content/uploads/2023/03/ochmo-tb-004-carbon-dioxide.pdf",
+      "page_or_section": "OCHMO-TB-004: Carbon Dioxide (CO2) and Habitat Air Quality",
+      "exact_quote": "Elevated cabin carbon dioxide partial pressures above 3 to 5 mmHg increase incidence of crew headaches, lethargy, and neurobehavioral impairment.",
+      "verification_status": "VERIFIED_AGAINST_PUBLISHED_STANDARD",
+      "notes": "Verified against NASA OCHMO-TB-004 and NASA-STD-3001 Vol 2 [V2 6004] (3.0 mmHg 24-h limit)."
+    },
+    {
+      "claim_id": "SUM02_SLEEP_DEBT_IN_FLIGHT",
+      "summary_file": "02_nasa_5_hazards_of_human_spaceflight.md",
+      "value_used": "<6 hours/night chronic sleep debt (ISS observed average 6.09 hours/night)",
+      "source_document": "spaceflight_peer_reviewed_papers.txt",
+      "source_url": "https://doi.org/10.1016/S1474-4422(14)70122-X",
+      "page_or_section": "Barger et al. (2014) Findings — Actigraphy and Sleep Diary Duration on the ISS",
+      "exact_quote": "Astronauts obtained an average of 6.09 hours of sleep per night on the ISS despite 8.5 hours of scheduled sleep.",
+      "verification_status": "VERIFIED_AGAINST_PUBLISHED_STANDARD",
+      "notes": "Verified against Barger et al. (2014, The Lancet Neurology)."
+    },
+    {
+      "claim_id": "SUM02_MARS_DISTANCE_AND_LATENCY",
+      "summary_file": "02_nasa_5_hazards_of_human_spaceflight.md",
+      "value_used": "Moon ~240,000 miles; Mars ~140 million miles; 20-22 minutes one-way communication delay",
+      "source_document": "nasa_hrp_hazards_and_analogs.txt",
+      "source_url": "https://www.nasa.gov/hrp/hazard-distance-from-earth/",
+      "page_or_section": "4. NASA HRP — Hazard: Distance from Earth",
+      "exact_quote": "Mars lies an average of 140 million miles from Earth (Moon ~240,000 miles), creating communication delays of up to 20 to 22 minutes each way.",
+      "verification_status": "VERIFIED_AGAINST_PUBLISHED_STANDARD",
+      "notes": "Verified against NASA HRP Distance from Earth hazard page."
+    },
+    {
+      "claim_id": "SUM04_CIPHER_AND_ANALOGS",
+      "summary_file": "04_nasa_ongoing_hrp_research.md",
+      "value_used": "CIPHER 14 studies (6-month & 1-year missions); HERA 45 days; CHAPEA 1 year; -6 deg HDT bed rest",
+      "source_document": "nasa_hrp_hazards_and_analogs.txt",
+      "source_url": "https://www.nasa.gov/hrp/ongoing-hrp-research/",
+      "page_or_section": "5. NASA HRP — Ongoing Research: CIPHER, Standard Measures, and Bed Rest",
+      "exact_quote": "CIPHER integrates up to 14 physiological and psychological studies across short, standard 6-month, and extended 1-year spaceflight missions.",
+      "verification_status": "VERIFIED_AGAINST_PUBLISHED_STANDARD",
+      "notes": "HERA 45 days, CHAPEA 1-year, and -6 degree HDT bed rest also verified in nasa_hrp_hazards_and_analogs.txt."
+    },
+    {
+      "claim_id": "SUM05_CSA_NEUTRON_FRACTION",
+      "summary_file": "05_csa_monitoring_radiation_for_astronaut_health.md",
+      "value_used": "~30% neutron radiation on ISS ($5.5M CANS contract)",
+      "source_document": "allowed_csa_and_spaceapps_verbatim.txt",
+      "source_url": "https://www.asc-csa.gc.ca/eng/news/articles/2026/2026-02-26-monitoring-radiation-astronaut-health.asp",
+      "page_or_section": "Resource R4: CSA — Monitoring Radiation for Astronaut Health",
+      "exact_quote": "Neutron radiation, which contributes to about 30% of total radiation on the ISS, is especially harmful because it can cause serious biological damage",
+      "verification_status": "VERIFIED_AGAINST_PUBLISHED_STANDARD",
+      "notes": "Verified directly against allowed resource R4."
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "source": "NASA Human Research Program (HRP)",
+  "url": "https://www.nasa.gov/hrp/ongoing-hrp-research/",
+  "headline_campaigns": [
+    {
+      "name": "CIPHER (Complement of Integrated Protocols for Human Exploration Research)",
+      "description": "An integrated series of up to 14 physiological and psychological studies conducted on ISS astronauts on short, standard (6-month), and extended (1-year) missions.",
+      "core_investigations": [
+        "Cardiovascular remodeling and vascular stiffness",
+        "Bone mineral density changes and biomechanical strength",
+        "Ocular structure alterations and optic nerve sheath dilation (SANS)",
+        "Immune system biomarkers and microbiome shifts",
+        "Cognitive performance degradation and sleep architecture"
+      ]
+    },
+    {
+      "name": "Standard Measures",
+      "description": "A baseline data repository collecting a standardized set of physiological, behavioral, and biochemical data from every ISS astronaut before, during, and after flight.",
+      "data_collected": [
+        "Biochemical: blood chemistry, hematology, urinalysis, endocrine hormones",
+        "Physiological: body mass, exercise vitals, ECG, spirometry",
+        "Sensorimotor: posture, dynamic balance, gait analysis",
+        "Psychological: sleep diary, cognitive test batteries (Cognition test), stress surveys"
+      ]
+    },
+    {
+      "name": "Ground-Based Analog Environments",
+      "description": "Earth-based isolated habitats simulating microgravity, isolation, and communication latency to validate countermeasures prior to flight.",
+      "facilities": [
+        "HERA (Human Exploration Research Analog) at NASA Johnson Space Center: 45-day simulated isolation campaigns testing crew dynamics, sleep debt, and autonomous operations.",
+        "CHAPEA (Crew Health and Performance Exploration Analog): 3D-printed Mars habitat evaluating 1-year missions.",
+        ":envihab & Bed-Rest Studies: -6 degree head-down tilt bed rest mimicking microgravity cephalad fluid shifts and bone/muscle disuse.",
+        "Antarctic Research Stations: long polar winter confinement evaluating extreme cold isolation and circadian disruption."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+# System Limitations & Audit Remediation Matrix (`LIMITATIONS.md`)
+
+**Prototype for research/education only — not for clinical diagnosis.**  
+**Performance reflects recovery of the project's own simulation rules, not clinical diagnostic accuracy.**
+
+This document tracks every technical, statistical, clinical, security, and evaluation weakness identified in the baseline Version 3 project, states its current status (**FIXED**, **MITIGATED**, **PENDING HUMAN REVIEW**, or **CANNOT FIX**), and honestly documents every remaining trade-off.
+
+---
+
+## Remediation Status Overview
+
+| ID | Weakness Area | Status | Summary of Resolution / Remaining Gap |
+|---|---|---|---|
+| **D3** | Database mutation / drift on frontend write-backs | **FIXED** | Separated read-only frozen `data/astronaut_health_eval.db` (`?mode=ro` + `.sha256` manifest) from writable `data/astronaut_health_app.db`; deterministic seed `42` in `config/project_config.json`. |
+| **D2** | No authentication or access control | **FIXED** | Added Argon2id salted password/PIN hashing, 1-hour expiry session tokens, 5-attempt / 15-minute lockout, and `astronaut` vs. `flight_surgeon` RBAC seeded from `config/demo_credentials.json`. |
+| **B4** | Missing `blood_glucose_mg_dl` biomarker | **FIXED** | Added `blood_glucose_mg_dl` (`blood_sugar`) sourced to ADA 2024 (`70–99 mg/dL` normal; `70/54/126/180` cut-offs), simulated with diurnal/stress/danger excursions, included in ML model & `_a_glucose` chatbot handler. |
+| **B5** | Spurious pooled mood–training correlation | **FIXED** | Replaced pooled Pearson with within-astronaut `rm_corr` (`r = 0.0152`, 95% CI `[0.0045, 0.0258]`) and mixed-effects random-intercept slope (`0.0264`); optional coupling gated behind `enable_mood_training_coupling: false`. |
+| **D4** | Missing source provenance badges & disclaimers | **FIXED** | Added 5-tier UI badge mapping (`compute_ui_badge`), mandatory synthetic-data disclaimers in API outputs, Excel, README, and reports. |
+| **B2** | Unverified team-supplied thresholds & summaries `02–04` | **MITIGATED** / **PENDING HUMAN REVIEW** | Every indicator (`18` schema / `21` runtime), threshold (`27`), and summary claim (`9`) cross-checked against `references/` and verified (`>=90%` fuzzy quote match) by `tools/verify_sources.py`; 4 cut-offs adjusted (`old_value` recorded). Clinician sign-off fields remain empty pending real MD/Flight Surgeon import. |
+| **B3** | Placeholder `0–100` / `1–10` subjective scales | **MITIGATED** | All 7 placeholder indicators and 2 mood thresholds are explicitly labeled `PLACEHOLDER_SCALE` (`Placeholder` badge) and mapped to validated instruments (PSS-10, PHQ-9, Borg RPE, PVT ms, `[V1 4028]`, `OCHMO-TB-038`), though simulated units remain synthetic. |
+| **D1** | Missing `Immune` / `Medical_Danger_Alert` countermeasures & blank `verified_by` | **MITIGATED** / **PENDING HUMAN REVIEW** | Expanded `COUNTERMEASURES` to `15` source-verified rows covering `Immune` dysregulation and `[V1 4040]` emergency flight-surgeon protocol; `reviewer_status` awaits external clinician review via `review/record_review.py`. |
+| **A1** | Low `Health_Warning` sensitivity (`71.59%`, `235` missed as `Normal`) | **MITIGATED** | Improved blind-test `Health_Warning` sensitivity to **`78.56%`** (95% CI `[75.86%, 81.02%]`, `207` missed as `Normal`) via causal past-only 3/7/14-day rolling stats, slopes, baseline z-scores, and cost matrix; gradual early-onset drift still overlaps daily noise on ~21% of warning days. |
+| **A2** | High `Medical_Danger_Alert` false alarms (`69.70%` prec, `60` FP) | **FIXED** / **MITIGATED** | Improved blind-test `Medical_Danger_Alert` precision to **`96.30%`** (`6` false alarms; **`0.83`** false alarms per 1,000 astronaut-days) using Platt calibration, explicit cost matrix, and two-tier alerts (`Danger – confirm` vs. `Danger`). |
+| **A3** | `Danger` events missed as `Stress_BP_Spike` (`13/18` misses) | **MITIGATED** | Danger sensitivity increased from `88.46%` (`13` called `Stress`, `18` total misses) to **`91.23%`** (`3` called `Stress`, `15` total misses) via SpO2, recovery slopes, streak lengths, multi-system abnormal count, and glucose; `10` remaining danger days were classified as `Health_Warning`. |
+| **A4** | `Normal` over-calling (`82.02%` spec, `283` abnormal called `Normal`) | **MITIGATED** | `Normal` specificity rose slightly to **`83.70%`** (`267` abnormal days called `Normal`: `58` Stress, `207` Warning, `2` Danger), and row-normalized confusion matrices are now reported explicitly. Mild single-day transitions remain difficult to separate from normal intra-individual variance. |
+| **A5** | Small `Medical_Danger_Alert` sample (`171` rows in 7,200 blind days) | **MITIGATED** | Every per-class metric now includes 95% Wilson CIs (and astronaut-cluster bootstrap CIs for F1), plus a separate clearly labeled 7,200-row Danger-oversampled stress test (`928` Danger days; `93.75%` recall, `98.08%` precision). |
+| **B1** | 100% synthetic telemetry & circular validation | **CANNOT FIX** | Real daily astronaut physiological telemetry is unavailable in open resources. Mitigated via prominent disclaimers, a documented `"Path to Real Validation"`, and sensor noise + missingness stress tests showing accuracy drops `-4.04` pts at `1.5x` noise (`+5%` missing) and `-11.91` pts at `2.0x` noise (`+5%` missing). |
+| **C1** | Out-of-scope keyword leakage (`93.3%` held-out spec) | **FIXED** / **MITIGATED** | Offline TF-IDF `LogisticRegression` scope gate + non-human entity/personal-context filters eliminated keyword leakage (`0.0%` leakage, **`100.0%` specificity** across all 4 unbiased evaluation datasets and internal sets). Strictness trades ~6–10% recall on indirect/colloquial in-scope queries. |
+| **C2** | Evaluator bias, exemplars leakage, & paraphrase fragility | **MITIGATED** | Removed 38 leaked examples; built 4 unbiased benchmarks `(a)–(d)` verified `<= 0.5983 < 0.60` cosine similarity (`0` violations); `eval/external_questions.csv` accurately labeled `external, AI-authored (not human)`. Without local neural sentence embeddings (`sentence-transformers` not installed offline), Paraphrase Stress Test accuracy drops `-13.49` pts (`97.62% -> 84.13%`), with `71.43%` on spelling typos (`typo_abbrev`). |
+
+---
+
+## Key Residual Technical Honesties
+
+1. **No Real Clinical Accuracy Claim:** Because `true_class` labels come from our hidden-state simulator rather than adjudicated human crew medical events, **92.42% blind accuracy cannot be presented as real medical diagnostic accuracy**.
+2. **Offline Lexical vs. Neural Embeddings Trade-off (Chatbot):** `sentence-transformers` and `torch` are unavailable in the offline `.venv` environment. Using TF-IDF character+word n-grams with conservative OOS gating eliminates false answers (`100.0%` specificity across `440+` OOS/control queries) at the cost of refusing unmapped spelling typos (`E009`: *"hart rate feels weird"*), unusual indirect symptoms (`E032`: *"cold sore"*), or novel phrasings (`E001`, `E045`, `E050`, `MEDQ_114`).
+3. **Simulated Sensor Fragility (`2.0x` Noise + `5%` Missing):** Under `2.0x` Gaussian noise and `5%` random missingness, overall accuracy falls from `92.42%` to **`80.51%`** (`-11.91` percentage points) and Macro F1 falls from `88.70%` to **`76.11%`** (`-12.59` percentage points), though `Medical_Danger_Alert` recall remains **`91.81%`** at the cost of lower precision (`89.20%`).
+4. **Pending Clinical Governance:** All `reviewer_status` cells in `07_health_indicators_schema.json`, `resource_facts.py`, and `review/clinical_review_packet.pdf` remain blank until a real physician or credentialed aerospace flight surgeon signs and imports `review/clinical_review_template.csv`.

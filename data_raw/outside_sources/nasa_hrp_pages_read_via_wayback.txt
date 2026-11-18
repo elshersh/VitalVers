@@ -1,0 +1,37 @@
+NASA HRP pages read on 2026-11-14 through the Internet Archive (nasa.gov itself refuses connections from this PC).
+These are NOTES of what the pages say (short paraphrases + the key figures), not full copies.
+Outside resources were allowed by the organisers on 2026-11-14 (team information).
+
+1. https://www.nasa.gov/hrp/hazards/            (snapshot 2026-11-09)   = resource R1
+   Overview page only. Names the five hazards (space radiation, isolation and confinement, distance from Earth,
+   gravity fields, hostile/closed environments) with one sentence each. CONTAINS NO NUMBERS, NO THRESHOLDS,
+   NO COUNTERMEASURE LIST. Links to one sub-page per hazard.
+
+2. https://www.nasa.gov/hrp/hazard-gravity-fields/   (snapshot 2026-07-16)   linked from R1
+   - Weight-bearing bones lose on average 1% to 1.5% of mineral density per month during spaceflight.   [VERIFIED]
+   - The trip between Earth and Mars is described as six months of weightlessness; Mars has about one-third of
+     Earth's gravity.
+   - Fluids shift upward to the head, which may put pressure on the eyes and cause vision problems.
+   - Without preventive measures: increased risk of kidney stones (dehydration, calcium excretion from bone).
+   - Gravity transitions affect orientation, coordination, balance; possible motion sickness, lightheadedness, fainting.
+   NOT ON THIS PAGE: "2 to 2.5 hours of daily exercise", lower body negative pressure, compression garments.
+
+3. https://www.nasa.gov/hrp/hazard-isolation-and-confinement/   (snapshot 2026-07-10)   linked from R1
+   - Sleep loss, circadian desynchronization and work overload may lead to decreased performance and adverse
+     health outcomes.
+   - NASA is developing methods to monitor behavioral health and to detect and treat early risk factors; research
+     on workload, light therapy for circadian alignment, phase shifting and alertness.
+   - Related items mention journaling and space gardening as coping tools.
+   - HERA analog: crews live inside for 45 days at a time.   [VERIFIED]   CHAPEA: year-long simulated Mars stays.
+   NOT ON THIS PAGE: "<6 hours/night", mood scale 1-10, any sleep threshold.
+
+4. https://www.nasa.gov/hrp/hazard-hostile-closed-environments/   (snapshot 2026-10-14)   linked from R1
+   - Microbes transfer more easily between people in closed habitats.
+   - Stress hormone levels can elevate and the immune system can alter, which could lead to increased
+     susceptibility to allergies or other illnesses; more research is needed on how serious this is.
+   NOT ON THIS PAGE: CO2 limits, SpO2 values, body-temperature thresholds.
+
+CONCLUSION FOR THE TEAM
+   Team file 02 contains much more detail than these pages. Bone loss 1-1.5 %/month and HERA 45 days are confirmed.
+   The exercise duration (2-2.5 h/day), the listed countermeasures and every range/threshold in team file 07 were
+   NOT found on the pages above and remain unverified. Pages R2 (risks) and R3 (ongoing research) were not read.

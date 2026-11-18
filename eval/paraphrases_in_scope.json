@@ -1,0 +1,1136 @@
+[
+  {
+    "id": "PARA_001",
+    "original_question": "Summarise my health for me",
+    "paraphrase_type": "synonym",
+    "question": "give me an overview of my health condition",
+    "expected_behavior": "answer",
+    "expected_intent": "status",
+    "max_training_cosine_sim": 0.4454
+  },
+  {
+    "id": "PARA_002",
+    "original_question": "Summarise my health for me",
+    "paraphrase_type": "word_order",
+    "question": "for me today, summarise how my health is",
+    "expected_behavior": "answer",
+    "expected_intent": "status",
+    "max_training_cosine_sim": 0.1638
+  },
+  {
+    "id": "PARA_003",
+    "original_question": "Summarise my health for me",
+    "paraphrase_type": "typo_abbrev",
+    "question": "sumarise my helth status for me today",
+    "expected_behavior": "answer",
+    "expected_intent": "status",
+    "max_training_cosine_sim": 0.2125
+  },
+  {
+    "id": "PARA_004",
+    "original_question": "Everything fine with me?",
+    "paraphrase_type": "synonym",
+    "question": "is my overall health condition okay today",
+    "expected_behavior": "answer",
+    "expected_intent": "status",
+    "max_training_cosine_sim": 0.3183
+  },
+  {
+    "id": "PARA_005",
+    "original_question": "Everything fine with me?",
+    "paraphrase_type": "word_order",
+    "question": "with my health today, is everything fine",
+    "expected_behavior": "answer",
+    "expected_intent": "status",
+    "max_training_cosine_sim": 0.1638
+  },
+  {
+    "id": "PARA_006",
+    "original_question": "Everything fine with me?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "evrything fine with my helth today",
+    "expected_behavior": "answer",
+    "expected_intent": "status",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "PARA_007",
+    "original_question": "What is the model's verdict on me today?",
+    "paraphrase_type": "synonym",
+    "question": "what is the classifier prediction for my health today",
+    "expected_behavior": "answer",
+    "expected_intent": "status",
+    "max_training_cosine_sim": 0.1502
+  },
+  {
+    "id": "PARA_008",
+    "original_question": "What is the model's verdict on me today?",
+    "paraphrase_type": "word_order",
+    "question": "on me today, what is the model verdict",
+    "expected_behavior": "answer",
+    "expected_intent": "status",
+    "max_training_cosine_sim": 0.309
+  },
+  {
+    "id": "PARA_009",
+    "original_question": "What is the model's verdict on me today?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "what is the models verdct on my status today",
+    "expected_behavior": "answer",
+    "expected_intent": "status",
+    "max_training_cosine_sim": 0.2125
+  },
+  {
+    "id": "PARA_010",
+    "original_question": "List my current warnings",
+    "paraphrase_type": "synonym",
+    "question": "show my active health alerts right now",
+    "expected_behavior": "answer",
+    "expected_intent": "alerts",
+    "max_training_cosine_sim": 0.5237
+  },
+  {
+    "id": "PARA_011",
+    "original_question": "List my current warnings",
+    "paraphrase_type": "word_order",
+    "question": "right now, list any current warnings i have",
+    "expected_behavior": "answer",
+    "expected_intent": "alerts",
+    "max_training_cosine_sim": 0.5121
+  },
+  {
+    "id": "PARA_012",
+    "original_question": "List my current warnings",
+    "paraphrase_type": "typo_abbrev",
+    "question": "list my curent health warnngs",
+    "expected_behavior": "answer",
+    "expected_intent": "alerts",
+    "max_training_cosine_sim": 0.2697
+  },
+  {
+    "id": "PARA_013",
+    "original_question": "What triggered the warning and what can I do about it?",
+    "paraphrase_type": "synonym",
+    "question": "which issue set off the notice and how can i resolve it",
+    "expected_behavior": "answer",
+    "expected_intent": "alerts",
+    "max_training_cosine_sim": 0.2774
+  },
+  {
+    "id": "PARA_014",
+    "original_question": "What triggered the warning and what can I do about it?",
+    "paraphrase_type": "word_order",
+    "question": "to fix the warning, tell me what triggered it",
+    "expected_behavior": "answer",
+    "expected_intent": "alerts",
+    "max_training_cosine_sim": 0.4443
+  },
+  {
+    "id": "PARA_015",
+    "original_question": "What triggered the warning and what can I do about it?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "what trigered the warnng and how do i fix it",
+    "expected_behavior": "answer",
+    "expected_intent": "alerts",
+    "max_training_cosine_sim": 0.2671
+  },
+  {
+    "id": "PARA_016",
+    "original_question": "Why am I not in the normal state?",
+    "paraphrase_type": "synonym",
+    "question": "why did my status change to an alert or warning",
+    "expected_behavior": "answer",
+    "expected_intent": "alerts",
+    "max_training_cosine_sim": 0.4171
+  },
+  {
+    "id": "PARA_017",
+    "original_question": "Why am I not in the normal state?",
+    "paraphrase_type": "word_order",
+    "question": "in the normal state why am i not today",
+    "expected_behavior": "answer",
+    "expected_intent": "alerts",
+    "max_training_cosine_sim": 0.4091
+  },
+  {
+    "id": "PARA_018",
+    "original_question": "Why am I not in the normal state?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "why hasnt the system kept me in normal status today",
+    "expected_behavior": "answer",
+    "expected_intent": "alerts",
+    "max_training_cosine_sim": 0.2801
+  },
+  {
+    "id": "PARA_019",
+    "original_question": "Is my systolic pressure high compared with before the flight?",
+    "paraphrase_type": "synonym",
+    "question": "is my systolic blood pressure elevated versus preflight",
+    "expected_behavior": "answer",
+    "expected_intent": "cardio",
+    "max_training_cosine_sim": 0.3102
+  },
+  {
+    "id": "PARA_020",
+    "original_question": "Is my systolic pressure high compared with before the flight?",
+    "paraphrase_type": "word_order",
+    "question": "compared with before the flight, is my systolic pressure high",
+    "expected_behavior": "answer",
+    "expected_intent": "cardio",
+    "max_training_cosine_sim": 0.3219
+  },
+  {
+    "id": "PARA_021",
+    "original_question": "Is my systolic pressure high compared with before the flight?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "is my systolic BP high vs preflight baseline",
+    "expected_behavior": "answer",
+    "expected_intent": "cardio",
+    "max_training_cosine_sim": 0.2915
+  },
+  {
+    "id": "PARA_022",
+    "original_question": "How fast is my heart beating?",
+    "paraphrase_type": "synonym",
+    "question": "what is my current resting pulse rate",
+    "expected_behavior": "answer",
+    "expected_intent": "cardio",
+    "max_training_cosine_sim": 0.5356
+  },
+  {
+    "id": "PARA_023",
+    "original_question": "How fast is my heart beating?",
+    "paraphrase_type": "word_order",
+    "question": "right now, how fast is my heart rate",
+    "expected_behavior": "answer",
+    "expected_intent": "cardio",
+    "max_training_cosine_sim": 0.4146
+  },
+  {
+    "id": "PARA_024",
+    "original_question": "How fast is my heart beating?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "what is my HR right now",
+    "expected_behavior": "answer",
+    "expected_intent": "cardio",
+    "max_training_cosine_sim": 0.5307
+  },
+  {
+    "id": "PARA_025",
+    "original_question": "Tell me my SpO2 reading",
+    "paraphrase_type": "synonym",
+    "question": "check my pulse oximeter oxygen reading today",
+    "expected_behavior": "answer",
+    "expected_intent": "cardio",
+    "max_training_cosine_sim": 0.5243
+  },
+  {
+    "id": "PARA_026",
+    "original_question": "Tell me my SpO2 reading",
+    "paraphrase_type": "word_order",
+    "question": "for today, tell me my oxygen saturation reading",
+    "expected_behavior": "answer",
+    "expected_intent": "cardio",
+    "max_training_cosine_sim": 0.457
+  },
+  {
+    "id": "PARA_027",
+    "original_question": "Tell me my SpO2 reading",
+    "paraphrase_type": "typo_abbrev",
+    "question": "show my spo2 and o2 level today",
+    "expected_behavior": "answer",
+    "expected_intent": "cardio",
+    "max_training_cosine_sim": 0.5964
+  },
+  {
+    "id": "PARA_028",
+    "original_question": "How is my bone density holding up?",
+    "paraphrase_type": "synonym",
+    "question": "how is my skeletal bone health status doing",
+    "expected_behavior": "answer",
+    "expected_intent": "bone_muscle",
+    "max_training_cosine_sim": 0.3662
+  },
+  {
+    "id": "PARA_029",
+    "original_question": "How is my bone density holding up?",
+    "paraphrase_type": "word_order",
+    "question": "up here in space, how is my bone density holding up",
+    "expected_behavior": "answer",
+    "expected_intent": "bone_muscle",
+    "max_training_cosine_sim": 0.2963
+  },
+  {
+    "id": "PARA_030",
+    "original_question": "How is my bone density holding up?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "how is my bone densty holding up today",
+    "expected_behavior": "answer",
+    "expected_intent": "bone_muscle",
+    "max_training_cosine_sim": 0.2963
+  },
+  {
+    "id": "PARA_031",
+    "original_question": "How quickly am I losing bone?",
+    "paraphrase_type": "synonym",
+    "question": "what is my monthly rate of bone mass loss",
+    "expected_behavior": "answer",
+    "expected_intent": "bone_muscle",
+    "max_training_cosine_sim": 0.4543
+  },
+  {
+    "id": "PARA_032",
+    "original_question": "How quickly am I losing bone?",
+    "paraphrase_type": "word_order",
+    "question": "right now, how quickly am i losing bone mass",
+    "expected_behavior": "answer",
+    "expected_intent": "bone_muscle",
+    "max_training_cosine_sim": 0.2963
+  },
+  {
+    "id": "PARA_033",
+    "original_question": "How quickly am I losing bone?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "how fast is my bone loss rate this month",
+    "expected_behavior": "answer",
+    "expected_intent": "bone_muscle",
+    "max_training_cosine_sim": 0.3855
+  },
+  {
+    "id": "PARA_034",
+    "original_question": "Are my muscles okay?",
+    "paraphrase_type": "synonym",
+    "question": "is my muscular strength conditioning holding up",
+    "expected_behavior": "answer",
+    "expected_intent": "bone_muscle",
+    "max_training_cosine_sim": 0.4204
+  },
+  {
+    "id": "PARA_035",
+    "original_question": "Are my muscles okay?",
+    "paraphrase_type": "word_order",
+    "question": "today in my telemetry, are my muscles okay",
+    "expected_behavior": "answer",
+    "expected_intent": "bone_muscle",
+    "max_training_cosine_sim": 0.2707
+  },
+  {
+    "id": "PARA_036",
+    "original_question": "Are my muscles okay?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "are my muscels and muscle strength ok",
+    "expected_behavior": "answer",
+    "expected_intent": "bone_muscle",
+    "max_training_cosine_sim": 0.4821
+  },
+  {
+    "id": "PARA_037",
+    "original_question": "What do my immunity numbers look like?",
+    "paraphrase_type": "synonym",
+    "question": "how are my immune system indicators doing today",
+    "expected_behavior": "answer",
+    "expected_intent": "immune",
+    "max_training_cosine_sim": 0.4499
+  },
+  {
+    "id": "PARA_038",
+    "original_question": "What do my immunity numbers look like?",
+    "paraphrase_type": "word_order",
+    "question": "today, what do my immunity indicators look like",
+    "expected_behavior": "answer",
+    "expected_intent": "immune",
+    "max_training_cosine_sim": 0.2433
+  },
+  {
+    "id": "PARA_039",
+    "original_question": "What do my immunity numbers look like?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "what do my imunity numbers look like today",
+    "expected_behavior": "answer",
+    "expected_intent": "immune",
+    "max_training_cosine_sim": 0.2003
+  },
+  {
+    "id": "PARA_040",
+    "original_question": "Is my cortisol high?",
+    "paraphrase_type": "synonym",
+    "question": "are my stress hormone cortisol readings elevated",
+    "expected_behavior": "answer",
+    "expected_intent": "immune",
+    "max_training_cosine_sim": 0.329
+  },
+  {
+    "id": "PARA_041",
+    "original_question": "Is my cortisol high?",
+    "paraphrase_type": "word_order",
+    "question": "today in my lab telemetry, is my cortisol high",
+    "expected_behavior": "answer",
+    "expected_intent": "immune",
+    "max_training_cosine_sim": 0.1666
+  },
+  {
+    "id": "PARA_042",
+    "original_question": "Is my cortisol high?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "is my cortsol hormone level high today",
+    "expected_behavior": "answer",
+    "expected_intent": "immune",
+    "max_training_cosine_sim": 0.1656
+  },
+  {
+    "id": "PARA_043",
+    "original_question": "What's my temperature compared to normal for me?",
+    "paraphrase_type": "synonym",
+    "question": "is my core body temperature above my personal range",
+    "expected_behavior": "answer",
+    "expected_intent": "immune",
+    "max_training_cosine_sim": 0.4872
+  },
+  {
+    "id": "PARA_044",
+    "original_question": "What's my temperature compared to normal for me?",
+    "paraphrase_type": "word_order",
+    "question": "compared to normal for me, what is my temperature",
+    "expected_behavior": "answer",
+    "expected_intent": "immune",
+    "max_training_cosine_sim": 0.2724
+  },
+  {
+    "id": "PARA_045",
+    "original_question": "What's my temperature compared to normal for me?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "what is my body temp compared to normal for me",
+    "expected_behavior": "answer",
+    "expected_intent": "immune",
+    "max_training_cosine_sim": 0.366
+  },
+  {
+    "id": "PARA_046",
+    "original_question": "How long did I sleep?",
+    "paraphrase_type": "synonym",
+    "question": "how many hours of sleep did i log last night",
+    "expected_behavior": "answer",
+    "expected_intent": "sleep_psych",
+    "max_training_cosine_sim": 0.5937
+  },
+  {
+    "id": "PARA_047",
+    "original_question": "How long did I sleep?",
+    "paraphrase_type": "word_order",
+    "question": "last night, how many hours did i sleep",
+    "expected_behavior": "answer",
+    "expected_intent": "sleep_psych",
+    "max_training_cosine_sim": 0.5937
+  },
+  {
+    "id": "PARA_048",
+    "original_question": "How long did I sleep?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "how many hrs did i slep last night",
+    "expected_behavior": "answer",
+    "expected_intent": "sleep_psych",
+    "max_training_cosine_sim": 0.4251
+  },
+  {
+    "id": "PARA_049",
+    "original_question": "How's my mood been?",
+    "paraphrase_type": "synonym",
+    "question": "what is my psychological mood score lately",
+    "expected_behavior": "answer",
+    "expected_intent": "sleep_psych",
+    "max_training_cosine_sim": 0.4488
+  },
+  {
+    "id": "PARA_050",
+    "original_question": "How's my mood been?",
+    "paraphrase_type": "word_order",
+    "question": "lately in my logs, how has my mood been",
+    "expected_behavior": "answer",
+    "expected_intent": "sleep_psych",
+    "max_training_cosine_sim": 0.1793
+  },
+  {
+    "id": "PARA_051",
+    "original_question": "How's my mood been?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "what is my mood scroe today",
+    "expected_behavior": "answer",
+    "expected_intent": "sleep_psych",
+    "max_training_cosine_sim": 0.1793
+  },
+  {
+    "id": "PARA_052",
+    "original_question": "What did I get on my mental health assessment?",
+    "paraphrase_type": "synonym",
+    "question": "what is my current mental health assessment score",
+    "expected_behavior": "answer",
+    "expected_intent": "sleep_psych",
+    "max_training_cosine_sim": 0.483
+  },
+  {
+    "id": "PARA_053",
+    "original_question": "What did I get on my mental health assessment?",
+    "paraphrase_type": "word_order",
+    "question": "on my mental health assessment, what score did i get",
+    "expected_behavior": "answer",
+    "expected_intent": "sleep_psych",
+    "max_training_cosine_sim": 0.5098
+  },
+  {
+    "id": "PARA_054",
+    "original_question": "What did I get on my mental health assessment?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "what was my mental helth assessment score",
+    "expected_behavior": "answer",
+    "expected_intent": "sleep_psych",
+    "max_training_cosine_sim": 0.3636
+  },
+  {
+    "id": "PARA_055",
+    "original_question": "How much did I train today?",
+    "paraphrase_type": "synonym",
+    "question": "how many hours of training did i log today",
+    "expected_behavior": "answer",
+    "expected_intent": "sleep_psych",
+    "max_training_cosine_sim": 0.3326
+  },
+  {
+    "id": "PARA_056",
+    "original_question": "How much did I train today?",
+    "paraphrase_type": "word_order",
+    "question": "today, how many hours did i train",
+    "expected_behavior": "answer",
+    "expected_intent": "sleep_psych",
+    "max_training_cosine_sim": 0.3326
+  },
+  {
+    "id": "PARA_057",
+    "original_question": "How much did I train today?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "how many hrs did i trian today",
+    "expected_behavior": "answer",
+    "expected_intent": "sleep_psych",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "PARA_058",
+    "original_question": "What's left on today's task list?",
+    "paraphrase_type": "synonym",
+    "question": "which exercise items remain on my to do list today",
+    "expected_behavior": "answer",
+    "expected_intent": "todo",
+    "max_training_cosine_sim": 0.3901
+  },
+  {
+    "id": "PARA_059",
+    "original_question": "What's left on today's task list?",
+    "paraphrase_type": "word_order",
+    "question": "on my task list for today, what is left",
+    "expected_behavior": "answer",
+    "expected_intent": "todo",
+    "max_training_cosine_sim": 0.2554
+  },
+  {
+    "id": "PARA_060",
+    "original_question": "What's left on today's task list?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "whats left on my to do task list today",
+    "expected_behavior": "answer",
+    "expected_intent": "todo",
+    "max_training_cosine_sim": 0.2554
+  },
+  {
+    "id": "PARA_061",
+    "original_question": "Did I do my resistance workout?",
+    "paraphrase_type": "synonym",
+    "question": "have i completed my resistance exercise session today",
+    "expected_behavior": "answer",
+    "expected_intent": "todo",
+    "max_training_cosine_sim": 0.5046
+  },
+  {
+    "id": "PARA_062",
+    "original_question": "Did I do my resistance workout?",
+    "paraphrase_type": "word_order",
+    "question": "today, did i finish my resistance workout",
+    "expected_behavior": "answer",
+    "expected_intent": "todo",
+    "max_training_cosine_sim": 0.439
+  },
+  {
+    "id": "PARA_063",
+    "original_question": "Did I do my resistance workout?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "did i finish my resistnce training session today",
+    "expected_behavior": "answer",
+    "expected_intent": "todo",
+    "max_training_cosine_sim": 0.2004
+  },
+  {
+    "id": "PARA_064",
+    "original_question": "How many activity minutes have I logged?",
+    "paraphrase_type": "synonym",
+    "question": "how many minutes of exercise tasks are on my to do list",
+    "expected_behavior": "answer",
+    "expected_intent": "todo",
+    "max_training_cosine_sim": 0.4068
+  },
+  {
+    "id": "PARA_065",
+    "original_question": "How many activity minutes have I logged?",
+    "paraphrase_type": "word_order",
+    "question": "on my task list today, how many activity minutes are logged",
+    "expected_behavior": "answer",
+    "expected_intent": "todo",
+    "max_training_cosine_sim": 0.1957
+  },
+  {
+    "id": "PARA_066",
+    "original_question": "How many activity minutes have I logged?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "how many exercise minuts are on my to do list",
+    "expected_behavior": "answer",
+    "expected_intent": "todo",
+    "max_training_cosine_sim": 0.3901
+  },
+  {
+    "id": "PARA_067",
+    "original_question": "What blood group am I?",
+    "paraphrase_type": "synonym",
+    "question": "what blood type is recorded in my profile",
+    "expected_behavior": "answer",
+    "expected_intent": "profile",
+    "max_training_cosine_sim": 0.3371
+  },
+  {
+    "id": "PARA_068",
+    "original_question": "What blood group am I?",
+    "paraphrase_type": "word_order",
+    "question": "in my medical file, what blood group am i",
+    "expected_behavior": "answer",
+    "expected_intent": "profile",
+    "max_training_cosine_sim": 0.2709
+  },
+  {
+    "id": "PARA_069",
+    "original_question": "What blood group am I?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "what is my blod type in my record",
+    "expected_behavior": "answer",
+    "expected_intent": "profile",
+    "max_training_cosine_sim": 0.1689
+  },
+  {
+    "id": "PARA_070",
+    "original_question": "How much do I weigh?",
+    "paraphrase_type": "synonym",
+    "question": "what is my body weight in my astronaut profile",
+    "expected_behavior": "answer",
+    "expected_intent": "profile",
+    "max_training_cosine_sim": 0.3026
+  },
+  {
+    "id": "PARA_071",
+    "original_question": "How much do I weigh?",
+    "paraphrase_type": "word_order",
+    "question": "according to my profile record, how much do i weigh",
+    "expected_behavior": "answer",
+    "expected_intent": "profile",
+    "max_training_cosine_sim": 0.1689
+  },
+  {
+    "id": "PARA_072",
+    "original_question": "How much do I weigh?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "what is my weigth in my profile record",
+    "expected_behavior": "answer",
+    "expected_intent": "profile",
+    "max_training_cosine_sim": 0.1689
+  },
+  {
+    "id": "PARA_073",
+    "original_question": "What is my age?",
+    "paraphrase_type": "synonym",
+    "question": "how old am i according to my dossier",
+    "expected_behavior": "answer",
+    "expected_intent": "profile",
+    "max_training_cosine_sim": 0.2334
+  },
+  {
+    "id": "PARA_074",
+    "original_question": "What is my age?",
+    "paraphrase_type": "word_order",
+    "question": "in my astronaut profile, what is my age",
+    "expected_behavior": "answer",
+    "expected_intent": "profile",
+    "max_training_cosine_sim": 0.327
+  },
+  {
+    "id": "PARA_075",
+    "original_question": "What is my age?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "how old am i in my profle record",
+    "expected_behavior": "answer",
+    "expected_intent": "profile",
+    "max_training_cosine_sim": 0.2287
+  },
+  {
+    "id": "PARA_076",
+    "original_question": "Any past surgeries in my file?",
+    "paraphrase_type": "synonym",
+    "question": "what previous surgeries are listed on my medical record",
+    "expected_behavior": "answer",
+    "expected_intent": "profile",
+    "max_training_cosine_sim": 0.3797
+  },
+  {
+    "id": "PARA_077",
+    "original_question": "Any past surgeries in my file?",
+    "paraphrase_type": "word_order",
+    "question": "in my medical file, do i have any past surgeries",
+    "expected_behavior": "answer",
+    "expected_intent": "profile",
+    "max_training_cosine_sim": 0.53
+  },
+  {
+    "id": "PARA_078",
+    "original_question": "Any past surgeries in my file?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "what past surgeris are in my medical record",
+    "expected_behavior": "answer",
+    "expected_intent": "profile",
+    "max_training_cosine_sim": 0.4198
+  },
+  {
+    "id": "PARA_079",
+    "original_question": "What was my heart rate baseline before the mission?",
+    "paraphrase_type": "synonym",
+    "question": "what was my preflight baseline pulse rate before launch",
+    "expected_behavior": "answer",
+    "expected_intent": "baseline",
+    "max_training_cosine_sim": 0.3652
+  },
+  {
+    "id": "PARA_080",
+    "original_question": "What was my heart rate baseline before the mission?",
+    "paraphrase_type": "word_order",
+    "question": "before the mission, what was my baseline heart rate",
+    "expected_behavior": "answer",
+    "expected_intent": "baseline",
+    "max_training_cosine_sim": 0.428
+  },
+  {
+    "id": "PARA_081",
+    "original_question": "What was my heart rate baseline before the mission?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "what was my preflight baseline HR before launch",
+    "expected_behavior": "answer",
+    "expected_intent": "baseline",
+    "max_training_cosine_sim": 0.4173
+  },
+  {
+    "id": "PARA_082",
+    "original_question": "Show the baseline values for my blood pressure",
+    "paraphrase_type": "synonym",
+    "question": "what were my prelaunch baseline blood pressure numbers",
+    "expected_behavior": "answer",
+    "expected_intent": "baseline",
+    "max_training_cosine_sim": 0.2959
+  },
+  {
+    "id": "PARA_083",
+    "original_question": "Show the baseline values for my blood pressure",
+    "paraphrase_type": "word_order",
+    "question": "for my blood pressure, show the preflight baseline values",
+    "expected_behavior": "answer",
+    "expected_intent": "baseline",
+    "max_training_cosine_sim": 0.3186
+  },
+  {
+    "id": "PARA_084",
+    "original_question": "Show the baseline values for my blood pressure",
+    "paraphrase_type": "typo_abbrev",
+    "question": "show my preflight baseline BP values",
+    "expected_behavior": "answer",
+    "expected_intent": "baseline",
+    "max_training_cosine_sim": 0.3186
+  },
+  {
+    "id": "PARA_085",
+    "original_question": "Can you show me the photo of my family?",
+    "paraphrase_type": "synonym",
+    "question": "let me see my loved ones snapshot for relaxation",
+    "expected_behavior": "answer",
+    "expected_intent": "calming",
+    "max_training_cosine_sim": 0.2086
+  },
+  {
+    "id": "PARA_086",
+    "original_question": "Can you show me the photo of my family?",
+    "paraphrase_type": "word_order",
+    "question": "to help me calm down, can you show my family photo",
+    "expected_behavior": "answer",
+    "expected_intent": "calming",
+    "max_training_cosine_sim": 0.5308
+  },
+  {
+    "id": "PARA_087",
+    "original_question": "Can you show me the photo of my family?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "show my famly photo from my calming preferences",
+    "expected_behavior": "answer",
+    "expected_intent": "calming",
+    "max_training_cosine_sim": 0.2963
+  },
+  {
+    "id": "PARA_088",
+    "original_question": "I want to hear my song",
+    "paraphrase_type": "synonym",
+    "question": "please play my calming music track",
+    "expected_behavior": "answer",
+    "expected_intent": "calming",
+    "max_training_cosine_sim": 0.2869
+  },
+  {
+    "id": "PARA_089",
+    "original_question": "I want to hear my song",
+    "paraphrase_type": "word_order",
+    "question": "to relax right now, i want to hear my song",
+    "expected_behavior": "answer",
+    "expected_intent": "calming",
+    "max_training_cosine_sim": 0.2963
+  },
+  {
+    "id": "PARA_090",
+    "original_question": "I want to hear my song",
+    "paraphrase_type": "typo_abbrev",
+    "question": "play my calming sng track please",
+    "expected_behavior": "answer",
+    "expected_intent": "calming",
+    "max_training_cosine_sim": 0.2963
+  },
+  {
+    "id": "PARA_091",
+    "original_question": "I'm anxious, help me relax",
+    "paraphrase_type": "synonym",
+    "question": "i feel stressed out please help me calm down",
+    "expected_behavior": "answer",
+    "expected_intent": "calming",
+    "max_training_cosine_sim": 0.3578
+  },
+  {
+    "id": "PARA_092",
+    "original_question": "I'm anxious, help me relax",
+    "paraphrase_type": "word_order",
+    "question": "please help me relax because i am feeling anxious",
+    "expected_behavior": "answer",
+    "expected_intent": "calming",
+    "max_training_cosine_sim": 0.3578
+  },
+  {
+    "id": "PARA_093",
+    "original_question": "I'm anxious, help me relax",
+    "paraphrase_type": "typo_abbrev",
+    "question": "im anxius and stressed help me calm down",
+    "expected_behavior": "answer",
+    "expected_intent": "calming",
+    "max_training_cosine_sim": 0.3578
+  },
+  {
+    "id": "PARA_094",
+    "original_question": "How do I reach the doctor on Earth?",
+    "paraphrase_type": "synonym",
+    "question": "what phone number reaches my mission surgeon down in houston",
+    "expected_behavior": "answer",
+    "expected_intent": "contact",
+    "max_training_cosine_sim": 0.2341
+  },
+  {
+    "id": "PARA_095",
+    "original_question": "How do I reach the doctor on Earth?",
+    "paraphrase_type": "word_order",
+    "question": "back home on earth, how can i telephone the medical desk",
+    "expected_behavior": "answer",
+    "expected_intent": "contact",
+    "max_training_cosine_sim": 0.1339
+  },
+  {
+    "id": "PARA_096",
+    "original_question": "How do I reach the doctor on Earth?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "how do i contct my fligt surgeon on earth",
+    "expected_behavior": "answer",
+    "expected_intent": "contact",
+    "max_training_cosine_sim": 0.3963
+  },
+  {
+    "id": "PARA_097",
+    "original_question": "Give me my flight surgeon's contact details",
+    "paraphrase_type": "synonym",
+    "question": "show the communication details for my medical doctor",
+    "expected_behavior": "answer",
+    "expected_intent": "contact",
+    "max_training_cosine_sim": 0.4513
+  },
+  {
+    "id": "PARA_098",
+    "original_question": "Give me my flight surgeon's contact details",
+    "paraphrase_type": "word_order",
+    "question": "for my flight surgeon, give me the contact details",
+    "expected_behavior": "answer",
+    "expected_intent": "contact",
+    "max_training_cosine_sim": 0.5865
+  },
+  {
+    "id": "PARA_099",
+    "original_question": "Give me my flight surgeon's contact details",
+    "paraphrase_type": "typo_abbrev",
+    "question": "give me my flight surgeons contct info",
+    "expected_behavior": "answer",
+    "expected_intent": "contact",
+    "max_training_cosine_sim": 0.2104
+  },
+  {
+    "id": "PARA_100",
+    "original_question": "Where is this spacecraft headed?",
+    "paraphrase_type": "synonym",
+    "question": "what is the destination for our mission flight",
+    "expected_behavior": "answer",
+    "expected_intent": "journey",
+    "max_training_cosine_sim": 0.3457
+  },
+  {
+    "id": "PARA_101",
+    "original_question": "Where is this spacecraft headed?",
+    "paraphrase_type": "word_order",
+    "question": "on this mission, where is our spacecraft headed",
+    "expected_behavior": "answer",
+    "expected_intent": "journey",
+    "max_training_cosine_sim": 0.3555
+  },
+  {
+    "id": "PARA_102",
+    "original_question": "Where is this spacecraft headed?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "what is the destnation for my spacecraft flight",
+    "expected_behavior": "answer",
+    "expected_intent": "journey",
+    "max_training_cosine_sim": 0.2455
+  },
+  {
+    "id": "PARA_103",
+    "original_question": "How many days will the flight take?",
+    "paraphrase_type": "synonym",
+    "question": "what is the total estimated duration of my mission in days",
+    "expected_behavior": "answer",
+    "expected_intent": "journey",
+    "max_training_cosine_sim": 0.3522
+  },
+  {
+    "id": "PARA_104",
+    "original_question": "How many days will the flight take?",
+    "paraphrase_type": "word_order",
+    "question": "in days, how long will this spaceflight take",
+    "expected_behavior": "answer",
+    "expected_intent": "journey",
+    "max_training_cosine_sim": 0.3088
+  },
+  {
+    "id": "PARA_105",
+    "original_question": "How many days will the flight take?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "how many days is the mission fligt duration",
+    "expected_behavior": "answer",
+    "expected_intent": "journey",
+    "max_training_cosine_sim": 0.3209
+  },
+  {
+    "id": "PARA_106",
+    "original_question": "How was my health on day 150?",
+    "paraphrase_type": "synonym",
+    "question": "replay my health status from mission day 150",
+    "expected_behavior": "answer",
+    "expected_intent": "replay",
+    "max_training_cosine_sim": 0.2859
+  },
+  {
+    "id": "PARA_107",
+    "original_question": "How was my health on day 150?",
+    "paraphrase_type": "word_order",
+    "question": "on day 150, how was my health status",
+    "expected_behavior": "answer",
+    "expected_intent": "replay",
+    "max_training_cosine_sim": 0.3369
+  },
+  {
+    "id": "PARA_108",
+    "original_question": "How was my health on day 150?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "show my helth replay on day 150",
+    "expected_behavior": "answer",
+    "expected_intent": "replay",
+    "max_training_cosine_sim": 0.2781
+  },
+  {
+    "id": "PARA_109",
+    "original_question": "What did the model say on day 33?",
+    "paraphrase_type": "synonym",
+    "question": "what was my stored prediction on mission day 33",
+    "expected_behavior": "answer",
+    "expected_intent": "replay",
+    "max_training_cosine_sim": 0.4301
+  },
+  {
+    "id": "PARA_110",
+    "original_question": "What did the model say on day 33?",
+    "paraphrase_type": "word_order",
+    "question": "on day 33, what did the model predict for me",
+    "expected_behavior": "answer",
+    "expected_intent": "replay",
+    "max_training_cosine_sim": 0.2511
+  },
+  {
+    "id": "PARA_111",
+    "original_question": "What did the model say on day 33?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "replay what the model said on day 33",
+    "expected_behavior": "answer",
+    "expected_intent": "replay",
+    "max_training_cosine_sim": 0.3281
+  },
+  {
+    "id": "PARA_112",
+    "original_question": "What if I got 2 more hours of sleep?",
+    "paraphrase_type": "synonym",
+    "question": "simulate sleeping two extra hours tonight",
+    "expected_behavior": "answer",
+    "expected_intent": "what_if",
+    "max_training_cosine_sim": 0.2578
+  },
+  {
+    "id": "PARA_113",
+    "original_question": "What if I got 2 more hours of sleep?",
+    "paraphrase_type": "word_order",
+    "question": "if i got 2 more hours of sleep, what would happen",
+    "expected_behavior": "answer",
+    "expected_intent": "what_if",
+    "max_training_cosine_sim": 0.3535
+  },
+  {
+    "id": "PARA_114",
+    "original_question": "What if I got 2 more hours of sleep?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "what if i slep 2 more hrs tonight",
+    "expected_behavior": "answer",
+    "expected_intent": "what_if",
+    "max_training_cosine_sim": 0.2305
+  },
+  {
+    "id": "PARA_115",
+    "original_question": "What happens to my risk if I train 30 minutes less?",
+    "paraphrase_type": "synonym",
+    "question": "what if i reduce my training by 30 minutes today",
+    "expected_behavior": "answer",
+    "expected_intent": "what_if",
+    "max_training_cosine_sim": 0.1884
+  },
+  {
+    "id": "PARA_116",
+    "original_question": "What happens to my risk if I train 30 minutes less?",
+    "paraphrase_type": "word_order",
+    "question": "if i train 30 minutes less, what happens to my risk",
+    "expected_behavior": "answer",
+    "expected_intent": "what_if",
+    "max_training_cosine_sim": 0.3258
+  },
+  {
+    "id": "PARA_117",
+    "original_question": "What happens to my risk if I train 30 minutes less?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "what if i trian 30 minutes less today",
+    "expected_behavior": "answer",
+    "expected_intent": "what_if",
+    "max_training_cosine_sim": 0.2354
+  },
+  {
+    "id": "PARA_118",
+    "original_question": "Is my mood linked to how much I train?",
+    "paraphrase_type": "synonym",
+    "question": "is there a correlation between my mood and training hours",
+    "expected_behavior": "answer",
+    "expected_intent": "correlation",
+    "max_training_cosine_sim": 0.5327
+  },
+  {
+    "id": "PARA_119",
+    "original_question": "Is my mood linked to how much I train?",
+    "paraphrase_type": "word_order",
+    "question": "in my data, is how much i train linked to my mood",
+    "expected_behavior": "answer",
+    "expected_intent": "correlation",
+    "max_training_cosine_sim": 0.2646
+  },
+  {
+    "id": "PARA_120",
+    "original_question": "Is my mood linked to how much I train?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "what is the corelation between my mood and training",
+    "expected_behavior": "answer",
+    "expected_intent": "correlation",
+    "max_training_cosine_sim": 0.3304
+  },
+  {
+    "id": "PARA_121",
+    "original_question": "Where do you get your facts?",
+    "paraphrase_type": "synonym",
+    "question": "what data sources are your answers based on",
+    "expected_behavior": "answer",
+    "expected_intent": "sources",
+    "max_training_cosine_sim": 0.3892
+  },
+  {
+    "id": "PARA_122",
+    "original_question": "Where do you get your facts?",
+    "paraphrase_type": "word_order",
+    "question": "for your answers, where do you get your sources and facts",
+    "expected_behavior": "answer",
+    "expected_intent": "sources",
+    "max_training_cosine_sim": 0.2247
+  },
+  {
+    "id": "PARA_123",
+    "original_question": "Where do you get your facts?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "what data sorces and facts do you use",
+    "expected_behavior": "answer",
+    "expected_intent": "sources",
+    "max_training_cosine_sim": 0.2247
+  },
+  {
+    "id": "PARA_124",
+    "original_question": "Are you a real doctor?",
+    "paraphrase_type": "synonym",
+    "question": "is this app a certified medical device or doctor",
+    "expected_behavior": "answer",
+    "expected_intent": "sources",
+    "max_training_cosine_sim": 0.3914
+  },
+  {
+    "id": "PARA_125",
+    "original_question": "Are you a real doctor?",
+    "paraphrase_type": "word_order",
+    "question": "tell me whether you are a real medical doctor",
+    "expected_behavior": "answer",
+    "expected_intent": "sources",
+    "max_training_cosine_sim": 0.3883
+  },
+  {
+    "id": "PARA_126",
+    "original_question": "Are you a real doctor?",
+    "paraphrase_type": "typo_abbrev",
+    "question": "are you a real doctr or medical device",
+    "expected_behavior": "answer",
+    "expected_intent": "sources",
+    "max_training_cosine_sim": 0.3596
+  }
+]

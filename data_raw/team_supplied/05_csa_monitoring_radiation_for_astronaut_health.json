@@ -1,0 +1,20 @@
+{
+  "source": "Canadian Space Agency (CSA)",
+  "article_title": "Monitoring Radiation for Astronaut Health",
+  "url": "https://www.asc-csa.gc.ca/eng/news/articles/2026/2026-02-26-monitoring-radiation-astronaut-health.asp",
+  "date_modified": "2026-02-26",
+  "key_personnel_and_institutions": [
+    "CSA Astronaut David Saint-Jacques (tested bubble detector prototypes on ISS)",
+    "Bubble Technology Industries (BTI - awarded $5.5 million contract for CANS development)"
+  ],
+  "key_facts_and_technologies": {
+    "instrument": "CANS (Canadian Active Neutron Spectrometer)",
+    "technology_evolution": "Evolution from passive bubble detectors and earlier ISS radiation experiments: MOSFET, EVARM, Radi-N, and Radi-N2.",
+    "target_radiation": "Neutron radiation",
+    "relative_contribution": "Neutron radiation contributes to approximately 30% of total radiation dose received on the International Space Station (ISS).",
+    "biological_significance": "Neutrons possess high linear energy transfer (LET), causing dense ionization and complex, hard-to-repair double-strand DNA damage.",
+    "key_capabilities": "CANS provides autonomous, continuous real-time measurement of neutron radiation without requiring manual crew intervention.",
+    "terrestrial_applications": "Data and sensor architecture apply directly on Earth to cancer proton/hadron therapy, aircrew radiation safety at high altitudes, nuclear site safety, and homeland security radiation detection."
+  },
+  "full_text_extract": "Radiation is one of the key challenges faced by astronauts living and working beyond the protective shield of Earth’s atmosphere. As Canada and its international partners advance plans for missions to the Moon, and eventually Mars, the CSA continues to invest in technology to better understand exposure levels.\n\nThe CSA has awarded a contract of $5.5 million to Bubble Technology Industries for the continued development of the CANS, a compact and autonomous instrument designed to measure neutron radiation exposure in space.\n\nNeutron radiation, which contributes to about 30% of total radiation on the ISS, is especially harmful because it can cause serious biological damage and require specialized protective measures. For over 25 years, the ISS has been a test bed for new technology. Canada has significant expertise in radiation detection experiments on the ISS, including MOSFET, EVARM and Radi-N and Radi-N2.\n\nCANS improves upon previous radiation detection methods with the unique combined capabilities of working continuously and autonomously. Data collected could help develop better measures to reduce risks for astronauts’ health and also has potential applications on Earth, including cancer therapy, radiation protection for aircrews, nuclear threat detection and public safety, among others."
+}

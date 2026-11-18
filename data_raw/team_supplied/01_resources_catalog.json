@@ -1,0 +1,51 @@
+[
+  {
+    "id": "R0",
+    "category": "Challenge Definition",
+    "provider": "NASA Space Apps Challenge",
+    "title": "Challenge Details: Create Health Monitoring Software for Astronauts on Space Missions",
+    "url": "https://www.spaceappschallenge.org/2026/challenges/health-monitoring-software/",
+    "tab_url": "https://www.spaceappschallenge.org/2026/challenges/health-monitoring-software/?tab=resources",
+    "description": "Full challenge brief detailing the mission problem, background, objectives, and UI/feature considerations."
+  },
+  {
+    "id": "R1",
+    "category": "NASA Data & Resources",
+    "provider": "NASA Human Research Program (HRP)",
+    "title": "5 Hazards of Human Spaceflight",
+    "url": "https://www.nasa.gov/hrp/hazards/",
+    "description": "Basic information from NASA's Human Research Program on the five primary environmental hazards that affect humans during space missions (Radiation, Isolation/Confinement, Distance, Gravity Fields, Hostile Environments)."
+  },
+  {
+    "id": "R2",
+    "category": "NASA Data & Resources",
+    "provider": "NASA Human Research Program (HRP)",
+    "title": "Risks of Human Spaceflight",
+    "url": "https://www.nasa.gov/hrp/risks/",
+    "description": "Comprehensive mapping of the human physiological, behavioral, and clinical risks tracked by NASA HRP, cross-referenced with countermeasures and flight elements."
+  },
+  {
+    "id": "R3",
+    "category": "NASA Data & Resources",
+    "provider": "NASA Human Research Program (HRP)",
+    "title": "Ongoing HRP Research in Space",
+    "url": "https://www.nasa.gov/hrp/ongoing-hrp-research/",
+    "description": "Articles, findings, and ongoing experiments aboard the International Space Station, ground analogs (HERA, bed rest), and future Artemis exploration missions."
+  },
+  {
+    "id": "R4",
+    "category": "Space Agency Partner Resources",
+    "provider": "Canadian Space Agency (CSA)",
+    "title": "Monitoring Radiation for Astronaut Health",
+    "url": "https://www.asc-csa.gc.ca/eng/news/articles/2026/2026-02-26-monitoring-radiation-astronaut-health.asp",
+    "description": "Highlights Canadian technologies and research (such as the Canadian Active Neutron Spectrometer - CANS) used to autonomously monitor radiation exposure on the ISS and future Moon/Mars missions."
+  },
+  {
+    "id": "R5",
+    "category": "Space Agency Partner Resources",
+    "provider": "Canadian Space Agency (CSA)",
+    "title": "Why Do We Conduct Science Experiments in Space?",
+    "url": "https://www.asc-csa.gc.ca/eng/iss/science/why-do-we-conduct-science-experiments-in-space.asp",
+    "description": "Explains how microgravity accelerates physiological changes analogous to aging and sedentary lifestyle (bone loss, muscle atrophy, cardiovascular changes, diabetes risk) and how space experiments advance medicine on Earth."
+  }
+]

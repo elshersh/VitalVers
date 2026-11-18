@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>404 — Lost in space | Vitalverse</title>
+<link rel="stylesheet" href="/css/fonts.css">
+<link rel="stylesheet" href="/css/theme.css">
+<link rel="stylesheet" href="/css/shell.css">
+<style>
+  .vv-status-stage {
+    min-height: calc(100vh - 210px);
+    display: grid;
+    place-items: center;
+    padding: 36px 0 48px;
+  }
+  .vv-status-card {
+    max-width: 580px;
+    width: 100%;
+    text-align: center;
+    padding: 44px 36px;
+  }
+  .vv-status-code {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: clamp(56px, 9vw, 88px);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: rgba(255, 255, 255, 0.14);
+    margin: 0 0 8px;
+  }
+  .vv-status-card h1 {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 500;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+  }
+  .vv-status-card h1 span {
+    color: var(--green);
+  }
+  .vv-status-card p {
+    margin: 0 auto 26px;
+    max-width: 44ch;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.65;
+  }
+  .vv-status-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+</style>
+  <link rel="stylesheet" href="/css/motion.css?v=7">
+  <script src="/js/motion.js?v=10"></script>
+</head>
+<body class="vv-starfield">
+
+<header class="nav vv-nav">
+  <a class="logo" href="/index.html">
+    <svg viewBox="0 0 36 22" fill="none" stroke="#a8e07a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M1 11h7l3-8 5 16 4-12 3 4h12"/>
+    </svg>
+    <span>Vital<b>verse</b></span>
+  </a>
+
+  <nav class="menu" id="vvNavMenu">
+    <a href="/index.html">Home page</a>
+    <a href="/health.html">Health dashboard</a>
+    <a href="/chatbot.html">Ai chatbot</a>
+    <a href="/mental.html">Mental Health</a>
+    <a href="/about.html">About</a>
+  </nav>
+
+  <div class="tools">
+    <button class="circle" id="todoBtn" type="button" aria-label="Daily Routine To-Do List">
+      <svg class="vv-ic" viewBox="0 0 24 24">
+        <rect x="5" y="4.5" width="14" height="16.5" rx="2.5"/>
+        <path d="M9 4.5V3.5h6v1"/>
+        <path d="M8.5 11.5l1.2 1.2 2.1-2.4M8.5 16.5l1.2 1.2 2.1-2.4M14.2 11.8h2M14.2 16.8h2"/>
+      </svg>
+      <svg class="vv-todo-ring" id="vvTodoRing" viewBox="0 0 39 39" hidden>
+        <circle cx="19.5" cy="19.5" r="18" fill="none" stroke="#a8e07a" stroke-width="2" id="vvTodoRingArc"/>
+      </svg>
+    </button>
+
+    <button class="circle" id="bellBtn" type="button" aria-label="Notifications" aria-expanded="false">
+      <svg class="vv-ic" viewBox="0 0 24 24">
+        <path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/>
+        <path d="M13.7 21a2 2 0 01-3.4 0"/>
+      </svg>
+      <span class="vv-bell-dot" id="vvBellDot" hidden></span>
+    </button>
+
+    <button class="profile" id="profileBtn" type="button" aria-label="Open account options" aria-expanded="false">
+      <div class="avatar" id="vvAvatar"></div>
+      <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+
+    <div class="vv-dropdown" id="vvBellDropdown" hidden>
+      <div class="vv-dropdown-head">
+        <strong>Alerts</strong>
+        <a class="vv-dropdown-link" href="/alerts.html">View all alerts</a>
+      </div>
+      <div class="vv-dropdown-list" id="vvBellList">
+        <div class="vv-dropdown-empty">No unread alerts.</div>
+      </div>
+    </div>
+
+    <div class="vv-dropdown vv-profile-menu" id="vvProfileDropdown" hidden></div>
+  </div>
+</header>
+
+<main class="vv-main">
+  <section class="vv-status-stage">
+    <div class="glass-card vv-status-card" role="region" aria-label="Page not found">
+      <div class="vv-status-code">404</div>
+      <span class="eyebrow">SIGNAL LOST</span>
+      <h1>Lost in <span>space</span></h1>
+      <p>
+        This module is not docked yet or the telemetry route you requested does not exist on the station network.
+      </p>
+      <div class="vv-status-actions">
+        <a class="btn" href="/index.html">Back to Home</a>
+        <a class="btn ghost" href="/health.html">Open Health Dashboard</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="vv-footer">
+  <p>© 2026 <span>Vitalverse</span>. All rights reserved.</p>
+  <p class="vv-footer-disclaimer">Prototype built with fictional data. Not a certified medical device.</p>
+  <p>Monitor. Protect. Keep exploring.</p>
+</footer>
+
+<script src="/js/shell.js"></script>
+</body>
+</html>

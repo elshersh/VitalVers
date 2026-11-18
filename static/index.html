@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vitalverse — AI health monitoring for astronauts</title>
+<meta name="description" content="Vitalverse: personal-baseline health monitoring, explainable AI alerts and an on-board assistant for astronauts on long missions. NASA Space Apps Challenge 2026 prototype.">
+
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/shell.css">
+
+<style>
+:root {
+  --green:#a8e07a;
+  --green-btn:#e4f7c8;
+  --text:#ffffff;
+  --line:rgba(255,255,255,.22);
+}
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html,body {
+  background:#000;
+  font-family:'Inter',system-ui,sans-serif;
+  color:var(--text);
+}
+
+.hero {
+  position:relative;
+  width:100%;
+  max-width:1600px;
+  margin:0 auto;
+  aspect-ratio:16/9;
+  overflow:hidden;
+  container-type:inline-size;
+  background:#000;
+}
+
+.hero > img.bg {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* NAVBAR */
+
+.nav {
+  position:absolute;
+  top:3.4cqw;
+  left:3.6cqw;
+  right:3.6cqw;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  z-index:5;
+}
+
+.logo {
+  display:flex;
+  align-items:center;
+  gap:.7cqw;
+  font-size:2.15cqw;
+  font-weight:600;
+  letter-spacing:.02cqw;
+}
+
+.logo svg {
+  width:3.6cqw;
+  height:2.2cqw;
+}
+
+.logo span b {
+  color:var(--green);
+  font-weight:600;
+}
+
+.menu {
+  display:flex;
+  gap:.4cqw;
+  padding:.5cqw;
+  border:1px solid var(--line);
+  border-radius:10cqw;
+  background:rgba(10,12,14,.55);
+  backdrop-filter:blur(6px);
+}
+
+.menu a {
+  color:#d9dde0;
+  text-decoration:none;
+  font-size:1.05cqw;
+  font-weight:500;
+  padding:.85cqw 1.6cqw;
+  border-radius:10cqw;
+  white-space:nowrap;
+  transition:.25s;
+}
+
+.menu a:hover {
+  color:#fff;
+  background:rgba(255,255,255,.08);
+}
+
+.menu a.active {
+  color:#fff;
+  background:rgba(255,255,255,.12);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);
+}
+
+.tools {
+  display:flex;
+  align-items:center;
+  gap:1cqw;
+}
+
+.circle {
+  width:3.2cqw;
+  height:3.2cqw;
+  border-radius:50%;
+  border:1px solid var(--line);
+  background:rgba(10,12,14,.55);
+  display:grid;
+  place-items:center;
+  position:relative;
+  cursor:pointer;
+  padding:0;
+  color:inherit;
+  font:inherit;
+}
+
+.circle svg {
+  width:1.4cqw;
+  height:1.4cqw;
+  stroke:#fff;
+  fill:none;
+  stroke-width:1.6;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.dot {
+  position:absolute;
+  top:.2cqw;
+  right:.25cqw;
+  width:.7cqw;
+  height:.7cqw;
+  border-radius:50%;
+  background:#7ee04a;
+}
+
+.profile {
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:.6cqw;
+  height:3.2cqw;
+  padding:0 1cqw 0 .3cqw;
+  border-radius:10cqw;
+  border:1px solid var(--line);
+  background:rgba(10,12,14,.55);
+}
+
+.avatar {
+  width:2.5cqw;
+  height:2.5cqw;
+  border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,#d7dbe0,#5b636b 60%,#1b1f23);
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+  font-size:.95cqw;
+  font-weight:600;
+  color:#ffffff;
+  flex:none;
+}
+
+.avatar img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  border-radius:50%;
+  display:block;
+}
+
+.profile svg {
+  width:1cqw;
+  height:1cqw;
+  stroke:#fff;
+  fill:none;
+  stroke-width:2;
+}
+
+/* HERO TEXT */
+
+.content {
+  position:absolute;
+  left:6.4cqw;
+  top:27%;
+  z-index:5;
+}
+
+h1 {
+  font-size:5.9cqw;
+  line-height:1.08;
+  font-weight:500;
+  letter-spacing:-.1cqw;
+}
+
+h1 em {
+  font-style:normal;
+  color:var(--green);
+}
+
+.tag {
+  margin-top:1.3cqw;
+  font-size:1.95cqw;
+  font-weight:400;
+  color:#f1f3f4;
+}
+
+.desc {
+  margin-top:2.4cqw;
+  padding-left:1.1cqw;
+  border-left:2px solid rgba(168,224,122,.6);
+  font-size:1.3cqw;
+  line-height:1.5;
+  color:#d7dbde;
+  max-width:24cqw;
+}
+
+.btns {
+  display:flex;
+  gap:1.1cqw;
+  margin-top:2.8cqw;
+}
+
+.btn {
+  display:inline-flex;
+  align-items:center;
+  gap:.8cqw;
+  height:4.7cqw;
+  padding:0 2.2cqw;
+  border-radius:10cqw;
+  font-size:1.3cqw;
+  font-weight:500;
+  text-decoration:none;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.btn svg {
+  width:1.5cqw;
+  height:1.5cqw;
+  stroke:currentColor;
+  fill:none;
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.btn.primary {
+  background:var(--green-btn);
+  color:#0b0f0a;
+  box-shadow:0 0 2.5cqw rgba(168,224,122,.35);
+}
+
+.btn.primary:hover {
+  transform:translateY(-2px);
+  box-shadow:0 0 3.5cqw rgba(168,224,122,.55);
+}
+
+/* DECORATIVE LINE */
+
+.sideline {
+  position:absolute;
+  left:1.6cqw;
+  top:19cqw;
+  height:17cqw;
+  width:1px;
+  background:linear-gradient(transparent,rgba(168,224,122,.7),transparent);
+  z-index:5;
+}
+
+.sideline::after {
+  content:"";
+  position:absolute;
+  left:-.25cqw;
+  top:50%;
+  width:.55cqw;
+  height:.55cqw;
+  border:1px solid #a8e07a;
+  border-radius:50%;
+}
+
+@media (max-width:900px) {
+  .menu a {
+    padding:.8cqw 1cqw;
+  }
+}
+
+/* WELCOME MODAL */
+
+.welcome-overlay {
+  position:fixed;
+  inset:0;
+  z-index:1000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,.75);
+  backdrop-filter:blur(7px);
+}
+
+.welcome-overlay.show {
+  display:flex;
+}
+
+.welcome-modal {
+  position:relative;
+  width:350px;
+  max-width:90%;
+  padding:36px 32px;
+  background:#101719;
+  border:1px solid rgba(168,224,122,.22);
+  border-radius:21px;
+  text-align:center;
+}
+
+.welcome-modal h2 {
+  font-size:22px;
+  margin-bottom:12px;
+}
+
+.welcome-modal h2 span {
+  color:var(--green);
+}
+
+.welcome-modal p {
+  color:#aeb6ba;
+  font-size:12px;
+  line-height:1.7;
+  margin-bottom:25px;
+}
+
+.close-modal {
+  position:absolute;
+  top:12px;
+  right:15px;
+  background:none;
+  border:none;
+  color:white;
+  font-size:23px;
+  cursor:pointer;
+}
+
+.close-modal:hover {
+  color:var(--green);
+}
+
+.create-account-btn {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  height:43px;
+  background:var(--green-btn);
+  color:#101510;
+  border-radius:30px;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:600;
+  transition:.25s;
+}
+
+.create-account-btn:hover {
+  background:var(--green);
+  transform:translateY(-2px);
+}
+
+.login-modal-btn {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  height:41px;
+  margin-top:10px;
+  background:transparent;
+  color:#ffffff;
+  border:1px solid var(--line);
+  border-radius:30px;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:500;
+  transition:.25s;
+}
+
+.login-modal-btn:hover {
+  border-color:rgba(168,224,122,.55);
+  color:var(--green);
+}
+</style>
+  <link rel="stylesheet" href="/css/motion.css?v=7">
+  <link rel="stylesheet" href="/css/hero-live.css?v=10">
+  <link rel="stylesheet" href="/css/home.css?v=4">
+  <script src="/js/motion.js?v=10"></script>
+</head>
+
+<body>
+
+<div class="vv-story" id="vvStory">
+<div class="vv-story-stage">
+<section class="hero">
+
+  <div class="hx-scene">
+    <canvas class="hx-sky" aria-hidden="true"></canvas>
+    <canvas class="hx-planets" aria-hidden="true"></canvas>
+    <div class="hx-world" aria-hidden="true">
+      <img class="hx-wide" src="img/mccandless-wide.jpg?v=2" alt="" decoding="async">
+      <img class="hx-close" src="img/mccandless-close.jpg" alt="" decoding="async">
+    </div>
+    <svg class="hx-lines" aria-hidden="true"></svg>
+    <div class="hx-hud" aria-hidden="true"></div>
+    <p class="hx-credit">Photo: NASA, STS-41-B (1984), public domain. Readings shown are simulated, not this astronaut's.</p>
+  </div>
+  <span class="vv-sr-only">An astronaut floats untethered above Earth during a 1984 NASA spacewalk.</span>
+
+  <div class="sideline"></div>
+
+  <header class="nav">
+
+    <div class="logo">
+      <svg viewBox="0 0 36 22" fill="none" stroke="#a8e07a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M1 11h7l3-8 5 16 4-12 3 4h12"/>
+      </svg>
+      <span>Vital<b>verse</b></span>
+    </div>
+
+    <nav class="menu" id="vvNavMenu">
+      <a href="index.html" class="active">Home page</a>
+      <a href="health.html">Health dashboard</a>
+      <a href="chatbot.html">Ai chatbot</a>
+      <a href="mental.html">Mental Health</a>
+      <a href="about.html">About</a>
+    </nav>
+
+    <div class="tools">
+
+      <button class="circle" id="todoBtn" type="button" aria-label="Daily Routine To-Do List">
+        <svg viewBox="0 0 24 24">
+          <rect x="5" y="4.5" width="14" height="16.5" rx="2.5"/>
+          <path d="M9 4.5V3.5h6v1"/>
+          <path d="M8.5 11.5l1.2 1.2 2.1-2.4M8.5 16.5l1.2 1.2 2.1-2.4M14.2 11.8h2M14.2 16.8h2"/>
+        </svg>
+        <svg class="vv-todo-ring" id="vvTodoRing" viewBox="0 0 39 39" hidden>
+          <circle cx="19.5" cy="19.5" r="18" fill="none" stroke="#a8e07a" stroke-width="2" id="vvTodoRingArc"/>
+        </svg>
+      </button>
+
+      <div class="profile-menu">
+        <button class="profile" id="profileBtn" type="button" aria-label="Open account options" aria-expanded="false">
+          <div class="avatar" id="vvAvatar"></div>
+          <svg viewBox="0 0 24 24">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="vv-dropdown vv-profile-menu" id="vvProfileDropdown" hidden></div>
+
+    </div>
+  </header>
+
+  <div class="content">
+
+    <h1>
+      AI Health Care<br>
+      for <em>Astronauts</em>
+    </h1>
+
+    <p class="tag">
+      Monitor. Protect. Keep exploring.
+    </p>
+
+    <p class="desc">
+      Advanced health monitoring for a healthier journey beyond Earth.
+    </p>
+
+    <div class="btns">
+      <a class="btn primary" id="launchMissionBtn" href="login.html">
+
+        <svg viewBox="0 0 24 24">
+          <path d="M2 12h5l2-5 4 10 3-7 1 2h5"/>
+        </svg>
+
+        Launch Mission
+
+        <svg viewBox="0 0 24 24">
+          <path d="M5 12h14M13 6l6 6-6 6"/>
+        </svg>
+
+      </a>
+    </div>
+
+  </div>
+
+</section>
+
+  <!-- scroll story: chapters, progress rail, scroll cue (pinned with the hero on large screens) -->
+  <div class="hm-chapters" aria-label="Inside the mission">
+    <article class="hm-chapter" data-chapter="1">
+      <span class="hm-chapter-num">01</span>
+      <p class="hm-eyebrow">Vital signs</p>
+      <h2>Every reading, read against <em>you</em></h2>
+      <p>Heart rate, blood pressure, SpO₂, temperature and glucose are compared with the astronaut's own
+         pre-flight baseline and recent trend — not one fixed limit for everyone.</p>
+      <ul class="hm-chips"><li>Heart rate</li><li>Blood pressure</li><li>SpO₂</li><li>Temperature</li><li>Glucose</li></ul>
+    </article>
+    <article class="hm-chapter" data-chapter="2">
+      <span class="hm-chapter-num">02</span>
+      <p class="hm-eyebrow">Wearables + AI</p>
+      <h2>One model watching four body systems</h2>
+      <p>Daily telemetry, sleep, mood and exercise feed a machine-learning model that labels each day as
+         Normal, Stress, Health warning or Medical danger — and shows exactly which readings drove it.</p>
+      <ul class="hm-chips"><li>Cardiovascular</li><li>Bone &amp; muscle</li><li>Immune</li><li>Sleep &amp; mind</li></ul>
+    </article>
+    <article class="hm-chapter" data-chapter="3">
+      <span class="hm-chapter-num">03</span>
+      <p class="hm-eyebrow">Orbit to Earth</p>
+      <h2>Works on board. Escalates when it matters.</h2>
+      <p>The on-board assistant answers without a link to Earth. When a reading turns dangerous, Vitalverse
+         raises an alert and puts the astronaut in touch with their flight surgeon.</p>
+      <ul class="hm-chips"><li>Offline AI</li><li>Online AI</li><li>Alerts</li><li>Flight surgeon</li></ul>
+    </article>
+  </div>
+
+  <nav class="hm-rail" aria-hidden="true">
+    <span class="hm-rail-track"><span class="hm-rail-fill"></span></span>
+    <span class="hm-rail-dot" data-dot="1"><b>Vital signs</b></span>
+    <span class="hm-rail-dot" data-dot="2"><b>Wearables + AI</b></span>
+    <span class="hm-rail-dot" data-dot="3"><b>Orbit to Earth</b></span>
+  </nav>
+
+  <a class="hm-scroll-cue" href="#overview" aria-label="Scroll to the project overview">
+    <span class="hm-mouse"><span></span></span>
+    <span>Scroll to explore</span>
+  </a>
+
+  <div class="hm-dim" aria-hidden="true"></div>
+</div>
+</div>
+
+<main class="home" id="home" data-own-reveal>
+
+  <!-- PROJECT OVERVIEW -->
+  <section class="hm-section hm-overview" id="overview">
+    <div class="hm-wrap hm-overview-grid">
+      <div>
+        <p class="hm-eyebrow" data-rv>Project overview · NASA Space Apps Challenge 2026</p>
+        <h2 class="hm-title" data-rv style="--d:80ms">A personal health co-pilot for long missions beyond Earth</h2>
+        <p class="hm-lead" data-rv style="--d:160ms">On long missions, astronauts carry much of the responsibility for
+          spotting changes in their own health. Vitalverse gathers daily health indicators, compares every reading
+          with the astronaut's own pre-flight baseline, and explains what changed and what to do next — right on board.</p>
+        <ul class="hm-pillars">
+          <li data-rv style="--d:220ms">
+            <span class="hm-pillar-icon"><svg viewBox="0 0 24 24"><path d="M3 12h4l2-6 4 12 2-6h6"/></svg></span>
+            <div><b>Personal baselines, not fixed limits</b><span>Thirty pre-flight days define what "normal" means for each astronaut.</span></div>
+          </li>
+          <li data-rv style="--d:300ms">
+            <span class="hm-pillar-icon"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></span>
+            <div><b>Explainable alerts</b><span>Every alert shows the readings behind it and the countermeasure to follow.</span></div>
+          </li>
+          <li data-rv style="--d:380ms">
+            <span class="hm-pillar-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M5 12a7 7 0 0 1 14 0M2 12a10 10 0 0 1 20 0"/></svg></span>
+            <div><b>Ready for the communication delay</b><span>Works offline on board; escalates to the flight surgeon on Earth.</span></div>
+          </li>
+        </ul>
+      </div>
+      <div class="hm-stats">
+        <div class="hm-stat" data-rv style="--d:120ms"><strong data-count="36000" data-format="int">0</strong><span>simulated astronaut-days analysed<br><small>200 astronauts × 180 days</small></span></div>
+        <div class="hm-stat" data-rv style="--d:200ms"><strong data-count="18" data-format="int">0</strong><span>health indicators tracked<br><small>vitals, sleep, mood, bone, immune and more</small></span></div>
+        <div class="hm-stat" data-rv style="--d:280ms"><strong data-count="4" data-format="int">0</strong><span>body systems monitored<br><small>heart, bone &amp; muscle, immune, sleep &amp; mind</small></span></div>
+        <div class="hm-stat" data-rv style="--d:360ms"><strong data-count="30" data-format="int">0</strong><span>pre-flight days per baseline<br><small>what "normal" means for each astronaut</small></span></div>
+        <p class="hm-footnote" data-rv style="--d:440ms">Built on simulated mission data for fictional astronauts — no real crew data is used.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="hm-section hm-how" id="how">
+    <div class="hm-wrap">
+      <p class="hm-eyebrow" data-rv>How it works</p>
+      <h2 class="hm-title" data-rv style="--d:80ms">From a daily reading to the right action</h2>
+      <ol class="hm-steps">
+        <li class="hm-steps-line" aria-hidden="true"><span></span></li>
+        <li class="hm-step" data-rv style="--d:120ms">
+          <span class="hm-step-num">01</span>
+          <span class="hm-step-icon"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="3"/><path d="M10 9h4M10 13h4"/></svg></span>
+          <h3>Measure</h3><p>Daily vitals, sleep, mood and exercise from wearables and quick check-ins.</p>
+        </li>
+        <li class="hm-step" data-rv style="--d:220ms">
+          <span class="hm-step-num">02</span>
+          <span class="hm-step-icon"><svg viewBox="0 0 24 24"><path d="M4 18h16M6 18V9M12 18V5M18 18v-6"/></svg></span>
+          <h3>Compare</h3><p>Each value is set against the astronaut's own pre-flight baseline and recent trend.</p>
+        </li>
+        <li class="hm-step" data-rv style="--d:320ms">
+          <span class="hm-step-num">03</span>
+          <span class="hm-step-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span>
+          <h3>Classify</h3><p>The AI model labels the day: Normal, Stress, Health warning or Medical danger.</p>
+        </li>
+        <li class="hm-step" data-rv style="--d:420ms">
+          <span class="hm-step-num">04</span>
+          <span class="hm-step-icon"><svg viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg></span>
+          <h3>Act</h3><p>Clear advice, countermeasure tasks, calming media — and urgent escalation to the flight surgeon.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- LIVE TELEMETRY MONITOR -->
+  <section class="hm-section hm-telemetry" id="telemetry">
+    <div class="hm-wrap">
+      <div class="hm-head-row">
+        <div>
+          <p class="hm-eyebrow" data-rv>Live mission telemetry</p>
+          <h2 class="hm-title" data-rv style="--d:80ms">The crew vitals monitor</h2>
+        </div>
+        <p class="hm-lead hm-lead-sm" data-rv style="--d:160ms">Sign in as an astronaut to see your own latest reading here. Visitors see a simulated demo feed.</p>
+      </div>
+
+      <div class="hm-monitor" data-rv style="--d:200ms">
+        <header class="hm-mon-top">
+          <span class="hm-live"><i></i>LIVE</span>
+          <span class="hm-mon-title">Crew vitals monitor</span>
+          <span class="hm-mon-source" id="vvTeleSource">Simulated demo feed</span>
+          <span class="hm-mon-spacer"></span>
+          <span class="hm-mon-status" id="vvTeleStatus" hidden></span>
+          <span class="hm-mon-clock"><small>Station time</small><b id="vvTeleClock">--:--:--</b><small>UTC</small></span>
+        </header>
+
+        <div class="hm-mon-body">
+          <div class="hm-ecg-panel">
+            <div class="hm-ecg-label"><b>ECG</b> · Lead II · 25 mm/s</div>
+            <div class="hm-hr">
+              <svg class="hm-hr-heart" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 21s-7.5-4.6-9.6-9.3C.9 8.3 3 4.5 6.7 4.5c2 0 3.6 1.1 5.3 3 1.7-1.9 3.3-3 5.3-3 3.7 0 5.8 3.8 4.3 7.2C19.5 16.4 12 21 12 21z"/></svg>
+              <strong id="vvTeleHr">--</strong><span>bpm</span>
+            </div>
+            <canvas class="hm-ecg" id="vvTeleEcg" aria-label="Animated heartbeat trace"></canvas>
+          </div>
+
+          <div class="hm-gauges">
+            <div class="hm-gauge">
+              <svg class="hm-ring" viewBox="0 0 100 100" aria-hidden="true">
+                <circle cx="50" cy="50" r="40" class="hm-ring-bg"/>
+                <circle cx="50" cy="50" r="40" class="hm-ring-fg" id="vvSpo2Ring"/>
+              </svg>
+              <div class="hm-gauge-val"><strong id="vvTeleSpo2">--</strong><span>%</span></div>
+              <p class="hm-gauge-label">SpO₂</p>
+            </div>
+            <div class="hm-metric">
+              <p class="hm-gauge-label">Blood pressure</p>
+              <p class="hm-metric-val"><strong id="vvTeleBp">--/--</strong><span>mmHg</span></p>
+              <div class="hm-bar"><span id="vvBpBar"></span></div>
+            </div>
+            <div class="hm-metric">
+              <p class="hm-gauge-label">Body temperature</p>
+              <p class="hm-metric-val"><strong id="vvTeleTemp">--</strong><span>°C</span></p>
+              <div class="hm-bar hm-bar-temp"><i class="hm-band"></i><span class="hm-marker" id="vvTempMarker"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <footer class="hm-mon-foot">
+          <span>Prototype — simulated data, not a medical device. Full history and personal baselines are on the Health Dashboard.</span>
+          <a href="health.html">Open dashboard <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </footer>
+      </div>
+    </div>
+  </section>
+
+  <!-- BODY SYSTEMS -->
+  <section class="hm-section hm-systems" id="systems">
+    <div class="hm-wrap">
+      <p class="hm-eyebrow" data-rv>Four body systems</p>
+      <h2 class="hm-title" data-rv style="--d:80ms">What spaceflight changes — and what we watch</h2>
+      <div class="hm-grid4">
+        <article class="hm-card" data-rv style="--d:120ms">
+          <span class="hm-card-icon"><svg viewBox="0 0 24 24"><path d="M12 20s-6.5-4-8.4-8.1C2.3 9 4 5.5 7.2 5.5c1.9 0 3.3 1 4.8 2.7 1.5-1.7 2.9-2.7 4.8-2.7 3.2 0 4.9 3.5 3.6 6.4C18.5 16 12 20 12 20z"/></svg></span>
+          <h3>Cardiovascular</h3>
+          <p>In weightlessness, body fluids shift up toward the head and blood vessels adapt.</p>
+          <ul><li>Heart rate</li><li>Blood pressure</li><li>SpO₂</li><li>Temperature</li></ul>
+        </article>
+        <article class="hm-card" data-rv style="--d:200ms">
+          <span class="hm-card-icon"><svg viewBox="0 0 24 24"><path d="M7 4a2 2 0 0 0-2 3l4 4-4 4a2 2 0 1 0 3 3l4-4 4 4a2 2 0 1 0 3-3l-4-4 4-4a2 2 0 1 0-3-3l-4 4-4-4a2 2 0 0 0-1-1z"/></svg></span>
+          <h3>Bone &amp; muscle</h3>
+          <p>Weight-bearing bones lose on average 1–1.5% of their density each month in space.</p>
+          <ul><li>Bone density</li><li>Muscle strength</li><li>Exercise sessions</li></ul>
+        </article>
+        <article class="hm-card" data-rv style="--d:280ms">
+          <span class="hm-card-icon"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg></span>
+          <h3>Immune</h3>
+          <p>In a closed spacecraft, stress hormones can rise and the immune system can change.</p>
+          <ul><li>Immune index</li><li>Stress hormones</li><li>Temperature</li></ul>
+        </article>
+        <article class="hm-card" data-rv style="--d:360ms">
+          <span class="hm-card-icon"><svg viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></span>
+          <h3>Sleep &amp; mind</h3>
+          <p>Isolation, sleep loss and a shifted body clock can lower mood and performance.</p>
+          <ul><li>Sleep</li><li>Mood</li><li>Mental-health check-in</li><li>Alertness test</li></ul>
+        </article>
+      </div>
+      <p class="hm-source" data-rv>Sources: NASA Human Research Program hazard pages (gravity fields, hostile/closed environments, isolation and confinement).</p>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="hm-section hm-features" id="features">
+    <div class="hm-wrap">
+      <p class="hm-eyebrow" data-rv>Inside the app</p>
+      <h2 class="hm-title" data-rv style="--d:80ms">Everything the crew needs, in one cockpit</h2>
+      <div class="hm-feat-grid">
+        <a class="hm-card hm-feat hm-feat-wide" href="health.html" data-rv style="--d:120ms">
+          <span class="hm-card-icon"><svg viewBox="0 0 24 24"><path d="M4 19h16M6 16l4-5 3 3 5-7"/></svg></span>
+          <h3>Health dashboard</h3>
+          <p>Every indicator with its personal baseline, 180-day trends, body-zone status and the AI's daily verdict.</p>
+          <span class="hm-go">Open dashboard →</span>
+        </a>
+        <a class="hm-card hm-feat" href="chatbot.html" data-rv style="--d:180ms">
+          <span class="hm-card-icon"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 10h8M8 13h5"/></svg></span>
+          <h3>AI assistant</h3>
+          <p>Ask about your own data. On-board mode works offline; online mode uses Gemini.</p>
+          <span class="hm-go">Ask Vitalverse →</span>
+        </a>
+        <a class="hm-card hm-feat" href="mental.html" data-rv style="--d:240ms">
+          <span class="hm-card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8.5 14.5c1 1.2 2.1 1.8 3.5 1.8s2.5-.6 3.5-1.8M9 10h.01M15 10h.01"/></svg></span>
+          <h3>Mental health check-in</h3>
+          <p>A short daily check-in with calming songs and family photos when stress rises.</p>
+          <span class="hm-go">Check in →</span>
+        </a>
+        <a class="hm-card hm-feat" href="alerts.html" data-rv style="--d:300ms">
+          <span class="hm-card-icon"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 1 1 12 0v5l2 2H4z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg></span>
+          <h3>Alerts center</h3>
+          <p>Real-time alerts with the reason behind them, acknowledged by the crew and the flight surgeon.</p>
+          <span class="hm-go">View alerts →</span>
+        </a>
+        <a class="hm-card hm-feat" href="todo.html" data-rv style="--d:360ms">
+          <span class="hm-card-icon"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M9 11l1.5 1.5L13 10M9 16l1.5 1.5L13 15"/></svg></span>
+          <h3>Daily routine</h3>
+          <p>Cardio, resistance training and activity goals — the countermeasures that protect bone and muscle.</p>
+          <span class="hm-go">Open to-do →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="hm-section hm-cta" id="launch">
+    <div class="hm-wrap hm-cta-box" data-rv>
+      <p class="hm-eyebrow">Ready for launch</p>
+      <h2 class="hm-title">Monitor. Protect. Keep exploring.</h2>
+      <p class="hm-lead">Sign in with your astronaut or flight-surgeon account, or create a new mission profile.</p>
+      <div class="hm-cta-btns">
+        <a class="hm-btn hm-btn-primary" href="login.html">Launch Mission
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="hm-btn" href="signup.html">Create an account</a>
+      </div>
+      <p class="hm-footnote">Educational prototype for the NASA Space Apps Challenge. Built with fictional, simulated data — not a certified medical device.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="vv-footer">
+  <p>© 2026 <span>Vitalverse</span>. All rights reserved.</p>
+  <p class="vv-footer-disclaimer">Prototype built with fictional data. Not a certified medical device.<br>
+     Hero photos: NASA, STS-41-B (1984), public domain. Readings shown on them are simulated.</p>
+  <p>Monitor. Protect. Keep exploring.</p>
+</footer>
+
+
+
+<!-- WELCOME MODAL -->
+
+<div class="welcome-overlay" id="welcomeOverlay">
+
+  <div class="welcome-modal">
+
+    <button class="close-modal" id="closeModal" type="button">&times;</button>
+
+    <h2>
+      Welcome to <span>Vitalverse</span>
+    </h2>
+
+    <p>
+      Your health journey beyond Earth starts here.
+      <br>
+      Create your account to continue.
+    </p>
+
+    <a href="signup.html" class="create-account-btn">
+      Create an Account
+    </a>
+    <a href="login.html" class="login-modal-btn">
+      Log In
+    </a>
+
+  </div>
+
+</div>
+
+<script src="js/shell.js"></script>
+<script src="/js/hero-live.js?v=10"></script>
+<script src="/js/home.js?v=5"></script>
+
+</body>
+</html>

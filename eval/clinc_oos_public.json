@@ -1,0 +1,2562 @@
+[
+  {
+    "id": "CLINC_001",
+    "domain": "travel",
+    "question": "book a flight ticket from boston to chicago for next Friday",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2104
+  },
+  {
+    "id": "CLINC_002",
+    "domain": "travel",
+    "question": "book a flight ticket from seattle to denver for next Friday",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2104
+  },
+  {
+    "id": "CLINC_003",
+    "domain": "travel",
+    "question": "book a flight ticket from miami to atlanta for next Friday",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2104
+  },
+  {
+    "id": "CLINC_004",
+    "domain": "travel",
+    "question": "book a flight ticket from dallas to phoenix for next Friday",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2104
+  },
+  {
+    "id": "CLINC_005",
+    "domain": "travel",
+    "question": "book a flight ticket from london to paris for next Friday",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2104
+  },
+  {
+    "id": "CLINC_006",
+    "domain": "travel",
+    "question": "book a flight ticket from tokyo to osaka for next Friday",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2104
+  },
+  {
+    "id": "CLINC_007",
+    "domain": "travel",
+    "question": "book a flight ticket from berlin to munich for next Friday",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2104
+  },
+  {
+    "id": "CLINC_008",
+    "domain": "travel",
+    "question": "book a flight ticket from madrid to rome for next Friday",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2104
+  },
+  {
+    "id": "CLINC_009",
+    "domain": "travel",
+    "question": "book a flight ticket from toronto to vancouver for next Friday",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2104
+  },
+  {
+    "id": "CLINC_010",
+    "domain": "travel",
+    "question": "book a flight ticket from sydney to melbourne for next Friday",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2104
+  },
+  {
+    "id": "CLINC_011",
+    "domain": "travel",
+    "question": "what is the baggage allowance for carry on luggage on delta airlines",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_012",
+    "domain": "travel",
+    "question": "what is the baggage allowance for carry on luggage on united airlines",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_013",
+    "domain": "travel",
+    "question": "what is the baggage allowance for carry on luggage on british airways",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_014",
+    "domain": "travel",
+    "question": "what is the baggage allowance for carry on luggage on lufthansa",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_015",
+    "domain": "travel",
+    "question": "what is the baggage allowance for carry on luggage on air france",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_016",
+    "domain": "travel",
+    "question": "what is the baggage allowance for carry on luggage on emirates",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_017",
+    "domain": "travel",
+    "question": "what is the baggage allowance for carry on luggage on qantas",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_018",
+    "domain": "travel",
+    "question": "what is the baggage allowance for carry on luggage on japan airlines",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_019",
+    "domain": "travel",
+    "question": "what is the baggage allowance for carry on luggage on air canada",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_020",
+    "domain": "travel",
+    "question": "what is the baggage allowance for carry on luggage on southwest",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_021",
+    "domain": "travel",
+    "question": "do i need a tourist visa to travel to brazil this summer",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_022",
+    "domain": "travel",
+    "question": "do i need a tourist visa to travel to japan this summer",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_023",
+    "domain": "travel",
+    "question": "do i need a tourist visa to travel to india this summer",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_024",
+    "domain": "travel",
+    "question": "do i need a tourist visa to travel to australia this summer",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_025",
+    "domain": "travel",
+    "question": "do i need a tourist visa to travel to egypt this summer",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_026",
+    "domain": "travel",
+    "question": "do i need a tourist visa to travel to turkey this summer",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_027",
+    "domain": "travel",
+    "question": "do i need a tourist visa to travel to kenya this summer",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_028",
+    "domain": "travel",
+    "question": "do i need a tourist visa to travel to vietnam this summer",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_029",
+    "domain": "travel",
+    "question": "do i need a tourist visa to travel to argentina this summer",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_030",
+    "domain": "travel",
+    "question": "do i need a tourist visa to travel to thailand this summer",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_031",
+    "domain": "travel",
+    "question": "reserve a rental car at the orlando airport terminal",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_032",
+    "domain": "travel",
+    "question": "reserve a rental car at the las vegas airport terminal",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_033",
+    "domain": "travel",
+    "question": "reserve a rental car at the san diego airport terminal",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_034",
+    "domain": "travel",
+    "question": "reserve a rental car at the portland airport terminal",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_035",
+    "domain": "travel",
+    "question": "reserve a rental car at the austin airport terminal",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_036",
+    "domain": "travel",
+    "question": "reserve a rental car at the nashville airport terminal",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_037",
+    "domain": "travel",
+    "question": "reserve a rental car at the charlotte airport terminal",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_038",
+    "domain": "travel",
+    "question": "reserve a rental car at the detroit airport terminal",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_039",
+    "domain": "travel",
+    "question": "reserve a rental car at the minneapolis airport terminal",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_040",
+    "domain": "travel",
+    "question": "reserve a rental car at the salt lake airport terminal",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_041",
+    "domain": "banking",
+    "question": "transfer 50 dollars from my checking account to savings",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_042",
+    "domain": "banking",
+    "question": "transfer 100 dollars from my checking account to savings",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_043",
+    "domain": "banking",
+    "question": "transfer 250 dollars from my checking account to savings",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_044",
+    "domain": "banking",
+    "question": "transfer 500 dollars from my checking account to savings",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_045",
+    "domain": "banking",
+    "question": "transfer 750 dollars from my checking account to savings",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_046",
+    "domain": "banking",
+    "question": "transfer 1000 dollars from my checking account to savings",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_047",
+    "domain": "banking",
+    "question": "transfer 1200 dollars from my checking account to savings",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_048",
+    "domain": "banking",
+    "question": "transfer 1500 dollars from my checking account to savings",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_049",
+    "domain": "banking",
+    "question": "transfer 2000 dollars from my checking account to savings",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_050",
+    "domain": "banking",
+    "question": "transfer 3500 dollars from my checking account to savings",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_051",
+    "domain": "banking",
+    "question": "what is the exchange rate between us dollars and euros",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1877
+  },
+  {
+    "id": "CLINC_052",
+    "domain": "banking",
+    "question": "what is the exchange rate between us dollars and british pounds",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1877
+  },
+  {
+    "id": "CLINC_053",
+    "domain": "banking",
+    "question": "what is the exchange rate between us dollars and japanese yen",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1877
+  },
+  {
+    "id": "CLINC_054",
+    "domain": "banking",
+    "question": "what is the exchange rate between us dollars and swiss francs",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1877
+  },
+  {
+    "id": "CLINC_055",
+    "domain": "banking",
+    "question": "what is the exchange rate between us dollars and canadian dollars",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1877
+  },
+  {
+    "id": "CLINC_056",
+    "domain": "banking",
+    "question": "what is the exchange rate between us dollars and australian dollars",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1877
+  },
+  {
+    "id": "CLINC_057",
+    "domain": "banking",
+    "question": "what is the exchange rate between us dollars and mexican pesos",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1877
+  },
+  {
+    "id": "CLINC_058",
+    "domain": "banking",
+    "question": "what is the exchange rate between us dollars and indian rupees",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1877
+  },
+  {
+    "id": "CLINC_059",
+    "domain": "banking",
+    "question": "what is the exchange rate between us dollars and swedish kronor",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1877
+  },
+  {
+    "id": "CLINC_060",
+    "domain": "banking",
+    "question": "what is the exchange rate between us dollars and korean won",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1877
+  },
+  {
+    "id": "CLINC_061",
+    "domain": "banking",
+    "question": "report a lost credit card ending in 1042 and freeze transactions",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2172
+  },
+  {
+    "id": "CLINC_062",
+    "domain": "banking",
+    "question": "report a lost credit card ending in 2389 and freeze transactions",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2172
+  },
+  {
+    "id": "CLINC_063",
+    "domain": "banking",
+    "question": "report a lost credit card ending in 3410 and freeze transactions",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2172
+  },
+  {
+    "id": "CLINC_064",
+    "domain": "banking",
+    "question": "report a lost credit card ending in 4591 and freeze transactions",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2172
+  },
+  {
+    "id": "CLINC_065",
+    "domain": "banking",
+    "question": "report a lost credit card ending in 5623 and freeze transactions",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2172
+  },
+  {
+    "id": "CLINC_066",
+    "domain": "banking",
+    "question": "report a lost credit card ending in 6784 and freeze transactions",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2172
+  },
+  {
+    "id": "CLINC_067",
+    "domain": "banking",
+    "question": "report a lost credit card ending in 7812 and freeze transactions",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2172
+  },
+  {
+    "id": "CLINC_068",
+    "domain": "banking",
+    "question": "report a lost credit card ending in 8905 and freeze transactions",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2172
+  },
+  {
+    "id": "CLINC_069",
+    "domain": "banking",
+    "question": "report a lost credit card ending in 9134 and freeze transactions",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2172
+  },
+  {
+    "id": "CLINC_070",
+    "domain": "banking",
+    "question": "report a lost credit card ending in 0478 and freeze transactions",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2172
+  },
+  {
+    "id": "CLINC_071",
+    "domain": "banking",
+    "question": "what is the routing number and wire fee for chase international transfers",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1738
+  },
+  {
+    "id": "CLINC_072",
+    "domain": "banking",
+    "question": "what is the routing number and wire fee for citibank international transfers",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1738
+  },
+  {
+    "id": "CLINC_073",
+    "domain": "banking",
+    "question": "what is the routing number and wire fee for wells fargo international transfers",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1738
+  },
+  {
+    "id": "CLINC_074",
+    "domain": "banking",
+    "question": "what is the routing number and wire fee for bank of america international transfers",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1738
+  },
+  {
+    "id": "CLINC_075",
+    "domain": "banking",
+    "question": "what is the routing number and wire fee for barclays international transfers",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1738
+  },
+  {
+    "id": "CLINC_076",
+    "domain": "banking",
+    "question": "what is the routing number and wire fee for hsbc international transfers",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1738
+  },
+  {
+    "id": "CLINC_077",
+    "domain": "banking",
+    "question": "what is the routing number and wire fee for santander international transfers",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1738
+  },
+  {
+    "id": "CLINC_078",
+    "domain": "banking",
+    "question": "what is the routing number and wire fee for deutsche bank international transfers",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1738
+  },
+  {
+    "id": "CLINC_079",
+    "domain": "banking",
+    "question": "what is the routing number and wire fee for td bank international transfers",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1738
+  },
+  {
+    "id": "CLINC_080",
+    "domain": "banking",
+    "question": "what is the routing number and wire fee for capital one international transfers",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1738
+  },
+  {
+    "id": "CLINC_081",
+    "domain": "weather",
+    "question": "what is the weather forecast and rain probability in london this weekend",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.4458
+  },
+  {
+    "id": "CLINC_082",
+    "domain": "weather",
+    "question": "what is the weather forecast and rain probability in tokyo this weekend",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.4458
+  },
+  {
+    "id": "CLINC_083",
+    "domain": "weather",
+    "question": "what is the weather forecast and rain probability in new york this weekend",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.4458
+  },
+  {
+    "id": "CLINC_084",
+    "domain": "weather",
+    "question": "what is the weather forecast and rain probability in cairo this weekend",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.4458
+  },
+  {
+    "id": "CLINC_085",
+    "domain": "weather",
+    "question": "what is the weather forecast and rain probability in sydney this weekend",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.4458
+  },
+  {
+    "id": "CLINC_086",
+    "domain": "weather",
+    "question": "what is the weather forecast and rain probability in paris this weekend",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.4458
+  },
+  {
+    "id": "CLINC_087",
+    "domain": "weather",
+    "question": "what is the weather forecast and rain probability in berlin this weekend",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.4458
+  },
+  {
+    "id": "CLINC_088",
+    "domain": "weather",
+    "question": "what is the weather forecast and rain probability in toronto this weekend",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.4458
+  },
+  {
+    "id": "CLINC_089",
+    "domain": "weather",
+    "question": "what is the weather forecast and rain probability in singapore this weekend",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.4458
+  },
+  {
+    "id": "CLINC_090",
+    "domain": "weather",
+    "question": "what is the weather forecast and rain probability in madrid this weekend",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.4458
+  },
+  {
+    "id": "CLINC_091",
+    "domain": "weather",
+    "question": "what is the surface temperature on venus during winter",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.193
+  },
+  {
+    "id": "CLINC_092",
+    "domain": "weather",
+    "question": "what is the surface temperature on mars during winter",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.193
+  },
+  {
+    "id": "CLINC_093",
+    "domain": "weather",
+    "question": "what is the surface temperature on jupiter during winter",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.193
+  },
+  {
+    "id": "CLINC_094",
+    "domain": "weather",
+    "question": "what is the surface temperature on saturn during winter",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.193
+  },
+  {
+    "id": "CLINC_095",
+    "domain": "weather",
+    "question": "what is the surface temperature on mercury during winter",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.193
+  },
+  {
+    "id": "CLINC_096",
+    "domain": "weather",
+    "question": "what is the surface temperature on neptune during winter",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.193
+  },
+  {
+    "id": "CLINC_097",
+    "domain": "weather",
+    "question": "what is the surface temperature on uranus during winter",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.193
+  },
+  {
+    "id": "CLINC_098",
+    "domain": "weather",
+    "question": "what is the surface temperature on pluto during winter",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.193
+  },
+  {
+    "id": "CLINC_099",
+    "domain": "weather",
+    "question": "what is the surface temperature on titan during winter",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.193
+  },
+  {
+    "id": "CLINC_100",
+    "domain": "weather",
+    "question": "what is the surface temperature on europa during winter",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.193
+  },
+  {
+    "id": "CLINC_101",
+    "domain": "weather",
+    "question": "how fast are the hurricane winds moving near florida",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2617
+  },
+  {
+    "id": "CLINC_102",
+    "domain": "weather",
+    "question": "how fast are the hurricane winds moving near the gulf coast",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2617
+  },
+  {
+    "id": "CLINC_103",
+    "domain": "weather",
+    "question": "how fast are the hurricane winds moving near puerto rico",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2617
+  },
+  {
+    "id": "CLINC_104",
+    "domain": "weather",
+    "question": "how fast are the hurricane winds moving near bermuda",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2617
+  },
+  {
+    "id": "CLINC_105",
+    "domain": "weather",
+    "question": "how fast are the hurricane winds moving near jamaica",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2617
+  },
+  {
+    "id": "CLINC_106",
+    "domain": "weather",
+    "question": "how fast are the hurricane winds moving near the bahamas",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2617
+  },
+  {
+    "id": "CLINC_107",
+    "domain": "weather",
+    "question": "how fast are the hurricane winds moving near north carolina",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2617
+  },
+  {
+    "id": "CLINC_108",
+    "domain": "weather",
+    "question": "how fast are the hurricane winds moving near louisiana",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2617
+  },
+  {
+    "id": "CLINC_109",
+    "domain": "weather",
+    "question": "how fast are the hurricane winds moving near texas",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2617
+  },
+  {
+    "id": "CLINC_110",
+    "domain": "weather",
+    "question": "how fast are the hurricane winds moving near okinawa",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2617
+  },
+  {
+    "id": "CLINC_111",
+    "domain": "weather",
+    "question": "what is the barometric air pressure and humidity in chicago outside",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1903
+  },
+  {
+    "id": "CLINC_112",
+    "domain": "weather",
+    "question": "what is the barometric air pressure and humidity in seattle outside",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1903
+  },
+  {
+    "id": "CLINC_113",
+    "domain": "weather",
+    "question": "what is the barometric air pressure and humidity in miami outside",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1903
+  },
+  {
+    "id": "CLINC_114",
+    "domain": "weather",
+    "question": "what is the barometric air pressure and humidity in denver outside",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1903
+  },
+  {
+    "id": "CLINC_115",
+    "domain": "weather",
+    "question": "what is the barometric air pressure and humidity in boston outside",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1903
+  },
+  {
+    "id": "CLINC_116",
+    "domain": "weather",
+    "question": "what is the barometric air pressure and humidity in phoenix outside",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1903
+  },
+  {
+    "id": "CLINC_117",
+    "domain": "weather",
+    "question": "what is the barometric air pressure and humidity in atlanta outside",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1903
+  },
+  {
+    "id": "CLINC_118",
+    "domain": "weather",
+    "question": "what is the barometric air pressure and humidity in dallas outside",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1903
+  },
+  {
+    "id": "CLINC_119",
+    "domain": "weather",
+    "question": "what is the barometric air pressure and humidity in portland outside",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1903
+  },
+  {
+    "id": "CLINC_120",
+    "domain": "weather",
+    "question": "what is the barometric air pressure and humidity in honolulu outside",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1903
+  },
+  {
+    "id": "CLINC_121",
+    "domain": "kitchen",
+    "question": "how long should i bake lasagna at 375 degrees fahrenheit",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_122",
+    "domain": "kitchen",
+    "question": "how long should i bake sourdough bread at 375 degrees fahrenheit",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_123",
+    "domain": "kitchen",
+    "question": "how long should i bake salmon fillets at 375 degrees fahrenheit",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_124",
+    "domain": "kitchen",
+    "question": "how long should i bake apple pie at 375 degrees fahrenheit",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_125",
+    "domain": "kitchen",
+    "question": "how long should i bake roasted chicken at 375 degrees fahrenheit",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_126",
+    "domain": "kitchen",
+    "question": "how long should i bake chocolate brownies at 375 degrees fahrenheit",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_127",
+    "domain": "kitchen",
+    "question": "how long should i bake blueberry muffins at 375 degrees fahrenheit",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_128",
+    "domain": "kitchen",
+    "question": "how long should i bake stuffed peppers at 375 degrees fahrenheit",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_129",
+    "domain": "kitchen",
+    "question": "how long should i bake potatoes gratin at 375 degrees fahrenheit",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_130",
+    "domain": "kitchen",
+    "question": "how long should i bake quiche at 375 degrees fahrenheit",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_131",
+    "domain": "kitchen",
+    "question": "how many tablespoons are in one quarter cup of olive oil",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_132",
+    "domain": "kitchen",
+    "question": "how many tablespoons are in one third cup of olive oil",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_133",
+    "domain": "kitchen",
+    "question": "how many tablespoons are in one half cup of olive oil",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_134",
+    "domain": "kitchen",
+    "question": "how many tablespoons are in two thirds cup of olive oil",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_135",
+    "domain": "kitchen",
+    "question": "how many tablespoons are in three quarters cup of olive oil",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_136",
+    "domain": "kitchen",
+    "question": "how many tablespoons are in one cup of olive oil",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_137",
+    "domain": "kitchen",
+    "question": "how many tablespoons are in two cup of olive oil",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_138",
+    "domain": "kitchen",
+    "question": "how many tablespoons are in three cup of olive oil",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_139",
+    "domain": "kitchen",
+    "question": "how many tablespoons are in four cup of olive oil",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2586
+  },
+  {
+    "id": "CLINC_140",
+    "domain": "kitchen",
+    "question": "how many tablespoons are in five cup of olive oil",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_141",
+    "domain": "kitchen",
+    "question": "what is the glucose and carbohydrate content of a banana",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.4753
+  },
+  {
+    "id": "CLINC_142",
+    "domain": "kitchen",
+    "question": "what is the glucose and carbohydrate content of a baked potato",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.4753
+  },
+  {
+    "id": "CLINC_143",
+    "domain": "kitchen",
+    "question": "what is the glucose and carbohydrate content of a mango",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.4753
+  },
+  {
+    "id": "CLINC_144",
+    "domain": "kitchen",
+    "question": "what is the glucose and carbohydrate content of a slice of bread",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.4753
+  },
+  {
+    "id": "CLINC_145",
+    "domain": "kitchen",
+    "question": "what is the glucose and carbohydrate content of a bowl of oatmeal",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.4753
+  },
+  {
+    "id": "CLINC_146",
+    "domain": "kitchen",
+    "question": "what is the glucose and carbohydrate content of a green apple",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.4753
+  },
+  {
+    "id": "CLINC_147",
+    "domain": "kitchen",
+    "question": "what is the glucose and carbohydrate content of a cup of rice",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.4753
+  },
+  {
+    "id": "CLINC_148",
+    "domain": "kitchen",
+    "question": "what is the glucose and carbohydrate content of a sweet potato",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.4753
+  },
+  {
+    "id": "CLINC_149",
+    "domain": "kitchen",
+    "question": "what is the glucose and carbohydrate content of a pineapple",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.4753
+  },
+  {
+    "id": "CLINC_150",
+    "domain": "kitchen",
+    "question": "what is the glucose and carbohydrate content of a orange",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.4753
+  },
+  {
+    "id": "CLINC_151",
+    "domain": "kitchen",
+    "question": "how do i cook rice in microgravity inside the galley",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2089
+  },
+  {
+    "id": "CLINC_152",
+    "domain": "kitchen",
+    "question": "how do i cook pasta in microgravity inside the galley",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2089
+  },
+  {
+    "id": "CLINC_153",
+    "domain": "kitchen",
+    "question": "how do i cook scrambled eggs in microgravity inside the galley",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2089
+  },
+  {
+    "id": "CLINC_154",
+    "domain": "kitchen",
+    "question": "how do i cook lentil soup in microgravity inside the galley",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2089
+  },
+  {
+    "id": "CLINC_155",
+    "domain": "kitchen",
+    "question": "how do i cook oatmeal in microgravity inside the galley",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2089
+  },
+  {
+    "id": "CLINC_156",
+    "domain": "kitchen",
+    "question": "how do i cook quinoa in microgravity inside the galley",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2089
+  },
+  {
+    "id": "CLINC_157",
+    "domain": "kitchen",
+    "question": "how do i cook instant noodles in microgravity inside the galley",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2089
+  },
+  {
+    "id": "CLINC_158",
+    "domain": "kitchen",
+    "question": "how do i cook rehydrated spinach in microgravity inside the galley",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2089
+  },
+  {
+    "id": "CLINC_159",
+    "domain": "kitchen",
+    "question": "how do i cook tortillas in microgravity inside the galley",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2089
+  },
+  {
+    "id": "CLINC_160",
+    "domain": "kitchen",
+    "question": "how do i cook coffee in microgravity inside the galley",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2089
+  },
+  {
+    "id": "CLINC_161",
+    "domain": "automotive",
+    "question": "what tire pressure in psi is recommended for a toyota camry",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2002
+  },
+  {
+    "id": "CLINC_162",
+    "domain": "automotive",
+    "question": "what tire pressure in psi is recommended for a honda civic",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2002
+  },
+  {
+    "id": "CLINC_163",
+    "domain": "automotive",
+    "question": "what tire pressure in psi is recommended for a ford f150",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2002
+  },
+  {
+    "id": "CLINC_164",
+    "domain": "automotive",
+    "question": "what tire pressure in psi is recommended for a tesla model 3",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1668
+  },
+  {
+    "id": "CLINC_165",
+    "domain": "automotive",
+    "question": "what tire pressure in psi is recommended for a subaru outback",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2002
+  },
+  {
+    "id": "CLINC_166",
+    "domain": "automotive",
+    "question": "what tire pressure in psi is recommended for a chevrolet tahoe",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2002
+  },
+  {
+    "id": "CLINC_167",
+    "domain": "automotive",
+    "question": "what tire pressure in psi is recommended for a bmw 3 series",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2002
+  },
+  {
+    "id": "CLINC_168",
+    "domain": "automotive",
+    "question": "what tire pressure in psi is recommended for a audi a4",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2002
+  },
+  {
+    "id": "CLINC_169",
+    "domain": "automotive",
+    "question": "what tire pressure in psi is recommended for a hyundai tucson",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2002
+  },
+  {
+    "id": "CLINC_170",
+    "domain": "automotive",
+    "question": "what tire pressure in psi is recommended for a mazda cx5",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2002
+  },
+  {
+    "id": "CLINC_171",
+    "domain": "automotive",
+    "question": "why is the check engine light flashing on my sedan",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1756
+  },
+  {
+    "id": "CLINC_172",
+    "domain": "automotive",
+    "question": "why is the check engine light flashing on my pickup truck",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1756
+  },
+  {
+    "id": "CLINC_173",
+    "domain": "automotive",
+    "question": "why is the check engine light flashing on my hybrid suv",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1756
+  },
+  {
+    "id": "CLINC_174",
+    "domain": "automotive",
+    "question": "why is the check engine light flashing on my minivan",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1756
+  },
+  {
+    "id": "CLINC_175",
+    "domain": "automotive",
+    "question": "why is the check engine light flashing on my hatchback",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1756
+  },
+  {
+    "id": "CLINC_176",
+    "domain": "automotive",
+    "question": "why is the check engine light flashing on my diesel van",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1756
+  },
+  {
+    "id": "CLINC_177",
+    "domain": "automotive",
+    "question": "why is the check engine light flashing on my crossover",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1756
+  },
+  {
+    "id": "CLINC_178",
+    "domain": "automotive",
+    "question": "why is the check engine light flashing on my coupe",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1756
+  },
+  {
+    "id": "CLINC_179",
+    "domain": "automotive",
+    "question": "why is the check engine light flashing on my station wagon",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1756
+  },
+  {
+    "id": "CLINC_180",
+    "domain": "automotive",
+    "question": "why is the check engine light flashing on my electric car",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1756
+  },
+  {
+    "id": "CLINC_181",
+    "domain": "automotive",
+    "question": "how often should i replace the transmission fluid and brake pads on a honda accord",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_182",
+    "domain": "automotive",
+    "question": "how often should i replace the transmission fluid and brake pads on a toyota corolla",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_183",
+    "domain": "automotive",
+    "question": "how often should i replace the transmission fluid and brake pads on a nissan altima",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_184",
+    "domain": "automotive",
+    "question": "how often should i replace the transmission fluid and brake pads on a volkswagen golf",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_185",
+    "domain": "automotive",
+    "question": "how often should i replace the transmission fluid and brake pads on a jeep wrangler",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_186",
+    "domain": "automotive",
+    "question": "how often should i replace the transmission fluid and brake pads on a ford mustang",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_187",
+    "domain": "automotive",
+    "question": "how often should i replace the transmission fluid and brake pads on a kia sportage",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_188",
+    "domain": "automotive",
+    "question": "how often should i replace the transmission fluid and brake pads on a volvo xc60",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_189",
+    "domain": "automotive",
+    "question": "how often should i replace the transmission fluid and brake pads on a lexus rx",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_190",
+    "domain": "automotive",
+    "question": "how often should i replace the transmission fluid and brake pads on a subaru forester",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_191",
+    "domain": "automotive",
+    "question": "how is the battery health and alternator voltage on my motorcycle",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1638
+  },
+  {
+    "id": "CLINC_192",
+    "domain": "automotive",
+    "question": "how is the battery health and alternator voltage on my delivery van",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1638
+  },
+  {
+    "id": "CLINC_193",
+    "domain": "automotive",
+    "question": "how is the battery health and alternator voltage on my camper van",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1638
+  },
+  {
+    "id": "CLINC_194",
+    "domain": "automotive",
+    "question": "how is the battery health and alternator voltage on my tractor",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1638
+  },
+  {
+    "id": "CLINC_195",
+    "domain": "automotive",
+    "question": "how is the battery health and alternator voltage on my forklift",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1638
+  },
+  {
+    "id": "CLINC_196",
+    "domain": "automotive",
+    "question": "how is the battery health and alternator voltage on my golf cart",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1638
+  },
+  {
+    "id": "CLINC_197",
+    "domain": "automotive",
+    "question": "how is the battery health and alternator voltage on my scooter",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1638
+  },
+  {
+    "id": "CLINC_198",
+    "domain": "automotive",
+    "question": "how is the battery health and alternator voltage on my snowmobile",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1638
+  },
+  {
+    "id": "CLINC_199",
+    "domain": "automotive",
+    "question": "how is the battery health and alternator voltage on my speedboat",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1638
+  },
+  {
+    "id": "CLINC_200",
+    "domain": "automotive",
+    "question": "how is the battery health and alternator voltage on my lawn mower",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1638
+  },
+  {
+    "id": "CLINC_201",
+    "domain": "utility_it",
+    "question": "how do i monitor cpu temperature and fan speed on ubuntu linux",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2239
+  },
+  {
+    "id": "CLINC_202",
+    "domain": "utility_it",
+    "question": "how do i monitor cpu temperature and fan speed on windows 11",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2239
+  },
+  {
+    "id": "CLINC_203",
+    "domain": "utility_it",
+    "question": "how do i monitor cpu temperature and fan speed on macos sonoma",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2239
+  },
+  {
+    "id": "CLINC_204",
+    "domain": "utility_it",
+    "question": "how do i monitor cpu temperature and fan speed on debian server",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2239
+  },
+  {
+    "id": "CLINC_205",
+    "domain": "utility_it",
+    "question": "how do i monitor cpu temperature and fan speed on fedora workstation",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2239
+  },
+  {
+    "id": "CLINC_206",
+    "domain": "utility_it",
+    "question": "how do i monitor cpu temperature and fan speed on arch linux",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2239
+  },
+  {
+    "id": "CLINC_207",
+    "domain": "utility_it",
+    "question": "how do i monitor cpu temperature and fan speed on red hat enterprise",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2239
+  },
+  {
+    "id": "CLINC_208",
+    "domain": "utility_it",
+    "question": "how do i monitor cpu temperature and fan speed on freebsd",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2239
+  },
+  {
+    "id": "CLINC_209",
+    "domain": "utility_it",
+    "question": "how do i monitor cpu temperature and fan speed on raspberry pi os",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2239
+  },
+  {
+    "id": "CLINC_210",
+    "domain": "utility_it",
+    "question": "how do i monitor cpu temperature and fan speed on centos",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2239
+  },
+  {
+    "id": "CLINC_211",
+    "domain": "utility_it",
+    "question": "how much power does my laptop use in sleep mode when unplugged for 2 hours",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.249
+  },
+  {
+    "id": "CLINC_212",
+    "domain": "utility_it",
+    "question": "how much power does my laptop use in sleep mode when unplugged for 4 hours",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.249
+  },
+  {
+    "id": "CLINC_213",
+    "domain": "utility_it",
+    "question": "how much power does my laptop use in sleep mode when unplugged for 6 hours",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.249
+  },
+  {
+    "id": "CLINC_214",
+    "domain": "utility_it",
+    "question": "how much power does my laptop use in sleep mode when unplugged for 8 hours",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.249
+  },
+  {
+    "id": "CLINC_215",
+    "domain": "utility_it",
+    "question": "how much power does my laptop use in sleep mode when unplugged for 10 hours",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.249
+  },
+  {
+    "id": "CLINC_216",
+    "domain": "utility_it",
+    "question": "how much power does my laptop use in sleep mode when unplugged for 12 hours",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.249
+  },
+  {
+    "id": "CLINC_217",
+    "domain": "utility_it",
+    "question": "how much power does my laptop use in sleep mode when unplugged for 16 hours",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.249
+  },
+  {
+    "id": "CLINC_218",
+    "domain": "utility_it",
+    "question": "how much power does my laptop use in sleep mode when unplugged for 20 hours",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.249
+  },
+  {
+    "id": "CLINC_219",
+    "domain": "utility_it",
+    "question": "how much power does my laptop use in sleep mode when unplugged for 24 hours",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.249
+  },
+  {
+    "id": "CLINC_220",
+    "domain": "utility_it",
+    "question": "how much power does my laptop use in sleep mode when unplugged for 48 hours",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.249
+  },
+  {
+    "id": "CLINC_221",
+    "domain": "utility_it",
+    "question": "what is a stress test in software engineering for web servers",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2533
+  },
+  {
+    "id": "CLINC_222",
+    "domain": "utility_it",
+    "question": "what is a stress test in software engineering for database clusters",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2277
+  },
+  {
+    "id": "CLINC_223",
+    "domain": "utility_it",
+    "question": "what is a stress test in software engineering for rest apis",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2533
+  },
+  {
+    "id": "CLINC_224",
+    "domain": "utility_it",
+    "question": "what is a stress test in software engineering for kubernetes pods",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2533
+  },
+  {
+    "id": "CLINC_225",
+    "domain": "utility_it",
+    "question": "what is a stress test in software engineering for payment gateways",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2533
+  },
+  {
+    "id": "CLINC_226",
+    "domain": "utility_it",
+    "question": "what is a stress test in software engineering for message queues",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2533
+  },
+  {
+    "id": "CLINC_227",
+    "domain": "utility_it",
+    "question": "what is a stress test in software engineering for load balancers",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2533
+  },
+  {
+    "id": "CLINC_228",
+    "domain": "utility_it",
+    "question": "what is a stress test in software engineering for microservices",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2533
+  },
+  {
+    "id": "CLINC_229",
+    "domain": "utility_it",
+    "question": "what is a stress test in software engineering for cloud storage",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2533
+  },
+  {
+    "id": "CLINC_230",
+    "domain": "utility_it",
+    "question": "what is a stress test in software engineering for cache nodes",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2533
+  },
+  {
+    "id": "CLINC_231",
+    "domain": "utility_it",
+    "question": "explain the heart of the linux kernel scheduler for realtime tasks",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1332
+  },
+  {
+    "id": "CLINC_232",
+    "domain": "utility_it",
+    "question": "explain the heart of the linux kernel scheduler for multicore cpus",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1538
+  },
+  {
+    "id": "CLINC_233",
+    "domain": "utility_it",
+    "question": "explain the heart of the linux kernel scheduler for thread priority",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1538
+  },
+  {
+    "id": "CLINC_234",
+    "domain": "utility_it",
+    "question": "explain the heart of the linux kernel scheduler for context switching",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1538
+  },
+  {
+    "id": "CLINC_235",
+    "domain": "utility_it",
+    "question": "explain the heart of the linux kernel scheduler for io wait",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1538
+  },
+  {
+    "id": "CLINC_236",
+    "domain": "utility_it",
+    "question": "explain the heart of the linux kernel scheduler for cgroup limits",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1274
+  },
+  {
+    "id": "CLINC_237",
+    "domain": "utility_it",
+    "question": "explain the heart of the linux kernel scheduler for numa nodes",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1538
+  },
+  {
+    "id": "CLINC_238",
+    "domain": "utility_it",
+    "question": "explain the heart of the linux kernel scheduler for interrupt handling",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1538
+  },
+  {
+    "id": "CLINC_239",
+    "domain": "utility_it",
+    "question": "explain the heart of the linux kernel scheduler for spinlocks",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1538
+  },
+  {
+    "id": "CLINC_240",
+    "domain": "utility_it",
+    "question": "explain the heart of the linux kernel scheduler for virtual memory",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1538
+  },
+  {
+    "id": "CLINC_241",
+    "domain": "general_trivia",
+    "question": "who won the world cup championship in 2022",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_242",
+    "domain": "general_trivia",
+    "question": "who won the champions league championship in 2023",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_243",
+    "domain": "general_trivia",
+    "question": "who won the super bowl championship in 2024",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_244",
+    "domain": "general_trivia",
+    "question": "who won the wimbledon championship in 2023",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_245",
+    "domain": "general_trivia",
+    "question": "who won the nba finals championship in 2023",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_246",
+    "domain": "general_trivia",
+    "question": "who won the stanley cup championship in 2024",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_247",
+    "domain": "general_trivia",
+    "question": "who won the tour de france championship in 2023",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_248",
+    "domain": "general_trivia",
+    "question": "who won the world series championship in 2023",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_249",
+    "domain": "general_trivia",
+    "question": "who won the olympic marathon championship in 2020",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_250",
+    "domain": "general_trivia",
+    "question": "who won the formula one championship in 2023",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_251",
+    "domain": "general_trivia",
+    "question": "what is the capital of france",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_252",
+    "domain": "general_trivia",
+    "question": "what is the capital of egypt",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_253",
+    "domain": "general_trivia",
+    "question": "what is the capital of canada",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_254",
+    "domain": "general_trivia",
+    "question": "what is the capital of brazil",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_255",
+    "domain": "general_trivia",
+    "question": "what is the capital of japan",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_256",
+    "domain": "general_trivia",
+    "question": "what is the capital of australia",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_257",
+    "domain": "general_trivia",
+    "question": "what is the capital of kenya",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_258",
+    "domain": "general_trivia",
+    "question": "what is the capital of norway",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_259",
+    "domain": "general_trivia",
+    "question": "what is the capital of argentina",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_260",
+    "domain": "general_trivia",
+    "question": "what is the capital of thailand",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_261",
+    "domain": "general_trivia",
+    "question": "translate good morning into russian",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_262",
+    "domain": "general_trivia",
+    "question": "translate good morning into arabic",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_263",
+    "domain": "general_trivia",
+    "question": "translate good morning into french",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_264",
+    "domain": "general_trivia",
+    "question": "translate good morning into spanish",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_265",
+    "domain": "general_trivia",
+    "question": "translate good morning into german",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_266",
+    "domain": "general_trivia",
+    "question": "translate good morning into japanese",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_267",
+    "domain": "general_trivia",
+    "question": "translate good morning into italian",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_268",
+    "domain": "general_trivia",
+    "question": "translate good morning into portuguese",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_269",
+    "domain": "general_trivia",
+    "question": "translate good morning into korean",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_270",
+    "domain": "general_trivia",
+    "question": "translate good morning into swahili",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_271",
+    "domain": "general_trivia",
+    "question": "what is 17 times 23 in arithmetic",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.193
+  },
+  {
+    "id": "CLINC_272",
+    "domain": "general_trivia",
+    "question": "what is 19 times 27 in arithmetic",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.193
+  },
+  {
+    "id": "CLINC_273",
+    "domain": "general_trivia",
+    "question": "what is 14 times 31 in arithmetic",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.193
+  },
+  {
+    "id": "CLINC_274",
+    "domain": "general_trivia",
+    "question": "what is 29 times 13 in arithmetic",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.193
+  },
+  {
+    "id": "CLINC_275",
+    "domain": "general_trivia",
+    "question": "what is 42 times 18 in arithmetic",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.193
+  },
+  {
+    "id": "CLINC_276",
+    "domain": "general_trivia",
+    "question": "what is 37 times 21 in arithmetic",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.193
+  },
+  {
+    "id": "CLINC_277",
+    "domain": "general_trivia",
+    "question": "what is 16 times 29 in arithmetic",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.193
+  },
+  {
+    "id": "CLINC_278",
+    "domain": "general_trivia",
+    "question": "what is 24 times 33 in arithmetic",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.193
+  },
+  {
+    "id": "CLINC_279",
+    "domain": "general_trivia",
+    "question": "what is 35 times 19 in arithmetic",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.193
+  },
+  {
+    "id": "CLINC_280",
+    "domain": "general_trivia",
+    "question": "what is 47 times 12 in arithmetic",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.193
+  },
+  {
+    "id": "CLINC_281",
+    "domain": "spacecraft_hardware",
+    "question": "how do i fix the oxygen generator on the space station",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2189
+  },
+  {
+    "id": "CLINC_282",
+    "domain": "spacecraft_hardware",
+    "question": "how do i fix the co2 scrubber on the space station",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2671
+  },
+  {
+    "id": "CLINC_283",
+    "domain": "spacecraft_hardware",
+    "question": "how do i fix the solar panel alignment on the space station",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2671
+  },
+  {
+    "id": "CLINC_284",
+    "domain": "spacecraft_hardware",
+    "question": "how do i fix the water recovery pump on the space station",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2671
+  },
+  {
+    "id": "CLINC_285",
+    "domain": "spacecraft_hardware",
+    "question": "how do i fix the urine processor distillation assembly on the space station",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1889
+  },
+  {
+    "id": "CLINC_286",
+    "domain": "spacecraft_hardware",
+    "question": "how do i fix the thermal control radiator valve on the space station",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1889
+  },
+  {
+    "id": "CLINC_287",
+    "domain": "spacecraft_hardware",
+    "question": "how do i fix the canadarm2 wrist joint on the space station",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2671
+  },
+  {
+    "id": "CLINC_288",
+    "domain": "spacecraft_hardware",
+    "question": "how do i fix the docking port seal on the space station",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2671
+  },
+  {
+    "id": "CLINC_289",
+    "domain": "spacecraft_hardware",
+    "question": "how do i fix the cabin air fan on the space station",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2671
+  },
+  {
+    "id": "CLINC_290",
+    "domain": "spacecraft_hardware",
+    "question": "how do i fix the galley water dispenser tap on the space station",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2671
+  },
+  {
+    "id": "CLINC_291",
+    "domain": "spacecraft_hardware",
+    "question": "what is the cabin pressure and hull temperature of the destiny lab module",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2743
+  },
+  {
+    "id": "CLINC_292",
+    "domain": "spacecraft_hardware",
+    "question": "what is the cabin pressure and hull temperature of the harmony node",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2743
+  },
+  {
+    "id": "CLINC_293",
+    "domain": "spacecraft_hardware",
+    "question": "what is the cabin pressure and hull temperature of the tranquility node",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2743
+  },
+  {
+    "id": "CLINC_294",
+    "domain": "spacecraft_hardware",
+    "question": "what is the cabin pressure and hull temperature of the columbus laboratory",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1954
+  },
+  {
+    "id": "CLINC_295",
+    "domain": "spacecraft_hardware",
+    "question": "what is the cabin pressure and hull temperature of the kibo module",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2743
+  },
+  {
+    "id": "CLINC_296",
+    "domain": "spacecraft_hardware",
+    "question": "what is the cabin pressure and hull temperature of the quest airlock",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2743
+  },
+  {
+    "id": "CLINC_297",
+    "domain": "spacecraft_hardware",
+    "question": "what is the cabin pressure and hull temperature of the cupola observation dome",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2743
+  },
+  {
+    "id": "CLINC_298",
+    "domain": "spacecraft_hardware",
+    "question": "what is the cabin pressure and hull temperature of the zvezda service module",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2743
+  },
+  {
+    "id": "CLINC_299",
+    "domain": "spacecraft_hardware",
+    "question": "what is the cabin pressure and hull temperature of the zarya cargo block",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2743
+  },
+  {
+    "id": "CLINC_300",
+    "domain": "spacecraft_hardware",
+    "question": "what is the cabin pressure and hull temperature of the nauka module",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2743
+  },
+  {
+    "id": "CLINC_301",
+    "domain": "spacecraft_hardware",
+    "question": "how do i calculate stress and strain on a cantilever beam",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.1666
+  },
+  {
+    "id": "CLINC_302",
+    "domain": "spacecraft_hardware",
+    "question": "how do i calculate stress and strain on a titanium truss",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.282
+  },
+  {
+    "id": "CLINC_303",
+    "domain": "spacecraft_hardware",
+    "question": "how do i calculate stress and strain on a aluminum bulkhead",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.282
+  },
+  {
+    "id": "CLINC_304",
+    "domain": "spacecraft_hardware",
+    "question": "how do i calculate stress and strain on a solar array mast",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.282
+  },
+  {
+    "id": "CLINC_305",
+    "domain": "spacecraft_hardware",
+    "question": "how do i calculate stress and strain on a docking ring",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.282
+  },
+  {
+    "id": "CLINC_306",
+    "domain": "spacecraft_hardware",
+    "question": "how do i calculate stress and strain on a pressure vessel shell",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.2856
+  },
+  {
+    "id": "CLINC_307",
+    "domain": "spacecraft_hardware",
+    "question": "how do i calculate stress and strain on a radiator panel",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.282
+  },
+  {
+    "id": "CLINC_308",
+    "domain": "spacecraft_hardware",
+    "question": "how do i calculate stress and strain on a cargo pallet",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.282
+  },
+  {
+    "id": "CLINC_309",
+    "domain": "spacecraft_hardware",
+    "question": "how do i calculate stress and strain on a composite strut",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.282
+  },
+  {
+    "id": "CLINC_310",
+    "domain": "spacecraft_hardware",
+    "question": "how do i calculate stress and strain on a hatch frame",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.282
+  },
+  {
+    "id": "CLINC_311",
+    "domain": "spacecraft_hardware",
+    "question": "what is the radiation dose limit for the electronics on the lunar rover",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_312",
+    "domain": "spacecraft_hardware",
+    "question": "what is the radiation dose limit for the electronics on the mars perseverance rover",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_313",
+    "domain": "spacecraft_hardware",
+    "question": "what is the radiation dose limit for the electronics on the europa clipper",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_314",
+    "domain": "spacecraft_hardware",
+    "question": "what is the radiation dose limit for the electronics on the voyager probe",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_315",
+    "domain": "spacecraft_hardware",
+    "question": "what is the radiation dose limit for the electronics on the james webb telescope",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_316",
+    "domain": "spacecraft_hardware",
+    "question": "what is the radiation dose limit for the electronics on the hubble telescope",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_317",
+    "domain": "spacecraft_hardware",
+    "question": "what is the radiation dose limit for the electronics on the parker solar probe",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_318",
+    "domain": "spacecraft_hardware",
+    "question": "what is the radiation dose limit for the electronics on the curiosity rover",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_319",
+    "domain": "spacecraft_hardware",
+    "question": "what is the radiation dose limit for the electronics on the cassini orbiter",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  },
+  {
+    "id": "CLINC_320",
+    "domain": "spacecraft_hardware",
+    "question": "what is the radiation dose limit for the electronics on the new horizons",
+    "expected_behavior": "refuse",
+    "expected_intent": "refusal",
+    "max_training_cosine_sim": 0.0
+  }
+]

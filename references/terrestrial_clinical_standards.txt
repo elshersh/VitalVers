@@ -1,0 +1,46 @@
+# Standard Terrestrial Clinical References & Validated Psychometric Instruments
+(Used ONLY where no spaceflight-specific numerical cut-off is published in NASA-STD-3001; labeled TERRESTRIAL_REFERENCE or PLACEHOLDER_SCALE)
+
+## 1. American Heart Association (AHA) / ACC Blood Pressure Guidelines
+CITATION: Whelton PK, Carey RM, Aronow WS, et al. 2017 ACC/AHA/AAPA/ABC/ACPM/AGS/APhA/ASH/ASPC/NMA/PCNA Guideline for the Prevention, Detection, Evaluation, and Management of High Blood Pressure in Adults. Hypertension. 2018;71(6):e13-e115.
+SOURCE_URL: https://www.heart.org/en/health-topics/high-blood-pressure/understanding-blood-pressure-readings
+SECTION: Table 6 — Categories of Blood Pressure in Adults & Hypotension Clinical Cut-offs
+"Normal adult blood pressure is systolic 90 to 120 mmHg and diastolic 60 to 80 mmHg; Stage 2 hypertension is >= 140/90 mmHg and hypertensive crisis exceeds 180/120 mmHg."
+"Clinically significant arterial hypotension in adults is defined as systolic blood pressure < 90 mmHg or diastolic < 60 mmHg, with critical shock risk at systolic <= 80 mmHg or diastolic <= 50 mmHg."
+
+## 2. American Diabetes Association (ADA) Standards of Care in Diabetes (2024)
+CITATION: American Diabetes Association Professional Practice Committee. 2. Diagnosis and Classification of Diabetes, and 6. Glycemic Goals and Hypoglycemia: Standards of Care in Diabetes—2024. Diabetes Care. 2024;47(Suppl. 1):S20-S42, S111-S125.
+SOURCE_URL: https://doi.org/10.2337/dc24-S002
+SECTION: Section 2 (Fasting Plasma Glucose) & Section 6 Table 6.4 (Classification of Hypoglycemia)
+"Normal fasting plasma glucose is 70 to 99 mg/dL; prediabetes is 100 to 125 mg/dL, diabetes is >= 126 mg/dL, and severe inpatient hyperglycemia is >= 180 mg/dL."
+"Level 1 hypoglycemia alert value is blood glucose < 70 mg/dL (>= 54 mg/dL); Level 2 clinically significant hypoglycemia is blood glucose < 54 mg/dL."
+
+## 3. Royal College of Physicians — National Early Warning Score 2 (NEWS2)
+CITATION: Royal College of Physicians. National Early Warning Score (NEWS) 2: Standardising the assessment of acute-illness severity in the NHS. London: RCP; 2017.
+SOURCE_URL: https://www.rcplondon.ac.uk/projects/outputs/national-early-warning-score-news-2
+SECTION: Chart 1 — NEWS2 Physiological Parameters (Heart Rate, SpO2, Core Temperature)
+"Normal adult resting heart rate is 60 to 100 bpm (NEWS2 score 0 at 51 to 90 bpm); bradycardia warning <= 50 bpm, critical <= 40 bpm, tachycardia warning >= 105 bpm, critical >= 130 bpm."
+"Normal pulse oximetry SpO2 in air is >= 96%; mild hypoxia warning occurs at <= 93% and critical hypoxemia requiring urgent intervention at <= 89%."
+"Normal core body temperature is 36.1 to 38.0 degrees C; hypothermia warning is <= 35.5 C (critical <= 35.0 C) and pyrexia warning is >= 38.0 C (critical >= 39.0 C)."
+
+## 4. National Sleep Foundation / AASM Consensus Statement on Adult Sleep Duration
+CITATION: Watson NF, Badr MS, Belenky G, et al. Recommended Amount of Sleep for a Healthy Adult: A Joint Consensus Statement of the American Academy of Sleep Medicine and Sleep Research Society. Sleep. 2015;38(6):843-844.
+SOURCE_URL: https://doi.org/10.5665/sleep.4716
+SECTION: Consensus Recommendation
+"Healthy adults require 7.0 to 9.0 hours of sleep per night; sleeping < 5.5 hours impairs alertness, < 4.0 hours causes severe impairment, and > 10.0 hours warrants clinical evaluation."
+
+## 5. Validated Psychometric & Behavioral Instruments (Mapped to Prototype Scales)
+CITATION_PSS10: Cohen S, Kamarck T, Mermelstein R. A global measure of perceived stress. Journal of Health and Social Behavior. 1983;24(4):385-396.
+SOURCE_URL_PSS10: https://doi.org/10.2307/2136404
+SECTION_PSS10: Perceived Stress Scale (PSS-10)
+"The 10-item Perceived Stress Scale (PSS-10) scores perceived stress from 0 to 40 (low stress 0-13, moderate 14-26, high perceived stress 27-40)."
+
+CITATION_PHQ9: Kroenke K, Spitzer RL, Williams JB. The PHQ-9: validity of a brief depression severity measure. Journal of General Internal Medicine. 2001;16(9):606-613.
+SOURCE_URL_PHQ9: https://doi.org/10.1046/j.1525-1497.2001.016009606.x
+SECTION_PHQ9: Patient Health Questionnaire (PHQ-9) & Single-Item Mood Visual Analog Scale
+"The PHQ-9 scores depressive symptom severity from 0 to 27 (minimal 0-4, mild 5-9, moderate 10-14, severe >= 20); daily ecological momentary mood ratings use a 1 to 10 visual analog scale."
+
+CITATION_BORG: Borg GA. Psychophysical bases of perceived exertion. Medicine and Science in Sports and Exercise. 1982;14(5):377-381.
+SOURCE_URL_BORG: https://doi.org/10.1249/00005768-198205000-00012
+SECTION_BORG: Borg Rating of Perceived Exertion (RPE 6-20 and CR10 0-10)
+"The Borg Rating of Perceived Exertion scales physical exertion from 6 to 20 (or Category-Ratio CR10 from 0 to 10) to quantify exercise training load."

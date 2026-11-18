@@ -1,0 +1,12 @@
+# External Chatbot Test Set — Label Disputes (`eval/external_questions.csv`)
+
+Per **Ground Rule 6**, the text and `expected_behavior` labels in `eval/external_questions.csv` have **never been edited**. Below we record four rows where the external author's `expected_behavior` label conflicts with the strict anti-hallucination design of the three-source offline chatbot (which answers **only** from (1) the astronaut's SQLite profile/baseline/telemetry, (2) live model output, and (3) the countermeasures table, and refuses general textbook medical or environmental trivia).
+
+Evaluation results in `test_chatbot.py` and `EVALUATION_REPORT.md` are reported **both with all 100 rows included and with the disputed rows excluded**.
+
+| Question ID | Question Text | External Label (`expected_behavior` / `expected_topic`) | Reason for Dispute |
+|---|---|---|---|
+| `E005` | `"does the station lighting mess with my circadian rhythm"` | `answer` / `sleep` | Asks about environmental station hardware (lighting spectrum/schedule) rather than a personal telemetry column in `mission_telemetry`, though it can be mapped to the sleep/circadian countermeasure row (`Sleep_Brain`). |
+| `E008` | `"what does it mean if my heart rate stays above 100 when I'm just sitting"` | `answer` / `heart_rate` | Phrased as a general clinical threshold interpretation (`what does it mean if...`) rather than a direct query of the astronaut's stored telemetry, though it is safely answerable by comparing the astronaut's resting heart rate against their personal pre-flight baseline and tachycardia threshold (`100 bpm`). |
+| `E030` | `"why do astronauts get sick more easily in space"` | `answer` / `immune` | Asks a general spaceflight biology question (`why do astronauts...`) rather than querying the logged-in astronaut's own telemetry (`my immunity indicators`). Under strict `GENERAL_KNOWLEDGE` guard rules this could be refused, whereas under countermeasure-backed `immune` routing it returns the astronaut's Immune zone status and the NASA-STD-3001 / Crucian 2018 immune countermeasure explanation. |
+| `E039` | `"what should my blood sugar be in the morning"` | `answer` / `glucose` | Prior to Phase 2 (item B4), `blood_sugar` was listed in `UNMEASURED` and refused. Following Phase 2 B4, `blood_glucose_mg_dl` (`blood_sugar`, fasting range `70-99 mg/dL` per ADA 2024) is a first-class measured indicator in `mission_telemetry` and `preflight_baseline`, so personal fasting glucose queries are now in-scope (`glucose` route). |

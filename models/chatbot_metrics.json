@@ -1,0 +1,682 @@
+{
+  "development set (internal)": {
+    "in_scope": 25,
+    "out_of_scope": 15,
+    "true_positive": 25,
+    "true_negative": 15,
+    "sensitivity_pct": 100.0,
+    "specificity_pct": 100.0,
+    "accuracy_pct": 100.0,
+    "in_scope_with_same_topic_words_as_an_example": 0,
+    "leakage_audit": {
+      "n_questions": 40,
+      "max_cosine_sim": 0.5847,
+      "count_above_0_60": 0,
+      "leakage_free": true
+    }
+  },
+  "HELD-OUT set (internal)": {
+    "in_scope": 42,
+    "out_of_scope": 30,
+    "true_positive": 41,
+    "true_negative": 30,
+    "sensitivity_pct": 97.62,
+    "specificity_pct": 100.0,
+    "accuracy_pct": 98.61,
+    "in_scope_with_same_topic_words_as_an_example": 0,
+    "leakage_audit": {
+      "n_questions": 72,
+      "max_cosine_sim": 0.5942,
+      "count_above_0_60": 0,
+      "leakage_free": true
+    }
+  },
+  "phase4_unbiased_eval": {
+    "a_public_oos": {
+      "source": "(a) Public Out-of-Scope Set (CLINC150-style 8 domains)",
+      "total": 320,
+      "true_negative_refused": 320,
+      "false_accepted": 0,
+      "specificity_pct": 100.0,
+      "keyword_leakage_rate_pct": 0.0,
+      "by_domain": {
+        "automotive": {
+          "total": 40,
+          "refused": 40,
+          "specificity_pct": 100.0
+        },
+        "banking": {
+          "total": 40,
+          "refused": 40,
+          "specificity_pct": 100.0
+        },
+        "general_trivia": {
+          "total": 40,
+          "refused": 40,
+          "specificity_pct": 100.0
+        },
+        "kitchen": {
+          "total": 40,
+          "refused": 40,
+          "specificity_pct": 100.0
+        },
+        "spacecraft_hardware": {
+          "total": 40,
+          "refused": 40,
+          "specificity_pct": 100.0
+        },
+        "travel": {
+          "total": 40,
+          "refused": 40,
+          "specificity_pct": 100.0
+        },
+        "utility_it": {
+          "total": 40,
+          "refused": 40,
+          "specificity_pct": 100.0
+        },
+        "weather": {
+          "total": 40,
+          "refused": 40,
+          "specificity_pct": 100.0
+        }
+      },
+      "sample_false_accepts": [],
+      "leakage_audit": {
+        "n_questions": 320,
+        "max_cosine_sim": 0.4753,
+        "count_above_0_60": 0,
+        "leakage_free": true
+      }
+    },
+    "b_public_health_qa": {
+      "source": "(b) Public Health-Question Set (MedQuAD / LiveQA patterns + guard controls)",
+      "total": 220,
+      "in_scope_total": 170,
+      "in_scope_answered": 163,
+      "in_scope_exact_intent": 158,
+      "in_scope_scope_recall_pct": 95.88,
+      "in_scope_intent_accuracy_pct": 92.94,
+      "refusal_controls_total": 50,
+      "refusal_controls_refused": 50,
+      "specificity_pct": 100.0,
+      "overall_scope_accuracy_pct": 96.82,
+      "overall_strict_accuracy_pct": 94.55,
+      "sample_misses": [
+        {
+          "id": "MEDQ_005",
+          "q": "are all of my physiological subsystems looking good this morning",
+          "expected": "status",
+          "got": "refusal"
+        },
+        {
+          "id": "MEDQ_013",
+          "q": "which issue triggered my health notice and what steps resolve it",
+          "expected": "alerts",
+          "got": "status"
+        },
+        {
+          "id": "MEDQ_059",
+          "q": "compare today s blood sugar reading to my preflight baseline glucose",
+          "expected": "glucose",
+          "got": "baseline"
+        },
+        {
+          "id": "MEDQ_114",
+          "q": "please tell me how i can connect with mission physicians back home",
+          "expected": "contact",
+          "got": "refusal"
+        },
+        {
+          "id": "MEDQ_124",
+          "q": "how many days is the estimated flight duration",
+          "expected": "journey",
+          "got": "refusal"
+        },
+        {
+          "id": "MEDQ_129",
+          "q": "what is the total planned duration of my flight",
+          "expected": "journey",
+          "got": "refusal"
+        },
+        {
+          "id": "MEDQ_153",
+          "q": "do longer daily workout logs go along with better mood scores",
+          "expected": "correlation",
+          "got": "sleep_psych"
+        },
+        {
+          "id": "MEDQ_163",
+          "q": "am i speaking with an actual human physician",
+          "expected": "sources",
+          "got": "contact"
+        },
+        {
+          "id": "MEDQ_164",
+          "q": "what databases and sources do you use to answer",
+          "expected": "sources",
+          "got": "refusal"
+        },
+        {
+          "id": "MEDQ_165",
+          "q": "can i trust your advice as a medical diagnosis",
+          "expected": "sources",
+          "got": "refusal"
+        }
+      ],
+      "sample_false_accepts": [],
+      "leakage_audit": {
+        "n_questions": 220,
+        "max_cosine_sim": 0.5983,
+        "count_above_0_60": 0,
+        "leakage_free": true
+      }
+    },
+    "c_paraphrase_stress_test": {
+      "source": "(c) Paraphrase Stress Test (3 perturbations x 42 held-out in-scope queries)",
+      "total": 126,
+      "answered": 110,
+      "exact_intent_correct": 106,
+      "paraphrase_intent_accuracy_pct": 84.13,
+      "original_heldout_in_scope_pct": 97.62,
+      "accuracy_drop_pct_points": -13.49,
+      "by_paraphrase_type": {
+        "synonym": {
+          "total": 42,
+          "answered": 38,
+          "exact_intent": 38,
+          "intent_accuracy_pct": 90.48
+        },
+        "typo_abbrev": {
+          "total": 42,
+          "answered": 33,
+          "exact_intent": 30,
+          "intent_accuracy_pct": 71.43
+        },
+        "word_order": {
+          "total": 42,
+          "answered": 39,
+          "exact_intent": 38,
+          "intent_accuracy_pct": 90.48
+        }
+      },
+      "sample_misses": [
+        {
+          "id": "PARA_003",
+          "type": "typo_abbrev",
+          "q": "sumarise my helth status for me today",
+          "expected": "status",
+          "got": "refusal"
+        },
+        {
+          "id": "PARA_006",
+          "type": "typo_abbrev",
+          "q": "evrything fine with my helth today",
+          "expected": "status",
+          "got": "refusal"
+        },
+        {
+          "id": "PARA_009",
+          "type": "typo_abbrev",
+          "q": "what is the models verdct on my status today",
+          "expected": "status",
+          "got": "refusal"
+        },
+        {
+          "id": "PARA_012",
+          "type": "typo_abbrev",
+          "q": "list my curent health warnngs",
+          "expected": "alerts",
+          "got": "status"
+        },
+        {
+          "id": "PARA_013",
+          "type": "synonym",
+          "q": "which issue set off the notice and how can i resolve it",
+          "expected": "alerts",
+          "got": "refusal"
+        },
+        {
+          "id": "PARA_015",
+          "type": "typo_abbrev",
+          "q": "what trigered the warnng and how do i fix it",
+          "expected": "alerts",
+          "got": "refusal"
+        },
+        {
+          "id": "PARA_018",
+          "type": "typo_abbrev",
+          "q": "why hasnt the system kept me in normal status today",
+          "expected": "alerts",
+          "got": "status"
+        },
+        {
+          "id": "PARA_039",
+          "type": "typo_abbrev",
+          "q": "what do my imunity numbers look like today",
+          "expected": "immune",
+          "got": "refusal"
+        },
+        {
+          "id": "PARA_050",
+          "type": "word_order",
+          "q": "lately in my logs, how has my mood been",
+          "expected": "sleep_psych",
+          "got": "refusal"
+        },
+        {
+          "id": "PARA_057",
+          "type": "typo_abbrev",
+          "q": "how many hrs did i trian today",
+          "expected": "sleep_psych",
+          "got": "refusal"
+        }
+      ],
+      "leakage_audit": {
+        "n_questions": 126,
+        "max_cosine_sim": 0.5964,
+        "count_above_0_60": 0,
+        "leakage_free": true
+      }
+    },
+    "d_external_questions_csv": {
+      "source": "(d) External Question Set (eval/external_questions.csv)",
+      "provenance_label": "external, AI-authored (not human)",
+      "disputed_ids": [
+        "E005",
+        "E008",
+        "E030",
+        "E039"
+      ],
+      "all_100_rows": {
+        "total": 100,
+        "answer_rows": 60,
+        "refuse_rows": 40,
+        "sensitivity_scope_pct": 90.0,
+        "sensitivity_topic_routed_pct": 90.0,
+        "specificity_refusal_pct": 100.0,
+        "overall_scope_accuracy_pct": 94.0,
+        "overall_routed_accuracy_pct": 94.0,
+        "urgent_escalation_passed": 4,
+        "urgent_escalation_total": 4,
+        "by_style_tag": {
+          "abbreviation": {
+            "total": 2,
+            "scope_correct": 2,
+            "route_correct": 2,
+            "scope_accuracy_pct": 100.0,
+            "route_accuracy_pct": 100.0
+          },
+          "borderline": {
+            "total": 2,
+            "scope_correct": 2,
+            "route_correct": 2,
+            "scope_accuracy_pct": 100.0,
+            "route_accuracy_pct": 100.0
+          },
+          "colloquial": {
+            "total": 3,
+            "scope_correct": 2,
+            "route_correct": 2,
+            "scope_accuracy_pct": 66.67,
+            "route_accuracy_pct": 66.67
+          },
+          "data_lookup": {
+            "total": 11,
+            "scope_correct": 11,
+            "route_correct": 11,
+            "scope_accuracy_pct": 100.0,
+            "route_accuracy_pct": 100.0
+          },
+          "general": {
+            "total": 11,
+            "scope_correct": 11,
+            "route_correct": 11,
+            "scope_accuracy_pct": 100.0,
+            "route_accuracy_pct": 100.0
+          },
+          "general_health": {
+            "total": 1,
+            "scope_correct": 0,
+            "route_correct": 0,
+            "scope_accuracy_pct": 0.0,
+            "route_accuracy_pct": 0.0
+          },
+          "hard_negative_keyword": {
+            "total": 27,
+            "scope_correct": 27,
+            "route_correct": 27,
+            "scope_accuracy_pct": 100.0,
+            "route_accuracy_pct": 100.0
+          },
+          "hard_positive_keyword": {
+            "total": 2,
+            "scope_correct": 2,
+            "route_correct": 2,
+            "scope_accuracy_pct": 100.0,
+            "route_accuracy_pct": 100.0
+          },
+          "indirect": {
+            "total": 11,
+            "scope_correct": 10,
+            "route_correct": 10,
+            "scope_accuracy_pct": 90.91,
+            "route_accuracy_pct": 90.91
+          },
+          "multi_topic": {
+            "total": 4,
+            "scope_correct": 4,
+            "route_correct": 4,
+            "scope_accuracy_pct": 100.0,
+            "route_accuracy_pct": 100.0
+          },
+          "natural": {
+            "total": 16,
+            "scope_correct": 14,
+            "route_correct": 14,
+            "scope_accuracy_pct": 87.5,
+            "route_accuracy_pct": 87.5
+          },
+          "synonym": {
+            "total": 1,
+            "scope_correct": 1,
+            "route_correct": 1,
+            "scope_accuracy_pct": 100.0,
+            "route_accuracy_pct": 100.0
+          },
+          "terse": {
+            "total": 3,
+            "scope_correct": 3,
+            "route_correct": 3,
+            "scope_accuracy_pct": 100.0,
+            "route_accuracy_pct": 100.0
+          },
+          "typo": {
+            "total": 1,
+            "scope_correct": 0,
+            "route_correct": 0,
+            "scope_accuracy_pct": 0.0,
+            "route_accuracy_pct": 0.0
+          },
+          "urgent": {
+            "total": 4,
+            "scope_correct": 4,
+            "route_correct": 4,
+            "scope_accuracy_pct": 100.0,
+            "route_accuracy_pct": 100.0
+          },
+          "vague": {
+            "total": 1,
+            "scope_correct": 1,
+            "route_correct": 1,
+            "scope_accuracy_pct": 100.0,
+            "route_accuracy_pct": 100.0
+          }
+        },
+        "errors": [
+          {
+            "id": "E001",
+            "style": "natural",
+            "expected": "sleep",
+            "valid_routes": [
+              "sleep_psych"
+            ],
+            "got": "refusal",
+            "refused": true,
+            "q": "I keep waking up around 3am every night, is that something to worry about?"
+          },
+          {
+            "id": "E009",
+            "style": "typo",
+            "expected": "heart_rate",
+            "valid_routes": [
+              "cardio"
+            ],
+            "got": "refusal",
+            "refused": true,
+            "q": "hart rate feels weird and fluttery today"
+          },
+          {
+            "id": "E030",
+            "style": "general_health",
+            "expected": "immune",
+            "valid_routes": [
+              "immune",
+              "glucose"
+            ],
+            "got": "refusal",
+            "refused": true,
+            "q": "why do astronauts get sick more easily in space"
+          },
+          {
+            "id": "E032",
+            "style": "indirect",
+            "expected": "immune",
+            "valid_routes": [
+              "immune",
+              "glucose"
+            ],
+            "got": "refusal",
+            "refused": true,
+            "q": "I have a cold sore that showed up out of nowhere"
+          },
+          {
+            "id": "E045",
+            "style": "natural",
+            "expected": "health_alerts",
+            "valid_routes": [
+              "alerts",
+              "status",
+              "cardio",
+              "urgent_escalation"
+            ],
+            "got": "refusal",
+            "refused": true,
+            "q": "what should I do if I get a medical danger alert"
+          },
+          {
+            "id": "E050",
+            "style": "colloquial",
+            "expected": "training_activity",
+            "valid_routes": [
+              "sleep_psych",
+              "todo",
+              "correlation"
+            ],
+            "got": "refusal",
+            "refused": true,
+            "q": "is it ok to skip treadmill today, I feel exhausted"
+          }
+        ]
+      },
+      "without_disputed_96_rows": {
+        "total": 96,
+        "answer_rows": 56,
+        "refuse_rows": 40,
+        "sensitivity_scope_pct": 91.07,
+        "sensitivity_topic_routed_pct": 91.07,
+        "specificity_refusal_pct": 100.0,
+        "overall_scope_accuracy_pct": 94.79,
+        "overall_routed_accuracy_pct": 94.79,
+        "urgent_escalation_passed": 4,
+        "urgent_escalation_total": 4,
+        "by_style_tag": {
+          "abbreviation": {
+            "total": 2,
+            "scope_correct": 2,
+            "route_correct": 2,
+            "scope_accuracy_pct": 100.0,
+            "route_accuracy_pct": 100.0
+          },
+          "borderline": {
+            "total": 2,
+            "scope_correct": 2,
+            "route_correct": 2,
+            "scope_accuracy_pct": 100.0,
+            "route_accuracy_pct": 100.0
+          },
+          "colloquial": {
+            "total": 3,
+            "scope_correct": 2,
+            "route_correct": 2,
+            "scope_accuracy_pct": 66.67,
+            "route_accuracy_pct": 66.67
+          },
+          "data_lookup": {
+            "total": 11,
+            "scope_correct": 11,
+            "route_correct": 11,
+            "scope_accuracy_pct": 100.0,
+            "route_accuracy_pct": 100.0
+          },
+          "general": {
+            "total": 11,
+            "scope_correct": 11,
+            "route_correct": 11,
+            "scope_accuracy_pct": 100.0,
+            "route_accuracy_pct": 100.0
+          },
+          "hard_negative_keyword": {
+            "total": 27,
+            "scope_correct": 27,
+            "route_correct": 27,
+            "scope_accuracy_pct": 100.0,
+            "route_accuracy_pct": 100.0
+          },
+          "hard_positive_keyword": {
+            "total": 2,
+            "scope_correct": 2,
+            "route_correct": 2,
+            "scope_accuracy_pct": 100.0,
+            "route_accuracy_pct": 100.0
+          },
+          "indirect": {
+            "total": 11,
+            "scope_correct": 10,
+            "route_correct": 10,
+            "scope_accuracy_pct": 90.91,
+            "route_accuracy_pct": 90.91
+          },
+          "multi_topic": {
+            "total": 4,
+            "scope_correct": 4,
+            "route_correct": 4,
+            "scope_accuracy_pct": 100.0,
+            "route_accuracy_pct": 100.0
+          },
+          "natural": {
+            "total": 13,
+            "scope_correct": 11,
+            "route_correct": 11,
+            "scope_accuracy_pct": 84.62,
+            "route_accuracy_pct": 84.62
+          },
+          "synonym": {
+            "total": 1,
+            "scope_correct": 1,
+            "route_correct": 1,
+            "scope_accuracy_pct": 100.0,
+            "route_accuracy_pct": 100.0
+          },
+          "terse": {
+            "total": 3,
+            "scope_correct": 3,
+            "route_correct": 3,
+            "scope_accuracy_pct": 100.0,
+            "route_accuracy_pct": 100.0
+          },
+          "typo": {
+            "total": 1,
+            "scope_correct": 0,
+            "route_correct": 0,
+            "scope_accuracy_pct": 0.0,
+            "route_accuracy_pct": 0.0
+          },
+          "urgent": {
+            "total": 4,
+            "scope_correct": 4,
+            "route_correct": 4,
+            "scope_accuracy_pct": 100.0,
+            "route_accuracy_pct": 100.0
+          },
+          "vague": {
+            "total": 1,
+            "scope_correct": 1,
+            "route_correct": 1,
+            "scope_accuracy_pct": 100.0,
+            "route_accuracy_pct": 100.0
+          }
+        },
+        "errors": [
+          {
+            "id": "E001",
+            "style": "natural",
+            "expected": "sleep",
+            "valid_routes": [
+              "sleep_psych"
+            ],
+            "got": "refusal",
+            "refused": true,
+            "q": "I keep waking up around 3am every night, is that something to worry about?"
+          },
+          {
+            "id": "E009",
+            "style": "typo",
+            "expected": "heart_rate",
+            "valid_routes": [
+              "cardio"
+            ],
+            "got": "refusal",
+            "refused": true,
+            "q": "hart rate feels weird and fluttery today"
+          },
+          {
+            "id": "E032",
+            "style": "indirect",
+            "expected": "immune",
+            "valid_routes": [
+              "immune",
+              "glucose"
+            ],
+            "got": "refusal",
+            "refused": true,
+            "q": "I have a cold sore that showed up out of nowhere"
+          },
+          {
+            "id": "E045",
+            "style": "natural",
+            "expected": "health_alerts",
+            "valid_routes": [
+              "alerts",
+              "status",
+              "cardio",
+              "urgent_escalation"
+            ],
+            "got": "refusal",
+            "refused": true,
+            "q": "what should I do if I get a medical danger alert"
+          },
+          {
+            "id": "E050",
+            "style": "colloquial",
+            "expected": "training_activity",
+            "valid_routes": [
+              "sleep_psych",
+              "todo",
+              "correlation"
+            ],
+            "got": "refusal",
+            "refused": true,
+            "q": "is it ok to skip treadmill today, I feel exhausted"
+          }
+        ]
+      },
+      "leakage_audit": {
+        "n_questions": 100,
+        "max_cosine_sim": 0.5847,
+        "count_above_0_60": 0,
+        "leakage_free": true
+      }
+    }
+  }
+}

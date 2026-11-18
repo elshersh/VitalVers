@@ -1,0 +1,54 @@
+# Allowed Space Apps 2026 Challenge Resources (Verbatim Extracts)
+
+## Resource R0: NASA Space Apps 2026 Challenge Page — Create Health Monitoring Software for Astronauts on Space Missions
+SOURCE_URL: https://www.spaceappschallenge.org/2026/challenges/health-monitoring-software/
+SECTION: Background & Objectives
+
+ verbatim_passage_1:
+"NASA's Human Research Program has mapped the five hazards of human spaceflight, which are space radiation, isolation and confinement, distance from Earth, gravity fields, and hostile closed environments."
+
+ verbatim_passage_2:
+"Some useful health indicators are blood pressure, heart rate, blood sugar, body temperature, daily sleep hours, and mood."
+
+ verbatim_passage_3:
+"Any kind of data can be used, as long as it represents a health indicator, such as blood sugar levels in mg/dL or ultrasound images."
+
+ verbatim_passage_4:
+"You can use NASA's Human Research Program resources, along with the publicly available resources from other space agencies, to understand how spaceflight hazards affect human health, and to decide which indicators are useful and how they can support a quick assessment."
+
+---
+
+## Resource R4: CSA — Monitoring Radiation for Astronaut Health (2026-02-26)
+SOURCE_URL: https://www.asc-csa.gc.ca/eng/news/articles/2026/2026-02-26-monitoring-radiation-astronaut-health.asp
+SECTION: Main Article Text
+
+ verbatim_passage_5:
+"The CSA has awarded a contract of $5.5 million to Bubble Technology Industries for the continued development of the CANS, a compact and autonomous instrument designed to measure neutron radiation exposure in space."
+
+ verbatim_passage_6:
+"Neutron radiation, which contributes to about 30% of total radiation on the ISS, is especially harmful because it can cause serious biological damage and require specialized protective measures."
+
+---
+
+## Resource R5: CSA — Why Do We Conduct Science Experiments in Space? & Embedded Infographic "How does space affect the human body?"
+SOURCE_URL: https://www.asc-csa.gc.ca/eng/iss/science/why-do-we-conduct-science-experiments-in-space.asp
+INFOGRAPHIC_URL: https://www.asc-csa.gc.ca/eng/multimedia/search/image/15617
+SECTION: Preparing for deep-space destinations & Infographic Text Version
+
+ verbatim_passage_7:
+"Studying the human body in space for six months gives us data that would take years to gather on Earth."
+
+ verbatim_passage_8:
+"While adults past age 50 typically lose about 1% each year, astronauts in space can lose up to 1.5% of their bone mass each month."
+
+ verbatim_passage_9:
+"Blood vessels stiffen and age faster, and astronauts can develop insulin resistance, which may lead to Type 2 diabetes."
+
+ verbatim_passage_10:
+"Muscles lose mass and strength. Reflexes slow down and exercise tends to be less effective in space."
+
+ verbatim_passage_11:
+"Blood cell production in the bone marrow is affected. Reduced red blood cells can cause anemia. Low white blood cell count leaves the body vulnerable to infection and is also linked with increased sensitivity to radiation."
+
+ verbatim_passage_12:
+"Astronauts' sense of perception and orientation can become confused. They sometimes misinterpret the direction and speed of their movements. Some even experience space sickness."

@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About | Vitalverse</title>
+
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/shell.css">
+
+<style>
+:root {
+  --green: #a8e07a;
+  --green-btn: #e4f7c8;
+  --text: #ffffff;
+  --muted: #c5cbd0;
+  --line: rgba(255,255,255,.18);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #05080a;
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* BACKGROUND */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 15% 20%, rgba(100,150,80,.13), transparent 40%),
+    radial-gradient(ellipse at 85% 65%, rgba(50,100,120,.12), transparent 40%);
+  z-index: -1;
+}
+
+/* NAVBAR */
+
+.nav {
+  width: 100%;
+  padding: 30px 4%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  position: relative;
+  z-index: 5;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: .3px;
+  white-space: nowrap;
+}
+
+.logo svg {
+  width: 38px;
+  height: 25px;
+}
+
+.logo span b {
+  color: var(--green);
+}
+
+.menu {
+  display: flex;
+  gap: 5px;
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: 50px;
+  background: rgba(10,12,14,.65);
+  backdrop-filter: blur(10px);
+}
+
+.menu a {
+  color: #d9dde0;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 12px 17px;
+  border-radius: 50px;
+  white-space: nowrap;
+  transition: .25s;
+}
+
+.menu a:hover {
+  color: white;
+  background: rgba(255,255,255,.08);
+}
+
+.menu a.active {
+  color: white;
+  background: rgba(255,255,255,.13);
+}
+
+.tools {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.circle {
+  width: 39px;
+  height: 39px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: rgba(10,12,14,.55);
+  display: grid;
+  place-items: center;
+}
+
+.circle svg {
+  width: 17px;
+  height: 17px;
+  stroke: white;
+  fill: none;
+  stroke-width: 1.6;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 39px;
+  padding: 0 12px 0 4px;
+  border-radius: 50px;
+  border: 1px solid var(--line);
+  background: rgba(10,12,14,.55);
+}
+
+.avatar {
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%,#d7dbe0,#5b636b 60%,#1b1f23);
+}
+
+.profile svg {
+  width: 13px;
+  stroke: white;
+  fill: none;
+}
+
+/* MAIN CONTAINER */
+
+.container {
+  max-width: 1200px;
+  width: 88%;
+  margin: auto;
+  padding: 55px 0 80px;
+}
+
+/* HERO SECTION */
+
+.hero {
+  position: relative;
+  padding: 35px 0 65px;
+  border-bottom: 1px solid var(--line);
+}
+
+.small-title {
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+
+.hero h1 {
+  font-size: clamp(38px, 5.5vw, 70px);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -2px;
+  max-width: 850px;
+}
+
+.hero h1 span {
+  color: var(--green);
+}
+
+.hero p {
+  color: var(--muted);
+  font-size: 16px;
+  margin-top: 22px;
+  line-height: 1.8;
+}
+
+/* MISSION SECTION */
+
+.mission {
+  padding: 70px 0;
+  display: grid;
+  grid-template-columns: 0.75fr 1.6fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.section-label {
+  color: var(--green);
+  font-size: 12px;
+  letter-spacing: 3px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.mission h2,
+.contact h2 {
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.mission-content {
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,.055),
+    rgba(255,255,255,.015)
+  );
+  backdrop-filter: blur(10px);
+}
+
+.mission-content p {
+  color: #d0d5d8;
+  font-size: 15px;
+  line-height: 2;
+  margin-bottom: 18px;
+}
+
+.mission-content p:last-of-type {
+  margin-bottom: 0;
+}
+
+.highlight {
+  color: var(--green);
+  font-weight: 500;
+}
+
+/* DISCLAIMER */
+
+.disclaimer {
+  margin-top: 25px;
+  padding: 17px 20px;
+  border-left: 3px solid var(--green);
+  background: rgba(168,224,122,.07);
+  border-radius: 0 12px 12px 0;
+}
+
+.disclaimer p {
+  font-size: 12px;
+  line-height: 1.8;
+  color: #bfc8bd;
+}
+
+/* CONTACT SECTION */
+
+.contact {
+  padding: 65px 0;
+  border-top: 1px solid var(--line);
+}
+
+.contact-header {
+  margin-bottom: 35px;
+}
+
+.contact-header p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 12px;
+  line-height: 1.7;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.team-card {
+  padding: 25px 22px;
+  border: 1px solid var(--line);
+  border-radius: 17px;
+  background: rgba(255,255,255,.035);
+  transition: .3s;
+  min-width: 0;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(168,224,122,.55);
+  background: rgba(168,224,122,.055);
+}
+
+.member-icon {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: rgba(168,224,122,.12);
+  color: var(--green);
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.team-card h3 {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.team-card a {
+  color: var(--green);
+  text-decoration: none;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+  transition: .2s;
+}
+
+.team-card a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+/* FOOTER */
+
+footer {
+  border-top: 1px solid var(--line);
+  padding: 25px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+footer p {
+  color: #858d92;
+  font-size: 11px;
+}
+
+footer span {
+  color: var(--green);
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 1050px) {
+  .nav {
+    flex-wrap: wrap;
+  }
+
+  .menu {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .mission {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+}
+
+@media (max-width: 700px) {
+  .nav {
+    padding: 22px 5%;
+  }
+
+  .tools {
+    display: none;
+  }
+
+  .menu {
+    gap: 2px;
+  }
+
+  .menu a {
+    font-size: 10px;
+    padding: 10px 11px;
+  }
+
+  .container {
+    width: 90%;
+    padding-top: 35px;
+  }
+
+  .hero {
+    padding: 25px 0 45px;
+  }
+
+  .hero h1 {
+    letter-spacing: -1px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .mission {
+    padding: 45px 0;
+  }
+
+  .mission-content {
+    padding: 23px;
+  }
+
+  .mission-content p {
+    font-size: 13px;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact {
+    padding: 45px 0;
+  }
+
+  footer {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+</style>
+  <link rel="stylesheet" href="/css/motion.css?v=7">
+  <script src="/js/motion.js?v=10"></script>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header class="nav vv-nav">
+
+  <a class="logo" href="index.html">
+    <svg viewBox="0 0 36 22" fill="none"
+    stroke="#a8e07a" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+      <path d="M1 11h7l3-8 5 16 4-12 3 4h12"/>
+    </svg>
+
+    <span>Vital<b>verse</b></span>
+  </a>
+
+  <nav class="menu" id="vvNavMenu">
+    <a href="index.html">Home page</a>
+    <a href="health.html">Health dashboard</a>
+    <a href="chatbot.html">Ai chatbot</a>
+    <a href="mental.html">Mental Health</a>
+    <a href="about.html" class="active">About</a>
+  </nav>
+
+  <div class="tools">
+
+    <button class="circle" id="todoBtn" type="button" aria-label="Daily Routine To-Do List">
+      <svg class="vv-ic" viewBox="0 0 24 24">
+        <rect x="5" y="4.5" width="14" height="16.5" rx="2.5"/>
+        <path d="M9 4.5V3.5h6v1"/>
+        <path d="M8.5 11.5l1.2 1.2 2.1-2.4M8.5 16.5l1.2 1.2 2.1-2.4M14.2 11.8h2M14.2 16.8h2"/>
+      </svg>
+      <svg class="vv-todo-ring" id="vvTodoRing" viewBox="0 0 39 39" hidden>
+        <circle cx="19.5" cy="19.5" r="18" fill="none" stroke="#a8e07a" stroke-width="2" id="vvTodoRingArc"/>
+      </svg>
+    </button>
+
+    <button class="circle" id="bellBtn" type="button" aria-label="Notifications" aria-expanded="false">
+      <svg class="vv-ic" viewBox="0 0 24 24">
+        <path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/>
+        <path d="M13.7 21a2 2 0 01-3.4 0"/>
+      </svg>
+      <span class="vv-bell-dot" id="vvBellDot" hidden></span>
+    </button>
+
+    <button class="profile" id="profileBtn" type="button" aria-label="Open account options" aria-expanded="false">
+      <div class="avatar" id="vvAvatar"></div>
+      <svg viewBox="0 0 24 24">
+        <path d="M6 9l6 6 6-6"/>
+      </svg>
+    </button>
+
+    <div class="vv-dropdown" id="vvBellDropdown" hidden>
+      <div class="vv-dropdown-head">
+        <strong>Alerts</strong>
+        <a class="vv-dropdown-link" href="alerts.html">View all alerts</a>
+      </div>
+      <div class="vv-dropdown-list" id="vvBellList">
+        <div class="vv-dropdown-empty">No unread alerts.</div>
+      </div>
+    </div>
+
+    <div class="vv-dropdown vv-profile-menu" id="vvProfileDropdown" hidden></div>
+
+  </div>
+</header>
+
+
+<main class="container">
+
+  <!-- HERO SECTION -->
+
+  <section class="hero">
+
+    <div class="small-title">ABOUT VITALVERSE</div>
+
+    <h1>
+      AI Health Care<br>
+      for <span>Astronauts</span>
+    </h1>
+
+    <p>
+      Monitor. Protect. Keep exploring.<br>
+      Advanced health monitoring for a healthier journey beyond Earth.
+    </p>
+
+  </section>
+
+
+  <!-- OUR MISSION -->
+
+  <section class="mission">
+
+    <div class="mission-heading">
+
+      <div class="section-label">01 / OUR PURPOSE</div>
+
+      <h2>Our<br><span class="highlight">Mission</span></h2>
+
+    </div>
+
+    <div class="mission-content">
+
+      <p>
+        Vitalverse is a personalized health monitoring platform for
+        astronauts. Instead of judging readings against the same fixed
+        limits for everyone, it compares each astronaut’s heart rate,
+        oxygen, blood pressure, sleep and mood with their own
+        pre-flight baseline.
+      </p>
+
+      <p>
+        When something changes, it explains what changed, how it
+        compares with their normal, and what to do next.
+        Astronauts get a clear, friendly view of their own health.
+        Flight Surgeons get a crew overview, alerts to review and a
+        day-by-day replay of the mission.
+      </p>
+
+      <p>
+        The medical team always makes the final decision.
+      </p>
+
+      <div class="disclaimer">
+        <p>
+          <strong>Important Notice:</strong>
+          Vitalverse is a prototype built with fictional data.
+          It is not a certified medical device and does not diagnose
+          or treat medical conditions.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT US -->
+
+  <section class="contact" id="contact">
+
+    <div class="contact-header">
+
+      <div class="section-label">02 / THE TEAM</div>
+
+      <h2>Contact <span class="highlight">Us</span></h2>
+
+      <p>
+        Meet the team behind Vitalverse. Feel free to reach out
+        to us through our email addresses.
+      </p>
+
+    </div>
+
+
+    <div class="team-grid">
+
+      <!-- MEMBER 1 -->
+
+      <div class="team-card">
+
+        <div class="member-icon">✦</div>
+
+        <h3>Remas M. Darwish</h3>
+
+        <a href="mailto:remasmohamed1642009@gmail.com">
+          remasmohamed1642009@gmail.com
+        </a>
+
+      </div>
+
+
+      <!-- MEMBER 2 -->
+
+      <div class="team-card">
+
+        <div class="member-icon">✦</div>
+
+        <h3>Malak Sameh El Sheikh</h3>
+
+        <a href="mailto:malak17819@gmail.com">
+          malak17819@gmail.com
+        </a>
+
+      </div>
+
+
+      <!-- MEMBER 3 -->
+
+      <div class="team-card">
+
+        <div class="member-icon">✦</div>
+
+        <h3>Roqaia Mahmoud Zaki</h3>
+
+        <a href="mailto:roqaia375@gmail.com">
+          roqaia375@gmail.com
+        </a>
+
+      </div>
+
+
+      <!-- MEMBER 4 -->
+
+      <div class="team-card">
+
+        <div class="member-icon">✦</div>
+
+        <h3>Hussein Ahmed Hekal</h3>
+
+        <a href="mailto:hekalhussein071@gmail.com">
+          hekalhussein071@gmail.com
+        </a>
+
+      </div>
+
+
+      <!-- MEMBER 5 -->
+
+      <div class="team-card">
+
+        <div class="member-icon">✦</div>
+
+        <h3>Ahmed Mostafa Mohamed</h3>
+
+        <a href="mailto:am1424412@gmail.com">
+          am1424412@gmail.com
+        </a>
+
+      </div>
+
+
+      <!-- MEMBER 6 -->
+
+      <div class="team-card">
+
+        <div class="member-icon">✦</div>
+
+        <h3>Mohamed Hussein El Shershshaby</h3>
+
+        <a href="mailto:mohamedshersh37@gmail.com">
+          mohamedshersh37@gmail.com
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer class="vv-footer">
+
+  <p>© 2026 <span>Vitalverse</span>. All rights reserved.</p>
+
+  <p class="vv-footer-disclaimer">Prototype built with fictional data. Not a certified medical device.</p>
+
+  <p>Monitor. Protect. Keep exploring.</p>
+
+</footer>
+
+<script src="js/shell.js"></script>
+
+</body>
+</html>

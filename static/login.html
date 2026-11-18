@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Log In | Vitalverse</title>
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/shell.css">
+<style>
+:root{--green:#a8e07a;--green-btn:#e4f7c8;--line:rgba(255,255,255,.22);--bad:#ff8a8a}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{min-height:100%;background:#000;font-family:'Inter',system-ui,sans-serif;color:#fff}
+body{position:relative;min-height:100vh;display:flex;flex-direction:column}
+.bg{position:fixed;inset:0;z-index:0;background:linear-gradient(90deg,rgba(0,0,0,.92),rgba(5,10,14,.8)),url('img/astronaut.png') center/cover no-repeat,#05080b}
+
+/* LOGIN CARD */
+main{position:relative;z-index:5;flex:1;display:grid;place-items:center;padding:30px 4vw 60px}
+.card{width:min(480px,100%);padding:42px 36px;border:1px solid rgba(168,224,122,.35);border-radius:24px;background:rgba(16,21,24,.92);box-shadow:0 20px 70px rgba(0,0,0,.6),0 0 40px rgba(168,224,122,.08);backdrop-filter:blur(10px);animation:pop .3s ease}
+@keyframes pop{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+h1{font-size:30px;font-weight:500;line-height:1.15;margin-bottom:10px}h1 span{color:var(--green)}
+.sub{color:#aeb8bd;font-size:14px;line-height:1.6;margin-bottom:26px}
+label,.q{display:block;font-size:13px;color:#aeb8bd;margin:0 0 8px}
+label[for="pwd"]{margin-top:18px}
+.q{margin-top:24px;color:#fff;font-size:15px;font-weight:600}
+input{width:100%;background:#0a0f12;border:1px solid var(--line);border-radius:14px;padding:15px 16px;color:#fff;font:600 16px Inter,sans-serif;letter-spacing:1px;text-transform:uppercase;transition:.25s}
+input[type="password"]{text-transform:none;letter-spacing:normal;font-weight:500}
+input::placeholder{text-transform:none;letter-spacing:0;font-weight:400;color:#6d777c}
+input:focus{outline:0;border-color:var(--green);box-shadow:0 0 0 3px rgba(168,224,122,.15)}
+.roles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.role{cursor:pointer;text-align:center;padding:20px 10px;border:1px solid var(--line);border-radius:16px;background:#0a0f12;font-weight:500;font-size:14px;transition:.25s;user-select:none}
+.role svg{display:block;margin:0 auto 8px;width:28px;height:28px;stroke:#aeb8bd;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.role:hover{border-color:rgba(168,224,122,.6)}
+.role.sel{border-color:var(--green);background:rgba(168,224,122,.1)}.role.sel svg{stroke:var(--green)}
+.go{width:100%;margin-top:26px;height:52px;border:0;border-radius:40px;background:var(--green-btn);color:#0b0f0a;font:600 15px Inter,sans-serif;cursor:pointer;box-shadow:0 0 24px rgba(168,224,122,.3);transition:.25s}
+.go:hover{transform:translateY(-2px);box-shadow:0 0 34px rgba(168,224,122,.5)}
+.err{display:none;margin-top:18px;padding:14px 16px;border-radius:14px;background:rgba(255,138,138,.1);border:1px solid var(--bad);color:#ffd2d2;font-size:14px;line-height:1.6;text-align:center}
+.err.show{display:block}
+.err a{display:inline-block;margin-top:8px;padding:9px 20px;border-radius:30px;background:var(--green-btn);color:#10150b;font-weight:600;text-decoration:none}
+.below{margin-top:22px;text-align:center;font-size:14px;color:#d7dbde}.below a{color:var(--green);font-weight:600;text-decoration:none}.below a:hover{text-decoration:underline}
+.note{margin-top:14px;text-align:center;font-size:12px;color:#7b868b;line-height:1.5}
+
+@media(max-width:480px){.card{padding:32px 22px}h1{font-size:25px}}
+</style>
+<style>
+.split{position:relative;z-index:5;max-width:1100px;width:100%;margin:0 auto;padding:40px 4vw 70px;display:flex;flex-wrap:nowrap;justify-content:center;align-items:flex-start;gap:clamp(16px,3.5vw,56px)}
+.side{flex:1 1 0;max-width:470px;min-width:0;position:sticky;top:24px;padding:10px 12px 14px 0}
+.split .card{flex:1 1 0;max-width:470px;min-width:0;padding:clamp(18px,3vw,36px)}
+.split h1{font-family:'Space Grotesk','Inter',sans-serif;font-weight:700}
+.pass{position:relative;width:100%;padding:clamp(14px,2.2vw,22px) clamp(14px,2.4vw,24px);border-radius:26px;background:#111617;border:1px solid rgba(255,255,255,.12);box-shadow:12px 14px 0 #a8e07a,0 30px 90px rgba(168,224,122,.14);transform:rotate(-4deg);font-family:'Space Grotesk','Inter',sans-serif;transition:transform .4s}
+.pass:hover{transform:rotate(-2deg) translateY(-4px)}
+.pass::before,.pass::after{content:"";position:absolute;top:58%;width:22px;height:22px;border-radius:50%;background:#070b0e}
+.pass::before{left:-11px}.pass::after{right:-11px}
+.ptop{display:flex;justify-content:space-between;align-items:center}
+.plogo{display:flex;align-items:center;gap:10px;font-size:clamp(15px,2vw,21px);font-weight:600}.plogo svg{width:34px;height:20px;stroke:#a8e07a;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.pill{background:#a8e07a;color:#0b0f0a;font-size:12px;font-weight:600;padding:5px 14px;border-radius:20px;transform:rotate(2deg)}
+.beat{display:block;width:72%;height:54px;margin:8px 0 14px;filter:drop-shadow(0 0 7px rgba(168,224,122,.75))}
+.rows{border-top:1px dashed rgba(255,255,255,.2);border-bottom:1px dashed rgba(255,255,255,.2);padding:10px 0}
+.r{display:grid;grid-template-columns:clamp(66px,9vw,104px) 1fr;align-items:center;padding:6px 0;font-size:13px;color:#aeb8bd}
+.r b{font-size:clamp(12px,1.6vw,16px);color:#fff;font-weight:500;word-break:break-word}.r b.ph{color:#5d676c}
+.foot{display:flex;justify-content:space-between;align-items:center;margin-top:16px}
+.bar{display:flex;height:42px;align-items:stretch}.bar i{background:#fff;display:block}
+.tag{border:1px solid #a8e07a;color:#a8e07a;border-radius:20px;padding:5px 14px;font-weight:600;font-size:13px;transform:rotate(-3deg)}
+@media(max-width:600px){.split{flex-direction:column;align-items:center;gap:36px}.side{order:2;position:static;width:100%}.split .card{order:1;width:100%;flex:none}.pass{transform:rotate(-2deg);box-shadow:8px 10px 0 #a8e07a}}
+</style>
+  <link rel="stylesheet" href="/css/motion.css?v=7">
+  <script src="/js/motion.js?v=10"></script>
+</head>
+<body>
+<div class="bg"></div>
+
+<header class="nav vv-nav">
+  <a class="logo" href="index.html">
+    <svg viewBox="0 0 36 22" fill="none" stroke="#a8e07a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 11h7l3-8 5 16 4-12 3 4h12"/></svg>
+    <span>Vital<b>verse</b></span>
+  </a>
+  <nav class="menu" id="vvNavMenu">
+    <a href="index.html">Home page</a>
+    <a href="health.html">Health dashboard</a>
+    <a href="chatbot.html">Ai chatbot</a>
+    <a href="mental.html">Mental Health</a>
+    <a href="about.html">About</a>
+  </nav>
+  <div class="tools">
+    <button class="circle" id="todoBtn" type="button" aria-label="Daily Routine To-Do List" title="Daily Routine To-Do List">
+      <svg class="vv-ic" viewBox="0 0 24 24"><rect x="5" y="4.5" width="14" height="16.5" rx="2.5"/><path d="M9 4.5V3.5h6v1"/><path d="M8.5 11.5l1.2 1.2 2.1-2.4M8.5 16.5l1.2 1.2 2.1-2.4M14.2 11.8h2M14.2 16.8h2"/></svg>
+      <svg class="vv-todo-ring" id="vvTodoRing" viewBox="0 0 39 39" hidden><circle cx="19.5" cy="19.5" r="18" fill="none" stroke="#a8e07a" stroke-width="2" id="vvTodoRingArc"/></svg>
+    </button>
+    <button class="circle" id="bellBtn" type="button" aria-label="Notifications" title="Notifications" aria-expanded="false">
+      <svg class="vv-ic" viewBox="0 0 24 24"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>
+      <span class="vv-bell-dot" id="vvBellDot" hidden></span>
+    </button>
+    <button class="profile" id="profileBtn" type="button" aria-label="Open account menu" aria-expanded="false"><div class="avatar" id="vvAvatar"></div><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button>
+    <div class="vv-dropdown" id="vvBellDropdown" hidden>
+      <div class="vv-dropdown-head"><strong>Alerts</strong><a class="vv-dropdown-link" href="alerts.html">View all alerts</a></div>
+      <div class="vv-dropdown-list" id="vvBellList"><div class="vv-dropdown-empty">No unread alerts.</div></div>
+    </div>
+    <div class="vv-dropdown vv-profile-menu" id="vvProfileDropdown" hidden></div>
+  </div>
+</header>
+
+<main class="split">
+  <div class="side"><div class="pass" id="pass"><div class="ptop"><div class="plogo"><svg viewBox="0 0 36 22"><path d="M1 11h7l3-8 5 16 4-12 3 4h12"/></svg>Vitalverse</div><span class="pill" id="pPill">Crew pass</span></div><svg class="beat" viewBox="0 0 300 50" fill="none" stroke="#a8e07a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M0 38h85l12-26 14 30 12-20h60l12-24 14 28 10-14h80"/></svg><div class="rows" id="pRows"></div><div class="foot"><div class="bar" id="pBar"></div><span class="tag" id="pTag">Pending</span></div></div></div>
+  <section class="card">
+    <h1>Welcome Back to <span>Vitalverse</span></h1>
+    <p class="sub">Enter your Vitalverse ID and password to continue.</p>
+
+    <label for="vid">Vitalverse ID</label>
+    <input id="vid" type="text" placeholder="e.g. VTA-583921" autocomplete="username" spellcheck="false">
+
+    <label for="pwd">Password</label>
+    <input id="pwd" type="password" placeholder="Enter your password" autocomplete="current-password">
+
+    <p class="q">Are you an Astronaut or a Doctor?</p>
+    <div class="roles">
+      <div class="role sel" data-r="astronaut" tabindex="0" role="button">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="6"/><path d="M8.5 10a3.5 3.5 0 017 0M5 21c1-4 4-5 7-5s6 1 7 5"/></svg>Astronaut</div>
+      <div class="role" data-r="doctor" tabindex="0" role="button">
+        <svg viewBox="0 0 24 24"><path d="M6 3v6a4 4 0 008 0V3M10 13v2a5 5 0 0010 0v-1"/><circle cx="20" cy="12" r="2"/></svg>Doctor</div>
+    </div>
+
+    <button class="go" id="go" type="button">Log In</button>
+    <div class="err" id="err" role="alert"></div>
+    <p class="below">Not a part of Vitalverse yet? <a href="signup.html">Create an account</a></p>
+    <p class="note">Prototype built with fictional demo data only. Authentication uses server-side sessions when connected.</p>
+  </section>
+</main>
+
+<footer class="vv-footer">
+  <p>© 2026 <span>Vitalverse</span>. All rights reserved.</p>
+  <p class="vv-footer-disclaimer">Prototype built with fictional data. Not a certified medical device.</p>
+  <p>Monitor. Protect. Keep exploring.</p>
+</footer>
+
+<script src="js/shell.js"></script>
+<script>
+const PR={astronaut:[['Astronaut','fullName','Your name'],['Astronaut ID','astronautId','Agency ID'],['Mission','missionRole','Mission role'],['Destination','destination','Destination']],doctor:[['Doctor','fullName','Your name'],['Staff ID','staffId','Staff ID'],['Specialty','specialization','Specialization'],['Agency','organization','Organization']]};
+function esc(s){return window.VV_SHELL?window.VV_SHELL.esc(s):String(s||'');}
+function bars(s){s=(s||'VITALVERSE')+'-VITALVERSE-PASS';let h='';for(let i=0;i<64;i++){const c=s.charCodeAt(i%s.length)+i*7;h+='<i style="width:'+(1+c%3)+'px;margin-right:'+(1+(c>>2)%2)+'px"></i>'}return h}
+function pass(role,d,id,tag){role=role||'astronaut';d=d||{};
+ document.getElementById('pPill').textContent=role==='doctor'?'Medical pass':'Crew pass';
+ document.getElementById('pRows').innerHTML=PR[role].map(r=>'<div class="r"><span>'+r[0]+'</span><b class="'+(d[r[1]]?'':'ph')+'">'+esc(d[r[1]]||r[2])+'</b></div>').join('')+'<div class="r"><span>Vitalverse ID</span><b class="'+(id?'':'ph')+'">'+esc(id||'Created at sign-up')+'</b></div>';
+ document.getElementById('pBar').innerHTML=bars(id||d.fullName);document.getElementById('pTag').textContent=tag}
+var vOK=false;
+let role='astronaut';
+const err=document.getElementById('err'),vid=document.getElementById('vid'),pwd=document.getElementById('pwd');
+document.querySelectorAll('.role').forEach(r=>{
+  const pick=()=>{document.querySelectorAll('.role').forEach(x=>x.classList.remove('sel'));r.classList.add('sel');role=r.dataset.r;err.classList.remove('show');if(!vOK)pass(role,{},null,'Locked')};
+  r.onclick=pick;r.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick()}};
+});
+function verified(acc){vOK=true;pass(acc.role,acc.data,acc.id,'Verified');
+ document.querySelector('.card').innerHTML='<h1>Identity <span>verified</span></h1><p class="sub">Welcome back, '+esc(acc.data.fullName)+'. Your pass is ready.</p><a class="go" style="display:grid;place-items:center;text-decoration:none" href="health.html">Enter '+esc(acc.role)+' dashboard</a><p class="note" id="cd">Redirecting in 5 seconds...</p>';
+ let n=5;const t=setInterval(()=>{n--;const c=document.getElementById('cd');if(c)c.textContent='Redirecting in '+n+' seconds...';if(n<=0){clearInterval(t);location.href='health.html'}},1000)}
+pass('astronaut',{},null,'Locked');
+function showErr(html){err.innerHTML=html;err.classList.add('show')}
+function doLogin(){
+  err.classList.remove('show');
+  if(!vid.value.trim()){showErr('Please enter your Vitalverse ID.');return}
+  if(!pwd.value){showErr('Please enter your password.');return}
+  fetch('/api/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},credentials:'same-origin',body:JSON.stringify({vitalverse_id:vid.value.trim(),password:pwd.value,role:role})})
+    .then(async res=>{
+      if(res.status===404||res.status===501){throw new Error('offline');}
+      const data=await res.json().catch(()=>({}));
+      if(!res.ok){showErr(esc(data.detail||'Invalid credentials or role mismatch.'));return;}
+      verified({role:data.role||role,id:data.vitalverse_id||vid.value.trim().toUpperCase(),data:data.profile||{fullName:data.full_name||vid.value.trim().toUpperCase()}});
+    })
+    .catch(()=>{showErr('Server authentication endpoint is not running in static preview mode.');});
+}
+document.getElementById('go').onclick=doLogin;
+[vid,pwd].forEach(el=>el.addEventListener('keydown',e=>{if(e.key==='Enter')doLogin()}));
+</script>
+</body>
+</html>

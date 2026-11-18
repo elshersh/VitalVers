@@ -1,0 +1,661 @@
+/* Vitalverse shared shell: pill navbar (from about.html), footer + disclaimer,
+   notification/profile dropdowns, welcome modal, alert banner, and alert tokens.
+   Strictly scoped under header.vv-nav / footer.vv-footer / .vv-* so page styles
+   (.pill, .dot, .panel, .avatar, .logo on dashboards/login/signup) never collide. */
+
+:root {
+  --danger: #ff7a6b;
+  --warn: #f5c451;
+}
+
+header.vv-nav,
+header.vv-nav *,
+footer.vv-footer,
+footer.vv-footer *,
+.vv-dropdown,
+.vv-dropdown *,
+.vv-modal-overlay,
+.vv-modal-overlay *,
+.vv-banner,
+.vv-banner * {
+  box-sizing: border-box;
+}
+
+header.vv-nav {
+  width: 100%;
+  padding: 30px 4%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  position: relative;
+  z-index: 40;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+header.vv-nav .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+header.vv-nav .logo svg {
+  width: 38px;
+  height: 25px;
+  flex: none;
+}
+
+header.vv-nav .logo span b,
+header.vv-nav .logo b {
+  color: #a8e07a;
+  font-weight: 600;
+}
+
+header.vv-nav .menu {
+  display: flex;
+  gap: 5px;
+  padding: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50px;
+  background: rgba(10, 12, 14, 0.65);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+header.vv-nav .menu a {
+  color: #d9dde0;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 12px 17px;
+  border-radius: 50px;
+  white-space: nowrap;
+  transition: 0.25s;
+}
+
+header.vv-nav .menu a:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+header.vv-nav .menu a.active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.13);
+}
+
+header.vv-nav .tools {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+header.vv-nav .circle {
+  width: 39px;
+  height: 39px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(10, 12, 14, 0.55);
+  display: grid;
+  place-items: center;
+  position: relative;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 0;
+  font: inherit;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+header.vv-nav .circle:hover {
+  border-color: rgba(168, 224, 122, 0.6);
+  background: rgba(16, 22, 26, 0.8);
+}
+
+header.vv-nav .circle svg.vv-ic {
+  width: 17px;
+  height: 17px;
+  stroke: #ffffff;
+  fill: none;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* B6 circular to-do ring (hidden when pct <= 0) */
+.vv-todo-ring {
+  position: absolute;
+  inset: -1px;
+  width: calc(100% + 2px) !important;
+  height: calc(100% + 2px) !important;
+  transform: rotate(-90deg);
+  pointer-events: none;
+}
+
+.vv-todo-ring[hidden] {
+  display: none !important;
+}
+
+header.vv-nav .vv-bell-dot {
+  position: absolute;
+  top: 7px;
+  right: 8px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #a8e07a;
+}
+
+header.vv-nav .vv-bell-dot[hidden] {
+  display: none;
+}
+
+header.vv-nav .vv-bell-dot.is-danger {
+  background: var(--danger);
+  box-shadow: 0 0 8px rgba(255, 122, 107, 0.7);
+}
+
+header.vv-nav .profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 39px;
+  padding: 0 12px 0 4px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(10, 12, 14, 0.55);
+  cursor: pointer;
+  color: #ffffff;
+  font: inherit;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+header.vv-nav .profile:hover {
+  border-color: rgba(168, 224, 122, 0.6);
+  background: rgba(16, 22, 26, 0.8);
+}
+
+header.vv-nav .avatar {
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #d7dbe0, #5b636b 60%, #1b1f23);
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: #ffffff;
+  flex: none;
+}
+
+header.vv-nav .avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  display: block;
+}
+
+header.vv-nav .profile svg {
+  width: 13px;
+  height: 13px;
+  stroke: #ffffff;
+  fill: none;
+  stroke-width: 1.8;
+}
+
+/* Dropdowns */
+.vv-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: min(330px, 90vw);
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(168, 224, 122, 0.32);
+  background: rgba(12, 17, 21, 0.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.68);
+  color: #ffffff;
+  font-family: 'Inter', system-ui, sans-serif;
+  z-index: 80;
+}
+
+.vv-dropdown[hidden] {
+  display: none;
+}
+
+.vv-dropdown-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.vv-dropdown-head strong {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.vv-dropdown-link {
+  background: none;
+  border: none;
+  color: #a8e07a;
+  font: 500 12px Inter, sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.vv-dropdown-link:hover {
+  text-decoration: underline;
+}
+
+.vv-dropdown-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.vv-dropdown-item {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  color: #d9dde0;
+  font-size: 12px;
+  line-height: 1.45;
+  text-decoration: none;
+}
+
+.vv-dropdown-item--danger {
+  border-color: rgba(255, 122, 107, 0.45);
+  background: rgba(255, 122, 107, 0.08);
+}
+
+.vv-dropdown-item--warn {
+  border-color: rgba(245, 196, 81, 0.45);
+  background: rgba(245, 196, 81, 0.08);
+}
+
+.vv-dropdown-empty {
+  padding: 14px 8px;
+  text-align: center;
+  color: #9ba5ab;
+  font-size: 12px;
+}
+
+.vv-profile-menu {
+  width: 240px;
+}
+
+.vv-profile-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 9px 12px;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  color: #e2e6e9;
+  font: 500 13px Inter, sans-serif;
+  text-decoration: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.vv-profile-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+.vv-profile-item--danger {
+  color: var(--danger);
+}
+
+/* Global Danger Alert Banner (hidden by default) */
+.vv-banner {
+  width: 100%;
+  padding: 12px 4%;
+  background: rgba(255, 122, 107, 0.14);
+  border-bottom: 1px solid rgba(255, 122, 107, 0.45);
+  color: #ffe2de;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font: 500 13px Inter, sans-serif;
+  position: relative;
+  z-index: 35;
+}
+
+.vv-banner[hidden] {
+  display: none;
+}
+
+.vv-banner a {
+  color: #ffb4aa;
+  font-weight: 700;
+  text-decoration: underline;
+  white-space: nowrap;
+}
+
+.vv-banner a:hover {
+  color: #ffffff;
+}
+
+/* Welcome Modal (logged-out profile click on subpages) */
+.vv-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+
+.vv-modal-overlay.show {
+  display: flex;
+}
+
+.vv-modal {
+  position: relative;
+  width: min(360px, 90%);
+  padding: 36px 32px;
+  background: #101719;
+  border: 1px solid rgba(168, 224, 122, 0.25);
+  border-radius: 21px;
+  text-align: center;
+  color: #ffffff;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.vv-modal h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.vv-modal h2 span {
+  color: #a8e07a;
+}
+
+.vv-modal p {
+  color: #aeb6ba;
+  font-size: 12px;
+  line-height: 1.7;
+  margin-bottom: 22px;
+}
+
+.vv-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 23px;
+  cursor: pointer;
+}
+
+.vv-modal-close:hover {
+  color: #a8e07a;
+}
+
+.vv-modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vv-modal-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 43px;
+  background: #e4f7c8;
+  color: #101510;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+.vv-modal-primary:hover {
+  background: #a8e07a;
+  transform: translateY(-1px);
+}
+
+.vv-modal-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 41px;
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: 0.25s;
+}
+
+.vv-modal-secondary:hover {
+  border-color: rgba(168, 224, 122, 0.55);
+  color: #a8e07a;
+}
+
+/* Footer */
+footer.vv-footer {
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 25px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 5;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+footer.vv-footer p {
+  color: #858d92;
+  font-size: 11px;
+  margin: 0;
+}
+
+footer.vv-footer span {
+  color: #a8e07a;
+}
+
+footer.vv-footer .vv-footer-disclaimer {
+  color: #9ba5ab;
+  font-size: 11px;
+}
+
+/* Responsive (Part A1: keep To-do, Bell & Profile icons visible at 38px on mobile) */
+@media (max-width: 1050px) {
+  header.vv-nav {
+    flex-wrap: wrap;
+  }
+
+  header.vv-nav .menu {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 700px) {
+  header.vv-nav {
+    padding: 22px 5%;
+  }
+
+  header.vv-nav .tools {
+    display: flex;
+    gap: 8px;
+  }
+
+  header.vv-nav .circle {
+    width: 38px;
+    height: 38px;
+  }
+
+  header.vv-nav .vv-todo-ring {
+    width: 38px;
+    height: 38px;
+  }
+
+  header.vv-nav .profile {
+    height: 38px;
+    padding: 0 10px 0 4px;
+  }
+
+  header.vv-nav .avatar {
+    width: 32px;
+    height: 32px;
+  }
+
+  header.vv-nav .menu {
+    gap: 2px;
+  }
+
+  header.vv-nav .menu a {
+    font-size: 10px;
+    padding: 10px 11px;
+  }
+
+  footer.vv-footer {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* ---------- Phase 3/4 Shell Additions (B2 Toasts, Bell Actions, B4 Avatar & Count Pill) ---------- */
+.vv-nav .profile .avatar{
+  overflow:hidden;
+}
+.vv-nav .profile .avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  border-radius:50%;
+  display:block;
+}
+.vv-dropdown-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.vv-dropdown-btn{
+  background:none;
+  border:0;
+  padding:0;
+  color:#cfd7da;
+  font-size:11.5px;
+  font-weight:600;
+  cursor:pointer;
+}
+.vv-dropdown-btn:hover{
+  color:#a8e07a;
+}
+.vv-count-pill{
+  margin-left:auto;
+  min-width:19px;
+  height:19px;
+  padding:0 6px;
+  border-radius:999px;
+  background:#a8e07a;
+  color:#08100a;
+  font-size:11px;
+  font-weight:700;
+  display:inline-grid;
+  place-items:center;
+}
+.vv-toast-stack{
+  position:fixed;
+  top:76px;
+  right:20px;
+  z-index:80;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  max-width:340px;
+  width:calc(100vw - 32px);
+  pointer-events:none;
+}
+.vv-toast{
+  pointer-events:auto;
+  padding:12px 14px;
+  border-radius:14px;
+  background:rgba(12,17,22,.96);
+  border:1px solid rgba(168,224,122,.42);
+  box-shadow:0 16px 40px rgba(0,0,0,.55);
+  backdrop-filter:blur(14px);
+  color:#f5f7f8;
+  font-family:'Inter',sans-serif;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:10px;
+}
+.vv-toast--danger{
+  border-color:rgba(255,122,107,.65);
+  background:rgba(36,14,15,.96);
+}
+.vv-toast--warn{
+  border-color:rgba(246,193,119,.58);
+}
+.vv-toast-title{
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  color:#a8e07a;
+  margin:0 0 3px;
+}
+.vv-toast--danger .vv-toast-title{color:#ffb4aa}
+.vv-toast--warn .vv-toast-title{color:#f6c177}
+.vv-toast-body{
+  font-size:12.5px;
+  line-height:1.4;
+  color:#e4ebee;
+  text-decoration:none;
+  display:block;
+}
+.vv-toast-close{
+  background:none;
+  border:0;
+  color:#9ba5ab;
+  font-size:16px;
+  line-height:1;
+  cursor:pointer;
+  padding:2px 4px;
+}
+.vv-toast-close:hover{color:#fff}

@@ -1,0 +1,39 @@
+# NASA-STD-3001: Space Flight Human-System Standard, Volume 1 (Crew Health) & Volume 2 (Human Factors, Habitability, and Environmental Health)
+
+## Document 1: NASA-STD-3001 Volume 1, Revision C (2023) — Space Flight Human-System Standard: Crew Health
+SOURCE_URL: https://www.nasa.gov/ochmo/health-and-medical-policy/nasa-std-3001-technical-briefs/
+PDF_URL: https://standards.nasa.gov/standard/NASA/NASA-STD-3001-VOL-1
+
+SECTION: Section 4.3.1 Crew Schedule, Sleep, and Rest [V1 4014]
+"4.3.1 Crew Schedule [V1 4014]: The program shall establish limits for the workday, physical activity/exercise, and the planned sleep period."
+"Rationale [V1 4014]: Adequate sleep (typically an 8.5-hour planned sleep period to achieve 7 to 8 hours of sleep) and scheduled exercise are critical to prevent fatigue and physiological deconditioning."
+
+SECTION: Section 4.4.1 Bone Mineral Density Countermeasures [V1 4027]
+"4.4.1 Bone Mineral Density [V1 4027]: Countermeasures shall maintain bone mineral density (BMD) of the hip and spine at >= 95% and femoral neck at >= 90% of pre-mission values."
+"Rationale [V1 4027]: Heavy resistive exercise using the Advanced Resistive Exercise Device (ARED), combined with treadmill and cycle ergometry, mitigates microgravity bone mineral density loss."
+
+SECTION: Section 4.4.2 Skeletal Muscle Mass and Strength [V1 4028]
+"4.4.2 Muscle Performance [V1 4028]: In-flight exercise countermeasures shall maintain crew skeletal muscle strength and aerobic capacity at or above 80% of baseline values."
+
+SECTION: Section 4.4.3 Cardiovascular and Aerobic Capacity [V1 4029]
+"4.4.3 Aerobic Capacity [V1 4029]: In-flight aerobic and resistive exercise countermeasures and pre-landing fluid loading shall mitigate orthostatic intolerance and maintain VO2max."
+
+SECTION: Section 4.2 Space Permissible Exposure Limits (PEL) for Radiation [V1 4007]
+"4.2.1 Career Radiation Limits [V1 4007]: Crew radiation exposure shall not exceed 600 mSv career effective dose, monitored continuously via personal active and passive dosimeters."
+
+SECTION: Section 4.5 Medical Capability and Flight Surgeon Escalation [V1 4040]
+"4.5.1 Medical Care Levels [V1 4040]: Any acute life-threatening physiological abnormality or critical vital-sign excursion requires immediate flight surgeon consultation and emergency medical protocol execution."
+
+---
+
+## Document 2: NASA-STD-3001 Volume 2, Revision D (2023) — Human Factors, Habitability, and Environmental Health
+SOURCE_URL: https://standards.nasa.gov/standard/NASA/NASA-STD-3001-VOL-2
+
+SECTION: Section 6.2.1 Carbon Dioxide Partial Pressure [V2 6004]
+"6.2.1 Carbon Dioxide [V2 6004]: Average 24-hour cabin partial pressure of carbon dioxide (ppCO2) shall not exceed 3.0 mmHg (4.0 mmHg operational threshold) to prevent hypercapnic headache and cognitive decrement."
+
+SECTION: Section 6.2.2 Inspired Oxygen and Arterial Oxygenation [V2 6003]
+"6.2.2 Normoxic Cabin Atmosphere [V2 6003]: Cabin oxygen partial pressure shall maintain crew arterial oxygen saturation (SpO2) within normal sea-level equivalents (95% to 100%)."
+
+SECTION: Section 6.6.1 Behavioral Health and Lighting [V2 6050]
+"6.6.1 Circadian Entrainment Lighting [V2 6050]: Habitat lighting systems shall provide blue-enriched short-wavelength light during crew wake periods and blue-depleted light before sleep."
