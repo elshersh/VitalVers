@@ -197,11 +197,20 @@ def test_two_tabs_two_accounts_and_live_access_updates(live_server, pending_link
         tab2.wait_for_function("/No approved astronauts/.test(document.getElementById('loadError').textContent)", timeout=15000)
         tab2.wait_for_function("window.VV_SHELL.liveState().ready", timeout=15000)
 
+        # record every notice tab 2 shows (each one fades out after a few seconds)
+        tab2.evaluate("""() => { window.__notices = [];
+          new MutationObserver(rs => rs.forEach(r => r.addedNodes.forEach(n => {
+            if (n.classList && n.classList.contains('vv-toast')) window.__notices.push(n.textContent);
+          }))).observe(document.body, {childList: true, subtree: true}); }""")
+
         # the astronaut approves in tab 1: the flight surgeon's dashboard in tab 2 fills in by itself
         csrf = tab1.evaluate("fetch('/api/auth/me').then(r => r.json()).then(j => j.csrf_token)")
         approve = f"fetch('/api/access/requests/{pending_link['id']}/approve', {{method: 'POST', headers: {{'X-CSRF-Token': '{csrf}'}}}}).then(r => r.status)"
         assert tab1.evaluate(approve) == 200
         tab2.wait_for_function("document.querySelector('#astronautList [data-id=\"A001\"]') !== null", timeout=15000)
+        notices = " | ".join(tab2.evaluate("window.__notices"))
+        assert "ACCESS UPDATED" in notices
+        assert "ALERT" not in notices, "older alerts that just became visible are listed, not popped up as new"
 
         # revoking clears the record from tab 2 again
         revoke = approve.replace("/approve", "/revoke")

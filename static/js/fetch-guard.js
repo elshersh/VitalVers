@@ -120,7 +120,10 @@
         }
         var set = resp.headers.get(ACCOUNT_SET_HEADER);
         if (set && resp.ok) useAccount(set);                    // signed in or out in this tab
-        if (resp.ok) { lastWriteAt = Date.now(); announceChange(); }
+        if (resp.ok) {
+          if (url.pathname.indexOf('/api/auth/') !== 0) lastWriteAt = Date.now();   // signing in is not a data change
+          announceChange();
+        }
         return resp;
       });
     }

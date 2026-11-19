@@ -381,7 +381,10 @@
     var maxId = 0;
     items.forEach(function (it) { maxId = Math.max(maxId, Number(it.id) || 0); });
     if (announce && live.lastAlertId != null) {
-      items.filter(function (it) { return (Number(it.id) || 0) > live.lastAlertId; }).slice(0, 2).forEach(function (it) {
+      items.filter(function (it) {
+        // access requests are for the astronaut to decide; flight surgeons are not notified of them
+        return (Number(it.id) || 0) > live.lastAlertId && !(state.role === 'doctor' && it.source === 'access');
+      }).slice(0, 2).forEach(function (it) {
         toast(String(it.severity || 'new').toUpperCase() + ' ALERT', it.short_message || 'New mission health alert received.', it.severity || 'info');
       });
     }
@@ -415,7 +418,8 @@
 
   function liveChanged(changed) {
     refreshShellCounters();
-    if (changed.indexOf('alerts') !== -1) refreshBellDropdown(true);
+    // alerts that only became visible because access changed are not new: list them, do not pop them up
+    if (changed.indexOf('alerts') !== -1) refreshBellDropdown(changed.indexOf('access') === -1);
     var ownChange = window.VV_ACCOUNT && (Date.now() - window.VV_ACCOUNT.lastWriteAt()) < 6000;
     if (changed.indexOf('access') !== -1 && state.role === 'doctor' && !ownChange) {
       toast('ACCESS UPDATED', 'Your astronaut access changed. This page now shows the latest list.', 'info', '/profile.html');
