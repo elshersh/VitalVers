@@ -64,9 +64,16 @@ Free with any GitHub account (no credit card; 60 hours a month on the 2-core mac
 3. Wait for the first setup (about 3–5 minutes). The website starts by itself and the terminal prints
    `Vitalverse is live: https://<codespace-name>-8000.app.github.dev`. That is the public link to share.
    If it says to change the port: open the **PORTS** tab, right-click port **8000** → **Port Visibility → Public**.
-4. The link works while the codespace is running. It stops after 30 minutes without activity
+   If nothing is printed, run `bash .devcontainer/start.sh` in the terminal.
+4. Visitors first see GitHub's notice *"You are about to access a development port served by someone's
+   codespace"*; they click **Continue** once and the site opens.
+5. The link works while the codespace is running. It stops after 30 minutes without activity
    (raise this to 4 hours in GitHub **Settings → Codespaces → Default idle timeout**).
    To bring the site back: **Code → Codespaces →** your codespace; the same link works again.
+
+To add or change the Gemini key later: GitHub **Settings → Codespaces → Secrets → New secret**,
+name `GEMINI_API_KEY`, repository `elshersh/VitalVers`. Then in the codespace accept *Reload to apply*
+and run `pkill -f "uvicorn app:app"; bash .devcontainer/start.sh` in a new terminal.
 
 The repo also contains a `Dockerfile` and `render.yaml`, so it can run on any Docker host
 (for example Render or Hugging Face Spaces on a paid plan).

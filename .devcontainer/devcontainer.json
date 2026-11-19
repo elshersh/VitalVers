@@ -9,6 +9,7 @@
   // install once when the codespace is created, start the website every time it starts
   "postCreateCommand": "grep -v -E '^(pytest|playwright)==' requirements.txt > /tmp/req.txt && pip install --user -r /tmp/req.txt",
   "postStartCommand": "bash .devcontainer/start.sh",
+  "postAttachCommand": "bash .devcontainer/start.sh",
 
   "forwardPorts": [8000],
   "portsAttributes": {
