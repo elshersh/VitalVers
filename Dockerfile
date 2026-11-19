@@ -1,5 +1,5 @@
 # Vitalverse web app (FastAPI + scikit-learn model + offline/online chatbot)
-# Works on Hugging Face Spaces (Docker SDK), Render and any Docker host.
+# Works on Azure App Service (custom container, set WEBSITES_PORT=7860), Hugging Face Spaces (Docker SDK), Render and any Docker host.
 FROM python:3.14-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
