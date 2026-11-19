@@ -47,6 +47,9 @@ async def set_cache_headers(request: Request, call_next):
     """
     response = await call_next(request)
     path = request.url.path
+    # The relay was seen handing out answers left over on connections it reuses to this server, even to
+    # later visitors. Closing the connection after every answer leaves nothing behind to be handed out.
+    response.headers["Connection"] = "close"
     if path.startswith("/api/"):
         # tell the page which session this answer was made for (static/js/fetch-guard.js checks it)
         response.headers[TAG_HEADER] = request_tag(request)

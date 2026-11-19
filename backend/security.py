@@ -21,7 +21,7 @@ from backend.config import (
     CSRF_HEADER,
     LEGACY_COOKIES,
     MAX_BROWSER_SESSIONS,
-    SESSION_COOKIE,
+    SESSION_COOKIE_PREFIX,
     TAG_COOKIE,
     load_demo_credentials,
 )
@@ -36,36 +36,56 @@ def session_tag(session_id: str) -> str:
     return hashlib.sha256(f"vitalverse-session-tag:{session_id}".encode("utf-8")).hexdigest()[:20]
 
 
+_TAG_RE = re.compile(r"[0-9a-f]{20}")
+
+
+def _session_cookie_name(tag: str) -> str:
+    return f"{SESSION_COOKIE_PREFIX}{tag}"
+
+
 def browser_sessions(request: Request) -> list[str]:
-    """Session ids this browser holds (HttpOnly cookie), oldest first."""
-    raw = request.cookies.get(SESSION_COOKIE, "")
-    sids = [s for s in raw.split(".") if _SESSION_ID_RE.fullmatch(s)]
-    return sids[-MAX_BROWSER_SESSIONS:]
+    """Session ids this browser holds, oldest first.
+
+    Each session has its own HttpOnly cookie named after its tag, so a sign-in or sign-out answer only ever
+    carries the one session it creates, never the other sessions of the browser. The readable vv_tags cookie
+    keeps their order (newest last).
+    """
+    held: dict[str, str] = {}
+    for name, value in request.cookies.items():
+        if not name.startswith(SESSION_COOKIE_PREFIX) or not _SESSION_ID_RE.fullmatch(value or ""):
+            continue
+        tag = name[len(SESSION_COOKIE_PREFIX):]
+        if secrets.compare_digest(session_tag(value), tag):
+            held[tag] = value
+    listed = [t for t in request.cookies.get(TAG_COOKIE, "").split(".") if t in held]
+    order = [t for t in held if t not in listed] + list(dict.fromkeys(listed))
+    return [held[t] for t in order][-MAX_BROWSER_SESSIONS:]
 
 
 def selected_session(request: Request) -> tuple[str | None, str]:
-    """Which of this browser's sessions the request uses: (session id or None, tag of that session).
+    """Which of this browser's sessions the request uses: (session id or None, tag the answer is made for).
 
     A tab names its account with the X-VV-Account header (or ?account= on page loads). Only sessions this
     browser really holds can be named, so the choice cannot reach anyone else's account. A tab that names an
-    account this browser no longer holds, or names ANON_TAG, is signed out. Without a choice, the newest
-    session is used.
+    account this browser no longer holds is signed out; its answer still carries the tag it named, so that tab
+    can tell it was signed out. Without a choice, the newest session is used.
     """
     sids = browser_sessions(request)
     wanted = (request.headers.get(ACCOUNT_HEADER) or request.query_params.get(ACCOUNT_PARAM) or "").strip()
     if wanted:
+        if not _TAG_RE.fullmatch(wanted):
+            return None, ANON_TAG
         for sid in sids:
-            tag = session_tag(sid)
-            if secrets.compare_digest(tag, wanted):
-                return sid, tag
-        return None, ANON_TAG
+            if secrets.compare_digest(session_tag(sid), wanted):
+                return sid, wanted
+        return None, wanted
     if sids:
         return sids[-1], session_tag(sids[-1])
     return None, ANON_TAG
 
 
 def request_tag(request: Request) -> str:
-    """Tag of the session this request uses, or ANON_TAG when it uses none."""
+    """Tag of the account this request's answer is made for (ANON_TAG when it names none)."""
     return selected_session(request)[1]
 
 
@@ -82,32 +102,41 @@ def _live_sessions(con: sqlite3.Connection, sids: list[str]) -> list[str]:
     return [s for s in sids if s in alive]
 
 
-def _write_session_cookies(response: Response, sids: list[str]) -> None:
+def _cookie_options() -> dict[str, Any]:
+    ttl = int(load_demo_credentials().get("session_ttl_seconds", 3600))
+    return {"samesite": "lax", "secure": COOKIE_SECURE, "max_age": ttl, "path": "/"}
+
+
+def _write_tags(response: Response, held: list[str], ended: list[str]) -> None:
+    """Forget ended sessions and rewrite the readable tag list. Never writes a session id."""
     for legacy in LEGACY_COOKIES:
         response.delete_cookie(legacy, path="/")
-    if not sids:
-        response.delete_cookie(SESSION_COOKIE, path="/")
+    for sid in ended:
+        response.delete_cookie(_session_cookie_name(session_tag(sid)), path="/")
+    if held:
+        response.set_cookie(key=TAG_COOKIE, value=".".join(session_tag(s) for s in held), httponly=False, **_cookie_options())
+    else:
         response.delete_cookie(TAG_COOKIE, path="/")
-        return
-    ttl = int(load_demo_credentials().get("session_ttl_seconds", 3600))
-    common = {"samesite": "lax", "secure": COOKIE_SECURE, "max_age": ttl, "path": "/"}
-    response.set_cookie(key=SESSION_COOKIE, value=".".join(sids), httponly=True, **common)
-    response.set_cookie(key=TAG_COOKIE, value=".".join(session_tag(s) for s in sids), httponly=False, **common)
 
 
 def add_browser_session(request: Request, response: Response, con: sqlite3.Connection, session_id: str) -> str:
     """Add a new sign-in to this browser's sessions (other tabs keep theirs) and tell the tab to use it."""
-    sids = [s for s in _live_sessions(con, browser_sessions(request)) if s != session_id] + [session_id]
-    sids = sids[-MAX_BROWSER_SESSIONS:]
-    _write_session_cookies(response, sids)
+    before = browser_sessions(request)
+    live = [s for s in _live_sessions(con, before) if s != session_id] + [session_id]
+    held = live[-MAX_BROWSER_SESSIONS:]
+    ended = [s for s in before if s not in held]
     tag = session_tag(session_id)
+    response.set_cookie(key=_session_cookie_name(tag), value=session_id, httponly=True, **_cookie_options())
+    _write_tags(response, held, ended)
     response.headers[ACCOUNT_SET_HEADER] = tag
     return tag
 
 
 def drop_ended_browser_sessions(request: Request, response: Response, con: sqlite3.Connection) -> None:
     """After a sign-out, forget sessions that ended and tell the tab it is signed out."""
-    _write_session_cookies(response, _live_sessions(con, browser_sessions(request)))
+    before = browser_sessions(request)
+    held = _live_sessions(con, before)
+    _write_tags(response, held, [s for s in before if s not in held])
     response.headers[ACCOUNT_SET_HEADER] = ANON_TAG
 
 

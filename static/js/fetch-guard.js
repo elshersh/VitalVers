@@ -10,8 +10,9 @@
  *
  * Fetch guard: the public link can run behind a forwarding relay (GitHub Codespaces) that was seen handing
  * one visitor's answer to another. The server stamps every /api/ answer with the tag of the session it was
- * made for (X-VV-Tag). Answers with another tag are thrown away and asked for again; private photos and
- * audio (/api/media/...) are loaded through the same check.
+ * made for (X-VV-Tag). Answers with another tag are thrown away: reads are asked for again, actions (which
+ * cannot safely be repeated) end in an error message. Private photos and audio (/api/media/...) are loaded
+ * through the same check.
  *
  * Other tabs of this browser are told right away when this tab changes something (BroadcastChannel), so they
  * can refresh without waiting for their next check (static/js/shell.js).
@@ -111,6 +112,12 @@
     var opts = withAccount(input, init, expected);
     if (method !== 'GET' && method !== 'HEAD') {
       return nativeFetch(input, opts).then(function (resp) {
+        var tag = resp.headers.get(TAG_HEADER);
+        if (tag && tag !== expected) {
+          // an action's answer cannot be asked for again safely, so show an error instead of someone else's answer
+          if (window.console) console.warn('[Vitalverse] discarded an API answer meant for another visitor:', url.pathname);
+          return mixedUpAnswer();
+        }
         var set = resp.headers.get(ACCOUNT_SET_HEADER);
         if (set && resp.ok) useAccount(set);                    // signed in or out in this tab
         if (resp.ok) { lastWriteAt = Date.now(); announceChange(); }

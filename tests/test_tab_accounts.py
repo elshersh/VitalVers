@@ -44,7 +44,9 @@ def test_two_accounts_in_one_browser_each_tab_keeps_its_own():
         doctor = _login(browser, "approved_doctor", "doctor")
         assert astro != doctor
         assert browser.cookies["vv_tags"] == f"{astro}.{doctor}"
-        assert [session_tag(s) for s in browser.cookies["vv_sessions"].split(".")] == [astro, doctor]
+        held = sorted(n[len("vv_s_"):] for n in browser.cookies.keys() if n.startswith("vv_s_"))
+        assert held == sorted([astro, doctor])
+        assert all(session_tag(browser.cookies[f"vv_s_{t}"]) == t for t in held)
 
         assert _me(browser, astro)["role"] == "astronaut"
         assert _me(browser, doctor)["role"] == "doctor"
@@ -65,6 +67,7 @@ def test_two_accounts_in_one_browser_each_tab_keeps_its_own():
         r = browser.post("/api/auth/logout", headers={"X-VV-Account": astro, "X-CSRF-Token": astro_csrf})
         assert r.status_code == 200 and r.headers["x-vv-account-set"] == "anon"
         assert browser.cookies["vv_tags"] == doctor
+        assert f"vv_s_{astro}" not in browser.cookies and f"vv_s_{doctor}" in browser.cookies
         assert _me(browser, astro)["authenticated"] is False
         assert _me(browser, doctor)["role"] == "doctor"
 
@@ -73,6 +76,7 @@ def test_browser_keeps_a_limited_number_of_sign_ins():
     with TestClient(app) as browser:
         tags = [_login(browser, "astronaut", "astronaut") for _ in range(MAX_BROWSER_SESSIONS + 1)]
         assert browser.cookies["vv_tags"].split(".") == tags[1:]
+        assert sorted(n for n in browser.cookies.keys() if n.startswith("vv_s_")) == sorted(f"vv_s_{t}" for t in tags[1:])
         assert _me(browser, tags[0])["authenticated"] is False
         assert _me(browser, tags[-1])["authenticated"] is True
 

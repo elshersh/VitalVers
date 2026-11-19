@@ -1,23 +1,18 @@
-"""Alerts center, read/acknowledge actions, SSE stream, and Web Push subscription routes."""
+"""Alerts center, read/acknowledge actions, and Web Push subscription routes (live updates: /api/live)."""
 from __future__ import annotations
 
-import asyncio
 import json
 import sqlite3
 from datetime import datetime, timezone
 from typing import Any
 
-from fastapi import APIRouter, Depends, HTTPException, Query, Request, status
-from fastapi.responses import StreamingResponse
+from fastapi import APIRouter, Depends, HTTPException, Query, status
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
 from backend.database import get_db
 from backend.security import require_csrf, require_user, resolve_authorized_astronaut_id
-from backend.services.alert_service import (
-    get_vapid_keys,
-    register_sse_subscriber,
-    unregister_sse_subscriber,
-)
+from backend.services.alert_service import get_vapid_keys
 
 router = APIRouter(tags=["alerts"])
 
@@ -184,34 +179,11 @@ def acknowledge_alert(
 
 
 @router.get("/api/alerts/stream")
-async def stream_alerts(
-    request: Request,
-    user: dict[str, Any] = Depends(require_user),
-):
-    """Stream real-time alert events via Server-Sent Events (SSE)."""
-    loop = asyncio.get_running_loop()
-    sub = register_sse_subscriber(loop, int(user["user_id"]), user["role"], user.get("astronaut_id"))
-
-    async def _gen():
-        try:
-            yield "retry: 5000\n\n"
-            yield f"event: ready\ndata: {json.dumps({'ok': True})}\n\n"
-            while True:
-                if await request.is_disconnected():
-                    break
-                try:
-                    item = await asyncio.wait_for(sub["queue"].get(), timeout=1.5)
-                    yield f"event: alert\ndata: {json.dumps(item)}\n\n"
-                except asyncio.TimeoutError:
-                    yield ": keepalive\n\n"
-        finally:
-            unregister_sse_subscriber(sub)
-
-    return StreamingResponse(
-        _gen(),
-        media_type="text/event-stream",
-        headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
-    )
+def stream_alerts_retired() -> JSONResponse:
+    """Retired. Pages now learn about new alerts from GET /api/live (static/js/shell.js), whose answers the
+    browser checks like every other API answer. A long-lived stream could not be checked and kept a relay
+    connection busy. 410 tells EventSource in pages still running older code to stop reconnecting."""
+    return JSONResponse({"detail": "Live alerts now come through /api/live."}, status_code=status.HTTP_410_GONE)
 
 
 @router.get("/api/push/vapid-public-key")

@@ -78,11 +78,31 @@ def test_sign_in_sets_readable_tag_of_the_hidden_session():
         r = _login(client)
         assert r.status_code == 200
         raw = {c.split("=", 1)[0]: c for c in r.headers.get_list("set-cookie")}
-        assert "httponly" in raw["vv_sessions"].lower()
+        tag = client.cookies["vv_tags"]
+        sid = client.cookies[f"vv_s_{tag}"]
+        assert "httponly" in raw[f"vv_s_{tag}"].lower()
         assert "httponly" not in raw["vv_tags"].lower(), "page scripts must be able to read the tag"
-        assert client.cookies["vv_tags"] == session_tag(client.cookies["vv_sessions"])
-        assert client.cookies["vv_tags"] != client.cookies["vv_sessions"]
-        assert r.headers["x-vv-account-set"] == client.cookies["vv_tags"], "the tab is told which account it uses"
+        assert tag == session_tag(sid) and tag != sid
+        assert r.headers["x-vv-account-set"] == tag, "the tab is told which account it uses"
+
+
+def test_sign_in_answer_carries_only_the_new_session():
+    """If a relay hands a sign-in answer to the wrong visitor, it must not carry this browser's other sessions."""
+    with TestClient(app) as client:
+        _login(client)
+        first = client.cookies["vv_tags"]
+        r = _login(client)
+        written = [c.split(";", 1)[0] for c in r.headers.get_list("set-cookie")]
+        with_ids = [c for c in written if c.startswith("vv_s_") and not c.endswith("=") and '=""' not in c]
+        assert len(with_ids) == 1 and with_ids[0].startswith("vv_s_" + r.headers["x-vv-account-set"])
+        assert first in client.cookies["vv_tags"].split("."), "the earlier sign-in stays in this browser"
+
+
+def test_every_answer_closes_its_connection():
+    """Nothing may stay behind on a connection a relay reuses for the next visitor."""
+    with TestClient(app) as client:
+        for url in ("/api/auth/me", "/", "/js/shell.js", "/api/live"):
+            assert client.get(url).headers.get("connection", "").lower() == "close", url
 
 
 def test_every_api_answer_names_the_session_it_was_made_for():
@@ -99,10 +119,10 @@ def test_tab_naming_an_account_this_browser_does_not_hold_is_signed_out():
     with TestClient(app) as client:
         _login(client)
         assert client.get("/api/auth/me").json()["authenticated"] is True
-        for wanted in ("0123456789abcdef0123", "anon"):
+        for wanted, stamp in (("0123456789abcdef0123", "0123456789abcdef0123"), ("anon", "anon"), ("bogus", "anon")):
             r = client.get("/api/auth/me", headers={"X-VV-Account": wanted})
             assert r.json()["authenticated"] is False, wanted
-            assert r.headers["x-vv-tag"] == "anon"
+            assert r.headers["x-vv-tag"] == stamp, "the signed-out answer is for the tab that asked"
 
 
 def test_sign_out_removes_the_tag():
@@ -111,7 +131,8 @@ def test_sign_out_removes_the_tag():
         r = client.post("/api/auth/logout", headers={"X-CSRF-Token": csrf})
         assert r.status_code == 200
         assert r.headers["x-vv-account-set"] == "anon"
-        assert "vv_tags" not in client.cookies and "vv_sessions" not in client.cookies
+        assert "vv_tags" not in client.cookies
+        assert not [n for n in client.cookies.keys() if n.startswith("vv_s_")]
 
 
 def test_fetch_guard_loads_before_every_other_script():

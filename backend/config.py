@@ -23,9 +23,9 @@ SCHEMA_PATH = PROJECT_ROOT / "data_raw" / "team_supplied" / "07_health_indicator
 DEMO_CREDS_PATH = CONFIG_DIR / "demo_credentials.json"
 
 # One browser can be signed in to several accounts at once, one per tab (for example an astronaut in one tab
-# and a flight surgeon in another). SESSION_COOKIE (HttpOnly) lists this browser's session ids, newest last.
-SESSION_COOKIE = "vv_sessions"
-# Readable companion: one-way tags of those sessions, same order. Every API answer carries the tag of the
+# and a flight surgeon in another). Each session has its own HttpOnly cookie, SESSION_COOKIE_PREFIX + its tag.
+SESSION_COOKIE_PREFIX = "vv_s_"
+# Readable: one-way tags of this browser's sessions, newest last. Every API answer carries the tag of the
 # session it was made for (TAG_HEADER) so the browser can reject answers meant for someone else.
 TAG_COOKIE = "vv_tags"
 TAG_HEADER = "X-VV-Tag"
@@ -37,7 +37,7 @@ ACCOUNT_PARAM = "account"
 # Sign-in and sign-out answers tell the tab which account it uses from now on (a tag, or ANON_TAG).
 ACCOUNT_SET_HEADER = "X-VV-Account-Set"
 MAX_BROWSER_SESSIONS = 6
-LEGACY_COOKIES = ("vv_session", "vv_tag")
+LEGACY_COOKIES = ("vv_session", "vv_tag", "vv_sessions")
 CSRF_HEADER = "X-CSRF-Token"
 COOKIE_SECURE = os.environ.get("VITALVERSE_COOKIE_SECURE", "0") == "1"
 
