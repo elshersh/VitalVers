@@ -1,7 +1,7 @@
 # Builds the Vitalverse container image on every push to main and publishes it to GitHub Container Registry
-# (ghcr.io/elshersh/vitalvers). The always-on site on Azure App Service runs this image.
-# If the repository secret AZURE_WEBAPP_WEBHOOK is set (Azure portal > the web app > Deployment Center >
-# Webhook URL), Azure is told to pull the new image right away; otherwise restart the web app to update it.
+# as a public package (free for public repositories). Any Docker host can run it:
+#   docker run -p 7860:7860 ghcr.io/elshersh/vitalvers:latest
+# The online chatbot needs GEMINI_API_KEY set in the host's secret settings (scripts/render_start.py).
 name: Container image
 
 on:
@@ -20,8 +20,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      AZURE_WEBAPP_WEBHOOK: ${{ secrets.AZURE_WEBAPP_WEBHOOK }}
     steps:
       - uses: actions/checkout@v4
 
@@ -45,7 +43,3 @@ jobs:
             org.opencontainers.image.description=Vitalverse astronaut health monitoring prototype (research/education only, not for clinical diagnosis)
           cache-from: type=gha
           cache-to: type=gha,mode=max
-
-      - name: Tell Azure to pull the new image
-        if: env.AZURE_WEBAPP_WEBHOOK != ''
-        run: curl -fsS -X POST -d '' -o /dev/null "$AZURE_WEBAPP_WEBHOOK"
