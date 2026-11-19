@@ -1,6 +1,9 @@
 # Vitalverse — AI health monitoring for astronauts
 
-**Live site:** _LIVE_LINK_
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/elshersh/VitalVers?quickstart=1)
+
+**Run the live site in one click:** press the button above (free with a GitHub account, no credit card).
+The website starts by itself and opens in a new tab; see [Live link with GitHub Codespaces](#live-link-with-github-codespaces).
 
 Vitalverse is a personal health co-pilot for astronauts on long missions, built for the
 **NASA Space Apps Challenge 2026** challenge *"Create Health Monitoring Software for Astronauts on Space Missions"*.
@@ -51,13 +54,22 @@ Then open http://127.0.0.1:8000. On Windows you can also double-click `open_vita
 To enable the online chatbot, copy `.env.example` to `.env` and set `GEMINI_API_KEY`
 (get one free at https://aistudio.google.com). Never commit `.env`.
 
-## Deploy your own copy (Render, free)
+## Live link with GitHub Codespaces
 
-1. Sign in at https://render.com with GitHub.
-2. **New → Blueprint**, pick this repository. Render reads `render.yaml` and builds the `Dockerfile`.
-3. When asked, paste your `GEMINI_API_KEY` (stored as a secret on Render, never in the repo).
-4. Every push to `main` redeploys automatically. The free plan sleeps after 15 minutes without visitors;
-   the first visit after that takes about a minute.
+Free with any GitHub account (no credit card; 60 hours a month on the 2-core machine).
+
+1. Press **Open in GitHub Codespaces** above, or on GitHub: **Code → Codespaces → Create codespace on main**.
+2. GitHub may ask for `GEMINI_API_KEY`: paste your Google AI Studio key to enable the online chatbot
+   (stored as your private Codespaces secret, never in the repo), or leave it empty.
+3. Wait for the first setup (about 3–5 minutes). The website starts by itself and the terminal prints
+   `Vitalverse is live: https://<codespace-name>-8000.app.github.dev`. That is the public link to share.
+   If it says to change the port: open the **PORTS** tab, right-click port **8000** → **Port Visibility → Public**.
+4. The link works while the codespace is running. It stops after 30 minutes without activity
+   (raise this to 4 hours in GitHub **Settings → Codespaces → Default idle timeout**).
+   To bring the site back: **Code → Codespaces →** your codespace; the same link works again.
+
+The repo also contains a `Dockerfile` and `render.yaml`, so it can run on any Docker host
+(for example Render or Hugging Face Spaces on a paid plan).
 
 ## Project layout
 

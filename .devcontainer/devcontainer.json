@@ -1,0 +1,29 @@
+{
+  "name": "Vitalverse",
+  "image": "mcr.microsoft.com/devcontainers/python:3.14",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "hostRequirements": { "cpus": 2, "memory": "4gb" },
+
+  // install once when the codespace is created, start the website every time it starts
+  "postCreateCommand": "grep -v -E '^(pytest|playwright)==' requirements.txt > /tmp/req.txt && pip install --user -r /tmp/req.txt",
+  "postStartCommand": "bash .devcontainer/start.sh",
+
+  "forwardPorts": [8000],
+  "portsAttributes": {
+    "8000": { "label": "Vitalverse website", "onAutoForward": "openBrowser" }
+  },
+  "containerEnv": {
+    "PORT": "8000",
+    "VITALVERSE_COOKIE_SECURE": "1"
+  },
+
+  // GitHub asks for this when you create the codespace and stores it as a secret (optional)
+  "secrets": {
+    "GEMINI_API_KEY": {
+      "description": "Google AI Studio API key for the online chatbot. Leave empty to use only the on-board chatbot.",
+      "documentationUrl": "https://aistudio.google.com/apikey"
+    }
+  }
+}
