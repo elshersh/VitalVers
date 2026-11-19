@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from contextlib import asynccontextmanager
+import re
 import sqlite3
 from typing import Any
 
@@ -30,12 +31,27 @@ async def lifespan(application: FastAPI):
 app = FastAPI(title="Vitalverse Health Monitoring", lifespan=lifespan)
 
 
+_STATIC_ASSET = re.compile(r"\.(css|js|mjs|map|png|jpe?g|gif|webp|svg|ico|woff2?|ttf|mp3|wav|ogg)$", re.IGNORECASE)
+
+
 @app.middleware("http")
-async def revalidate_html_pages(request: Request, call_next):
-    """Make browsers re-check HTML pages with the server (ETag) instead of showing stale cached copies."""
+async def set_cache_headers(request: Request, call_next):
+    """Keep answers that depend on the signed-in user out of shared caches.
+
+    The public link can run behind a forwarding relay (for example GitHub Codespaces) that caches GET
+    responses by URL alone. API answers, pages and redirects can differ per user, so only the browser
+    may keep them: API answers are never stored, pages are re-checked with the server (ETag) every time.
+    Static assets (styles, scripts, images, fonts) are the same for everyone and stay cacheable.
+    """
     response = await call_next(request)
-    if response.headers.get("content-type", "").startswith("text/html") and "cache-control" not in response.headers:
-        response.headers["Cache-Control"] = "no-cache"
+    path = request.url.path
+    if not _STATIC_ASSET.search(path):
+        if "cache-control" not in response.headers:
+            api = path.startswith("/api/")
+            response.headers["Cache-Control"] = "no-store, private" if api else "private, no-cache"
+        vary = response.headers.get("vary", "")
+        if "cookie" not in vary.lower():
+            response.headers["Vary"] = f"{vary}, Cookie" if vary else "Cookie"
     return response
 
 app.include_router(auth.router)
