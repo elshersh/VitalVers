@@ -141,12 +141,12 @@ python offline_ai_chatbot.py A007     # interactive authenticated chatbot CLI
 
 ### Web Application Pages & Live Telemetry Simulation
 - **Public Pages:** `index.html`, `about.html`, `login.html`, `signup.html` (multi-step astronaut/doctor registration with onboarding file uploads to `uploads_private/`).
-- **Authenticated Pages (session cookie + CSRF protected):**
+- **Authenticated Pages (session cookie + CSRF protected):** one browser can be signed in to several accounts at once, one per tab (for example an astronaut in one tab and a flight surgeon in another); refreshing a tab keeps its account, and signing in or out in a tab changes only that tab. Open pages refresh by themselves when another tab, account or device changes what they show (`GET /api/live` every few seconds, instantly between tabs of the same browser) — for example, a flight surgeon's dashboard fills in as soon as the astronaut approves the access request.
   - `/health.html` (auto-routes by role to `astronaut-dashboard.html` or `doctor-dashboard.html` with 180-day Chart.js telemetry, replay slider, and model status predictions)
   - `/chatbot.html` (Offline AI Chatbot with urgent flight-surgeon escalation card and out-of-scope gate)
   - `/todo.html` (Daily Countermeasures To-Do list persisted in SQLite `daily_todo` with top-nav circular progress ring)
   - `/mental.html` (Daily Mental Health Check-In persisted in SQLite `mood_checkins`, same-day editable scoring, optional flight-surgeon email/mailto handoff, and automatic `< 2.5` low-mood alert creation)
-  - `/alerts.html` (Real-time Alerts Center with role-appropriate cards, filter chips, SSE `/api/alerts/stream`, `"Run AI Check"`, `"Advance Demo Day (DEMO)"`, and Web Push notifications)
+  - `/alerts.html` (Real-time Alerts Center with role-appropriate cards, filter chips, live refresh, `"Run AI Check"`, `"Advance Demo Day (DEMO)"`, and Web Push notifications)
   - `/profile.html` (Crew onboarding boarding-pass card, editable Personal/Health/Flight tabs, playlist & family photos manager, doctor access request/approve/revoke workflow, and password change / logout-all-devices security controls)
 - **Browser Web Push & Optional SMTP:** Copy [`.env.example`](file:///d:/NASA%202/project/.env.example) if you want custom `SMTP_*` or `VAPID_*` keys. Browser Push requires `localhost` (`127.0.0.1`) or HTTPS; when VAPID env vars are unset in development, keys are auto-generated in gitignored `uploads_private/.vapid_dev.json`. See [`MODEL_REGISTRY.md`](file:///d:/NASA%202/project/MODEL_REGISTRY.md) for ML & Chatbot artifact specifications.
 

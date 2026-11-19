@@ -5,18 +5,18 @@ from datetime import datetime, timezone
 import sqlite3
 from typing import Any
 
-from fastapi import APIRouter, Depends, HTTPException, Response, status
+from fastapi import APIRouter, Depends, HTTPException, Request, Response, status
 from pydantic import BaseModel, ConfigDict
 
 from backend.database import get_db
 from backend.security import (
+    add_browser_session,
     authenticate_web_user,
-    clear_session_cookies,
     create_web_session,
+    drop_ended_browser_sessions,
     get_session_user,
     hash_password,
     require_csrf,
-    set_session_cookies,
     verify_password,
 )
 from backend.services.signup_service import register_account
@@ -74,25 +74,29 @@ def _profile_summary(con: sqlite3.Connection, user: dict[str, Any]) -> dict[str,
 
 
 @router.post("/signup", status_code=status.HTTP_201_CREATED)
-def signup(payload: SignupRequest, response: Response, con: sqlite3.Connection = Depends(get_db)) -> dict[str, Any]:
-    """Register a new Astronaut or Doctor account, create its session, and issue an HttpOnly cookie."""
+def signup(
+    payload: SignupRequest, request: Request, response: Response, con: sqlite3.Connection = Depends(get_db)
+) -> dict[str, Any]:
+    """Register a new Astronaut or Doctor account and sign this tab in to it (other tabs keep their accounts)."""
     res = register_account(con, payload.model_dump())
     session_id = res.pop("session_id")
-    ttl_seconds = int(res.pop("ttl_seconds"))
-    set_session_cookies(response, session_id, ttl_seconds)
+    res.pop("ttl_seconds", None)
+    add_browser_session(request, response, con, session_id)
     return res
 
 
 @router.post("/login")
-def login(payload: LoginRequest, response: Response, con: sqlite3.Connection = Depends(get_db)) -> dict[str, Any]:
-    """Authenticate an astronaut or doctor using argon2-cffi and set an HttpOnly session cookie."""
+def login(
+    payload: LoginRequest, request: Request, response: Response, con: sqlite3.Connection = Depends(get_db)
+) -> dict[str, Any]:
+    """Authenticate an astronaut or doctor using argon2-cffi and sign this tab in (other tabs keep theirs)."""
     req_role = payload.role.strip().lower() if payload.role else None
     if req_role and req_role not in {"astronaut", "doctor"}:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Role must be 'astronaut' or 'doctor'.")
 
     user = authenticate_web_user(con, payload.vitalverse_id, payload.password, requested_role=req_role)
     sess = create_web_session(con, int(user["id"]))
-    set_session_cookies(response, sess["session_id"], int(sess["ttl_seconds"]))
+    add_browser_session(request, response, con, sess["session_id"])
 
     prof = _profile_summary(
         con,
@@ -116,19 +120,21 @@ def login(payload: LoginRequest, response: Response, con: sqlite3.Connection = D
 
 @router.post("/logout")
 def logout(
+    request: Request,
     response: Response,
     user: dict[str, Any] = Depends(require_csrf),
     con: sqlite3.Connection = Depends(get_db),
 ) -> dict[str, Any]:
-    """Revoke the current web session and clear the session cookie."""
+    """Sign this tab's account out; accounts open in other tabs stay signed in."""
     con.execute("UPDATE web_sessions SET revoked = 1 WHERE session_id = ?", (user["session_id"],))
     con.commit()
-    clear_session_cookies(response)
+    drop_ended_browser_sessions(request, response, con)
     return {"ok": True}
 
 
 @router.post("/logout-all")
 def logout_all(
+    request: Request,
     response: Response,
     user: dict[str, Any] = Depends(require_csrf),
     con: sqlite3.Connection = Depends(get_db),
@@ -136,7 +142,7 @@ def logout_all(
     """Revoke every active web session for this user across all browsers/devices."""
     cur = con.execute("UPDATE web_sessions SET revoked = 1 WHERE user_id = ?", (int(user["user_id"]),))
     con.commit()
-    clear_session_cookies(response)
+    drop_ended_browser_sessions(request, response, con)
     return {"ok": True, "revoked_count": cur.rowcount}
 
 

@@ -1,4 +1,4 @@
-/* Vitalverse Alerts Center (B2): role-filtered alert triage, doctor diagnostics + Chart.js 7d trend, SSE live refresh & Web Push */
+/* Vitalverse Alerts Center (B2): role-filtered alert triage, doctor diagnostics + Chart.js 7d trend, live refresh & Web Push */
 (function () {
   var S = window.VV_SHELL || {};
   var esc = S.esc || function (v) {
@@ -459,6 +459,51 @@
 
   window.addEventListener('vv:alert', function () {
     loadAlerts();
+  });
+
+  // ---- live updates (static/js/shell.js): alerts or a flight surgeon's approved astronauts changed ----
+  function refreshDoctorAstronauts() {
+    return apiFetch('/api/doctor/astronauts').then(function (docData) {
+      if (!els.astroSelect || !els.astroWrap) return;
+      var rows = Array.isArray(docData.approved) ? docData.approved : [];
+      var ids = rows.map(function (a) { return a.astronaut_id || a.id; });
+      if (rows.length) {
+        els.astroWrap.hidden = false;
+        els.astroSelect.innerHTML = rows.map(function (a) {
+          var aid = a.astronaut_id || a.id;
+          return '<option value="' + esc(aid) + '">' + esc(a.name) + ' (' + esc(aid) + ')</option>';
+        }).join('');
+        state.astronautId = ids.indexOf(state.astronautId) !== -1 ? state.astronautId : ids[0];
+        els.astroSelect.value = state.astronautId;
+        els.astroSelect.onchange = function () { state.astronautId = els.astroSelect.value; };
+        els.predictBtn.disabled = false;
+        els.advanceBtn.disabled = false;
+        if (els.notice && /No approved astronauts/.test(els.notice.textContent || '')) showNotice('');
+      } else {
+        els.astroWrap.hidden = true;
+        state.astronautId = '';
+        els.predictBtn.disabled = true;
+        els.advanceBtn.disabled = true;
+        showNotice('No approved astronauts are currently linked to your doctor account.', 'err');
+      }
+    });
+  }
+
+  var liveRunning = false;
+  var liveAgain = false;
+  document.addEventListener('vv:changed', function onLiveChange(ev) {
+    var parts = (ev && ev.detail && ev.detail.parts) || [];
+    var wantCrew = state.role === 'doctor' && parts.indexOf('access') !== -1;
+    if (!wantCrew && parts.indexOf('alerts') === -1 && parts.indexOf('health') === -1) return;
+    if (liveRunning) { liveAgain = true; return; }
+    liveRunning = true;
+    (wantCrew ? refreshDoctorAstronauts() : Promise.resolve())
+      .then(function () { return loadAlerts(); })
+      .catch(function () {})
+      .then(function () {
+        liveRunning = false;
+        if (liveAgain) { liveAgain = false; onLiveChange({ detail: { parts: ['access', 'alerts'] } }); }
+      });
   });
 
   readyPromise = initRoleAndAstronauts().then(function (ok) {

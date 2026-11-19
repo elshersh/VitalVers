@@ -5,15 +5,16 @@ from contextlib import asynccontextmanager
 import re
 import sqlite3
 from typing import Any
+from urllib.parse import urlencode
 
 from fastapi import Depends, FastAPI, Request
 from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
-from backend.config import STATIC_DIR, TAG_HEADER
+from backend.config import ACCOUNT_HEADER, ACCOUNT_PARAM, STATIC_DIR, TAG_HEADER
 from backend.database import get_db, init_web_tables
-from backend.routers import alerts, auth, chat, doctor, health, mental, predict, profile, todo, uploads
+from backend.routers import alerts, auth, chat, doctor, health, live, mental, predict, profile, todo, uploads
 from backend.security import get_session_user, request_tag
 from backend.services.chat_service import ChatService
 from backend.services.model_service import ModelService
@@ -54,8 +55,10 @@ async def set_cache_headers(request: Request, call_next):
             api = path.startswith("/api/")
             response.headers["Cache-Control"] = "no-store, private" if api else "private, no-cache"
         vary = response.headers.get("vary", "")
-        if "cookie" not in vary.lower():
-            response.headers["Vary"] = f"{vary}, Cookie" if vary else "Cookie"
+        for name in ("Cookie", ACCOUNT_HEADER):
+            if name.lower() not in vary.lower():
+                vary = f"{vary}, {name}" if vary else name
+        response.headers["Vary"] = vary
     return response
 
 app.include_router(auth.router)
@@ -68,6 +71,7 @@ app.include_router(mental.router)
 app.include_router(profile.router)
 app.include_router(doctor.router)
 app.include_router(predict.router)
+app.include_router(live.router)
 
 
 def _read_static_html(filename: str) -> str:
@@ -105,7 +109,10 @@ def serve_health_dashboard(
     user: dict[str, Any] | None = Depends(get_session_user),
     _con: sqlite3.Connection = Depends(get_db),
 ):
-    """Route authenticated users by server-side session role; ignore ?view= and ?astronaut= params."""
+    """Route by the server-side role of this tab's account (?account= names which of this browser's sessions).
+
+    ?view= and ?astronaut= are ignored; ?account= can only pick a session this browser already holds.
+    """
     if user is None:
         return RedirectResponse(url="/login.html", status_code=302)
     if user["role"] == "doctor":
@@ -115,9 +122,11 @@ def serve_health_dashboard(
 
 @app.get("/astronaut-dashboard.html", include_in_schema=False)
 @app.get("/doctor-dashboard.html", include_in_schema=False)
-def redirect_direct_dashboards():
-    """Always enforce server-side session routing through /health.html."""
-    return RedirectResponse(url="/health.html", status_code=302)
+def redirect_direct_dashboards(request: Request):
+    """Always enforce server-side session routing through /health.html (keeping ?account=)."""
+    account = request.query_params.get(ACCOUNT_PARAM)
+    url = "/health.html" + (f"?{urlencode({ACCOUNT_PARAM: account})}" if account else "")
+    return RedirectResponse(url=url, status_code=302)
 
 
 def _gated_page(page_name: str, request: Request, con: sqlite3.Connection):

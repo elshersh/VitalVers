@@ -22,12 +22,22 @@ MODEL_PATH = MODELS_DIR / "health_model.joblib"
 SCHEMA_PATH = PROJECT_ROOT / "data_raw" / "team_supplied" / "07_health_indicators_schema.json"
 DEMO_CREDS_PATH = CONFIG_DIR / "demo_credentials.json"
 
-SESSION_COOKIE = "vv_session"
-# Readable companion of the HttpOnly session cookie: a one-way tag of the session. Every API answer carries
-# the tag of the session it was made for (TAG_HEADER) so the browser can reject answers meant for someone else.
-TAG_COOKIE = "vv_tag"
+# One browser can be signed in to several accounts at once, one per tab (for example an astronaut in one tab
+# and a flight surgeon in another). SESSION_COOKIE (HttpOnly) lists this browser's session ids, newest last.
+SESSION_COOKIE = "vv_sessions"
+# Readable companion: one-way tags of those sessions, same order. Every API answer carries the tag of the
+# session it was made for (TAG_HEADER) so the browser can reject answers meant for someone else.
+TAG_COOKIE = "vv_tags"
 TAG_HEADER = "X-VV-Tag"
 ANON_TAG = "anon"
+# Each tab says which of this browser's sessions it uses (static/js/fetch-guard.js). Page loads that cannot
+# send a header use the ?account= query parameter; without either, the newest session is used.
+ACCOUNT_HEADER = "X-VV-Account"
+ACCOUNT_PARAM = "account"
+# Sign-in and sign-out answers tell the tab which account it uses from now on (a tag, or ANON_TAG).
+ACCOUNT_SET_HEADER = "X-VV-Account-Set"
+MAX_BROWSER_SESSIONS = 6
+LEGACY_COOKIES = ("vv_session", "vv_tag")
 CSRF_HEADER = "X-CSRF-Token"
 COOKIE_SECURE = os.environ.get("VITALVERSE_COOKIE_SECURE", "0") == "1"
 

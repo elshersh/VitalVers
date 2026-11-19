@@ -619,6 +619,56 @@
     };
   }
 
+  // ---- live updates (static/js/shell.js): access requests and records changed in another tab or account ----
+  var liveRunning = false;
+  var liveAgain = false;
+
+  function isEditing() {
+    var el = document.activeElement;
+    var root = document.getElementById('pfApp');
+    return !!(el && root && root.contains(el) && /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName));
+  }
+
+  async function reloadLive(parts) {
+    var wantAccess = parts.indexOf('access') !== -1;
+    var wantProfile = parts.indexOf('profile') !== -1;
+    var mustRender = false;
+    if (state.session.role === 'astronaut') {
+      if (wantAccess) {
+        var acc = await apiJson('/api/access/requests');
+        state.accessRequests = acc.requests || [];
+      }
+      if (wantProfile && !isEditing()) {
+        state.astroData = await apiJson('/api/profile/' + encodeURIComponent(state.session.user.astronaut_id));
+      }
+    } else if (state.session.role === 'doctor') {
+      state.doctorAstronauts = (await apiJson('/api/doctor/astronauts')) || { approved: [], pending: [] };
+      var appr = state.doctorAstronauts.approved || [];
+      var stillApproved = appr.some(function (a) { return a.id === state.selectedPatientId; });
+      if (!stillApproved) {
+        // access ended: never keep that astronaut's record on screen, even mid-edit
+        mustRender = Boolean(state.selectedPatientId);
+        state.selectedPatientId = appr.length ? appr[0].id : '';
+        state.selectedPatientData = null;
+      }
+      if (state.selectedPatientId && (!state.selectedPatientData || (wantProfile && !isEditing()))) {
+        state.selectedPatientData = await apiJson('/api/profile/' + encodeURIComponent(state.selectedPatientId));
+      }
+    }
+    if (mustRender || !isEditing()) render();
+  }
+
+  function onLiveChange(ev) {
+    var parts = (ev && ev.detail && ev.detail.parts) || [];
+    if (parts.indexOf('access') === -1 && parts.indexOf('profile') === -1) return;
+    if (liveRunning) { liveAgain = true; return; }
+    liveRunning = true;
+    reloadLive(parts).catch(function () {}).then(function () {
+      liveRunning = false;
+      if (liveAgain) { liveAgain = false; onLiveChange({ detail: { parts: ['access', 'profile'] } }); }
+    });
+  }
+
   (async function init() {
     wireRevokeModal();
     var sess = await window.VV_SHELL.getSession();
@@ -629,6 +679,7 @@
       return;
     }
     state.session = sess;
+    document.addEventListener('vv:changed', onLiveChange);
     if (sess.role === 'astronaut' && sess.user && sess.user.astronaut_id) {
       var aid = sess.user.astronaut_id;
       var res = await Promise.all([

@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+import re
 import socket
 import sqlite3
 import threading
@@ -21,6 +22,9 @@ from backend.config import DB_PATH, DEMO_CREDS_PATH, PROJECT_ROOT
 
 SCREENSHOTS_DIR = PROJECT_ROOT / "screenshots" / "step_c"
 
+
+# the dashboard link names the tab's account (static/js/fetch-guard.js), so the address may end in ?account=<tag>
+DASHBOARD_URL = re.compile(r".*/health\.html(\?account=[0-9a-f]{20})?$")
 
 def _demo_creds() -> dict:
     return json.loads(DEMO_CREDS_PATH.read_text(encoding="utf-8"))["web_demo_accounts"]
@@ -161,7 +165,7 @@ def test_playwright_end_to_end_flows_12a_to_12f(live_server: str):
 
         # 12a: Navigate to Health dashboard -> opens astronaut dashboard with 180-day charts & model status pill
         page.click("a.go[href='health.html']")
-        page.wait_for_url("**/health.html", timeout=10000)
+        page.wait_for_url(DASHBOARD_URL, timeout=10000)
         page.wait_for_selector("#modelStatusPill", timeout=10000)
 
         subtitle = page.inner_text("#overviewSubtitle")
@@ -246,7 +250,7 @@ def test_playwright_end_to_end_flows_12a_to_12f(live_server: str):
         page_doc.click("#go")
         page_doc.wait_for_selector("a.go[href='health.html']", timeout=10000)
         page_doc.click("a.go[href='health.html']")
-        page_doc.wait_for_url("**/health.html", timeout=10000)
+        page_doc.wait_for_url(DASHBOARD_URL, timeout=10000)
         page_doc.wait_for_selector("#astronautDetail .ast-head h2", timeout=10000)
 
         doc_heading = page_doc.inner_text("#astronautDetail .ast-head h2")
@@ -417,7 +421,7 @@ def test_playwright_astronaut_signup_e2e(live_server: str):
 
             # New astronaut opens live dashboard with generated 180-day telemetry + AI predictions
             page.click("a.btn[href='health.html']")
-            page.wait_for_url("**/health.html", timeout=10000)
+            page.wait_for_url(DASHBOARD_URL, timeout=10000)
             page.wait_for_selector("#modelStatusPill", timeout=15000)
             assert "Mission Day 180 of 180" in page.inner_text("#overviewSubtitle")
             page.click("#sectionTabs a[data-section='metrics']")

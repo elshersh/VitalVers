@@ -396,7 +396,7 @@ body::before {
 
 </style>
   <link rel="stylesheet" href="/css/motion.css?v=7">
-  <script src="/js/fetch-guard.js?v=1"></script><script src="/js/motion.js?v=10"></script>
+  <script src="/js/fetch-guard.js?v=2"></script><script src="/js/motion.js?v=10"></script>
 </head>
 
 <body>
@@ -698,7 +698,7 @@ body::before {
 
 <!-- JAVASCRIPT -->
 
-<script src="js/shell.js"></script>
+<script src="js/shell.js?v=2"></script>
 <script>
 const tasks = Array.from(document.querySelectorAll('.task'));
 const percentage = document.getElementById('percentage');
@@ -817,6 +817,16 @@ if (resetBtn) {
         }
     });
 }
+
+// Live updates (js/shell.js): the list changed in another tab or account, or a flight surgeon's access changed.
+document.addEventListener('vv:changed', ev => {
+    const parts = (ev.detail && ev.detail.parts) || [];
+    if (currentSession && currentSession.role === 'doctor' && parts.includes('access')) {
+        window.location.reload();   // read-only view: rebuild it with the current approved astronauts
+        return;
+    }
+    if (parts.includes('todo') && activeAstronautId) loadTodoFor(activeAstronautId);
+});
 
 (async function initTodo() {
     if (!window.VV_SHELL || !window.VV_SHELL.getSession) return;

@@ -1035,17 +1035,19 @@
         return;
       }
 
-      // The page itself can arrive mixed up through a forwarding relay (the astronaut page for a flight
-      // surgeon or the other way round). Ask the server for the right page once instead of showing errors.
+      // This tab's account decides the page. A page made for another account (another tab's account, or one
+      // mixed up by a forwarding relay) is swapped once for the right one, named by this tab's account.
       if (session.role && session.role !== ROLE) {
         let tried = false;
         try { tried = sessionStorage.getItem('vvRoleReload') === '1'; sessionStorage.setItem('vvRoleReload', '1'); } catch (e) {}
         if (!tried) {
-          location.replace('/health.html?_vv=' + Date.now().toString(36) + location.hash);
+          const base = '/health.html?_vv=' + Date.now().toString(36) + location.hash;
+          location.replace(window.VV_ACCOUNT ? window.VV_ACCOUNT.pageUrl(base) : base);
           return;
         }
       }
       try { sessionStorage.removeItem('vvRoleReload'); } catch (e) {}
+      document.addEventListener('vv:changed', onLiveChange);
 
       if (ROLE === 'astronaut') {
         const aid = session.user.astronaut_id;
@@ -1091,6 +1093,57 @@
         box.hidden = false;
         box.textContent = err.message || 'Unable to load mission dashboard data.';
       }
+    });
+  }
+
+  // ---- live updates (static/js/shell.js): reload what changed, keep the open section and choices ----
+  const LIVE_PARTS = ['access', 'health', 'profile', 'mood', 'alerts'];
+  let liveRunning = null;
+  let liveAgain = false;
+
+  function reloadAstronaut(id) {
+    const wasLatest = !state.ast || state.ast.id !== id || state.replayDay >= state.ast.times.length;
+    delete AST_CACHE[id];
+    return fetchAstronautBundle(id).then(ast => {
+      state.ast = ast;
+      if (wasLatest) state.replayDay = ast.times.length;
+      const box = $('loadError');
+      if (box && !box.hidden && /approved astronauts/.test(box.textContent)) box.hidden = true;
+      buildNotifications();
+      showSection(state.section || location.hash.slice(1));
+    });
+  }
+
+  function reloadDoctorCrew() {
+    return fetch('/api/doctor/astronauts', { credentials: 'same-origin' })
+      .then(r => (r.ok ? r.json() : null))
+      .then(docData => {
+        if (!docData) return;
+        CREW_LIST = docData.approved || [];
+        if (!CREW_LIST.length) {
+          // access ended: start over so no record of that astronaut stays on screen
+          if (state.ast) location.reload();
+          return;
+        }
+        const keep = state.ast && CREW_LIST.some(a => a.id === state.ast.id);
+        const id = keep ? state.ast.id : CREW_LIST[0].id;
+        const sel = $('astronautSelect');
+        if (sel) {
+          sel.innerHTML = CREW_LIST.map(a => `<option value="${esc(a.id)}">${esc(a.name)} (${esc(a.id)} · ${esc(a.role)})</option>`).join('');
+          sel.value = id;
+        }
+        return reloadAstronaut(id);
+      });
+  }
+
+  function onLiveChange(ev) {
+    const parts = (ev && ev.detail && ev.detail.parts) || [];
+    if (!parts.some(p => LIVE_PARTS.indexOf(p) !== -1)) return;
+    if (liveRunning) { liveAgain = true; return; }
+    const job = ROLE === 'doctor' ? reloadDoctorCrew() : (state.ast ? reloadAstronaut(state.ast.id) : Promise.resolve());
+    liveRunning = Promise.resolve(job).catch(() => {}).then(() => {
+      liveRunning = null;
+      if (liveAgain) { liveAgain = false; onLiveChange({ detail: { parts: LIVE_PARTS } }); }
     });
   }
 

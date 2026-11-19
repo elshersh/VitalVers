@@ -215,7 +215,7 @@
     if (launchBtn) {
       launchBtn.addEventListener('click', function (e) {
         e.preventDefault();
-        window.location.href = state.authenticated ? 'health.html' : 'login.html';
+        window.location.href = state.authenticated ? accountPageUrl('/health.html') : 'login.html';
       });
     }
 
@@ -236,7 +236,7 @@
     });
   }
 
-  function toast(title, message, severity) {
+  function toast(title, message, severity, href) {
     var stack = document.getElementById('vvToastStack');
     if (!stack) {
       stack = document.createElement('div');
@@ -254,7 +254,7 @@
     el.innerHTML =
       '<div style="flex:1;min-width:0">' +
         '<p class="vv-toast-title">' + esc(title || 'Notice') + '</p>' +
-        '<a class="vv-toast-body" href="/alerts.html">' + esc(message || '') + '</a>' +
+        '<a class="vv-toast-body" href="' + esc(href || '/alerts.html') + '">' + esc(message || '') + '</a>' +
       '</div>' +
       '<button type="button" class="vv-toast-close" aria-label="Dismiss">&times;</button>';
 
@@ -296,7 +296,7 @@
       '<a href="/alerts.html">Review in Alerts Center</a>';
   }
 
-  function refreshBellDropdown() {
+  function refreshBellDropdown(announce) {
     if (!state.authenticated) return Promise.resolve();
     var bellDrop = document.getElementById('vvBellDropdown');
     var bellList = document.getElementById('vvBellList');
@@ -309,6 +309,7 @@
         if (!data) return;
         updateBell(data.unread_count || 0, data.unack_danger_count || 0);
         var items = Array.isArray(data.items) ? data.items : [];
+        announceNewAlerts(items, announce);
         var unackDangerItem = null;
         for (var i = 0; i < items.length; i += 1) {
           if (!items[i].acknowledged_at && (items[i].severity === 'danger' || items[i].severity === 'danger-confirm')) {
@@ -367,29 +368,96 @@
       .catch(function () {});
   }
 
-  function connectAlertStream() {
-    if (!state.authenticated || typeof window.EventSource !== 'function' || state.sse) return;
-    try {
-      var es = new window.EventSource('/api/alerts/stream');
-      state.sse = es;
-      es.addEventListener('alert', function (ev) {
-        var payload = {};
-        try { payload = JSON.parse(ev.data || '{}'); } catch (_) {}
-        toast(
-          (payload.severity ? String(payload.severity).toUpperCase() : 'NEW') + ' ALERT',
-          payload.short_message || 'New mission health alert received.',
-          payload.severity || 'info'
-        );
-        refreshBellDropdown();
-        window.dispatchEvent(new CustomEvent('vv:alert', { detail: payload }));
+  function accountPageUrl(href) {
+    return (window.VV_ACCOUNT && window.VV_ACCOUNT.pageUrl) ? window.VV_ACCOUNT.pageUrl(href) : href;
+  }
+
+  /* ---- live updates: open pages refresh when data they show changes (another tab, account or device) ---- */
+  var LIVE_VISIBLE_MS = 4000;
+  var LIVE_HIDDEN_MS = 20000;
+  var live = { started: false, parts: null, timer: null, busy: false, again: false, lastAlertId: null };
+
+  function announceNewAlerts(items, announce) {
+    var maxId = 0;
+    items.forEach(function (it) { maxId = Math.max(maxId, Number(it.id) || 0); });
+    if (announce && live.lastAlertId != null) {
+      items.filter(function (it) { return (Number(it.id) || 0) > live.lastAlertId; }).slice(0, 2).forEach(function (it) {
+        toast(String(it.severity || 'new').toUpperCase() + ' ALERT', it.short_message || 'New mission health alert received.', it.severity || 'info');
       });
-      window.addEventListener('beforeunload', function () {
-        if (state.sse) {
-          try { state.sse.close(); } catch (_) {}
-          state.sse = null;
-        }
+    }
+    if (live.lastAlertId == null || maxId > live.lastAlertId) live.lastAlertId = maxId;
+  }
+
+  function refreshShellCounters() {
+    return fetch('/api/auth/me', { credentials: 'same-origin' })
+      .then(function (res) { return res.ok ? res.json() : null; })
+      .then(function (data) {
+        if (!data || !data.authenticated) return;
+        state.csrfToken = data.csrf_token || state.csrfToken;
+        setTodoProgress(data.todo_percent || 0);
+        updateBell(data.unread_alert_count || 0, data.unack_danger_count || 0);
+        renderProfileMenu(data);
+      })
+      .catch(function () {});
+  }
+
+  function scheduleLive(ms) {
+    if (!live.started) return;
+    if (live.timer) window.clearTimeout(live.timer);
+    live.timer = window.setTimeout(checkLive, ms != null ? ms : (document.hidden ? LIVE_HIDDEN_MS : LIVE_VISIBLE_MS));
+  }
+
+  function signedOutElsewhere() {
+    live.started = false;
+    toast('SIGNED OUT', 'This tab\'s account was signed out (in another tab, or the session ended).', 'warning', '/login.html');
+    window.setTimeout(function () { window.location.reload(); }, 1800);
+  }
+
+  function liveChanged(changed) {
+    refreshShellCounters();
+    if (changed.indexOf('alerts') !== -1) refreshBellDropdown(true);
+    var ownChange = window.VV_ACCOUNT && (Date.now() - window.VV_ACCOUNT.lastWriteAt()) < 6000;
+    if (changed.indexOf('access') !== -1 && state.role === 'doctor' && !ownChange) {
+      toast('ACCESS UPDATED', 'Your astronaut access changed. This page now shows the latest list.', 'info', '/profile.html');
+    }
+    document.dispatchEvent(new CustomEvent('vv:changed', { detail: { parts: changed } }));
+  }
+
+  function checkLive() {
+    live.timer = null;
+    if (!live.started) return;
+    if (live.busy) { live.again = true; return; }
+    live.busy = true;
+    fetch('/api/live', { credentials: 'same-origin' })
+      .then(function (res) { return res.ok ? res.json() : null; })
+      .then(function (data) {
+        if (!data || !live.started) return;
+        if (!data.authenticated) { signedOutElsewhere(); return; }
+        var prev = live.parts;
+        live.parts = data.parts || {};
+        if (!prev) return;
+        var changed = Object.keys(live.parts).filter(function (k) { return prev[k] !== live.parts[k]; });
+        if (changed.length) liveChanged(changed);
+      })
+      .catch(function () {})
+      .then(function () {
+        live.busy = false;
+        if (live.again) { live.again = false; scheduleLive(250); } else { scheduleLive(); }
       });
-    } catch (_) {}
+  }
+
+  function startLiveUpdates() {
+    if (live.started || !state.authenticated || window.location.protocol === 'file:') return;
+    live.started = true;
+    var channel = window.VV_ACCOUNT && window.VV_ACCOUNT.channel;
+    if (channel) {
+      // another tab of this browser changed something: check now instead of waiting
+      channel.addEventListener('message', function () { scheduleLive(150); });
+    }
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden) scheduleLive(100);
+    });
+    checkLive();
   }
 
   function renderProfileMenu(data) {
@@ -436,15 +504,13 @@
       '<a class="vv-profile-item" href="/mental.html">Mental Health</a>' +
       '<a class="vv-profile-item" href="/todo.html">Daily Routine</a>' +
       '<a class="vv-profile-item" href="/alerts.html">Alerts Center</a>' +
+      '<a class="vv-profile-item" href="/login.html" title="Other tabs keep their own accounts">Use another account in this tab</a>' +
       '<button type="button" class="vv-profile-item vv-profile-item--danger" id="vvLogoutBtn">Log out</button>';
 
     var logoutBtn = document.getElementById('vvLogoutBtn');
     if (logoutBtn) {
       logoutBtn.addEventListener('click', function () {
-        if (state.sse) {
-          try { state.sse.close(); } catch (_) {}
-          state.sse = null;
-        }
+        live.started = false;
         var headers = {};
         if (state.csrfToken) headers['X-CSRF-Token'] = state.csrfToken;
         fetch('/api/auth/logout', {
@@ -499,7 +565,7 @@
           renderBanner(data.unack_danger_count || 0, null);
           renderProfileMenu(data);
           refreshBellDropdown();
-          connectAlertStream();
+          startLiveUpdates();
         } else {
           renderBanner(0, null);
         }
@@ -525,6 +591,7 @@
     openWelcomeModal: openWelcomeModal,
     getSession: function () { return hydrateSessionIfAvailable(false); },
     refreshSession: function () { return hydrateSessionIfAvailable(true); },
+    liveState: function () { return { started: live.started, ready: Boolean(live.parts) }; },
     init: function () {
       initActiveMenu();
       wireControls();

@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from datetime import datetime, timedelta, timezone
 import hashlib
+import re
 import secrets
 import sqlite3
 from typing import Any
@@ -12,9 +13,14 @@ from argon2.exceptions import InvalidHashError, VerifyMismatchError
 from fastapi import Depends, HTTPException, Request, Response, status
 
 from backend.config import (
+    ACCOUNT_HEADER,
+    ACCOUNT_PARAM,
+    ACCOUNT_SET_HEADER,
     ANON_TAG,
     COOKIE_SECURE,
     CSRF_HEADER,
+    LEGACY_COOKIES,
+    MAX_BROWSER_SESSIONS,
     SESSION_COOKIE,
     TAG_COOKIE,
     load_demo_credentials,
@@ -22,30 +28,87 @@ from backend.config import (
 from backend.database import get_db
 
 
+_SESSION_ID_RE = re.compile(r"[A-Za-z0-9_-]{20,128}")
+
+
 def session_tag(session_id: str) -> str:
     """One-way, non-secret tag of a session id; safe to expose to page scripts."""
     return hashlib.sha256(f"vitalverse-session-tag:{session_id}".encode("utf-8")).hexdigest()[:20]
 
 
+def browser_sessions(request: Request) -> list[str]:
+    """Session ids this browser holds (HttpOnly cookie), oldest first."""
+    raw = request.cookies.get(SESSION_COOKIE, "")
+    sids = [s for s in raw.split(".") if _SESSION_ID_RE.fullmatch(s)]
+    return sids[-MAX_BROWSER_SESSIONS:]
+
+
+def selected_session(request: Request) -> tuple[str | None, str]:
+    """Which of this browser's sessions the request uses: (session id or None, tag of that session).
+
+    A tab names its account with the X-VV-Account header (or ?account= on page loads). Only sessions this
+    browser really holds can be named, so the choice cannot reach anyone else's account. A tab that names an
+    account this browser no longer holds, or names ANON_TAG, is signed out. Without a choice, the newest
+    session is used.
+    """
+    sids = browser_sessions(request)
+    wanted = (request.headers.get(ACCOUNT_HEADER) or request.query_params.get(ACCOUNT_PARAM) or "").strip()
+    if wanted:
+        for sid in sids:
+            tag = session_tag(sid)
+            if secrets.compare_digest(tag, wanted):
+                return sid, tag
+        return None, ANON_TAG
+    if sids:
+        return sids[-1], session_tag(sids[-1])
+    return None, ANON_TAG
+
+
 def request_tag(request: Request) -> str:
-    """Tag of the session this request really carries, or ANON_TAG when it carries no complete session."""
-    sid = request.cookies.get(SESSION_COOKIE)
-    if sid and secrets.compare_digest(request.cookies.get(TAG_COOKIE, ""), session_tag(sid)):
-        return session_tag(sid)
-    return ANON_TAG
+    """Tag of the session this request uses, or ANON_TAG when it uses none."""
+    return selected_session(request)[1]
 
 
-def set_session_cookies(response: Response, session_id: str, ttl_seconds: int) -> None:
-    """Set the HttpOnly session cookie and its readable tag cookie together."""
-    common = {"samesite": "lax", "secure": COOKIE_SECURE, "max_age": int(ttl_seconds), "path": "/"}
-    response.set_cookie(key=SESSION_COOKIE, value=session_id, httponly=True, **common)
-    response.set_cookie(key=TAG_COOKIE, value=session_tag(session_id), httponly=False, **common)
+def _live_sessions(con: sqlite3.Connection, sids: list[str]) -> list[str]:
+    """Keep only sessions that are still signed in, in the same order."""
+    if not sids:
+        return []
+    ph = ",".join("?" * len(sids))
+    rows = con.execute(
+        f"SELECT session_id, expires_at FROM web_sessions WHERE revoked = 0 AND session_id IN ({ph})", sids
+    ).fetchall()
+    now = _now_utc()
+    alive = {r["session_id"] for r in rows if _parse_iso(r["expires_at"]) > now}
+    return [s for s in sids if s in alive]
 
 
-def clear_session_cookies(response: Response) -> None:
-    """Remove both session cookies."""
-    response.delete_cookie(SESSION_COOKIE, path="/")
-    response.delete_cookie(TAG_COOKIE, path="/")
+def _write_session_cookies(response: Response, sids: list[str]) -> None:
+    for legacy in LEGACY_COOKIES:
+        response.delete_cookie(legacy, path="/")
+    if not sids:
+        response.delete_cookie(SESSION_COOKIE, path="/")
+        response.delete_cookie(TAG_COOKIE, path="/")
+        return
+    ttl = int(load_demo_credentials().get("session_ttl_seconds", 3600))
+    common = {"samesite": "lax", "secure": COOKIE_SECURE, "max_age": ttl, "path": "/"}
+    response.set_cookie(key=SESSION_COOKIE, value=".".join(sids), httponly=True, **common)
+    response.set_cookie(key=TAG_COOKIE, value=".".join(session_tag(s) for s in sids), httponly=False, **common)
+
+
+def add_browser_session(request: Request, response: Response, con: sqlite3.Connection, session_id: str) -> str:
+    """Add a new sign-in to this browser's sessions (other tabs keep theirs) and tell the tab to use it."""
+    sids = [s for s in _live_sessions(con, browser_sessions(request)) if s != session_id] + [session_id]
+    sids = sids[-MAX_BROWSER_SESSIONS:]
+    _write_session_cookies(response, sids)
+    tag = session_tag(session_id)
+    response.headers[ACCOUNT_SET_HEADER] = tag
+    return tag
+
+
+def drop_ended_browser_sessions(request: Request, response: Response, con: sqlite3.Connection) -> None:
+    """After a sign-out, forget sessions that ended and tell the tab it is signed out."""
+    _write_session_cookies(response, _live_sessions(con, browser_sessions(request)))
+    response.headers[ACCOUNT_SET_HEADER] = ANON_TAG
 
 
 def _now_utc() -> datetime:
@@ -170,13 +233,9 @@ def create_web_session(con: sqlite3.Connection, user_id: int) -> dict[str, str]:
 
 
 def get_session_user(request: Request, con: sqlite3.Connection = Depends(get_db)) -> dict[str, Any] | None:
-    """Resolve the currently signed-in user from the HttpOnly vv_session cookie, or None.
-
-    The session only counts together with its matching vv_tag cookie, so the tag the browser checks API answers
-    against always describes the session the server used. Sessions from before the tag existed sign in again.
-    """
-    sid = request.cookies.get(SESSION_COOKIE)
-    if not sid or request_tag(request) == ANON_TAG:
+    """Resolve the signed-in user of the session this request (this tab) uses, or None."""
+    sid, _tag = selected_session(request)
+    if not sid:
         return None
     row = con.execute(
         """

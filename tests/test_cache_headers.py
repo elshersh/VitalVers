@@ -78,10 +78,11 @@ def test_sign_in_sets_readable_tag_of_the_hidden_session():
         r = _login(client)
         assert r.status_code == 200
         raw = {c.split("=", 1)[0]: c for c in r.headers.get_list("set-cookie")}
-        assert "httponly" in raw["vv_session"].lower()
-        assert "httponly" not in raw["vv_tag"].lower(), "page scripts must be able to read the tag"
-        assert client.cookies["vv_tag"] == session_tag(client.cookies["vv_session"])
-        assert client.cookies["vv_tag"] != client.cookies["vv_session"]
+        assert "httponly" in raw["vv_sessions"].lower()
+        assert "httponly" not in raw["vv_tags"].lower(), "page scripts must be able to read the tag"
+        assert client.cookies["vv_tags"] == session_tag(client.cookies["vv_sessions"])
+        assert client.cookies["vv_tags"] != client.cookies["vv_sessions"]
+        assert r.headers["x-vv-account-set"] == client.cookies["vv_tags"], "the tab is told which account it uses"
 
 
 def test_every_api_answer_names_the_session_it_was_made_for():
@@ -89,19 +90,19 @@ def test_every_api_answer_names_the_session_it_was_made_for():
         assert client.get("/api/auth/me").headers["x-vv-tag"] == "anon"
         assert client.get("/api/chat/status").headers["x-vv-tag"] == "anon"
         _login(client)
-        mine = client.cookies["vv_tag"]
+        mine = client.cookies["vv_tags"]
         for url in ("/api/auth/me", "/api/chat/status", "/api/doctor/astronauts", "/api/health/A001/dashboard"):
             assert client.get(url).headers["x-vv-tag"] == mine, url   # also on errors (403 for the doctor list)
 
 
-def test_session_without_its_tag_counts_as_signed_out():
+def test_tab_naming_an_account_this_browser_does_not_hold_is_signed_out():
     with TestClient(app) as client:
         _login(client)
         assert client.get("/api/auth/me").json()["authenticated"] is True
-        client.cookies.delete("vv_tag")
-        r = client.get("/api/auth/me")
-        assert r.json()["authenticated"] is False
-        assert r.headers["x-vv-tag"] == "anon"
+        for wanted in ("0123456789abcdef0123", "anon"):
+            r = client.get("/api/auth/me", headers={"X-VV-Account": wanted})
+            assert r.json()["authenticated"] is False, wanted
+            assert r.headers["x-vv-tag"] == "anon"
 
 
 def test_sign_out_removes_the_tag():
@@ -109,7 +110,8 @@ def test_sign_out_removes_the_tag():
         csrf = _login(client).json()["csrf_token"]
         r = client.post("/api/auth/logout", headers={"X-CSRF-Token": csrf})
         assert r.status_code == 200
-        assert "vv_tag" not in client.cookies
+        assert r.headers["x-vv-account-set"] == "anon"
+        assert "vv_tags" not in client.cookies and "vv_sessions" not in client.cookies
 
 
 def test_fetch_guard_loads_before_every_other_script():
