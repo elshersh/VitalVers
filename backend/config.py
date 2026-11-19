@@ -23,6 +23,11 @@ SCHEMA_PATH = PROJECT_ROOT / "data_raw" / "team_supplied" / "07_health_indicator
 DEMO_CREDS_PATH = CONFIG_DIR / "demo_credentials.json"
 
 SESSION_COOKIE = "vv_session"
+# Readable companion of the HttpOnly session cookie: a one-way tag of the session. Every API answer carries
+# the tag of the session it was made for (TAG_HEADER) so the browser can reject answers meant for someone else.
+TAG_COOKIE = "vv_tag"
+TAG_HEADER = "X-VV-Tag"
+ANON_TAG = "anon"
 CSRF_HEADER = "X-CSRF-Token"
 COOKIE_SECURE = os.environ.get("VITALVERSE_COOKIE_SECURE", "0") == "1"
 

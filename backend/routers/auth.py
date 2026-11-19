@@ -8,14 +8,15 @@ from typing import Any
 from fastapi import APIRouter, Depends, HTTPException, Response, status
 from pydantic import BaseModel, ConfigDict
 
-from backend.config import COOKIE_SECURE, SESSION_COOKIE
 from backend.database import get_db
 from backend.security import (
     authenticate_web_user,
+    clear_session_cookies,
     create_web_session,
     get_session_user,
     hash_password,
     require_csrf,
+    set_session_cookies,
     verify_password,
 )
 from backend.services.signup_service import register_account
@@ -78,15 +79,7 @@ def signup(payload: SignupRequest, response: Response, con: sqlite3.Connection =
     res = register_account(con, payload.model_dump())
     session_id = res.pop("session_id")
     ttl_seconds = int(res.pop("ttl_seconds"))
-    response.set_cookie(
-        key=SESSION_COOKIE,
-        value=session_id,
-        httponly=True,
-        samesite="lax",
-        secure=COOKIE_SECURE,
-        max_age=ttl_seconds,
-        path="/",
-    )
+    set_session_cookies(response, session_id, ttl_seconds)
     return res
 
 
@@ -99,16 +92,7 @@ def login(payload: LoginRequest, response: Response, con: sqlite3.Connection = D
 
     user = authenticate_web_user(con, payload.vitalverse_id, payload.password, requested_role=req_role)
     sess = create_web_session(con, int(user["id"]))
-
-    response.set_cookie(
-        key=SESSION_COOKIE,
-        value=sess["session_id"],
-        httponly=True,
-        samesite="lax",
-        secure=COOKIE_SECURE,
-        max_age=int(sess["ttl_seconds"]),
-        path="/",
-    )
+    set_session_cookies(response, sess["session_id"], int(sess["ttl_seconds"]))
 
     prof = _profile_summary(
         con,
@@ -139,7 +123,7 @@ def logout(
     """Revoke the current web session and clear the session cookie."""
     con.execute("UPDATE web_sessions SET revoked = 1 WHERE session_id = ?", (user["session_id"],))
     con.commit()
-    response.delete_cookie(SESSION_COOKIE, path="/")
+    clear_session_cookies(response)
     return {"ok": True}
 
 
@@ -152,7 +136,7 @@ def logout_all(
     """Revoke every active web session for this user across all browsers/devices."""
     cur = con.execute("UPDATE web_sessions SET revoked = 1 WHERE user_id = ?", (int(user["user_id"]),))
     con.commit()
-    response.delete_cookie(SESSION_COOKIE, path="/")
+    clear_session_cookies(response)
     return {"ok": True, "revoked_count": cur.rowcount}
 
 

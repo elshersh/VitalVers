@@ -2,16 +2,50 @@
 from __future__ import annotations
 
 from datetime import datetime, timedelta, timezone
+import hashlib
 import secrets
 import sqlite3
 from typing import Any
 
 from argon2 import PasswordHasher
 from argon2.exceptions import InvalidHashError, VerifyMismatchError
-from fastapi import Depends, HTTPException, Request, status
+from fastapi import Depends, HTTPException, Request, Response, status
 
-from backend.config import CSRF_HEADER, SESSION_COOKIE, load_demo_credentials
+from backend.config import (
+    ANON_TAG,
+    COOKIE_SECURE,
+    CSRF_HEADER,
+    SESSION_COOKIE,
+    TAG_COOKIE,
+    load_demo_credentials,
+)
 from backend.database import get_db
+
+
+def session_tag(session_id: str) -> str:
+    """One-way, non-secret tag of a session id; safe to expose to page scripts."""
+    return hashlib.sha256(f"vitalverse-session-tag:{session_id}".encode("utf-8")).hexdigest()[:20]
+
+
+def request_tag(request: Request) -> str:
+    """Tag of the session this request really carries, or ANON_TAG when it carries no complete session."""
+    sid = request.cookies.get(SESSION_COOKIE)
+    if sid and secrets.compare_digest(request.cookies.get(TAG_COOKIE, ""), session_tag(sid)):
+        return session_tag(sid)
+    return ANON_TAG
+
+
+def set_session_cookies(response: Response, session_id: str, ttl_seconds: int) -> None:
+    """Set the HttpOnly session cookie and its readable tag cookie together."""
+    common = {"samesite": "lax", "secure": COOKIE_SECURE, "max_age": int(ttl_seconds), "path": "/"}
+    response.set_cookie(key=SESSION_COOKIE, value=session_id, httponly=True, **common)
+    response.set_cookie(key=TAG_COOKIE, value=session_tag(session_id), httponly=False, **common)
+
+
+def clear_session_cookies(response: Response) -> None:
+    """Remove both session cookies."""
+    response.delete_cookie(SESSION_COOKIE, path="/")
+    response.delete_cookie(TAG_COOKIE, path="/")
 
 
 def _now_utc() -> datetime:
@@ -136,9 +170,13 @@ def create_web_session(con: sqlite3.Connection, user_id: int) -> dict[str, str]:
 
 
 def get_session_user(request: Request, con: sqlite3.Connection = Depends(get_db)) -> dict[str, Any] | None:
-    """Resolve the currently signed-in user from the HttpOnly vv_session cookie, or None."""
+    """Resolve the currently signed-in user from the HttpOnly vv_session cookie, or None.
+
+    The session only counts together with its matching vv_tag cookie, so the tag the browser checks API answers
+    against always describes the session the server used. Sessions from before the tag existed sign in again.
+    """
     sid = request.cookies.get(SESSION_COOKIE)
-    if not sid:
+    if not sid or request_tag(request) == ANON_TAG:
         return None
     row = con.execute(
         """

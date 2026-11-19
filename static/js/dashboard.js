@@ -1035,6 +1035,18 @@
         return;
       }
 
+      // The page itself can arrive mixed up through a forwarding relay (the astronaut page for a flight
+      // surgeon or the other way round). Ask the server for the right page once instead of showing errors.
+      if (session.role && session.role !== ROLE) {
+        let tried = false;
+        try { tried = sessionStorage.getItem('vvRoleReload') === '1'; sessionStorage.setItem('vvRoleReload', '1'); } catch (e) {}
+        if (!tried) {
+          location.replace('/health.html?_vv=' + Date.now().toString(36) + location.hash);
+          return;
+        }
+      }
+      try { sessionStorage.removeItem('vvRoleReload'); } catch (e) {}
+
       if (ROLE === 'astronaut') {
         const aid = session.user.astronaut_id;
         return fetchAstronautBundle(aid).then(ast => {

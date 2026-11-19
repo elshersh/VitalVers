@@ -11,10 +11,10 @@ from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, Redirect
 from fastapi.staticfiles import StaticFiles
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
-from backend.config import STATIC_DIR
+from backend.config import STATIC_DIR, TAG_HEADER
 from backend.database import get_db, init_web_tables
 from backend.routers import alerts, auth, chat, doctor, health, mental, predict, profile, todo, uploads
-from backend.security import get_session_user
+from backend.security import get_session_user, request_tag
 from backend.services.chat_service import ChatService
 from backend.services.model_service import ModelService
 
@@ -36,15 +36,19 @@ _STATIC_ASSET = re.compile(r"\.(css|js|mjs|map|png|jpe?g|gif|webp|svg|ico|woff2?
 
 @app.middleware("http")
 async def set_cache_headers(request: Request, call_next):
-    """Keep answers that depend on the signed-in user out of shared caches.
+    """Keep answers that depend on the signed-in user out of shared caches, and label whose answer it is.
 
-    The public link can run behind a forwarding relay (for example GitHub Codespaces) that caches GET
-    responses by URL alone. API answers, pages and redirects can differ per user, so only the browser
-    may keep them: API answers are never stored, pages are re-checked with the server (ETag) every time.
-    Static assets (styles, scripts, images, fonts) are the same for everyone and stay cacheable.
+    The public link can run behind a forwarding relay (GitHub Codespaces) that was seen handing one visitor's
+    answer to another. API answers, pages and redirects can differ per user, so only the browser may keep them:
+    API answers are never stored, pages are re-checked with the server (ETag) every time. Static assets
+    (styles, scripts, images, fonts) are the same for everyone and stay cacheable. Every API answer also
+    carries the tag of the session it was made for, which the page compares with its own tag.
     """
     response = await call_next(request)
     path = request.url.path
+    if path.startswith("/api/"):
+        # tell the page which session this answer was made for (static/js/fetch-guard.js checks it)
+        response.headers[TAG_HEADER] = request_tag(request)
     if not _STATIC_ASSET.search(path):
         if "cache-control" not in response.headers:
             api = path.startswith("/api/")
