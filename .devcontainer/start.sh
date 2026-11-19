@@ -1,8 +1,25 @@
 #!/usr/bin/env bash
 # Starts the Vitalverse website inside a GitHub Codespace and makes it reachable by anyone with the link.
 # Safe to run any number of times: it installs missing libraries, and does nothing if the site already runs.
-cd "$(dirname "$0")/.." || exit 1
+SELF="$(cd "$(dirname "$0")" && pwd)/$(basename "$0")"
+cd "$(dirname "$SELF")/.." || exit 1
 LOG=/tmp/vitalverse.log
+
+if [ "$1" = "--keep-public" ]; then
+  # The editor can forward port 8000 again as private a little after start-up, which hides the site.
+  # For the next 15 minutes, check every 10 seconds and switch the port back to public when needed.
+  end=$((SECONDS + 900))
+  while [ "$SECONDS" -lt "$end" ]; do
+    vis=$(gh codespace ports -c "$CODESPACE_NAME" --json sourcePort,visibility \
+          -q '.[] | select(.sourcePort == 8000) | .visibility' 2>/dev/null)
+    if [ "$vis" != "public" ]; then
+      gh codespace ports visibility 8000:public -c "$CODESPACE_NAME" >/dev/null 2>&1 \
+        && echo "$(date -u +%H:%M:%S) port 8000 set to public (was: ${vis:-unknown})"
+    fi
+    sleep 10
+  done
+  exit 0
+fi
 
 if curl -s -o /dev/null --max-time 3 http://127.0.0.1:8000/; then
   echo "Vitalverse is already running."
@@ -35,4 +52,8 @@ if [ -n "$CODESPACE_NAME" ]; then
     echo "Link: $LINK"
   fi
   echo "$LINK" > /tmp/vitalverse-link.txt
+  # keep the link public while the editor finishes connecting (one watcher at a time)
+  pkill -f "start.sh --keep-public" 2>/dev/null
+  nohup setsid bash "$SELF" --keep-public > /tmp/vitalverse-public.log 2>&1 < /dev/null &
+  disown 2>/dev/null
 fi
